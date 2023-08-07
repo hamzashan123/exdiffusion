@@ -1,0 +1,120 @@
+﻿* {
+    font-family: 'Lato', sans-serif !important;
+}
+
+body {
+    padding: 0px 2%;
+}
+
+img.HeaderLogo {
+    height: 40px;
+}
+
+.header ul.nav {
+    margin-left: 20px;
+}
+
+.text-light-grey {
+    color: #cccccc;   
+}
+
+.text-light-grey-bg {
+    background: #444f5e;   
+}
+
+.dark-grey {
+    background-color: #1f2937;
+}
+
+.images_publishBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.images_publishBtns button {
+    margin: 0px 5px;
+}
+
+ul.nav a:hover , .tabSections ul.nav button:hover {
+    color: #cccccc; 
+    transition: .3s;
+    border-color: #374151 !important;
+    border-width: 1px !important;
+}
+
+
+
+.tabSections ul.nav button.active {
+    background-color: transparent;
+    color: white !important;
+    border-bottom: unset;
+    border-color: #374151 !important;
+    border-width: 1px !important;
+}
+
+
+
+.tabSections div#myTabContent .tab-pane {
+    padding: 15px;
+    border: 1px solid #374151;
+    border-top: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.tabSections ul#myTab {
+    border-color: #374151 !important;
+    border-width: 1px !important;
+}
+
+
+ul.nav a {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.footer {
+    text-align: center;
+}
+
+img.logoFooter {
+    height: 30px;
+}
+
+.mainSection {
+    margin: 15px 0px;
+}
+
+
+.border-radius-7 {
+    border-radius: 7px !important;   
+    border: 2px solid #374151;
+}
+
+.purple-col-bg {
+    background-color: #a157dc;
+}
+
+
+.purple-col-border {
+    border: 2px solid #8c2dde;
+}
+
+.purple-col {
+    color: #a157dc;
+}
+.btn.generate {
+    padding: 20px;
+}
+
+.btn.generate:hover {
+    background: #444f5e;
+    transition: .3s;
+}
+
+input[type="range"] {
+    accent-color: #a157dc;
+}
