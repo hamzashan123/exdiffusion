@@ -61,7 +61,7 @@
                 <div class="tab-pane fade show active text-white"  id="txt2img" role="tabpanel" aria-labelledby="txt2img-tab" >
                     
                     <div class="row">
-                        <div class="col-md-9 relative">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 relative">
                             <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Prompt here"></textarea>
                             <div class="counterPrompt">
                                 <span>91</span>
@@ -76,7 +76,7 @@
                                 <span>150</span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn generate purple-col-bg purple-col-border form-control text-white border-radius-7">Generate</button>
                             
                             <div class="input-group mb-2 mt-2 fourEventsActions">
@@ -109,21 +109,31 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="models_section dark-grey p-3 border-radius-7" >
+                        <div class="models_section dark-grey p-3 border-radius-7">
                                 <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control dark-grey border-radius-7" readonly value="Lora">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button">+</button>
-                                        </div>
-                                        <input type="text" class="form-control dark-grey border-radius-7" readonly value="Embedding">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button">+</button>
-                                        </div>
+                                    <div class="input-group">                                     
+                                        <div class="col-md-3">
+                                        <div class="input-group"> <input type="text" class="form-control dark-grey border-radius-7" readonly="" value="Lora" fdprocessedid="ng446">
+                                        <div class="combinebtn">
+                                            <button class="combinebtnbtn" type="button" fdprocessedid="48m58c">+</button>
+                                        </div></div>
+                                        
                                     </div>
-                                </div>
+                                <div class="col-md-3">
+                                        
+                                        
+                                    </div><div class="col-md-3">
+                                        <div class="input-group"> <input type="text" class="form-control dark-grey border-radius-7" readonly="" value="Embedding" fdprocessedid="ng446">
+                                        <div class="combinebtn">
+                                            <button class="combinebtnbtn" type="button" fdprocessedid="48m58c">+</button>
+                                        </div></div>
+                                        
+                                    </div><div class="col-md-3">
+                                        
+                                        
+                                    </div></div></div>
                                 
-                            </div>
+                  </div>
 
                             <div class="scheduler_section mt-2 dark-grey p-3 border-radius-7" >
                                 <div class="col-md-12">
@@ -145,10 +155,11 @@
                                                 
                                             </div>
                                             <div class="col-md-12">
+                                            <label for="">Seed Image</label> 
                                               <div class="input-group">
                                                 
-                                                <div class="col-md-8">
-                                                    <label for="">Seed Image</label> 
+                                                <div class="col-md-7">
+                                                    
                                                     <input type="number" class="form-control dark-grey border-radius-7">
                                                 </div>
                                                 <div class="col-md-2">
@@ -164,11 +175,13 @@
 
                                         <div class="col-md-6">
                                             <div class="col-md-12">
-                                                <div>
+                                                <div class="spaceBetween">
                                                     <label for="">Inference Steps (Sampling Steps) </label> 
                                                 
                                                     
-                                                    <input type="text" value="512" class="form-control dark-grey border-radius-7" >
+                                                    
+                                                        <input type="text" value="512" class="form-control dark-grey border-radius-7" >
+                                                
                                                 </div>
                                                 <div>
                                                     <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -178,10 +191,12 @@
                                             </div>
                                             <div class="col-md-12">
                                             
-                                                <div>
+                                                <div class="spaceBetween">
                                                     <label for="">Clip Skip</label> 
+                                                    <div class="inner"> 
                                                     <input type="checkbox" name="" id="">
                                                     <input type="text" value="1" class="form-control dark-grey border-radius-7" >
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -199,7 +214,7 @@
                             <div class="enhancement_section mt-2 dark-grey p-3 border-radius-7" >
                                 <div class="col-md-12">
                                     
-                                    <div class="input-group">
+                                    <div class="input-group label">
                                         <input type="checkbox">
                                         <label for="">Face Enhance</label>
                                         <input type="checkbox" >
@@ -228,7 +243,7 @@
                                             
                                             <div class="col-md-12">
                                             
-                                                <div>
+                                                <div class="spaceBetween">
                                                     <label for="">Scale Of Super Resolution</label> 
                                                 
                                                     <input type="text" value="2" class="form-control dark-grey border-radius-7" >
@@ -252,11 +267,13 @@
                                   
                                     <div class="col-md-6">
                                         <div class="col-md-12">
-                                            <div>
+                                            <div class="spaceBetween">
                                                 <label for="">Width</label> 
-                                             
+
+                                                <div class="inner"> 
                                                 <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/width.png')}}" class="btn_img"></button>
                                                 <input type="text" value="512" class="form-control dark-grey border-radius-7" >
+                                                </div>
                                             </div>
                                             <div>
                                                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -266,7 +283,7 @@
                                         </div>
                                         <div class="col-md-12">
                                            
-                                            <div>
+                                            <div class="spaceBetween">
                                                 <label for="">Samples</label> 
                                             
                                                 <input type="text" value="1" class="form-control dark-grey border-radius-7" >
@@ -279,11 +296,12 @@
 
                                     <div class="col-md-6">
                                         <div class="col-md-12">
-                                            <div>
+                                            <div class="spaceBetween">
                                                 <label for="">Height</label> 
-                                             
+                                             <div class="inner"> 
                                                 <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/height.png')}}" class="btn_img"></button>
                                                 <input type="text" value="512" class="form-control dark-grey border-radius-7" >
+                                             </div>
                                             </div>
                                             <div>
                                                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -293,7 +311,7 @@
                                         </div>
                                         <div class="col-md-12">
                                            
-                                            <div>
+                                            <div class="spaceBetween">
                                                 <label for="">Guidance Scale(CFG Scale) </label> 
                                             
                                                 <input type="text" value="1" class="form-control dark-grey border-radius-7" >

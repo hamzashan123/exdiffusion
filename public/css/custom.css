@@ -251,3 +251,141 @@ select {
     font-size: 16px;
     margin-bottom:15px;
 }
+
+.models_section input, .models_section select {
+    height: 55px;
+}
+
+.models_section .combinebtn{
+    position: absolute;
+    right: 20px;
+ 
+    top: 25%;
+ z-index: 9; 
+}
+
+
+.models_section .combinebtn button {
+
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    background: #0b0f19;
+    color: white !important;
+    border: 1px solid #374151;
+    border-radius: 50%;
+    position: relative;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 19px 0px;
+}
+
+
+
+.spaceBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spaceBetween button {
+    height: 35px;
+}
+
+.spaceBetween button img {
+    height: 15px;
+}
+
+.spaceBetween input {
+    width: 100px;
+    text-align: center;
+    height: 35px;
+}
+
+
+.scheduler_section .col-md-6 .col-md-12:nth-child(2) .input-group {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.scheduler_section .col-md-6 .col-md-12:nth-child(2) .input-group button {
+    height: 55px;
+}
+
+.scheduler_section .col-md-6 .col-md-12:nth-child(2) {
+    margin-top:10px;
+}
+
+.spaceBetween button img {
+    height: 15px;
+    position: relative;
+    top:1.5px;
+}
+.spaceBetween input
+.spaceBetween button:hover , .scheduler_section .col-md-6 .col-md-12:nth-child(2) .input-group button:hover, .heightandwidth_section .spaceBetween .inner button:hover{
+    background: #a157dc;
+    border-color: #8c2dde;
+    transition:.3s;
+}
+
+.scheduler_section button {
+
+    background: #444f5e;
+   border-color: #374151;
+   transition:.3s;
+}
+
+
+.enhancement_section .input-group.label input[type="checkbox"] {
+    margin: 0px 10px;
+    accent-color: #a157dc;
+    transform: scale(1.5);
+    margin-bottom: 15px;
+}
+
+.enhancement_section .input-group.label input[type="checkbox"]:nth-child(1) {
+    margin-left: 0;
+}
+
+.enhancement_section .input-group.label label {
+    margin-right: 30px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+ .scheduler_section .col-md-12 .col-md-6, .enhancement_section .col-md-12 .col-md-6, .heightandwidth_section .col-md-12 .col-md-6{
+   padding: 0px 10px;
+}
+
+.models_section .col-md-12  .col-md-3 {
+    padding: 0px 10px;
+}
+
+.miscellaneous_section .col-md-12 .input_group {
+    padding: 0px 10px;
+}
+
+.enhancement_section .col-md-12:nth-child(1) .input-group {
+    padding: 0px 10px;
+}
+
+.spaceBetween .inner {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.spaceBetween .inner input[type="checkbox"] {
+    accent-color: #a157dc;
+    transform: scale(1.5);
+    height: auto !important;
+    width: auto !important;
+    margin-right: 10px;
+}
+
+.heightandwidth_section .spaceBetween .inner button {
+    margin-right: 10px;
+}
