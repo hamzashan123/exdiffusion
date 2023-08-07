@@ -62,14 +62,14 @@
                     
                     <div class="row">
                         <div class="col-md-9 relative">
-                            <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="3" placeholder="Enter the Prompt here"></textarea>
+                            <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Prompt here"></textarea>
                             <div class="counterPrompt">
                                 <span>91</span>
                                 <span>/</span>
                                 <span>150</span>
                             </div>
                             <br>
-                            <textarea name="" id="neg_prompt" class="form-control dark-grey border-radius-7" rows="3" placeholder="Enter the Negative Prompt here"></textarea>
+                            <textarea name="" id="neg_prompt" class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Negative Prompt here"></textarea>
                             <div class="counterNegPrompt">
                                 <span>91</span>
                                 <span>/</span>
@@ -149,7 +149,7 @@
                                                 
                                                 <div class="col-md-8">
                                                     <label for="">Seed Image</label> 
-                                                    <input type="number" class="form-control dark-grey">
+                                                    <input type="number" class="form-control dark-grey border-radius-7">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/dice.png')}}" class="btn_img"></button>
@@ -168,7 +168,7 @@
                                                     <label for="">Inference Steps (Sampling Steps) </label> 
                                                 
                                                     
-                                                    <input type="text" value="512" class="form-control dark-grey" >
+                                                    <input type="text" value="512" class="form-control dark-grey border-radius-7" >
                                                 </div>
                                                 <div>
                                                     <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -181,7 +181,7 @@
                                                 <div>
                                                     <label for="">Clip Skip</label> 
                                                     <input type="checkbox" name="" id="">
-                                                    <input type="text" value="1" class="form-control dark-grey" >
+                                                    <input type="text" value="1" class="form-control dark-grey border-radius-7" >
                                                 </div>
                                                 <div>
                                                     <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -231,7 +231,7 @@
                                                 <div>
                                                     <label for="">Scale Of Super Resolution</label> 
                                                 
-                                                    <input type="text" value="2" class="form-control dark-grey" >
+                                                    <input type="text" value="2" class="form-control dark-grey border-radius-7" >
                                                 </div>
                                                 <div>
                                                     <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -256,7 +256,7 @@
                                                 <label for="">Width</label> 
                                              
                                                 <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/width.png')}}" class="btn_img"></button>
-                                                <input type="text" value="512" class="form-control dark-grey" >
+                                                <input type="text" value="512" class="form-control dark-grey border-radius-7" >
                                             </div>
                                             <div>
                                                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -269,7 +269,7 @@
                                             <div>
                                                 <label for="">Samples</label> 
                                             
-                                                <input type="text" value="1" class="form-control dark-grey" >
+                                                <input type="text" value="1" class="form-control dark-grey border-radius-7" >
                                             </div>
                                             <div>
                                                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -283,7 +283,7 @@
                                                 <label for="">Height</label> 
                                              
                                                 <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/height.png')}}" class="btn_img"></button>
-                                                <input type="text" value="512" class="form-control dark-grey" >
+                                                <input type="text" value="512" class="form-control dark-grey border-radius-7" >
                                             </div>
                                             <div>
                                                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -296,7 +296,7 @@
                                             <div>
                                                 <label for="">Guidance Scale(CFG Scale) </label> 
                                             
-                                                <input type="text" value="1" class="form-control dark-grey" >
+                                                <input type="text" value="1" class="form-control dark-grey border-radius-7" >
                                             </div>
                                             <div>
                                                 <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
@@ -313,7 +313,7 @@
 
                             <div class="miscellaneous_section mt-2 dark-grey p-3 border-radius-7" >
                                 <div class="col-md-12">
-                                    <div class="input-group">
+                                    <div class="input-group miscellaneous_checkboxes">
                                          <input type="checkbox">
                                         <label for="">Safety Checker</label>
                                         <input type="checkbox" >

@@ -153,17 +153,17 @@ img.btn_img {
     position: relative;
 }
 
-.modelsListings input, .modelsListings select {
+input[type='text'],input[type='number'],select {
    height:55px;
 }
 
-input:focus, select:focus, textarea:focus  {
+input:focus,button:focus, select:focus, textarea:focus  {
     background: #1f2937 !important;
     box-shadow: none !important;
     border-color: #a157dc !important;
 }
 
-input, select, textarea {
+input, select, textarea ,button {
     color: white !important;
 }
 input::placeholder, select::placeholder, textarea::placeholder {
@@ -227,4 +227,11 @@ textarea#prompt {position: relative;}
 .models_section input {
     color: white;
     background:#444f5e;
+}
+
+select {
+    background: url('https://exdiffusion.com/newproject/public/img/icons/dropdown.png');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y:50%;
 }
