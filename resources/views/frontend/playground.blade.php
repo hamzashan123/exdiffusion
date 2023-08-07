@@ -12,7 +12,7 @@
                         <div class="input-group">
                         <input type="text" class="form-control dark-grey border-radius-7 " value="Realistic Vision V1.3">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">+</button>
+                            <button class="" type="button">+</button>
                         </div>
                         </div>
                     </div>
@@ -62,14 +62,14 @@
                     
                     <div class="row">
                         <div class="col-md-9">
-                            <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="3"></textarea>
+                            <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="3" placeholder="Enter the Prompt here"></textarea>
                             <div class="counterPrompt">
                                 <span>91</span>
                                 <span>/</span>
                                 <span>150</span>
                             </div>
                             <br>
-                            <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="3"></textarea>
+                            <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="3" placeholder="Enter the Negative Prompt here"></textarea>
                             <div class="counterNegPrompt">
                                 <span>91</span>
                                 <span>/</span>
@@ -101,7 +101,7 @@
                                         <option value="img2img">vae-hopital-real2</option>
                                         <option value="img2img">vae-fogaminsk</option>
                                     </select>
-                                </div>
+                            </div>
 
                         </div>
 

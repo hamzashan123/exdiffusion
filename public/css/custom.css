@@ -118,3 +118,50 @@ img.logoFooter {
 input[type="range"] {
     accent-color: #a157dc;
 }
+
+.btn.generate {
+    font-size: 23px;
+}
+
+img.btn_img {
+    height: 20px;
+}
+
+
+
+.modelsListings .col-md-3:nth-child(1) .input-group-append {
+    position: absolute;
+    right: 20px;
+    height: 50%;
+    top: 25%;
+    width: 30px;
+}
+
+.modelsListings .col-md-3:nth-child(1) {
+    position: relative;
+}
+
+.modelsListings .col-md-3:nth-child(1) .input-group-append button {
+    height: 100%;
+    width: 100%;
+    font-size: 17px;
+    background: #0b0f19;
+    color: white !important;
+    border: 1px solid #374151;
+    border-radius: 50%;
+    position: relative;
+}
+
+.modelsListings input, .modelsListings select {
+   height:55px;
+}
+
+input:focus, select:focus, textarea:focus {
+    background: #1f2937 !important;
+    box-shadow: none !important;
+    border-color: #a157dc !important;
+}
+
+input, select, textarea {
+    color: white !important;
+}
