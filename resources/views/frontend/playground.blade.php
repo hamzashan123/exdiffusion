@@ -6,7 +6,7 @@
     
         <div class="modelsListings input-group ">
             
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
                         
                         <label for="" class="text-white">  &nbsp;  Base Model</label>
                         <div class="input-group">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 mx-3">
+                    <div class="col-md-3 col-sm-12 col-xs-12 mx-3">
                     <label for="" class="text-white">   &nbsp;  VAE</label>
                         <select name="" id="" class="form-control dark-grey border-radius-7">
                             <option value="" selected>None</option>
@@ -158,14 +158,14 @@
                                             <label for="">Seed Image</label> 
                                               <div class="input-group">
                                                 
-                                                <div class="col-md-7">
+                                                <div class="col-md-7 col-sm-7 col-xs-7">
                                                     
                                                     <input type="number" class="form-control dark-grey border-radius-7">
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-2 col-sm-2 col-xs-2">
                                                     <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/dice.png')}}" class="btn_img"></button>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-2 col-sm-2 col-xs-2">
                                                     <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/play.png')}}" class="btn_img"></button>
                                                 </div> 
                                               </div>
@@ -396,7 +396,12 @@
 
     </div>
     
-    
+   <!-- Your modal trigger button -->
+   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Open Modal
+  </button>
+
+
 @endsection('content')
 <script>
   

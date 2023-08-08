@@ -17,17 +17,94 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     @yield('style')
 </head>
-<body style="background: #0b0f19;">
+<body style="background: #0b0f19;" >
+    <div class="blur-container">
+        @include('partials.header')
 
-    @include('partials.header')
+        <div class="mainSection">
+            @yield('content')
+        </div>
 
-    <div class="mainSection">
-        @yield('content')
+        @include('partials.footer')
+
+        
     </div>
-    
 
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <input type="text" class="form-control searchModelImages" placeholder="Search...">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- Image gallery or list -->
+          <div class="row">
 
-    @include('partials.footer')
+            <div class="col-md-3">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Golden Beach Mix </span>
+            </div>
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+
+            <div class="col-md-3">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> zeekars</span>
+            </div>
+
+           
+            <!-- Add more image columns as needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     @yield('script')

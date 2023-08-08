@@ -229,7 +229,7 @@ textarea#prompt {position: relative;}
     background:#444f5e;
 }
 
-select {
+select , select:focus{
     background: url('https://exdiffusion.com/newproject/public/img/icons/dropdown.png');
     background-repeat: no-repeat;
     background-position-x: 95%;
@@ -388,4 +388,94 @@ input[type="range"] {
 
 .heightandwidth_section .spaceBetween .inner button {
     margin-right: 10px;
+}
+
+
+.modal-open {
+    overflow: hidden;
+  }
+.modal-open .blur-container {
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+    transition: filter 0.5s;
+}
+  /* Style adjustments for the modal */
+.modal-dialog.modal-md {
+    max-width: 75%;
+}
+
+input.form-control.searchModelImages {
+    height: 35px;
+    width: 285px;
+}
+
+.modal-content {
+    background-color: #0f141b;
+}
+
+button.btn-close {
+    background-color: #d6d6e6;
+}
+
+.modal img {
+    border: 2px solid #a157dc;
+    margin-bottom: 0 !important;
+}
+
+.modal span {
+    color: white !important;
+}
+
+@media only screen and (max-width:768px ) {
+    .modelsListings  .mx-3{
+        margin: 0px !important;
+    }
+
+    .btn.generate {
+        margin-top: 30px;
+    }
+
+    .modelsListings.input-group {
+        display: block !important;
+    }
+
+
+.models_section  .input-group {
+    display: block !important;
+}
+
+.models_section .input-group input {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+
+
+.enhancement_section .input-group {
+    display: block !important;
+}
+
+.heightandwidth_section .input-group {
+    display: block !important;
+}
+
+.images_publishBtns {
+    display: block !important;
+}
+
+.images_publishBtns button {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.images_publishBtns button img {
+    margin-right: 10px;
+    height: 15px;
+}
+.spaceBetween {
+    margin-top: 10px;
+}
+
+.scheduler_section .input-group {
+    display: block;
+}
 }
