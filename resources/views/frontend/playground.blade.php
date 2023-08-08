@@ -364,16 +364,16 @@
                         <div class="images_result ">
                                 
                                     <img src="{{asset('img/icons/ai1.png')}}" alt="">
-                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
-                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
-                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
+                                    <img src="{{asset('img/icons/ai2.png')}}" alt="">
+                                    <img src="{{asset('img/icons/ai3.png')}}" alt="">
+                                    <img src="{{asset('img/icons/ai4.png')}}" alt="">
                                     
-                                
-                        </div>
                         <div id="progress-label" class="text-center">100%</div>
                         <div class="progress">
                             <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>   
                         </div>
+                        
                         
                         <div class="images_publishBtns">
                             <button class="btn btn-secondary text-light-grey-bg border-radius-7 "><img src="{{asset('img/icons/publish.png')}}" class="btn_img"> Publish the Image</button>

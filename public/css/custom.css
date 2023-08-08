@@ -442,25 +442,63 @@ input.form-control.searchModelImages {
     height: auto;
 }
 
-.images_result img {
-    height: 100px;
+
+.progress {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.images_result img {
+    width: 48%;
+    display: inline-block;
+    margin: .5%;
+    height: 320px;
+    object-fit: cover;
+    border: 2px solid #374151;
+    border-radius:7px;
+}
+
+.images_result {
+    padding: 20px;
+    border: 2px solid #374151;
+    background: #0b0f19;
+    border-radius:7px;
+}
+
+.images_publishBtns img {
+    margin-right: 10px;
+    height: 15px;
+    position: relative;
+    top: -2px;
+}
+
+.images_publishBtns button {
+    padding:10px 20px;
+}
+
+
 
 
 .progress {
     position: relative;
     height: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     
-  }
+}
   
   #progress-bar {
     transition: width 0.3s ease-in-out;
     background-color: #a157dc;
+
   }
   
   #progress-label {
     margin-top: 5px;
+    font-size: 14px;
   }
 
 
