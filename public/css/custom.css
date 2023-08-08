@@ -545,6 +545,7 @@ input.form-control.searchModelImages {
 .bodyInner img {
     height: 220px;
     object-fit: cover;
+    width: 100%;
 }
 
 .modal-content {
@@ -597,7 +598,7 @@ input.form-control.searchModelImages {
         display: block;
     }
     
-    .images_result img {height: 230px;}
+    .images_result img {height: 230px; width: 100%;}
     
 }
 
