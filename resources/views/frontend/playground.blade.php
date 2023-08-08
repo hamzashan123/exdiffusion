@@ -1,6 +1,7 @@
 ﻿@extends('layouts.app')
 
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
 <br>
 <div class="playgroundMain">
 
@@ -12,7 +13,7 @@
             <div class="input-group">
                 <input type="text" class="form-control dark-grey border-radius-7 " value="Realistic Vision V1.3">
                 <div class="input-group-append">
-                    <button class="" type="button">+</button>
+                    <button class="" type="button" data-bs-toggle="modal" data-bs-target="#myModal">+</button>
                 </div>
             </div>
         </div>
@@ -96,8 +97,9 @@
 
                         <div class="col-md-12">
                             <label for="" class="text-white"> &nbsp; Prompt Styles</label>
-                            <select name="" id="" class="form-control dark-grey border-radius-7">
-                                <option value="" selected>None</option>
+                            
+                            <select  name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7 js-example-basic-multiple"  multiple="multiple">
+                                <option value="">None</option>
                                 <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
                             </select>
@@ -359,9 +361,19 @@
                     </div>
 
                     <div class="col-md-6 dark-grey p-3 border-radius-7 ">
-                        <div class="images_result">
-                            <textarea name="" id="" class="form-control " rows="20"></textarea>
+                        <div class="images_result ">
+                                
+                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
+                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
+                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
+                                    <img src="{{asset('img/icons/ai1.png')}}" alt="">
+                                    
+                                
                         </div>
+                        <div class="progress">
+                            <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div id="progress-label" class="text-center">100%</div>
                         <div class="images_publishBtns">
                             <button class="btn btn-secondary text-light-grey-bg border-radius-7 "><img src="{{asset('img/icons/publish.png')}}" class="btn_img"> Publish the Image</button>
                             <button class="btn btn-secondary text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/creative.png')}}" class="btn_img"> Creative History</button>
@@ -399,48 +411,41 @@
 
 </div>
 
-<!-- Your modal trigger button -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-    Open Modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Image gallery or list -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                    </div>
 
-                    <div class="col-md-4">
-                        <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                    </div>
-                    <!-- Add more image columns as needed -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection('content')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
 
+
+
+    function updateProgressBar(percentage) {
+        $('#progress-bar').css('width', percentage + '%');
+        $('#progress-label').text(percentage + '%');
+    }
+
+    updateProgressBar(45);
+    // function fetchData() {
+    //     $.ajax({
+    //     url: '', // Update with your server endpoint
+    //     method: 'GET',
+    //     dataType: 'json',
+    //     success: function(data) {
+    //         // Assuming data.progress contains the progress percentage
+    //         updateProgressBar(data.progress);
+    //     },
+    //     error: function() {
+    //         console.error('Error fetching data.');
+    //     }
+    //     });
+    // }
+
+    // Fetch data initially and set interval for periodic updates
+    // fetchData();
+    // setInterval(fetchData, 5000); // Update interval in milliseconds
+});
 </script>

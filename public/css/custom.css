@@ -153,7 +153,7 @@ img.btn_img {
     position: relative;
 }
 
-input[type='text'],input[type='number'],select {
+input[type='text'],input[type='number'],select  {
    height:55px;
 }
 
@@ -442,6 +442,27 @@ input.form-control.searchModelImages {
     height: auto;
 }
 
+.images_result img {
+    height: 100px;
+}
+
+
+.progress {
+    position: relative;
+    height: 10px;
+    margin-top: 20px;
+    
+  }
+  
+  #progress-bar {
+    transition: width 0.3s ease-in-out;
+    background-color: #a157dc;
+  }
+  
+  #progress-label {
+    margin-top: 5px;
+  }
+
 
 @media only screen and (max-width:991px )  {
 
@@ -502,8 +523,6 @@ input.form-control.searchModelImages {
     width: 100%;
     margin: 10px 0px;
 }
-
-
 
 .enhancement_section .input-group {
     display: block !important;
