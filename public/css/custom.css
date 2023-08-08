@@ -129,7 +129,7 @@ img.btn_img {
 
 
 
-.modelsListings .col-md-3:nth-child(1) .input-group-append {
+.modelsListings .col-md-12:nth-child(1) .input-group-append {
     position: absolute;
     right: 20px;
     height: 50%;
@@ -138,11 +138,11 @@ img.btn_img {
     z-index: 9;
 }
 
-.modelsListings .col-md-3:nth-child(1) {
+.modelsListings .col-md-12:nth-child(1) {
     position: relative;
 }
 
-.modelsListings .col-md-3:nth-child(1) .input-group-append button {
+.modelsListings .col-md-12:nth-child(1) .input-group-append button {
     height: 100%;
     width: 100%;
     font-size: 17px;
@@ -212,7 +212,7 @@ textarea#prompt {position: relative;}
 }
 
 .fourEventsActions .col-md-2 button {
-    padding:20px;
+    padding: 10px 5px;
 }
 
 .fourEventsActions .col-md-2:nth-child(1) {
@@ -305,17 +305,17 @@ input[type="range"] {
 }
 
 
-.scheduler_section .col-md-6 .col-md-12:nth-child(2) .input-group {
+.scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group {
     display: flex;
     justify-content: space-between;
     
 }
 
-.scheduler_section .col-md-6 .col-md-12:nth-child(2) .input-group button {
+.scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button {
     height: 55px;
 }
 
-.scheduler_section .col-md-6 .col-md-12:nth-child(2) {
+.scheduler_section .col-md-12 .col-md-12:nth-child(2) {
     margin-top:10px;
 }
 
@@ -325,7 +325,7 @@ input[type="range"] {
     top:1.5px;
 }
 .spaceBetween input
-.spaceBetween button:hover , .scheduler_section .col-md-6 .col-md-12:nth-child(2) .input-group button:hover, .heightandwidth_section .spaceBetween .inner button:hover{
+.spaceBetween button:hover , .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button:hover, .heightandwidth_section .spaceBetween .inner button:hover{
     background: #a157dc;
     border-color: #8c2dde;
     transition:.3s;
@@ -356,16 +356,25 @@ input[type="range"] {
     margin-bottom: 15px;
 }
 
- .scheduler_section .col-md-12 .col-md-6, .enhancement_section .col-md-12 .col-md-6, .heightandwidth_section .col-md-12 .col-md-6{
-   padding: 0px 10px;
+ .scheduler_section .col-md-12 .col-md-12, .enhancement_section .col-md-12 .col-md-12, .heightandwidth_section .col-md-12 .col-md-12{
+   padding: 0px 5px;
 }
 
-.models_section .col-md-12  .col-md-3 {
-    padding: 0px 10px;
+.models_section .col-lg-5 {
+    margin: 0px 7%;
+}
+
+.models_section .col-lg-5:nth-child(1) {
+    margin-left: 0px !important;
+}
+
+
+.models_section .col-md-12  .col-md-12 {
+    padding: 0px 5px;
 }
 
 .miscellaneous_section .col-md-12 .input_group {
-    padding: 0px 10px;
+    padding: 0px 5px;
 }
 
 .enhancement_section .col-md-12:nth-child(1) .input-group {
@@ -425,6 +434,52 @@ input.form-control.searchModelImages {
     color: white !important;
 }
 
+.scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button {
+    padding: 10px 5px !important;
+}
+
+.scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button  img {
+    height: auto;
+}
+
+
+@media only screen and (max-width:991px )  {
+
+    
+    .modelsListings  .mx-3{
+        margin: 0px !important;
+    }
+
+    .btn.generate {
+        margin-top: 30px;
+    }
+
+    .header ul.nav {
+        margin-left: 0px !important;
+    }
+    .models_section .col-lg-5 {
+        margin: 0px !important;
+    }
+
+    .spaceBetween {
+        margin-top: 10px;
+    }
+
+    .enhancement_section .input-group {
+        display: block;
+    }
+    
+    
+}
+
+@media only screen and (max-width:767px) {
+    .fourEventsActions .col-md-2 {
+        display: inline-block !important;
+        width: 23% !important;
+        margin: 1% !important;
+    }
+}
+
 @media only screen and (max-width:768px ) {
     .modelsListings  .mx-3{
         margin: 0px !important;
@@ -471,9 +526,7 @@ input.form-control.searchModelImages {
     margin-right: 10px;
     height: 15px;
 }
-.spaceBetween {
-    margin-top: 10px;
-}
+
 
 .scheduler_section .input-group {
     display: block;
