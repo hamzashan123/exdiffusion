@@ -42,7 +42,7 @@
           <!-- Image gallery or list -->
           <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-lg-3">
                 
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
               <span> Girlfriends Mix</span>

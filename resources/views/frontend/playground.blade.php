@@ -98,7 +98,7 @@
                         <div class="col-md-12">
                             <label for="" class="text-white"> &nbsp; Prompt Styles</label>
                             
-                            <select  name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7 js-example-basic-multiple"  multiple="multiple">
+                            <select  name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7">
                                 <option value="">None</option>
                                 <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
