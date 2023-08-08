@@ -612,6 +612,11 @@ input.form-control.searchModelImages {
         width: 93%;
         margin-left:3%;
     }
+
+    .images_result img {
+        width: 100% !important;
+        margin: 10px 0px !important;
+    }
 }
 
 @media only screen and (max-width:768px ) {
