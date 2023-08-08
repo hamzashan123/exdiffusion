@@ -42,62 +42,128 @@
           <!-- Image gallery or list -->
           <div class="row">
 
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                 
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
               <span> Girlfriends Mix</span>
             </div>
-            <div class="col-md-3">
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> Golden Beach Mix </span>
-            </div>
-            <div class="col-md-3">
-              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
+              <span> Girlfriends Mix</span>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
+              <span> Girlfriends Mix</span>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
-            </div>
-            <div class="col-md-3">
-              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
-            </div>
-            <div class="col-md-3">
-              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
+              <span> Girlfriends Mix</span>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
+              <span> Girlfriends Mix</span>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
-            </div>
-            <div class="col-md-3">
-              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
-            </div>
-            <div class="col-md-3">
-              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
+              <span> Girlfriends Mix</span>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
               <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-              <span> zeekars</span>
+              <span> Girlfriends Mix</span>
             </div>
 
-           
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+                
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+              <span> Girlfriends Mix</span>
+            </div>
+
+            
+
             <!-- Add more image columns as needed -->
           </div>
         </div>
