@@ -502,6 +502,69 @@ input.form-control.searchModelImages {
   }
 
 
+  input.form-control.searchModelImages {
+    background: #1f2937;
+    border: 2px solid #374151;
+    height: 45px;
+}
+
+.modal button.btn-close {
+    background-color: transparent !important;
+    filter:
+    invert(1);
+}
+
+input.form-control.searchModelImages {
+    background: #1f2937;
+    border: 2px solid #374151;
+    height: 45px;
+}
+
+.modal button.btn-close {
+    background-color: transparent !important;
+    filter: invert(1);
+}
+
+
+.bodyInner {
+    padding: 8px;
+    background: #1f2937;
+    border-radius: 7px;
+}
+
+.modal .modal-body .row .col-lg-3 {
+    padding: 5px !important;
+}
+
+.bodyInner img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.modal-content {
+    background-color: #2b323a !important;
+}
+
+.modal .modal-body .row .col-lg-3 .bodyInner {position: relative;}
+
+.modal .modal-body .row .col-lg-3 span {
+    
+        position: absolute;
+        bottom: 7%;
+        width: 80%;
+        display: block;
+        left: 10%;
+        background: #000000a8;
+        padding: 3px;
+        border-radius: 7px;
+        padding-left: 8px;
+    
+}
+
+.modal .modal-body .row .col-lg-3 {
+    position:relative;
+}
+
 @media only screen and (max-width:991px )  {
 
     
