@@ -4,6 +4,7 @@
 
 body {
     padding: 0px 2%;
+    /* zoom: 80%; */
 }
 
 img.HeaderLogo {
@@ -426,6 +427,11 @@ input.form-control.searchModelImages {
 }
 
 .modal img {
+
+    margin-bottom: 0 !important;
+}
+
+.modal .selectedModel img  {
     border: 2px solid #a157dc;
     margin-bottom: 0 !important;
 }
@@ -591,6 +597,7 @@ input.form-control.searchModelImages {
         display: block;
     }
     
+    .images_result img {height: 230px;}
     
 }
 
@@ -603,6 +610,7 @@ input.form-control.searchModelImages {
 }
 
 @media only screen and (max-width:768px ) {
+    .images_result img {height: 200px;}
     .modelsListings  .mx-3{
         margin: 0px !important;
     }

@@ -100,14 +100,14 @@
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                 
                 <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai4.png')}}" alt="Image 1" class="img-fluid mb-3">
+                  <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
                 </div>
               <span> Girlfriends Mix</span>
             </div>
 
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                 
-              <div class="bodyInner">
+                <div class="bodyInner">
                   <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
                 </div>
               <span> Girlfriends Mix</span>
@@ -128,7 +128,6 @@
                 </div>
               <span> Girlfriends Mix</span>
             </div>
-
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
                 
                 <div class="bodyInner">
@@ -138,6 +137,8 @@
             </div>
 
            
+          
+
             
 
             <!-- Add more image columns as needed -->
