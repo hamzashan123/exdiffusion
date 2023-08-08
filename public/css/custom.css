@@ -412,7 +412,7 @@ input.form-control.searchModelImages {
     background-color: #0f141b;
 }
 
-button.btn-close {
+.modal button.btn-close {
     background-color: #d6d6e6;
 }
 

@@ -401,7 +401,42 @@
     Open Modal
   </button>
 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <input type="text" class="form-control" placeholder="Search...">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- Image gallery or list -->
+          <div class="row">
+            <div class="col-md-4">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-4">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-4">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+            </div>
 
+            <div class="col-md-4">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-4">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+            </div>
+            <div class="col-md-4">
+              <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
+            </div>
+            <!-- Add more image columns as needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection('content')
 <script>
   
