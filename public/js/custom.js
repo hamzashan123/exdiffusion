@@ -12,7 +12,7 @@ function getBaseModels(){
     // // Make an API request
     
     $.ajax({
-      url: '/get-base-models', // Replace with your API endpoint
+      url: 'https://exdiffusion.com/newproject/public/get-base-models', // Replace with your API endpoint
       method: "GET",
       data: {
 
