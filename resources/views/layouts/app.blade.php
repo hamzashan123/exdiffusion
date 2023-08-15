@@ -40,106 +40,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- Image gallery or list -->
-          <div class="row">
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                <div class="bodyInner selectedModel">
-                  <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-                <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-            <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai2.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-              <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai3.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-               <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai4.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-              <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai2.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai3.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai1.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai2.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai3.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                
-                <div class="bodyInner">
-                  <img src="{{asset('img/icons/ai4.png')}}" alt="Image 1" class="img-fluid mb-3">
-                </div>
-              <span> Girlfriends Mix</span>
-            </div>
+          <div class="row" id="baseModelsList">
 
            
-          
-
-            
 
             <!-- Add more image columns as needed -->
           </div>
@@ -148,9 +51,30 @@
     </div>
   </div>
     
+
+
+       <!-- Modal -->
+       <div class="modal fade" id="lora_model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <input type="text" class="form-control searchModelImages" placeholder="Search...">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- Image gallery or list -->
+          <div class="row" id="LoraModelsList">
+
+          
+            <!-- Add more image columns as needed -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    
+    <script src="{{ asset('js/custom.js') }}"> </script>
     @yield('script')
 </body>
 </html>

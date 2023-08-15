@@ -82,23 +82,23 @@
 
                         <div class="input-group mb-2 mt-2 fourEventsActions">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Read Generation prompters from prompt or last generation if prompt is empty into user interface"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Clear Prompt"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/left.png')}}" class="btn_img"></button>
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Apply selected styles to current prompt"><img src="{{asset('img/icons/left.png')}}" class="btn_img"></button>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/down.png')}}" class="btn_img"></button>
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Save styles"><img src="{{asset('img/icons/down.png')}}" class="btn_img"></button>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <label for="" class="text-white"> &nbsp; Prompt Styles</label>
                             
-                            <select  name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7">
+                            <select  name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7 js-example-basic-multiple" multiple="multiple">
                                 <option value="">None</option>
                                 <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
@@ -115,9 +115,9 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="input-group"> <input type="text" class="form-control dark-grey border-radius-7" readonly="" value="Lora" fdprocessedid="ng446">
+                                        <div class="input-group"> <input type="text" class="form-control dark-grey border-radius-7" readonly="" value="Lora" >
                                             <div class="combinebtn">
-                                                <button class="combinebtnbtn" type="button" fdprocessedid="48m58c">+</button>
+                                                <button class="combinebtnbtn" type="button"  data-bs-toggle="modal" data-bs-target="#lora_model">+</button>
                                             </div>
                                         </div>
 
@@ -184,11 +184,11 @@
 
 
 
-                                                <input type="text" value="512" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="interference_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
 
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="100" value="50" class="slider" id="interference_range">
                                             </div>
 
 
@@ -199,11 +199,11 @@
                                                 <label for="">Clip Skip</label>
                                                 <div class="inner">
                                                     <input type="checkbox" name="" id="">
-                                                    <input type="text" value="1" class="form-control dark-grey border-radius-7">
+                                                    <input type="number" id="clickskip_input" min="0" max="100" step="1" value="50"  class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="100" value="50" class="slider" id="clickskip_range">
                                             </div>
                                         </div>
                                     </div>
@@ -251,10 +251,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Scale Of Super Resolution</label>
 
-                                                <input type="text" value="2" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="superscale_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="100" value="50" class="slider" id="superscale_range">
                                             </div>
                                         </div>
                                     </div>
@@ -277,11 +277,11 @@
 
                                                 <div class="inner">
                                                     <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/width.png')}}" class="btn_img"></button>
-                                                    <input type="text" value="512" class="form-control dark-grey border-radius-7">
+                                                    <input type="number" id="width_input" min="0" max="1000" step="1" value="512" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="1000" value="512" class="slider" id="width_range">
                                             </div>
 
 
@@ -291,10 +291,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Samples</label>
 
-                                                <input type="text" value="1" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="samples_input" min="0" max="4" step="1" value="2" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="4" value="50" class="slider" id="samples_range">
                                             </div>
                                         </div>
                                     </div>
@@ -305,11 +305,11 @@
                                                 <label for="">Height</label>
                                                 <div class="inner">
                                                     <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/height.png')}}" class="btn_img"></button>
-                                                    <input type="text" value="512" class="form-control dark-grey border-radius-7">
+                                                    <input type="number" id="height_input" min="0" max="1000" step="1" value="512" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="1000" value="512" class="slider" id="height_range">
                                             </div>
 
 
@@ -319,10 +319,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Guidance Scale(CFG Scale) </label>
 
-                                                <input type="text" value="1" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="guidance_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                                                <input type="range" min="0" max="100" value="50" class="slider" id="guidance_range">
                                             </div>
                                         </div>
                                     </div>
@@ -420,10 +420,24 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
     $(document).on('click', '.bodyInner' ,function(){
             $('.bodyInner').removeClass('selectedModel');
             $(this).addClass('selectedModel');
     });
+
+    $(document).on('click', '.bodyInnerLora' ,function(){
+            
+            if($(this).hasClass('selectedLoraModel')){
+                $(this).removeClass('selectedLoraModel');
+            }else{
+                $(this).addClass('selectedLoraModel');
+            }
+           
+    });
+
+
+    
 
     $('.js-example-basic-multiple').select2();
 
@@ -453,5 +467,199 @@ $(document).ready(function() {
     // Fetch data initially and set interval for periodic updates
     // fetchData();
     // setInterval(fetchData, 5000); // Update interval in milliseconds
+
 });
 </script>
+
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#interference_input');
+      const slider = $('#interference_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 100) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#clickskip_input');
+      const slider = $('#clickskip_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 100) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#superscale_input');
+      const slider = $('#superscale_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 100) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#width_input');
+      const slider = $('#width_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 1000) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#height_input');
+      const slider = $('#height_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 1000) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#samples_input');
+      const slider = $('#samples_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 4) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+      const inputValue = $('#guidance_input');
+      const slider = $('#guidance_range');
+      
+      // Function to update the slider and input value
+      function updateValue(value) {
+        slider.val(value);
+        inputValue.val(value);
+      }
+      
+      // Event listener for input changes
+      inputValue.on('input', function() {
+        const value = parseInt(inputValue.val());
+        if (value >= 0 && value <= 100) {
+          updateValue(value);
+        }
+      });
+      
+      // Event listener for slider changes
+      slider.on('input', function() {
+        const value = parseInt(slider.val());
+        updateValue(value);
+      });
+    });
+</script>
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModelsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,5 @@ Route::get('/', function () {
     return view('frontend.playground');
 });
 
+
+Route::get('/get-base-models',[ModelsController::class, 'getBaseModels'])->name('getbasemodels');
