@@ -186,9 +186,6 @@ textarea#prompt {position: relative;}
     border: 2px solid #374151;
 }
 
-.btn.generate:focus {
-    background: #a157dc !important;
-}
 
 .relative {
     position: relative;
@@ -224,7 +221,7 @@ textarea#prompt {position: relative;}
     margin-left:0px;
 }
 
-.fourEventsActions .col-md-2 button:hover {
+.fourEventsActions .col-md-2 button:hover , #prompt_style_popup button:hover {
     background: #a157dc;
     border: 1px solid #8c2dde;
     transition:.3s;
@@ -457,6 +454,15 @@ textarea {
     overflow: hidden;
 }
 
+button#generateBtn::focus {
+    border-color: #374151 !important;
+}
+
+.generating {
+    background: #444f5e !important;
+    color: white !important;
+    border: 2px solid #374151 !important;
+}
 
 .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button {
     padding: 10px 5px !important;
@@ -609,6 +615,30 @@ span.select2.select2-container {
     width: 100% !important;
 }
 
+.select2-container .select2-selection--multiple .select2-selection__rendered li {
+    background: #444f5e !important;
+    border-color: #7b828d !important;
+    padding-left: 0px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    right: 5px !important;
+    left: unset !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    background: #0b0f19 !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 13px !important;
+    top: 2px !important;
+    border-right: none !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    padding-right: 40px !important;
+    padding-left: 5px !important;
+}
 
 
 div#baseModelsList {
@@ -638,6 +668,97 @@ border-radius: 10px;
 background: black; 
 border-radius:10px;
 }
+
+
+.tooltipAction {
+    position: relative;
+}
+
+.tooltipAction span {
+    position: absolute;
+    display: none;
+    background: #0b0f19;
+    padding: 5px 10px;
+    z-index: 9;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 150px;
+    border: 1px solid #374151;
+    border-radius: 7px;
+}
+
+.tooltipAction button:hover ~ span {
+    display: block;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    background: #1f2937 !important;
+    border-radius: 7px !important;
+    border: 1px solid #374151 !important;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+    margin-top: 0px !important;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered li {
+    margin-top: 0px !important;
+}
+
+.select2-container--default .select2-results>.select2-results__options, .select2-container--default .select2-results__option--selected {
+    background: #1f2937 !important;
+}
+
+.select2-container--default .select2-results>.select2-results__options li {
+    color: white !important;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background: #0b0f19 !important; 
+}
+
+.select2-dropdown {
+    border-color: #374151 !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+    background: #1f2937 !important;
+    padding: 10px !important;
+    border: 2px solid #374151 !important;
+    padding-right: 40px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background: #1f2937 !important;
+    margin: 8px 3px !important;
+}
+
+
+
+
+.input-group-append.crossAll {
+    position: absolute;
+    right: 10px;
+    height: 50%;
+    top: 45%;
+    width: 28px;
+    z-index: 9;
+}
+
+
+.input-group-append.crossAll button {
+    height: 28px;
+    width: 29px;
+    font-size: 14px;
+    background: #0b0f19;
+    color: white !important;
+    border: 1px solid #374151;
+    border-radius: 50%;
+    position: relative;
+}
+
+
 
 
 @media only screen and (max-width:991px )  {

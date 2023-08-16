@@ -15,6 +15,11 @@ neg_prompt.addEventListener('input', function () {
 });
 
 
+jQuery('button.clearAllSelect2').on('click', function(){
+  $("#prompt_styles").val(null).trigger('change');
+}) 
+
+
 $(document).ready(function(){
 
   getBaseModels();

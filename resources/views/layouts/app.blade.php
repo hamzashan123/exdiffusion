@@ -55,23 +55,47 @@
 
        <!-- Modal -->
        <div class="modal fade" id="lora_model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <input type="text" class="form-control searchModelImages" id="" placeholder="Search...">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <!-- Image gallery or list -->
-          <div class="row" id="LoraModelsList">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <input type="text" class="form-control searchModelImages" id="" placeholder="Search...">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <!-- Image gallery or list -->
+              <div class="row" id="LoraModelsList">
 
-          
-            <!-- Add more image columns as needed -->
+              
+                <!-- Add more image columns as needed -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="prompt_style_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+            <div class="modal-body">
+              
+                <label for="for" class="text-white">Style Name</label>
+                <input type="text" class="form-control dark-grey border-radius-7" id="" placeholder="Enter style name">
+                
+              <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
+              <button type="button" class="btn btn-success form-control text-light-grey-bg border-radius-7">Save</button>
+              <button type="button" class="btn btn-success form-control text-light-grey-bg border-radius-7" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+              </div>
+              <!-- Image gallery or list -->
+              <div class="row" id="LoraModelsList">
+
+              
+                <!-- Add more image columns as needed -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="{{ asset('js/custom.js') }}"> </script>

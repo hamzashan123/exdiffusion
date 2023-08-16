@@ -77,31 +77,49 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn generate purple-col-bg purple-col-border form-control text-white border-radius-7">Generate</button>
+                        <button class="btn generate purple-col-bg form-control text-white border-radius-7" id="generateBtn">Generate</button>
 
                         <div class="input-group mb-2 mt-2 fourEventsActions">
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Read Generation prompters from prompt or last generation if prompt is empty into user interface"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
+                                <span >Read Generation prompters from prompt or last generation if prompt is empty into user interface </span>
+                            
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Clear Prompt"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
+                                <span>Clear Prompt</span>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Apply selected styles to current prompt"><img src="{{asset('img/icons/left.png')}}" class="btn_img"></button>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/left.png')}}" class="btn_img"></button>
+                                <span>Apply selected styles to current prompt </span>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-toggle="tooltip" data-placement="bottom" title="Save styles"><img src="{{asset('img/icons/down.png')}}" class="btn_img"></button>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" data-bs-toggle="modal" data-bs-target="#prompt_style_popup"><img src="{{asset('img/icons/down.png')}}" class="btn_img"></button>
+                                <span>Save styles</span>
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="position: relative;">
                             <label for="" class="text-white"> &nbsp; Prompt Styles</label>
 
                             <select name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7 js-example-basic-multiple" multiple="multiple">
-                                <option value="">None</option>
+                                <option value="none">None</option>
                                 <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
+                                <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option>
+                                <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option>
+                                <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option> <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option> <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option> <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option>
                             </select>
+                            
+                            <div class="input-group-append crossAll">
+                                <button class="clearAllSelect2" type="button">x</button>
+                            </div>
                         </div>
 
                     </div>
@@ -478,6 +496,11 @@
         // fetchData();
         // setInterval(fetchData, 5000); // Update interval in milliseconds
 
+
+       $('#generateBtn').on('click', function(){
+            $(this).text('Generating');
+            $(this).addClass('generating');
+       }); 
     });
 </script>
 
