@@ -460,10 +460,11 @@ input.form-control.searchModelImages {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
 }
 
-.images_result img {
-    width: 48%;
+.images_result .innerImageDiv img {
+    width: 48.7%;
     display: inline-block;
     margin: .5%;
     height: 320px;
@@ -473,14 +474,14 @@ input.form-control.searchModelImages {
 }
 
 .images_result {
-    padding: 20px;
+    /* padding: 20px; */
     border: 2px solid #374151;
-    background: #0b0f19;
+    background: #1f2937;
     border-radius:7px;
 }
 
 .images_publishBtns img {
-    margin-right: 10px;
+    margin-right: 15px;
     height: 15px;
     position: relative;
     top: -2px;
@@ -510,7 +511,7 @@ input.form-control.searchModelImages {
   }
   
   #progress-label {
-    margin-top: 5px;
+    margin-top: 15px;
     font-size: 14px;
   }
 
@@ -591,6 +592,14 @@ input.form-control.searchModelImages {
 .modal .modal-body .row .col-lg-3 {
     position:relative;
 }
+
+
+span.select2.select2-container {
+    width: 100% !important;
+}
+
+
+
 
 @media only screen and (max-width:991px )  {
 
