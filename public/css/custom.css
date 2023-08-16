@@ -7,7 +7,9 @@ body {
     zoom: 85%;
 }
 
-
+body.modal-open {
+    zoom: 100%;
+}
 
 img.HeaderLogo {
     height: 40px;
@@ -434,18 +436,27 @@ input.form-control.searchModelImages {
 }
 
 .modal .selectedModel img  {
-    border: 2px solid #a157dc;
+    border: 3px solid #a157dc;
     margin-bottom: 0 !important;
 }
 
 .modal .selectedLoraModel img  {
-    border: 2px solid #a157dc;
+    border: 3px solid #a157dc;
     margin-bottom: 0 !important;
 }
 
 .modal span {
     color: white !important;
 }
+
+.modal .modal-body .row .col-lg-3 {
+    height: 25vh;
+}
+
+textarea {
+    overflow: hidden;
+}
+
 
 .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button {
     padding: 10px 5px !important;
@@ -599,6 +610,34 @@ span.select2.select2-container {
 }
 
 
+
+div#baseModelsList {
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
+
+div#baseModelsList {
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
+
+::-webkit-scrollbar {
+width: 10px;
+    
+}
+
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px #374151; 
+border-radius: 10px;
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+background: black; 
+border-radius:10px;
+}
 
 
 @media only screen and (max-width:991px )  {

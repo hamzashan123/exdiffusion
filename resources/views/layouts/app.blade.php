@@ -36,7 +36,7 @@
       <div class="modal-content">
         <div class="modal-body">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <input type="text" class="form-control searchModelImages" placeholder="Search...">
+            <input type="text" class="form-control searchModelImages" id="searchModels" placeholder="Search...">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- Image gallery or list -->
@@ -59,7 +59,7 @@
       <div class="modal-content">
         <div class="modal-body">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <input type="text" class="form-control searchModelImages" placeholder="Search...">
+            <input type="text" class="form-control searchModelImages" id="" placeholder="Search...">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- Image gallery or list -->

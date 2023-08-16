@@ -11,7 +11,7 @@
 
             <label for="" class="text-white"> &nbsp; Base Model</label>
             <div class="input-group">
-                <input type="text" class="form-control dark-grey border-radius-7 " value="Realistic Vision V1.3">
+                <input type="text" class="form-control dark-grey border-radius-7 " id="selectedBaseModelText" value="Realistic Vision V1.3">
                 <div class="input-group-append">
                     <button class="" type="button" data-bs-toggle="modal" data-bs-target="#myModal">+</button>
                 </div>
@@ -20,10 +20,9 @@
 
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 mx-3">
             <label for="" class="text-white"> &nbsp; VAE</label>
-            <select name="" id="" class="form-control dark-grey border-radius-7">
+            <select name="vaemodel" id="vaemodelslist" class="form-control dark-grey border-radius-7">
                 <option value="" selected>None</option>
-                <option value="img2img">vae-hopital-real2</option>
-                <option value="img2img">vae-fogaminsk</option>
+                
             </select>
         </div>
 
@@ -432,6 +431,9 @@
         $(document).on('click', '.bodyInner', function() {
             $('.bodyInner').removeClass('selectedModel');
             $(this).addClass('selectedModel');
+            var selectedModel = $(this).siblings().text().trim();
+            $('#selectedBaseModelText').val(selectedModel);
+            $('.modal button.btn-close').trigger('click');
         });
 
         $(document).on('click', '.bodyInnerLora', function() {
