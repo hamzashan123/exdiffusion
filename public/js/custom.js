@@ -1,8 +1,7 @@
-﻿
+﻿var baseUrl = 'https://exdiffusion.com/newproject/public';
+// var baseUrl = 'http://localhost:8000';
+
 $(document).ready(function(){
-      var baseUrl = 'https://exdiffusion.com/newproject/public';
-      // var baseUrl = 'http://localhost:8000';
-      
       getBaseModels(baseUrl);
       getSchedulers(baseUrl);  
 });
