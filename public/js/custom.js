@@ -186,13 +186,13 @@ $(document).on('click','.bodyInnerLora',  function() {
     loraModelArray.forEach((element) => {
       var pageHTML = "<div class='d-flex lora_popup_content'  data-added-model="+element+">";
       pageHTML += "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 lora_images'>";
-      pageHTML += "<img src='/img/icons/placeholder.png' class='img-fluid'>";
+      pageHTML += "<img src='"+baseUrl+"/img/icons/placeholder.png' class='img-fluid'>";
       pageHTML += "</div>";
       pageHTML += "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 lora_content'>";
       pageHTML += "<div class='spaceBetween'>";
       pageHTML += "<label for=''>"+element+"</label>";
       pageHTML += "<div class='inner'>";
-      pageHTML += " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_lora_model_trash' ><img src='/img/icons/trash.png' ></button>";
+      pageHTML += " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_lora_model_trash' ><img src='"+baseUrl+"/img/icons/trash.png' ></button>";
       pageHTML += "<input type='number'  min='-2' max='2' value='0.8' step='0.1' class='form-control dark-grey border-radius-7 lora_dynamic_input'>";
       pageHTML += "</div>";
       pageHTML += "</div>";
@@ -246,13 +246,13 @@ $(document).on('click','.bodyInnerEmbedding',  function() {
     embeddingModelArray.forEach((element) => {
       var pageHTML = "<div class='d-flex embedding_popup_content'  data-added-model="+element+">";
       pageHTML += "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 embedding_images'>";
-      pageHTML += "<img src='/img/icons/placeholder.png' class='img-fluid'>";
+      pageHTML += "<img src='"+baseUrl+"/img/icons/placeholder.png' class='img-fluid'>";
       pageHTML += "</div>";
       pageHTML += "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 embedding_content'>";
       pageHTML += "<div class='spaceBetween'>";
       pageHTML += "<label for=''>"+element+"</label>";
       pageHTML += "<div class='inner'>";
-      pageHTML += " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_embedding_model_trash' ><img src='/img/icons/trash.png' ></button>";
+      pageHTML += " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_embedding_model_trash' ><img src='"+baseUrl+"/img/icons/trash.png' ></button>";
       pageHTML += "<input type='number'   min='-2' max='2' value='0.8' step='0.1' class='form-control dark-grey border-radius-7 embedding_dynamic_input'>";
       pageHTML += "</div>";
       pageHTML += "</div>";
