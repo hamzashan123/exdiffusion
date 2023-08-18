@@ -11,7 +11,7 @@
 
             <label for="" class="text-white"> &nbsp; Base Model</label>
             <div class="input-group">
-                <input type="text" class="form-control dark-grey border-radius-7 " id="selectedBaseModelText" value="Realistic Vision V1.3">
+                <input type="text" class="form-control dark-grey border-radius-7 " id="selectedBaseModelText" value="">
                 <div class="input-group-append">
                     <button class="" type="button" data-bs-toggle="modal" data-bs-target="#myModal">+</button>
                 </div>
@@ -21,7 +21,7 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 mx-3">
             <label for="" class="text-white"> &nbsp; VAE</label>
             <select name="vaemodel" id="vaemodelslist" class="form-control dark-grey border-radius-7">
-                <option value="" selected>None</option>
+                <option value="" selected></option>
 
             </select>
         </div>
@@ -103,7 +103,7 @@
                             <label for="" class="text-white"> &nbsp; Prompt Styles</label>
 
                             <select name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7 js-example-basic-multiple" multiple="multiple">
-                                <option value="none">None</option>
+                                
                                 <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
                                 <option value="img2img">vae-hopital-real2</option>
@@ -134,7 +134,7 @@
                         <div class="models_section dark-grey p-3 border-radius-7">
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 lora_appenddiv">
                                         <div class="input-group"> 
                                             <input type="text" class="form-control dark-grey border-radius-7 btn_width_dynamic" readonly="" value="Lora">
                                             <div class="combinebtn">
@@ -142,55 +142,19 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex lora_popup_content"> 
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 lora_images">
-                                                <img src="{{asset('/img/icons/ai2.png')}}" class="img-fluid">
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 lora_content">
-                                                  
-                                                        <div class="spaceBetween">
-                                                            <label for="">Golden Beach Mix</label>
-
-                                                            <div class="inner">
-                                                                <button class="btn btn-success text-light-grey-bg border-radius-7" ><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
-                                                                <input type="number"  min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <input type="range" min="64" max="2048" value="512" step="8" class="slider" >
-                                                        </div>
-                                            </div>
-                                        </div>
+                                    
                                     </div>
 
 
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 embedding_appenddiv">
                                         <div class="input-group"> 
                                             <input type="text" class="form-control dark-grey border-radius-7 btn_width_dynamic" readonly="" value="Embedding" fdprocessedid="ng446">
                                             <div class="combinebtn">
-                                                <button class="combinebtnbtn" type="button" fdprocessedid="48m58c">+</button>
+                                                <button class="combinebtnbtn" type="button" fdprocessedid="48m58c" data-bs-toggle="modal" data-bs-target="#embedding_model">+</button>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex embedding_popup_content"> 
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 embedding_images">
-                                                <img src="{{asset('/img/icons/ai3.png')}}" class="img-fluid">
-                                            </div>
-                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 embedding_content">
-                                                  
-                                                        <div class="spaceBetween">
-                                                            <label for="">Golden Beach Mix</label>
-
-                                                            <div class="inner">
-                                                                <button class="btn btn-success text-light-grey-bg border-radius-7" ><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
-                                                                <input type="number"  min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <input type="range" min="64" max="2048" value="512" step="8" class="slider" >
-                                                        </div>
-                                            </div>
-                                        </div>
+                                        
 
                                     </div>
 
@@ -217,7 +181,7 @@
 
 
                                             <select name="scheduler_name" id="scheduler_list" class="form-control dark-grey border-radius-7">
-                                                <option value="" selected>None</option>
+                                                <option value="" selected></option>
                                             </select>
 
 
@@ -230,13 +194,13 @@
 
                                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 
-                                                    <input type="number" class="form-control dark-grey border-radius-7">
+                                                    <input type="number" class="form-control dark-grey border-radius-7" id="seed">
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                                    <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/dice.png')}}" class="btn_img"></button>
+                                                    <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="seed_dice_btn"><img src="{{asset('img/icons/dice.png')}}" class="btn_img"></button>
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                                    <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/play.png')}}" class="btn_img"></button>
+                                                    <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="seed_back_btn"><img src="{{asset('img/icons/play.png')}}" class="btn_img"></button>
                                                 </div>
                                             </div>
 
@@ -250,11 +214,11 @@
 
 
 
-                                                <input type="number" id="interference_input" min="1" max="50" step="1" value="50" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="interference_input" min="1" max="50" step="1" value="20" class="form-control dark-grey border-radius-7">
 
                                             </div>
                                             <div>
-                                                <input type="range" min="1" max="50" value="25" class="slider" id="interference_range">
+                                                <input type="range" min="1" max="50" value="20" class="slider" id="interference_range">
                                             </div>
 
 
@@ -264,12 +228,12 @@
                                             <div class="spaceBetween">
                                                 <label for="">Clip Skip</label>
                                                 <div class="inner">
-                                                    <input type="checkbox" name="" id="">
-                                                    <input type="number" id="clickskip_input" min="1" max="8" step="1" value="4" class="form-control dark-grey border-radius-7">
+                                                    <input type="checkbox" name="" id="clickskip_checkbox">
+                                                    <input type="number" disabled id="clickskip_input" min="1" max="8" step="1" value="1" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="1" max="8" value="4" class="slider" id="clickskip_range">
+                                                <input type="range" disabled  min="1" max="8" value="1" class="slider" id="clickskip_range">
                                             </div>
                                         </div>
                                     </div>
@@ -288,18 +252,18 @@
                                     <input type="checkbox">
                                     <label for="">Face Enhance</label>
 
-                                    <input type="checkbox">
-                                    <label for="">Super Resolution</label>
+                                    <input type="checkbox" id="super_resolution">
+                                    <label for="super_resolution">Super Resolution</label>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 super_resolution_content" style="display: none;">
                                 <div class="input-group">
 
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="col-md-12">
                                             <label for="">Super Resolution Model</label>
                                             <select name="super_resultion_model_id" id="super_resultion_model_id" class="form-control dark-grey border-radius-7">
-                                                <option value="" selected>None</option>
+                                                <option value="" selected></option>
                                                 <option value="RealESRGAN_x4plus">RealESRGAN_x4plus</option>
                                                 <option value="RealESRNet_x4plus">RealESRNet_x4plus</option>
                                                 <option value="RealESRGAN_x4plus_anime_6B">RealESRGAN_x4plus_anime_6B</option>
@@ -320,10 +284,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Scale Of Super Resolution</label>
 
-                                                <input type="number" id="superscale_input" min="1" max="4" step="0.1" value="0" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="superscale_input" min="1" max="4" step="0.1" value="2" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="1" max="4" value="0" step="0.1" class="slider" id="superscale_range">
+                                                <input type="range" min="1" max="4" value="2" step="0.1" class="slider" id="superscale_range">
                                             </div>
                                         </div>
                                     </div>
@@ -374,11 +338,11 @@
                                                 <label for="">Height</label>
                                                 <div class="inner">
                                                     <button class="btn btn-success text-light-grey-bg border-radius-7" id="height_button"><img src="{{asset('img/icons/height.png')}}" class="btn_img"></button>
-                                                    <input type="number" id="height_input" min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
+                                                    <input type="number" id="height_input" min="64" max="2048" value="768" step="8" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="64" max="2048" value="512" step="8" class="slider" id="height_range">
+                                                <input type="range" min="64" max="2048" value="768" step="8" class="slider" id="height_range">
                                             </div>
 
 
@@ -388,10 +352,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Guidance Scale(CFG Scale) </label>
 
-                                                <input type="number" id="guidance_input" min="1" max="20" step="0.1" value="8" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="guidance_input" min="1" max="20" step="0.1" value="7" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="1" max="20" step="0.1" value="8" class="slider" id="guidance_range">
+                                                <input type="range" min="1" max="20" step="0.1" value="7" class="slider" id="guidance_range">
                                             </div>
                                         </div>
                                     </div>
@@ -406,22 +370,37 @@
                         <div class="miscellaneous_section mt-2 dark-grey p-3 border-radius-7">
                             <div class="col-md-12">
                                 <div class="input-group miscellaneous_checkboxes">
-                                    <input type="checkbox">
-                                    <label for="">Safety Checker</label>
-                                    <input type="checkbox">
-                                    <label for="">Enhance Prompt</label>
-                                    <input type="checkbox">
-                                    <label for="">Multi Lingual</label>
-                                    <input type="checkbox">
-                                    <label for="">Panorama</label>
-                                    <input type="checkbox">
-                                    <label for="">Self Attention</label>
-                                    <input type="checkbox">
-                                    <label for="">Upscale</label>
-                                    <input type="checkbox">
-                                    <label for="">Tomesd</label>
-                                    <input type="checkbox">
-                                    <label for="">Karras Sigmas</label>
+                             
+                                    <input type="checkbox" id="safety_checker">
+                                    <label for="safety_checker">Safety Checker</label>
+                                    
+                                    <input type="checkbox" checked id="enhance_prompt">
+                                    <label for="enhance_prompt">Enhance Prompt</label>
+
+                                    
+                                    <input type="checkbox" id="multi_lingual">
+                                    <label for="multi_lingual">Multi Lingual</label>
+
+                                    
+                                    <input type="checkbox" id="panorama">
+                                    <label for="panorama">Panorama</label>
+
+                                   
+                                    <input type="checkbox" id="self_attention">
+                                    <label for="self_attention">Self Attention</label>
+
+                                    
+                                    <input type="checkbox" id="upscale">
+                                    <label for="upscale">Upscale</label>
+
+                                 
+                                    <input type="checkbox" checked id="tomesd">
+                                    <label for="tomesd">Tomesd</label>
+
+                                    
+                                    <input type="checkbox" checked id="karras_sigmas">
+                                    <label for="karras_sigmas">Karras Sigmas</label>
+
                                 </div>
                             </div>
 
@@ -506,19 +485,7 @@
             $('.modal button.btn-close').trigger('click');
         });
 
-        $(document).on('click', '.bodyInnerLora', function() {
-
-            if ($(this).hasClass('selectedLoraModel')) {
-                $(this).removeClass('selectedLoraModel');
-            } else {
-                $(this).addClass('selectedLoraModel');
-            }
-
-        });
-
-
-
-
+    
         $('.js-example-basic-multiple').select2();
 
 

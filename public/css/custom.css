@@ -444,7 +444,7 @@ input.form-control.searchModelImages {
     margin-bottom: 0 !important;
 }
 
-.modal .selectedLoraModel img  {
+.modal .selectedLoraModel img ,  .modal .selectedEmbeddingModel img  {
     border: 3px solid #a157dc;
     margin-bottom: 0 !important;
 }
@@ -576,11 +576,23 @@ input.form-control.searchModelImages {
     border-radius: 7px;
 }
 
+.bodyInnerEmbedding {
+    padding: 8px;
+    background: #1f2937;
+    border-radius: 7px;
+}
+
 .modal .modal-body .row .col-lg-3 {
     padding: 5px !important;
 }
 
 .bodyInner img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.bodyInnerEmbedding img {
     height: 220px;
     object-fit: cover;
     width: 100%;
@@ -804,6 +816,11 @@ border-radius:10px;
 .embedding_content {
     margin-top: 10px;
     padding-left: 15px;
+}
+
+
+.lora_content .spaceBetween label, .embedding_content .spaceBetween label {
+    font-size: 13px;
 }
 
 
