@@ -1,21 +1,22 @@
 ﻿
 $(document).ready(function(){
-
-      getBaseModels();
-      getSchedulers();  
+      var baseUrl = 'https://exdiffusion.com/newproject/public/';
+      // var baseUrl = 'http://localhost:8000';
+      getBaseModels(baseUrl);
+      getSchedulers(baseUrl);  
 });
 
 
 
-function getBaseModels(){
+function getBaseModels(baseUrl){
            
     $("#loader").show();
  
     // // Make an API request
     
     $.ajax({
-      url: '/get-base-models', // Replace with your API endpoint
-      //url: 'https://exdiffusion.com/newproject/public/get-base-models', // Replace with your API endpoint
+      // url: '/get-base-models', // Replace with your API endpoint
+      url: ''+baseUrl+'/get-base-models', // Replace with your API endpoint
       method: "GET",
       data: {
 
@@ -36,7 +37,7 @@ function getBaseModels(){
             response.models.forEach((element) => {
                 var pageHTML = "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
                 pageHTML += "<div class='bodyInner'>";
-                pageHTML += "<img src='img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                pageHTML += "<img src='"+baseUrl+"/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
                 pageHTML += " </div>";
                 pageHTML += " <span> "+element.model_id+"</span>";
                 pageHTML += "</div>";
@@ -58,7 +59,7 @@ function getBaseModels(){
             response.controlnet_models.forEach((element) => {
               var pageHTML = "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
               pageHTML += "<div class='bodyInnerLora '>";
-              pageHTML += "<img src='/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+              pageHTML += "<img src='"+baseUrl+"/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
               pageHTML += " </div>";
               pageHTML += " <span> "+element.model_id+"</span>";
               pageHTML += "</div>";
@@ -83,15 +84,15 @@ function getBaseModels(){
 });
 } 
 
-function getSchedulers(){
+function getSchedulers(baseUrl){
            
     $("#loader").show();
 
     // // Make an API request
     
     $.ajax({
-      url: '/get-schedulers', // Replace with your API endpoint
-      //url: 'https://exdiffusion.com/newproject/public/get-schedulers', // Replace with your API endpoint
+      //url: '/get-schedulers', // Replace with your API endpoint
+      url: ''+baseUrl+'/get-schedulers', // Replace with your API endpoint
       method: "GET",
       data: {
 
