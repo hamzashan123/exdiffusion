@@ -327,7 +327,12 @@ input[type="range"] {
     top:1.5px;
 }
 .spaceBetween input
-.spaceBetween button:hover , .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button:hover, .heightandwidth_section .spaceBetween .inner button:hover{
+.spaceBetween button:hover , 
+.scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button:hover,
+.heightandwidth_section .spaceBetween .inner button:hover,
+.lora_popup_content .spaceBetween .inner button:hover,
+.embedding_popup_content .spaceBetween .inner button:hover
+{
     background: #a157dc;
     border-color: #8c2dde;
     transition:.3s;
@@ -397,7 +402,9 @@ input[type="range"] {
     margin-right: 10px;
 }
 
-.heightandwidth_section .spaceBetween .inner button {
+.heightandwidth_section .spaceBetween .inner button ,
+.lora_popup_content .spaceBetween .inner button ,
+.embedding_popup_content .spaceBetween .inner button{
     margin-right: 10px;
 }
 
@@ -756,6 +763,47 @@ border-radius:10px;
     border: 1px solid #374151;
     border-radius: 50%;
     position: relative;
+}
+
+
+.lora_images img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #444f5e;
+}
+
+.embedding_images img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #444f5e;
+}
+
+.lora_content input[type="range"] {
+    margin: 0px;
+}
+
+.embedding_content input[type="range"] {
+    margin: 0px;
+}
+
+.lora_popup_content {
+    margin-top: 10px;
+}
+
+.embedding_popup_content {
+    margin-top: 10px;
+}
+
+.lora_content {
+    margin-top: 10px;
+    padding-left: 15px;
+}
+
+.embedding_content {
+    margin-top: 10px;
+    padding-left: 15px;
 }
 
 

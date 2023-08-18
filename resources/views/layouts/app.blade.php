@@ -59,7 +59,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" class="form-control searchModelImages" id="" placeholder="Search...">
+                <input type="text" class="form-control searchModelImages" id="searchLoraModels" placeholder="Search...">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <!-- Image gallery or list -->
@@ -99,6 +99,7 @@
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="{{ asset('js/custom.js') }}"> </script>
+    <script src="{{ asset('js/textareaFunctions.js') }}"> </script>
     @yield('script')
 </body>
 </html>

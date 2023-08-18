@@ -36,3 +36,4 @@ Route::get('/', function () {
 
 
 Route::get('/get-base-models',[ModelsController::class, 'getBaseModels'])->name('getbasemodels');
+Route::get('/get-schedulers',[ModelsController::class, 'getSchedulers'])->name('getschedulers');

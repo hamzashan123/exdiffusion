@@ -22,7 +22,7 @@
             <label for="" class="text-white"> &nbsp; VAE</label>
             <select name="vaemodel" id="vaemodelslist" class="form-control dark-grey border-radius-7">
                 <option value="" selected>None</option>
-                
+
             </select>
         </div>
 
@@ -62,18 +62,18 @@
 
                 <div class="row">
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 relative">
-                        <textarea name="" id="prompt" class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Prompt here"></textarea>
+                        <textarea name="" id="prompt"  class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Prompt here"></textarea>
                         <div class="counterPrompt">
-                            <span>91</span>
+                            <span id="Prompt_nominatorCount">0</span>
                             <span>/</span>
-                            <span>150</span>
+                            <span id="Prompt_denominatorCount">75</span>
                         </div>
                         <br>
                         <textarea name="" id="neg_prompt" class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Negative Prompt here"></textarea>
                         <div class="counterNegPrompt">
-                            <span>91</span>
+                            <span id="Neg_prompt_nominatorCount">0</span>
                             <span>/</span>
-                            <span>150</span>
+                            <span id="Neg_prompt_denominatorCount">75</span>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -82,8 +82,8 @@
                         <div class="input-group mb-2 mt-2 fourEventsActions">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
                                 <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
-                                <span >Read Generation prompters from prompt or last generation if prompt is empty into user interface </span>
-                            
+                                <span>Read Generation prompters from prompt or last generation if prompt is empty into user interface </span>
+
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
                                 <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
@@ -111,12 +111,15 @@
                                 <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
                                 <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option> <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option> <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option> <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option>
+                                <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option>
+                                <option value="img2img">vae-hopital-real2</option>
+                                <option value="img2img">vae-fogaminsk</option>
+                                <option value="img2img">vae-hopital-real2</option>
                                 <option value="img2img">vae-fogaminsk</option>
                             </select>
-                            
+
                             <div class="input-group-append crossAll">
                                 <button class="clearAllSelect2" type="button">x</button>
                             </div>
@@ -131,29 +134,77 @@
                         <div class="models_section dark-grey p-3 border-radius-7">
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="input-group"> <input type="text" class="form-control dark-grey border-radius-7" readonly="" value="Lora">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="input-group"> 
+                                            <input type="text" class="form-control dark-grey border-radius-7 btn_width_dynamic" readonly="" value="Lora">
                                             <div class="combinebtn">
                                                 <button class="combinebtnbtn" type="button" data-bs-toggle="modal" data-bs-target="#lora_model">+</button>
                                             </div>
                                         </div>
 
+                                        <div class="d-flex lora_popup_content"> 
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 lora_images">
+                                                <img src="{{asset('/img/icons/ai2.png')}}" class="img-fluid">
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 lora_content">
+                                                  
+                                                        <div class="spaceBetween">
+                                                            <label for="">Golden Beach Mix</label>
+
+                                                            <div class="inner">
+                                                                <button class="btn btn-success text-light-grey-bg border-radius-7" ><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
+                                                                <input type="number"  min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <input type="range" min="64" max="2048" value="512" step="8" class="slider" >
+                                                        </div>
+                                            </div>
+                                        </div>
                                     </div>
 
 
-                                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="input-group"> <input type="text" class="form-control dark-grey border-radius-7" readonly="" value="Embedding" fdprocessedid="ng446">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="input-group"> 
+                                            <input type="text" class="form-control dark-grey border-radius-7 btn_width_dynamic" readonly="" value="Embedding" fdprocessedid="ng446">
                                             <div class="combinebtn">
                                                 <button class="combinebtnbtn" type="button" fdprocessedid="48m58c">+</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex embedding_popup_content"> 
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 embedding_images">
+                                                <img src="{{asset('/img/icons/ai3.png')}}" class="img-fluid">
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 embedding_content">
+                                                  
+                                                        <div class="spaceBetween">
+                                                            <label for="">Golden Beach Mix</label>
+
+                                                            <div class="inner">
+                                                                <button class="btn btn-success text-light-grey-bg border-radius-7" ><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
+                                                                <input type="number"  min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <input type="range" min="64" max="2048" value="512" step="8" class="slider" >
+                                                        </div>
                                             </div>
                                         </div>
 
                                     </div>
 
 
-                                </div>
-                            </div>
+                                    
 
+
+                                </div>
+
+                                    
+
+
+                            </div>
+                        
                         </div>
 
                         <div class="scheduler_section mt-2 dark-grey p-3 border-radius-7">
@@ -165,10 +216,8 @@
                                             <label for="">Scheduler (Sampling method)</label>
 
 
-                                            <select name="" id="" class="form-control dark-grey border-radius-7">
+                                            <select name="scheduler_name" id="scheduler_list" class="form-control dark-grey border-radius-7">
                                                 <option value="" selected>None</option>
-                                                <option value="img2img">vae-hopital-real2</option>
-                                                <option value="img2img">vae-fogaminsk</option>
                                             </select>
 
 
@@ -201,11 +250,11 @@
 
 
 
-                                                <input type="number" id="interference_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="interference_input" min="1" max="50" step="1" value="50" class="form-control dark-grey border-radius-7">
 
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="interference_range">
+                                                <input type="range" min="1" max="50" value="25" class="slider" id="interference_range">
                                             </div>
 
 
@@ -216,11 +265,11 @@
                                                 <label for="">Clip Skip</label>
                                                 <div class="inner">
                                                     <input type="checkbox" name="" id="">
-                                                    <input type="number" id="clickskip_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
+                                                    <input type="number" id="clickskip_input" min="1" max="8" step="1" value="4" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="clickskip_range">
+                                                <input type="range" min="1" max="8" value="4" class="slider" id="clickskip_range">
                                             </div>
                                         </div>
                                     </div>
@@ -249,10 +298,13 @@
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="col-md-12">
                                             <label for="">Super Resolution Model</label>
-                                            <select name="" id="" class="form-control dark-grey border-radius-7">
+                                            <select name="super_resultion_model_id" id="super_resultion_model_id" class="form-control dark-grey border-radius-7">
                                                 <option value="" selected>None</option>
-                                                <option value="img2img">vae-hopital-real2</option>
-                                                <option value="img2img">vae-fogaminsk</option>
+                                                <option value="RealESRGAN_x4plus">RealESRGAN_x4plus</option>
+                                                <option value="RealESRNet_x4plus">RealESRNet_x4plus</option>
+                                                <option value="RealESRGAN_x4plus_anime_6B">RealESRGAN_x4plus_anime_6B</option>
+                                                <option value="RealESRGAN_x2plus">RealESRGAN_x2plus</option>
+                                                <option value="realesr-general-x4v3">realesr-general-x4v3</option>
                                             </select>
 
 
@@ -268,10 +320,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Scale Of Super Resolution</label>
 
-                                                <input type="number" id="superscale_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="superscale_input" min="1" max="4" step="0.1" value="0" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="superscale_range">
+                                                <input type="range" min="1" max="4" value="0" step="0.1" class="slider" id="superscale_range">
                                             </div>
                                         </div>
                                     </div>
@@ -293,12 +345,12 @@
                                                 <label for="">Width</label>
 
                                                 <div class="inner">
-                                                    <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/width.png')}}" class="btn_img"></button>
-                                                    <input type="number" id="width_input" min="0" max="1000" step="1" value="512" class="form-control dark-grey border-radius-7">
+                                                    <button class="btn btn-success text-light-grey-bg border-radius-7" id="width_button"><img src="{{asset('img/icons/width.png')}}" class="btn_img"></button>
+                                                    <input type="number" id="width_input" min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="1000" value="512" class="slider" id="width_range">
+                                                <input type="range" min="64" max="2048" value="512" step="8" class="slider" id="width_range">
                                             </div>
 
 
@@ -308,10 +360,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Samples</label>
 
-                                                <input type="number" id="samples_input" min="0" max="4" step="1" value="2" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="samples_input" min="1" max="4" value="1" step="1" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="4" value="50" class="slider" id="samples_range">
+                                                <input type="range" min="1" max="4" value="1" step="1" class="slider" id="samples_range">
                                             </div>
                                         </div>
                                     </div>
@@ -321,12 +373,12 @@
                                             <div class="spaceBetween">
                                                 <label for="">Height</label>
                                                 <div class="inner">
-                                                    <button class="btn btn-success text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/height.png')}}" class="btn_img"></button>
-                                                    <input type="number" id="height_input" min="0" max="1000" step="1" value="512" class="form-control dark-grey border-radius-7">
+                                                    <button class="btn btn-success text-light-grey-bg border-radius-7" id="height_button"><img src="{{asset('img/icons/height.png')}}" class="btn_img"></button>
+                                                    <input type="number" id="height_input" min="64" max="2048" value="512" step="8" class="form-control dark-grey border-radius-7">
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="1000" value="512" class="slider" id="height_range">
+                                                <input type="range" min="64" max="2048" value="512" step="8" class="slider" id="height_range">
                                             </div>
 
 
@@ -336,10 +388,10 @@
                                             <div class="spaceBetween">
                                                 <label for="">Guidance Scale(CFG Scale) </label>
 
-                                                <input type="number" id="guidance_input" min="0" max="100" step="1" value="50" class="form-control dark-grey border-radius-7">
+                                                <input type="number" id="guidance_input" min="1" max="20" step="0.1" value="8" class="form-control dark-grey border-radius-7">
                                             </div>
                                             <div>
-                                                <input type="range" min="0" max="100" value="50" class="slider" id="guidance_range">
+                                                <input type="range" min="1" max="20" step="0.1" value="8" class="slider" id="guidance_range">
                                             </div>
                                         </div>
                                     </div>
@@ -389,14 +441,14 @@
                                 <div class="progress">
                                     <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
                                 </div>
-                              
-                                
-                               
+
+
+
                             </div>
 
                             <div class="images_publishBtns">
-                                    <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
-                                    <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
+                                <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
+                                <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
                             </div>
 
 
@@ -497,10 +549,10 @@
         // setInterval(fetchData, 5000); // Update interval in milliseconds
 
 
-       $('#generateBtn').on('click', function(){
+        $('#generateBtn').on('click', function() {
             $(this).text('Generating');
             $(this).addClass('generating');
-       }); 
+        });
     });
 </script>
 
@@ -561,27 +613,15 @@
 
 <script>
     $(document).ready(function() {
-        const inputValue = $('#superscale_input');
-        const slider = $('#superscale_range');
+        const numberInput = $('#superscale_input');
+        const rangeSlider = $('#superscale_range');
 
-        // Function to update the slider and input value
-        function updateValue(value) {
-            slider.val(value);
-            inputValue.val(value);
-        }
-
-        // Event listener for input changes
-        inputValue.on('input', function() {
-            const value = parseInt(inputValue.val());
-            if (value >= 0 && value <= 100) {
-                updateValue(value);
-            }
+        numberInput.on('input', function() {
+            rangeSlider.val(numberInput.val());
         });
 
-        // Event listener for slider changes
-        slider.on('input', function() {
-            const value = parseInt(slider.val());
-            updateValue(value);
+        rangeSlider.on('input', function() {
+            numberInput.val(rangeSlider.val());
         });
     });
 </script>
@@ -600,7 +640,7 @@
         // Event listener for input changes
         inputValue.on('input', function() {
             const value = parseInt(inputValue.val());
-            if (value >= 0 && value <= 1000) {
+            if (value >= 64 && value <= 2048) {
                 updateValue(value);
             }
         });
@@ -610,6 +650,15 @@
             const value = parseInt(slider.val());
             updateValue(value);
         });
+
+        //height button click so width get same value
+        const width_button = $('#width_button');
+        width_button.on('click', function() {
+
+            $('#height_input').val(inputValue.val());
+            $('#height_range').val(inputValue.val());
+        });
+
     });
 </script>
 
@@ -628,7 +677,7 @@
         // Event listener for input changes
         inputValue.on('input', function() {
             const value = parseInt(inputValue.val());
-            if (value >= 0 && value <= 1000) {
+            if (value >= 64 && value <= 2048) {
                 updateValue(value);
             }
         });
@@ -637,6 +686,13 @@
         slider.on('input', function() {
             const value = parseInt(slider.val());
             updateValue(value);
+        });
+
+        //height button click so width get same value
+        const height_button = $('#height_button');
+        height_button.on('click', function() {
+            $('#width_input').val(inputValue.val());
+            $('#width_range').val(inputValue.val());
         });
     });
 </script>
@@ -671,27 +727,15 @@
 
 <script>
     $(document).ready(function() {
-        const inputValue = $('#guidance_input');
-        const slider = $('#guidance_range');
+        const numberInput = $('#guidance_input');
+        const rangeSlider = $('#guidance_range');
 
-        // Function to update the slider and input value
-        function updateValue(value) {
-            slider.val(value);
-            inputValue.val(value);
-        }
-
-        // Event listener for input changes
-        inputValue.on('input', function() {
-            const value = parseInt(inputValue.val());
-            if (value >= 0 && value <= 100) {
-                updateValue(value);
-            }
+        numberInput.on('input', function() {
+            rangeSlider.val(numberInput.val());
         });
 
-        // Event listener for slider changes
-        slider.on('input', function() {
-            const value = parseInt(slider.val());
-            updateValue(value);
+        rangeSlider.on('input', function() {
+            numberInput.val(rangeSlider.val());
         });
     });
 </script>
