@@ -221,7 +221,7 @@ textarea#prompt {position: relative;}
     margin-left:0px;
 }
 
-.fourEventsActions .col-md-2 button:hover , #prompt_style_popup button:hover {
+.fourEventsActions .col-md-2 button:hover , #prompt_style_popup button:hover, #error_popup button:hover , #delete_popup_lora button:hover, #delete_popup_embedding button:hover {
     background: #a157dc;
     border: 1px solid #8c2dde;
     transition:.3s;
@@ -539,6 +539,7 @@ button#generateBtn::focus {
     font-size: 14px;
   }
 
+  
 
   input.form-control.searchModelImages {
     background: #1f2937;
@@ -823,6 +824,9 @@ border-radius:10px;
     font-size: 13px;
 }
 
+.hide_progress{
+    visibility: hidden;
+}
 
 
 

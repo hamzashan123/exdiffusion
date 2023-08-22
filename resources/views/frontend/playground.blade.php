@@ -81,12 +81,12 @@
 
                         <div class="input-group mb-2 mt-2 fourEventsActions">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="read_lastgeneration"><img src="{{asset('img/icons/arrow.png')}}" class="btn_img"></button>
                                 <span>Read Generation prompters from prompt or last generation if prompt is empty into user interface </span>
 
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
-                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
+                                <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="clear_prompt"><img src="{{asset('img/icons/trash.png')}}" class="btn_img"></button>
                                 <span>Clear Prompt</span>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
@@ -249,7 +249,7 @@
                             <div class="col-md-12">
 
                                 <div class="input-group label removeBr">
-                                    <input type="checkbox">
+                                    <input type="checkbox" id="face_enhance">
                                     <label for="">Face Enhance</label>
 
                                     <input type="checkbox" id="super_resolution">
@@ -412,15 +412,13 @@
                         <div class="images_result p-3">
 
                             <div class="innerImageDiv border-radius-7" style="background: #0b0f19;padding: 10px;width: 100%;">
-                                <img src="https://exdiffusion.com/newproject/public/img/icons/ai1.png" alt="">
-                                <img src="https://exdiffusion.com/newproject/public/img/icons/ai2.png" alt="">
-                                <img src="https://exdiffusion.com/newproject/public/img/icons/ai3.png" alt="">
-                                <img src="https://exdiffusion.com/newproject/public/img/icons/ai4.png" alt="">
-                                <div id="progress-label" class="text-center">Completed 45%</div>
-                                <div class="progress">
-                                    <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
+                                
+                                <div id="progress-label" class="text-center hide_progress">Completed 0%</div>
+                                <div class="progress hide_progress">
+                                    <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ></div>
                                 </div>
 
+                        
 
 
                             </div>
@@ -490,12 +488,7 @@
 
 
 
-        function updateProgressBar(percentage) {
-            $('#progress-bar').css('width', percentage + '%');
-            $('#progress-label').text('Completed ' + percentage + '%');
-        }
-
-        updateProgressBar(45);
+       
         // function fetchData() {
         //     $.ajax({
         //     url: '', // Update with your server endpoint
@@ -516,10 +509,7 @@
         // setInterval(fetchData, 5000); // Update interval in milliseconds
 
 
-        $('#generateBtn').on('click', function() {
-            $(this).text('Generating');
-            $(this).addClass('generating');
-        });
+        
     });
 </script>
 
