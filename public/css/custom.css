@@ -4,12 +4,12 @@
 
 body {
     padding: 0px 2%;
-    zoom: 85%;
+    /* zoom: 85%; */
 }
 
-body.modal-open {
+/* body.modal-open {
     zoom: 100%;
-}
+} */
 
 img.HeaderLogo {
     height: 40px;

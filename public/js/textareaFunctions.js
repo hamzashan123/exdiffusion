@@ -26,8 +26,10 @@ pos_prompt.on('input', function() {
     $('#Prompt_denominatorCount').text(Prompt_denominatorLimit);
  
 
-    $(this).css('height', '0');
-    $(this).css('height', this.scrollHeight + 'px');
+    // $(this).css('height', '0');
+    // $(this).css('height', this.scrollHeight + 'px');
+    this.style.height = 'auto';
+    this.style.height = Math.max(50, this.scrollHeight) + 'px';
     
     var brackets = {
       '[': 0,
@@ -97,8 +99,8 @@ neg_prompt.on('input', function() {
     $('#Neg_prompt_denominatorCount').text(Prompt_denominatorLimit);
  
 
-    $(this).css('height', '0');
-    $(this).css('height', this.scrollHeight + 'px');
+    this.style.height = 'auto';
+    this.style.height = Math.max(50, this.scrollHeight) + 'px';
     
     var brackets = {
       '[': 0,
@@ -143,7 +145,7 @@ neg_prompt.on('input', function() {
 });
 
 neg_prompt.on('input', function() {
-    $(this).css('height', '0');
+    // $(this).css('height', '0');
     $(this).css('height', this.scrollHeight + 'px');
 });
 
