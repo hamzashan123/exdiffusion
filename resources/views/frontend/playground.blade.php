@@ -62,14 +62,14 @@
 
                 <div class="row">
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 relative">
-                        <textarea name="" id="prompt"  class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Prompt here"></textarea>
+                        <textarea name="" id="prompt"  class="form-control dark-grey border-radius-7" rows="3" placeholder="Enter the Prompt here"></textarea>
                         <div class="counterPrompt">
                             <span id="Prompt_nominatorCount">0</span>
                             <span>/</span>
                             <span id="Prompt_denominatorCount">75</span>
                         </div>
                         <br>
-                        <textarea name="" id="neg_prompt" class="form-control dark-grey border-radius-7" rows="4" placeholder="Enter the Negative Prompt here"></textarea>
+                        <textarea name="" id="neg_prompt" class="form-control dark-grey border-radius-7" rows="3" placeholder="Enter the Negative Prompt here"></textarea>
                         <div class="counterNegPrompt">
                             <span id="Neg_prompt_nominatorCount">0</span>
                             <span>/</span>

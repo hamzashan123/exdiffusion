@@ -112,7 +112,7 @@ img.logoFooter {
     color: #a157dc;
 }
 .btn.generate {
-    padding: 20px;
+    padding: 15px;
 }
 
 .btn.generate:hover {
@@ -125,21 +125,19 @@ input[type="range"] {
 }
 
 .btn.generate {
-    font-size: 23px;
+    font-size: 21px;
 }
 
 img.btn_img {
-    height: 20px;
+    height: 16px !important;
 }
 
 
 
 .modelsListings .col-md-12:nth-child(1) .input-group-append {
     position: absolute;
-    right: 20px;
-    height: 50%;
-    top: 25%;
-    width: 30px;
+    right: 15px;
+    top: 24%;
     z-index: 9;
 }
 
@@ -148,9 +146,9 @@ img.btn_img {
 }
 
 .modelsListings .col-md-12:nth-child(1) .input-group-append button {
-    height: 30px;
-    width: 30px;
-    font-size: 17px;
+    height: 20px;
+    width: 20px;
+    font-size: 10px;
     background: #0b0f19;
     color: white !important;
     border: 1px solid #374151;
@@ -159,7 +157,7 @@ img.btn_img {
 }
 
 input[type='text'],input[type='number'],select  {
-   height:55px;
+   height:40px;
 }
 
 input:focus,button:focus, select:focus, textarea:focus  {
@@ -180,7 +178,7 @@ textarea#prompt {position: relative;}
     position: absolute;
     right: 2%;
     background: #1f2937;
-    padding: 2px 15px;
+    padding: 0px 15px;
     margin-top: -15px;
     border-radius: 7px;
     border: 2px solid #374151;
@@ -199,7 +197,7 @@ textarea#prompt {position: relative;}
     position: absolute;
     right: 2%;
     background: #1f2937;
-    padding: 2px 15px;
+    padding: 0px 15px;
     margin-top: -15px;
     border-radius: 7px;
     border: 2px solid #374151;
@@ -240,7 +238,7 @@ select , select:focus{
 .miscellaneous_section .input-group input[type="checkbox"] {
     margin: 0px 10px;
     accent-color: #a157dc;
-    transform: scale(1.5);
+    transform: scale(1.2);
     margin-bottom: 15px;
 }
 
@@ -255,23 +253,23 @@ select , select:focus{
 }
 
 .models_section input, .models_section select {
-    height: 55px;
+    height: 40px;
 }
 
 .models_section .combinebtn{
     position: absolute;
     right: 20px;
  
-    top: 25%;
+    top: 24%;
  z-index: 9; 
 }
 
 
 .models_section .combinebtn button {
 
-    height: 30px;
-    width: 30px;
-    font-size: 15px;
+    height: 20px;
+    width: 20px;
+    font-size: 10px;
     background: #0b0f19;
     color: white !important;
     border: 1px solid #374151;
@@ -281,7 +279,7 @@ select , select:focus{
 
 input[type="range"] {
     width: 100%;
-    margin: 19px 0px;
+    margin: 10px 0px;
 }
 
 
@@ -293,7 +291,7 @@ input[type="range"] {
 }
 
 .spaceBetween button {
-    height: 35px;
+    height: 30px;
 }
 
 .spaceBetween button img {
@@ -303,7 +301,7 @@ input[type="range"] {
 .spaceBetween input {
     width: 100px;
     text-align: center;
-    height: 35px;
+    height: 30px;
 }
 
 
@@ -314,7 +312,7 @@ input[type="range"] {
 }
 
 .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button {
-    height: 55px;
+    height: 40px;
 }
 
 .scheduler_section .col-md-12 .col-md-12:nth-child(2) {
@@ -349,7 +347,7 @@ input[type="range"] {
 .enhancement_section .input-group.label input[type="checkbox"] {
     margin: 0px 10px;
     accent-color: #a157dc;
-    transform: scale(1.5);
+    transform: scale(1.2);
     margin-bottom: 15px;
 }
 
@@ -396,7 +394,7 @@ input[type="range"] {
 
 .spaceBetween .inner input[type="checkbox"] {
     accent-color: #a157dc;
-    transform: scale(1.5);
+    transform: scale(1.2);
     height: auto !important;
     width: auto !important;
     margin-right: 10px;
@@ -422,7 +420,7 @@ input[type="range"] {
 }
 
 input.form-control.searchModelImages {
-    height: 35px;
+    height: 30px;
     width: 285px;
 }
 
@@ -472,7 +470,7 @@ button#generateBtn::focus {
 }
 
 .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button {
-    padding: 10px 5px !important;
+    padding: 5px 5px !important;
 }
 
 .scheduler_section .col-md-12 .col-md-12:nth-child(2) .input-group button  img {
@@ -512,7 +510,7 @@ button#generateBtn::focus {
 }
 
 .images_publishBtns button {
-    padding:10px 20px;
+    padding: 7px 20px;
 }
 
 
@@ -544,7 +542,7 @@ button#generateBtn::focus {
   input.form-control.searchModelImages {
     background: #1f2937;
     border: 2px solid #374151;
-    height: 45px;
+    height: 40px;
 }
 
 .modal button.btn-close {
@@ -760,17 +758,15 @@ border-radius:10px;
 .input-group-append.crossAll {
     position: absolute;
     right: 10px;
-    height: 50%;
-    top: 45%;
-    width: 28px;
+    top: 46%;
     z-index: 9;
 }
 
 
 .input-group-append.crossAll button {
-    height: 28px;
-    width: 29px;
-    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    font-size: 10px;
     background: #0b0f19;
     color: white !important;
     border: 1px solid #374151;
@@ -828,7 +824,29 @@ border-radius:10px;
     visibility: hidden;
 }
 
+.playgroundMain label {
+    font-size: 13px !important;
+}
 
+.images_publishBtns button {
+    font-size: 14px !important;
+}
+
+.tabSections button {
+    font-size: 14px;
+}
+
+header.header ul li a {
+    font-size: 15px;
+}
+
+.counterPrompt span, .counterNegPrompt span {
+    font-size: 12px !important;
+}
+
+.spaceBetween input {
+    font-size: 12px !important;
+}
 
 @media only screen and (max-width:991px )  {
 
