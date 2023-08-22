@@ -580,7 +580,7 @@ $('#seed_dice_btn').on('click', function(){
     localStorage.removeItem('seed_random');
     localStorage.setItem('seed_random',seed_random);
     var sendingValue = -1;
-    $('#seed').val(seed_random);
+    $('#seed').val(sendingValue);
 });
 
 
