@@ -111,6 +111,9 @@ class ModelsController extends Controller
       $tomesd = ($request->tomesd === true) ? 'yes' : 'no';
       $karras_sigmas = ($request->karras_sigmas === true) ? 'yes' : 'no';
 
+      if($request->seed == -1 || $request->seed == null){
+          $seedValue = null;
+      }
       $payload = [
         "key" => "rfhpc3j1c7kw0t", 
         "model_id" => $request->model_id, 
@@ -122,7 +125,7 @@ class ModelsController extends Controller
         "num_inference_steps" => isset($request->num_inference_steps) ? $request->num_inference_steps: 30, 
         "safety_checker" => $safety_checker, 
         "enhance_prompt" => $enhance_prompt, 
-        "seed" => isset($request->seed) ? $request->seed: null, 
+        "seed" => $seedValue, 
         "guidance_scale" => isset($request->guidance_scale) ? $request->guidance_scale: 7.5, 
         "multi_lingual" => $multi_lingual, 
         "panorama" => $panorama, 

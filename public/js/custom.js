@@ -584,10 +584,10 @@ $('#seed_dice_btn').on('click', function(){
 });
 
 
-$('#seed_back_btn').on('click', function(){
-  var seedValue = localStorage.getItem('seed_random');
-  $('#seed').val(seedValue);
-});
+// $('#seed_back_btn').on('click', function(){
+//   var seedValue = localStorage.getItem('seed_random');
+//   $('#seed').val(seedValue);
+// });
 
 
 $('#clear_prompt').on('click', function(){
