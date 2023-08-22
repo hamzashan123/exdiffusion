@@ -103,10 +103,10 @@
         <div class="modal-body">
 
           <label for="for" class="text-white">Style Name</label>
-          <input type="text" class="form-control dark-grey border-radius-7" id="" placeholder="Enter style name">
+          <input type="text" class="form-control dark-grey border-radius-7" id="style_name" placeholder="Enter style name">
 
           <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
-            <button type="button" class="btn btn-success form-control text-light-grey-bg border-radius-7">Save</button>
+            <button type="button" id="save_style" class="btn btn-success form-control text-light-grey-bg border-radius-7">Save</button>
             <button type="button" class="btn btn-success form-control text-light-grey-bg border-radius-7" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
           </div>
          

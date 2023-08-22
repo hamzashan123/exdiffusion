@@ -104,20 +104,8 @@
 
                             <select name="prompt_styles[]" id="prompt_styles" class="form-control dark-grey border-radius-7 js-example-basic-multiple" multiple="multiple">
                                 
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
-                                <option value="img2img">vae-hopital-real2</option>
-                                <option value="img2img">vae-fogaminsk</option>
+                                <option value="" disabled></option>
+                               
                             </select>
 
                             <div class="input-group-append crossAll">

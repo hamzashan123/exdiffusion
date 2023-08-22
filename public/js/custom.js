@@ -602,6 +602,37 @@ $('#read_lastgeneration').on('click', function(){
 
 });
 
+const Styles = {};
+$(document).on('click' ,'#save_style', function () {
+  var style_name = $('#style_name').val();
+  var model_id = $('#selectedBaseModelText').val();
+  var prompt = $('#prompt').val();
+  var neg_prompt =  $('#neg_prompt').val();
+
+  console.log(style_name);
+  console.log(prompt);
+
+  if (!Styles[style_name]) {
+    Styles[style_name] = [];
+  }
+
+  Styles[style_name].push(model_id);
+  Styles[style_name].push(prompt);
+  Styles[style_name].push(neg_prompt);
+
+  $("#prompt_styles").empty();
+
+  for (var style in Styles) {
+    var pageHTML = "<option value='" + style + "'>" + style + "</option>";
+    $("#prompt_styles").append(pageHTML);
+  }
+
+  $('#style_name').val("");
+  $('#prompt_style_popup').modal('hide');
+  console.log(Styles);
+
+});
+
 function generateRandom10Digit() {
   var minNumber = 1000000000; // Smallest 10-digit number
   var maxNumber = 4294967295; // One less than the maximum value
