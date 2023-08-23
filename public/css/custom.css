@@ -854,7 +854,7 @@ header.header ul li a {
 }
 
 
-.processing {
+.processing , .server_restart {
     display: flex;
     justify-content: center;
     align-items: center;

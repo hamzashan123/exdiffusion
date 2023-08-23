@@ -176,6 +176,31 @@ function runProgressBar(duration) {
 }
 
 
+$('#restart_server').on('click' , function(){
+  $.ajax({
+    url: '' + baseUrl + '/restart',
+    method: "POST",
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    data: {
+    
+    },
+    success: function (response) {
+      
+      var response = JSON.parse(response);
+
+      $(".server_restart").empty();
+      var pageHTML = "<div class='server_restart'> <p> "+ response.message+"</p> </div>";
+             
+      $(".innerImageDiv").append(pageHTML);
+      console.log(response);
+    },
+    error: function () {
+      $("#loader").hide();
+      $('.hide_progress').css('visibility','hidden');
+      $("#result").text("Error occurred while fetching data from the API.");
+    },
+  });
+});
 
 function generateImages() {
   var model_id = $('#selectedBaseModelText').val();
