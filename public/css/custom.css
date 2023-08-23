@@ -130,6 +130,7 @@ input[type="range"] {
 
 img.btn_img {
     height: 16px !important;
+    width: auto !important;
 }
 
 
@@ -846,6 +847,10 @@ header.header ul li a {
 
 .spaceBetween input {
     font-size: 12px !important;
+}
+
+.form-control:disabled {
+    background-color: #444f5e !important;
 }
 
 @media only screen and (max-width:991px )  {
