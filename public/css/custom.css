@@ -853,6 +853,18 @@ header.header ul li a {
     background-color: #444f5e !important;
 }
 
+
+.processing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.processing a {
+    color: #a157dc;
+}
+
 @media only screen and (max-width:991px )  {
 
     

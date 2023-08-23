@@ -290,7 +290,7 @@ function generateImages() {
             response.output.forEach((element) => {
               
               var pageHTML = " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
-              // var pageHTML = " <img src='" + element + "' alt=''>";
+             
               $(".innerImageDiv").append(pageHTML);
              
             });
@@ -298,7 +298,28 @@ function generateImages() {
             $('#generateBtn').removeClass('generating');
             $('.hide_progress').css('visibility','hidden');
           }
-        }else{
+        }else if(response.status == "processing"){
+
+          $(".innerImageDiv").find("span").remove();
+          $('#generateBtn').text('Generate');
+          $('#generateBtn').removeClass('generating');
+          $('.hide_progress').css('visibility','hidden');
+
+          
+
+         
+          var pageHTML = "<div class='processing'>";
+          pageHTML += "<span>"+ response.tip+"</span>";
+          pageHTML += "<br>";
+          response.image_links.forEach((element) => {
+            pageHTML += " <a target='_blank' href='" + element + "'> "+element+"</a>";
+            
+          });
+        
+          pageHTML += "</div>";
+          $(".innerImageDiv").append(pageHTML);
+        }
+        else{
           $('#generateBtn').text('Generate');
           $('#generateBtn').removeClass('generating');
           $('.hide_progress').css('visibility','hidden');

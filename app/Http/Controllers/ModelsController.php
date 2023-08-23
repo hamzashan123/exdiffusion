@@ -100,8 +100,24 @@ class ModelsController extends Controller
 
     public function generateImages(Request $request){
       
-      //$lora_models = implode(',', $request->lora_model);
-      //$embedding_models = implode(',', $request->embeddings_model);
+      
+      
+
+      if($request->lora_model != null){
+        $lora_models = implode(',', $request->lora_model);
+      }else{
+        $lora_models = null;
+      } 
+
+      if($request->embeddings_model != null){
+        $embedding_models = implode(',', $request->embeddings_model);
+      }else{
+        $embedding_models = null;
+      } 
+
+
+
+
       $safety_checker = ($request->safety_checker === true) ? 'yes' : 'no';
       $enhance_prompt = ($request->enhance_prompt === true) ? 'yes' : 'no';
       $multi_lingual = ($request->multi_lingual === true) ? 'yes' : 'no';
@@ -131,8 +147,8 @@ class ModelsController extends Controller
         "panorama" => $panorama, 
         "self_attention" => $self_attention, 
         "upscale" => $upscale, 
-        "embeddings_model" => null, 
-        "lora_model" => null,
+        "embeddings_model" => $embedding_models, 
+        "lora_model" => $lora_models,
         "tomesd" => $tomesd,
         "use_karras_sigmas" => $karras_sigmas,
         "vae" => null,
