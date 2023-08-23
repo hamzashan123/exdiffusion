@@ -233,7 +233,7 @@
                         </div>
 
 
-                        <div class="enhancement_section mt-2 dark-grey p-3 border-radius-7">
+                        <div class="enhancement_section mt-2 dark-grey p-3 border-radius-7" style="display: none;">
                             <div class="col-md-12">
 
                                 <div class="input-group label removeBr">
