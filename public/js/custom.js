@@ -300,7 +300,7 @@ function generateImages() {
           }
         }else if(response.status == "processing"){
 
-          $(".innerImageDiv").find("span").remove();
+          $(".processing").remove();
           $('#generateBtn').text('Generate');
           $('#generateBtn').removeClass('generating');
           $('.hide_progress').css('visibility','hidden');
