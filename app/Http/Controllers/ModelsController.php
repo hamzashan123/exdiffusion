@@ -152,7 +152,7 @@ class ModelsController extends Controller
         "lora_model" => $lora_models,
         "tomesd" => $tomesd,
         "use_karras_sigmas" => $karras_sigmas,
-        "vae" => null,
+        "vae" => isset($request->vae) ? $request->vae: null,
         "lora_strength" => null,
         "scheduler" => isset($request->scheduler) ? $request->scheduler: null,
         "clip_skip" => isset($request->clip_skip) ? $request->clip_skip: null,
