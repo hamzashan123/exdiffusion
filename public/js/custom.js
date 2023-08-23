@@ -370,7 +370,13 @@ function getSuperResolutionImage(ImageLink){
 
 //click generate images
 $('#generateBtn').on('click', function() {
-
+  var seedvalue = $('#seed').val();
+  if(seedvalue > 4294967295){
+    $('#error_message_popup').text("");
+    $('#error_popup').modal('show');
+    $('#error_message_popup').text('Seed must be an integer less than 4294967295');
+    return;
+  }
   generateImages();
  
 });

@@ -160,7 +160,7 @@
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-body">
-          <label for="for" class="text-white text-center" >Base Model , Prompt and Negative Prompt shouldn't empty!. </label>
+          <label for="for" class="text-white text-center" id="error_message_popup">Base Model , Prompt and Negative Prompt shouldn't empty!. </label>
           <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
             <button type="button" class="btn btn-success form-control text-light-grey-bg border-radius-7" data-bs-dismiss="modal" aria-label="Close">Okay</button>
           </div>

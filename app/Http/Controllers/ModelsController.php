@@ -100,9 +100,7 @@ class ModelsController extends Controller
 
     public function generateImages(Request $request){
       
-      
-      
-
+    
       if($request->lora_model != null){
         $lora_models = implode(',', $request->lora_model);
       }else{
@@ -116,20 +114,23 @@ class ModelsController extends Controller
       } 
 
 
-
-
-      $safety_checker = ($request->safety_checker === true) ? 'yes' : 'no';
-      $enhance_prompt = ($request->enhance_prompt === true) ? 'yes' : 'no';
-      $multi_lingual = ($request->multi_lingual === true) ? 'yes' : 'no';
-      $panorama = ($request->panorama === true) ? 'yes' : 'no';
-      $self_attention = ($request->self_attention === true) ? 'yes' : 'no';
-      $upscale = ($request->upscale === true) ? 'yes' : 'no';
-      $tomesd = ($request->tomesd === true) ? 'yes' : 'no';
-      $karras_sigmas = ($request->karras_sigmas === true) ? 'yes' : 'no';
+      
+      $safety_checker = ($request->safety_checker == "true") ? 'yes' : 'no';
+      $enhance_prompt = ($request->enhance_prompt == "true") ? 'yes' : 'no';
+      $multi_lingual = ($request->multi_lingual == "true") ? 'yes' : 'no';
+      $panorama = ($request->panorama == "true") ? 'yes' : 'no';
+      $self_attention = ($request->self_attention == "true") ? 'yes' : 'no';
+      $upscale = ($request->upscale == "true") ? 'yes' : 'no';
+      $tomesd = ($request->tomesd == "true") ? 'yes' : 'no';
+      $karras_sigmas = ($request->karras_sigmas == "true") ? 'yes' : 'no';
 
       if($request->seed == -1 || $request->seed == null){
           $seedValue = null;
+      }else{
+        $seedValue = $request->seed;
       }
+
+      
       $payload = [
         "key" => "rfhpc3j1c7kw0t", 
         "model_id" => $request->model_id, 

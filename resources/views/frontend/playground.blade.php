@@ -182,7 +182,7 @@
 
                                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 
-                                                    <input type="number" class="form-control dark-grey border-radius-7" id="seed">
+                                                    <input type="number" class="form-control dark-grey border-radius-7" max="4294967294" id="seed">
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                     <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="seed_dice_btn"><img src="{{asset('img/icons/dice.png')}}" class="btn_img"></button>
