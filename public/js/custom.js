@@ -188,15 +188,13 @@ $('#restart_server').on('click' , function(){
       
       var response = JSON.parse(response);
 
-      $(".server_restart").empty();
+      $(".server_restart").remove();
       var pageHTML = "<div class='server_restart'> <p> "+ response.message+"</p> </div>";
              
       $(".innerImageDiv").append(pageHTML);
       console.log(response);
     },
     error: function () {
-      $("#loader").hide();
-      $('.hide_progress').css('visibility','hidden');
       $("#result").text("Error occurred while fetching data from the API.");
     },
   });
@@ -259,6 +257,7 @@ function generateImages() {
     $('#generateBtn').text('Generating');
     $('#generateBtn').addClass('generating');
     $(".innerImageDiv").find("img").remove();
+    $(".server_restart").remove();
     $('.hide_progress').css('visibility','visible');
 
 
