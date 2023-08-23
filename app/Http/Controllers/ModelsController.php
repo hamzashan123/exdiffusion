@@ -141,7 +141,7 @@ class ModelsController extends Controller
         "num_inference_steps" => isset($request->num_inference_steps) ? $request->num_inference_steps: 30, 
         "safety_checker" => $safety_checker, 
         "enhance_prompt" => $enhance_prompt, 
-        "seed" => $seedValue, 
+        "seed" => isset($seedValue) ? $seedValue: -1, 
         "guidance_scale" => isset($request->guidance_scale) ? $request->guidance_scale: 7.5, 
         "multi_lingual" => $multi_lingual, 
         "panorama" => $panorama, 
