@@ -487,10 +487,10 @@ button#generateBtn::focus {
 }
 
 .images_result .innerImageDiv img {
-    width: 48.7%;
+    /* width: 48.7%;
     display: inline-block;
     margin: .5%;
-    height: 320px;
+    height: 320px; */
     object-fit: cover;
     border: 2px solid #374151;
     border-radius:7px;
@@ -865,6 +865,15 @@ header.header ul li a {
     color: #a157dc;
 }
 
+.generated_images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 450px;
+    overflow: auto;
+}
+
 @media only screen and (max-width:991px )  {
 
     
@@ -891,7 +900,7 @@ header.header ul li a {
         display: block;
     }
     
-    .images_result img {height: 230px; width: 100%;}
+    .images_result img {height: 230px; width: auto;}
     
 }
 
@@ -903,12 +912,12 @@ header.header ul li a {
     }
     div#myTabContent .col-md-6:nth-child(2) {
         margin-top: 10px;
-        width: 93%;
-        margin-left:3%;
+        /* width: 93%;
+        margin-left:3%; */
     }
 
     .images_result img {
-        width: 100% !important;
+   
         margin: 10px 0px !important;
     }
 }
