@@ -6,7 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }} | @yield('title', 'ExDiffusion')</title>
+  <title>{{ config('app.name', 'Laravel') }} | @yield('title', 'Generate AI Image')</title>
   <meta name="description" content="">
   <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
   <link rel="icon" href="{{ asset('img/icons/favicon.ico') }}" type="image/x-icon">
