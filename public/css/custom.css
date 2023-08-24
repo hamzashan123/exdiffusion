@@ -870,12 +870,12 @@ header.header ul li a {
 }
 
 .generated_images img {
-    width:100%;
+    width: auto !important;
     margin: 10px 0px;
 }
 
 .innerImageDiv{
-    max-height: 450px;
+    max-height: 550px;
     overflow:auto;
 }
 

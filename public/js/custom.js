@@ -310,11 +310,11 @@ function generateImages() {
         if (response.status == "success") {
           updateProgressBar(100);
           if (response.output) {
-            var pageHTML = "<div class='generated_images'>";
+            var pageHTML = "<center> <div class='generated_images'>";
             response.output.forEach((element) => {
               pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
             });
-            pageHTML += "</div>";
+            pageHTML += "</div> </center>";
 
             $(".innerImageDiv").append(pageHTML);
             $(".processing").remove();
