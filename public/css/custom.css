@@ -866,13 +866,19 @@ header.header ul li a {
 }
 
 .generated_images {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 450px;
     overflow: auto;
 }
+
+.generated_images img {
+    width:100%;
+    margin: 10px 0px;
+}
+
+.innerImageDiv{
+    max-height: 450px;
+    overflow:auto;
+}
+
 
 @media only screen and (max-width:991px )  {
 

@@ -414,7 +414,7 @@
                             <div class="images_publishBtns">
                                 <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
                                 <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
-                                <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym" id="restart_server"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Restart Server</button>
+                              
                             </div>
 
 

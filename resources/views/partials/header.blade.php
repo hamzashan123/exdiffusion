@@ -12,6 +12,8 @@
           <li><a href="#" class="nav-link px-3 text-light-grey">Creative History</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey">Upload Models</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey">Invitation Request</a></li>
+          <li><a href="#" class="nav-link px-3 text-light-grey" id="restart_server">Restart Server</a></li>
+          
         </ul>
 
         
