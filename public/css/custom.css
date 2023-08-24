@@ -905,8 +905,7 @@ header.header ul li a {
     .enhancement_section .input-group {
         display: block;
     }
-    
-    .images_result img {height: 230px; width: auto;}
+
     
 }
 
@@ -929,7 +928,7 @@ header.header ul li a {
 }
 
 @media only screen and (max-width:768px ) {
-    .images_result img {height: 200px;}
+    
     .modelsListings  .mx-3{
         margin: 0px !important;
     }
