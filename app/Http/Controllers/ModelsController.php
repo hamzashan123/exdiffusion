@@ -124,13 +124,14 @@ class ModelsController extends Controller
       $tomesd = ($request->tomesd == "true") ? 'yes' : 'no';
       $karras_sigmas = ($request->karras_sigmas == "true") ? 'yes' : 'no';
 
-      if($request->seed == -1 || $request->seed == null){
+      
+
+      if($request->seed == "-1" || $request->seed == null){
           $seedValue = null;
       }else{
         $seedValue = $request->seed;
       }
 
-      
       $payload = [
         "key" => "rfhpc3j1c7kw0t", 
         "model_id" => $request->model_id, 
