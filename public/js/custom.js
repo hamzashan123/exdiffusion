@@ -146,36 +146,7 @@ function getSchedulers(){
     });
 } 
 
-function updateProgressBar(percent) {
-  const progressBar = document.getElementById("progress-bar");
-  const progressLabel = document.getElementById("progress-label");
-  
-  progressBar.style.width = percent + "%";
-  progressLabel.textContent = "Completed " + percent + "%";
-}
-
-function runProgressBar(duration) {
-  const startTime = performance.now();
-  const interval = 100; // Update interval in milliseconds
-
-  function animate() {
-      const currentTime = performance.now();
-      const elapsed = currentTime - startTime;
-      const percent = Math.min(Math.round((elapsed / duration) * 100), 100);
-      if(percent < 90){
-        updateProgressBar(percent);
-      }
-     
-
-      if (percent < 100) {
-          requestAnimationFrame(animate);
-      }
-  }
-
-  animate();
-}
-
-
+// restart stablediffusion server
 $('#restart_server').on('click' , function(){
   $.ajax({
     url: '' + baseUrl + '/restart',
@@ -199,6 +170,39 @@ $('#restart_server').on('click' , function(){
     },
   });
 });
+
+function updateProgressBar(currentTime, totalTime) {
+  const progressBar = $("#progress-bar");
+  const progressLabel = $("#progress-label");
+  const percentage = (currentTime / totalTime) * 100;
+  const labelSeconds = totalTime - currentTime;
+  progressBar.css("width", percentage + "%");
+  progressLabel.text(`ETA ${labelSeconds.toFixed(2)} sec`);
+}
+
+// function runProgressBar(duration) {
+//   const startTime = performance.now();
+//   const interval = 100; // Update interval in milliseconds
+
+//   function animate() {
+//       const currentTime = performance.now();
+//       const elapsed = currentTime - startTime;
+//       const percent = Math.min(Math.round((elapsed / duration) * 100), 100);
+//       if(percent < 90){
+//         updateProgressBar(percent);
+//       }
+     
+
+//       if (percent < 100) {
+//           requestAnimationFrame(animate);
+//       }
+//   }
+
+//   animate();
+// }
+
+
+
 
 function generateImages() {
   var model_id = $('#selectedBaseModelText').val();
@@ -247,7 +251,8 @@ function generateImages() {
 
   console.log('prompt',prompt);
   console.log('negative_prompt',negative_prompt);
-  const progressBarDuration = 10000; // 5 seconds in milliseconds
+  
+
 
   if(model_id == '' || model_id == undefined || prompt == '' || prompt == undefined || negative_prompt == '' || negative_prompt == undefined){
     $('#error_popup').modal("show");
@@ -258,7 +263,7 @@ function generateImages() {
     $('#generateBtn').addClass('generating');
     $(".innerImageDiv").find("img").remove();
     $(".server_restart").remove();
-    $('.hide_progress').css('visibility','visible');
+    
 
 
     //save prompt for last generation 
@@ -270,7 +275,7 @@ function generateImages() {
     localStorage.setItem('neg_prompt_value' , $('#neg_prompt').val());
 
 
-    runProgressBar(progressBarDuration);
+    // runProgressBar(progressBarDuration);
 
     $.ajax({
       url: '' + baseUrl + '/generate-images',
@@ -307,46 +312,101 @@ function generateImages() {
         
         var response = JSON.parse(response);
         console.log(response);
+
         if (response.status == "success") {
-          updateProgressBar(100);
-          if (response.output) {
-            var pageHTML = "<center> <div class='generated_images'>";
-            response.output.forEach((element) => {
-              pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
-            });
-            pageHTML += "</div> </center>";
 
-            $(".innerImageDiv").append(pageHTML);
-            $(".processing").remove();
-            $('#generateBtn').text('Generate');
-            $('#generateBtn').removeClass('generating');
-            $('.hide_progress').css('visibility','hidden');
-          }
-        }else if(response.status == "processing"){
+          $('.hide_progress').css('visibility','visible');
+          $('.hide_progress').removeClass('progressheightmanage');
+         
+          // progressbar interval time start
+          const totalTime = response.generationTime; // Total time in seconds
+          let currentTime = 0;
+            
+          const interval = setInterval(function() {
+              currentTime += 0.1; // Simulating a fraction of a second
+              updateProgressBar(currentTime, totalTime);
+              
+              if (currentTime >= totalTime) {
+                  clearInterval(interval);
+                  //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
+              }
+          }, 100); // Update every 100 milliseconds
 
-          $(".processing").remove();
-          $('#generateBtn').text('Generate');
-          $('#generateBtn').removeClass('generating');
-          $('.hide_progress').css('visibility','hidden');
+            // Function to append images
+         const etaInSeconds = response.generationTime;   
+         function appendSuccessImages() {
 
-          
+              var pageHTML = "<center> <div class='generated_images'>";
+              response.output.forEach((element) => {
+                pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
+              });
+              pageHTML += "</div> </center>";
+
+              $(".innerImageDiv").append(pageHTML);
+              $(".processing").remove();
+              $('#generateBtn').text('Generate');
+              $('#generateBtn').removeClass('generating');
+              $('.hide_progress').css('visibility','hidden');
+              $('.hide_progress').addClass('progressheightmanage');
+
+         }
+         
+           // Calculate milliseconds for ETA time
+           const etaInMilliseconds = etaInSeconds * 1000;
+
+           // Set timeout to append images after ETA time
+           setTimeout(function() {
+              appendSuccessImages();
+           }, etaInMilliseconds);
 
          
-          var pageHTML = "<div class='processing'>";
-          pageHTML += "<span>"+ response.tip+"</span>";
-          pageHTML += "<br>";
-          response.image_links.forEach((element) => {
-            pageHTML += " <a target='_blank' href='" + element + "'> "+element+"</a>";
-            
-          });
-        
-          pageHTML += "</div>";
-          $(".innerImageDiv").append(pageHTML);
+        }else if(response.status == "processing"){
+
+          $('.hide_progress').css('visibility','visible');
+          $('.hide_progress').removeClass('progressheightmanage');
+           // progressbar interval time start
+           const totalTime = response.eta; // Total time in seconds
+           let currentTime = 0;
+             
+           const interval = setInterval(function() {
+               currentTime += 0.1; // Simulating a fraction of a second
+               updateProgressBar(currentTime, totalTime);
+               
+               if (currentTime >= totalTime) {
+                   clearInterval(interval);
+                   //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
+               }
+           }, 100); // Update every 100 milliseconds
+ 
+             // Function to append images
+          const etaInSeconds = response.eta;   
+          function appendProcessingImages() {
+              var pageHTML = "<center> <div class='generated_images'>";
+              response.image_links.forEach((element) => {
+                pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
+              });
+              pageHTML += "</div> </center>";
+
+              $(".innerImageDiv").append(pageHTML);
+              $('#generateBtn').text('Generate');
+              $('#generateBtn').removeClass('generating');
+              $('.hide_progress').css('visibility','hidden');
+              $('.hide_progress').addClass('progressheightmanage');
+          }
+          
+            // Calculate milliseconds for ETA time
+            const etaInMilliseconds = etaInSeconds * 1000;
+
+            // Set timeout to append images after ETA time
+            setTimeout(function() {
+              appendProcessingImages();
+            }, etaInMilliseconds);
         }
         else{
           $('#generateBtn').text('Generate');
           $('#generateBtn').removeClass('generating');
           $('.hide_progress').css('visibility','hidden');
+          $('.hide_progress').addClass('progressheightmanage');
         }
         // Clear progress bar and label
         // updateProgressBar(0);
@@ -354,6 +414,7 @@ function generateImages() {
       error: function () {
         $("#loader").hide();
         $('.hide_progress').css('visibility','hidden');
+        $('.hide_progress').addClass('progressheightmanage');
         $("#result").text("Error occurred while fetching data from the API.");
       },
     });

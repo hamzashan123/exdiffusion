@@ -474,30 +474,6 @@
 
     
         $('.js-example-basic-multiple').select2();
-
-
-
-       
-        // function fetchData() {
-        //     $.ajax({
-        //     url: '', // Update with your server endpoint
-        //     method: 'GET',
-        //     dataType: 'json',
-        //     success: function(data) {
-        //         // Assuming data.progress contains the progress percentage
-        //         updateProgressBar(data.progress);
-        //     },
-        //     error: function() {
-        //         console.error('Error fetching data.');
-        //     }
-        //     });
-        // }
-
-        // Fetch data initially and set interval for periodic updates
-        // fetchData();
-        // setInterval(fetchData, 5000); // Update interval in milliseconds
-
-
         
     });
 </script>

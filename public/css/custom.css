@@ -865,6 +865,11 @@ header.header ul li a {
     color: #a157dc;
 }
 
+.progressheightmanage {
+    height: 0 !important;
+    margin: 0 !important;
+}
+
 .generated_images {
     overflow: auto;
 }
@@ -877,6 +882,10 @@ header.header ul li a {
 .innerImageDiv{
     max-height: 550px;
     overflow:auto;
+}
+
+.generated_images img {
+    height: 200px;
 }
 
 
