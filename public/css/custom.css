@@ -874,6 +874,10 @@ header.header ul li a {
     overflow: auto;
 }
 
+.generated_images a {
+    color: transparent;
+}
+
 .generated_images img {
     width: auto !important;
     margin: 10px 0px;
@@ -885,7 +889,7 @@ header.header ul li a {
 }
 
 .generated_images img {
-    height: 200px;
+    height: 250px;
 }
 
 
