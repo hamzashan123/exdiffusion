@@ -386,7 +386,7 @@
                                     <label for="tomesd">Tomesd</label>
 
                                     
-                                    <input type="checkbox"  id="karras_sigmas">
+                                    <input type="checkbox" checked  id="karras_sigmas">
                                     <label for="karras_sigmas">Karras Sigmas</label>
 
                                 </div>
