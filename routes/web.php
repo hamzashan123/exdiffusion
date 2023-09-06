@@ -39,4 +39,5 @@ Route::get('/get-base-models',[ModelsController::class, 'getBaseModels'])->name(
 Route::get('/get-schedulers',[ModelsController::class, 'getSchedulers'])->name('getschedulers');
 Route::post('/generate-images',[ModelsController::class, 'generateImages'])->name('generateImages');
 Route::post('/get-superResolution',[ModelsController::class, 'getSuperResolutionImage'])->name('getSuperResolutionImage');
+Route::post('/save-superResolution',[ModelsController::class, 'saveSuperResolutionImage'])->name('saveSuperResolutionImage');
 Route::post('/restart',[ModelsController::class, 'restartServer'])->name('restart');

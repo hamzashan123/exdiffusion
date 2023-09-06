@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ModelsController extends Controller
 {
@@ -196,12 +198,33 @@ class ModelsController extends Controller
 
     }
 
-    public function getSuperResolutionImage(Request $request){
+    private function saveSuperResolutionImage($request){
+      
+      $image = $request->file('file');
+      $imageName = time() . '.' . $image->getClientOriginalExtension();
+      $image->storeAs('public/images', $imageName);
+     
+      $imageId = DB::table('super_resolution')->insertGetId([
+        'original_image_url' => $imageName
+      ]);
+      
+      $imageData = DB::table('super_resolution')->where('id',$imageId)->first();
+      return $imageData;
+      
+    }
 
+    public function getSuperResolutionImage(Request $request){
+       
+        $imageData = $this->saveSuperResolutionImage($request);
+        $imageLink = Storage::url('public/images/' . $imageData->original_image_url);
+        
+        $imageUrl = url('/').$imageLink;
+        
         $payload = [
-          "key" => "rfhpc3j1c7kw0t", 
-          "url" => "https://pub-8b49af329fae499aa563997f5d4068a4.r2.dev/generations/e5cd86d3-7305-47fc-82c1-7d1a3b130fa4-0.png", 
-          "scale" => 3, 
+          "key" => "rfhpc3j1c7kw0t",
+          "model_id" => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3", 
+          "url" => $imageUrl, 
+          "scale" => isset($request->superscale_input) ? $request->superscale_input: 3, 
           "webhook" => null, 
           "face_enhance" => true 
         ];
@@ -228,6 +251,8 @@ class ModelsController extends Controller
         curl_close($curl);
         echo $response;
     } 
+
+    
 
     public function restartServer(){
       $payload = [

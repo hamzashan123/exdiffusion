@@ -86,10 +86,6 @@ function getBaseModels(){
             });
         
           }
-
-
-          
-        // }
    
  },
  error: function () {
@@ -179,29 +175,6 @@ function updateProgressBar(currentTime, totalTime) {
   progressBar.css("width", percentage + "%");
   progressLabel.text(`ETA ${labelSeconds.toFixed(2)} sec`);
 }
-
-// function runProgressBar(duration) {
-//   const startTime = performance.now();
-//   const interval = 100; // Update interval in milliseconds
-
-//   function animate() {
-//       const currentTime = performance.now();
-//       const elapsed = currentTime - startTime;
-//       const percent = Math.min(Math.round((elapsed / duration) * 100), 100);
-//       if(percent < 90){
-//         updateProgressBar(percent);
-//       }
-     
-
-//       if (percent < 100) {
-//           requestAnimationFrame(animate);
-//       }
-//   }
-
-//   animate();
-// }
-
-
 
 
 function generateImages() {
@@ -423,11 +396,6 @@ function generateImages() {
 
 }
 
-
-
-function getSuperResolutionImage(ImageLink){
-
-}
 
 //click generate images
 $('#generateBtn').on('click', function() {

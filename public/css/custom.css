@@ -892,6 +892,13 @@ header.header ul li a {
     height: 320px;
 }
 
+div.draggableinputarea {
+    height: 400px;
+}
+
+.innerImageDiv.border-radius-7.superscaleoutputimage {
+    height: 431px;
+}
 
 @media only screen and (max-width:991px )  {
 
