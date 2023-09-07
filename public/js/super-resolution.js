@@ -95,8 +95,13 @@ $(document).ready(function(){
             success: function (response) {
               var response = JSON.parse(response);
               console.log(response);
-              var pageHTML = "<img src='https://cdn2.stablediffusionapi.com/generations/363921082961127_out.png'>";      
-              $(".superscaleoutputimage").append(pageHTML);
+              if(response.status == "success"){
+                var pageHTML = "<img src='"+response.output[0]+"'>";      
+                $(".superscaleoutputimage").append(pageHTML);
+              }else if(response.status == "processing"){
+                var pageHTML = "<span> Image will be available </span>";      
+                $(".superscaleoutputimage").append(pageHTML);
+              }
             },
             error: function () {
               $("#result").text("Error occurred while fetching data from the API.");
