@@ -926,7 +926,10 @@ button#generateSuperResolution:hover {
     width: 100%;
 }
 
-.draggableinputarea img {width: 80%;}
+.draggableinputarea img , .innerImageDivSuperResolutionOutput img{
+    height: 450px;
+    object-fit: cover;
+}
 
 label#fileInputLabel {
  
