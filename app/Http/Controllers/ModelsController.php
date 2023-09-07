@@ -214,11 +214,16 @@ class ModelsController extends Controller
     }
 
     public function getSuperResolutionImage(Request $request){
-       
+
+      if($request->has('image_url')){
+        $imageUrl = $request->image_url;
+      }else{
         $imageData = $this->saveSuperResolutionImage($request);
+
         $imageLink = Storage::url('public/images/' . $imageData->original_image_url);
-        
         $imageUrl = url('/').$imageLink;
+      }
+       
         
         
 

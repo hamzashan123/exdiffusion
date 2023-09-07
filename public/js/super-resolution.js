@@ -9,6 +9,7 @@ $(document).ready(function(){
 
     // Handle image upload and display
     uploadImageInput.on('change', function(e) {
+        
         const file = e.target.files[0];
         console.log(file);
         if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
@@ -21,6 +22,7 @@ $(document).ready(function(){
                     draggableArea.find('label').hide();
                     draggableArea.find('input').hide();
                     draggableArea.append(imageElement).addClass('draggable');
+                    superResolutionArray = [];
                 };
                 reader.readAsDataURL(file);
             }
@@ -33,6 +35,7 @@ $(document).ready(function(){
 
     // Trigger file input click when upload button is clicked
     uploadButton.on('click', function() {
+        superResolutionArray = [];
         uploadImageInput.click();
     });
 
@@ -62,10 +65,14 @@ $(document).ready(function(){
         const super_resultion_model_id = $('#super_resultion_model_id').val();
         
          // Check if a file is selected
-         if (uploadedImage[0].files.length === 0) {
-            alert("Please select a file.");
-            return;
-         }
+
+        //  console.log("length" , superResolutionArray.length);
+        //  if (uploadedImage[0].files.length === 0 && superResolutionArray.length > 0) {
+        //     alert("Please select a file.");
+        //     return;
+        //  }
+
+        
          
          $('#generateSuperResolution').text('Generating');
          $('#generateSuperResolution').addClass('generating');
@@ -82,6 +89,10 @@ $(document).ready(function(){
         formData.append("superscale_input", superscale_input);
         formData.append("file", uploadedImage[0].files[0]);
         formData.append("super_resultion_model_id", super_resultion_model_id);
+
+        if (superResolutionArray.length > 0) { 
+            formData.append("image_url", superResolutionArray[0]);
+         }
 
         $.ajax({
             url: '' + baseUrl + '/get-superResolution',
@@ -139,11 +150,11 @@ $(document).ready(function(){
            }, etaInMilliseconds);
 
              
-              }
-            //   else if(response.status == "processing"){
-            //     var pageHTML = "<span> Image will be available </span>";      
-            //     $(".superscaleoutputimage").append(pageHTML);
-            //   }
+        }
+        else if(response.status == "processing"){
+                var pageHTML = "<span> Image will be available </span>";      
+                $(".superscaleoutputimage").append(pageHTML);
+        }
             },
             error: function () {
               $("#result").text("Error occurred while fetching data from the API.");

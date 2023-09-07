@@ -1,11 +1,11 @@
 ﻿var baseUrl = 'https://exdiffusion.com/newproject/public';
 // var baseUrl = 'http://localhost:8000';
-
+var superResolutionArray = [];
 $(document).ready(function(){
       getBaseModels();
       getSchedulers();  
-
-
+     
+      
       $("[data-fancybox]").fancybox({
         // Customize options here
       });
@@ -311,6 +311,7 @@ function generateImages() {
 
               var pageHTML = "<center> <div class='generated_images'>";
               response.output.forEach((element) => {
+                superResolutionArray.push(element);
                 pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
               });
               pageHTML += "</div> </center>";
@@ -321,6 +322,10 @@ function generateImages() {
               $('#generateBtn').removeClass('generating');
               $('.hide_progress').css('visibility','hidden');
               $('.hide_progress').addClass('progressheightmanage');
+              if(superResolutionArray.length > 0 ){
+                $('#make_super_resolution').removeAttr('disabled');
+              }
+              console.log("superResolutionArray",superResolutionArray);
 
          }
          
@@ -414,7 +419,16 @@ $('#generateBtn').on('click', function() {
 // make super resoltuion
 $('#make_super_resolution').on('click', function(e) {
   e.preventDefault();
+  const draggableArea = $('.draggableinputarea');
+  const imageUrl = superResolutionArray[0];
+  const imageElement = $('<img>').attr('src', imageUrl);
+  draggableArea.find('img').remove();
+  draggableArea.find('label').hide();
+  draggableArea.find('input').hide();
+  draggableArea.append(imageElement).addClass('draggable');
+
   $("#superResolution-tab").tab('show');
+
   // $('#superResolution-tab a[href="#superResolution"]').tab('show');
 });
 
