@@ -3,15 +3,17 @@
 
         <div class="col-md-6">
             <div class="images_result p-3">
-                <div class="innerImageDiv border-radius-7 ImageDraggableArea uploadBtn" id="draggableArea" style="background: #0b0f19;padding: 10px;width: 100%;">
+                <div class="innerImageDivSuperResolutionUpload border-radius-7 ImageDraggableArea uploadBtn" id="draggableArea" style="background: #0b0f19;padding: 10px;width: 100%;">
                     <div class="draggableinputarea">
-                        <label for="super_resolution_uploaded_image" class="uploadBtn">
 
-                            <input type="file" name="original_image" id="super_resolution_uploaded_image">
-                        </label>
-                        <span>Click to upload or drag and drop</span>
-                        <br>
-                        <span>PNG, JPG</span>
+                   
+                    <input type="file" id="super_resolution_uploaded_image" style="opacity:0">
+                    <label for="super_resolution_uploaded_image" id="fileInputLabel">
+                        <img src="{{asset('img/icons/dragdropicon.png')}}" alt="Select an Image">
+                        <br/>
+                        <span class="fileUploadText"> Click to upload or drag and drop <br/> PNG, JPG </span>
+                    </label>
+                 
                     </div>
 
                 </div>
@@ -27,15 +29,17 @@
         <div class="col-md-6">
             <div class="images_result p-3">
 
-                <div class="innerImageDiv border-radius-7 superscaleoutputimage" style="background: #0b0f19;padding: 10px;width: 100%;">
+                <div class="innerImageDivSuperResolutionOutput border-radius-7 superscaleoutputimage" style="background: #0b0f19;padding: 10px;width: 100%;">
 
-                    <div id="progress-label" class="text-center hide_progress">Completed 0%</div>
-                    <div class="progress hide_progress">
+                <div id="progress-label" class="text-center ">Completed 0%</div>
+                    <div class="progress ">
                         <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
 
 
                 </div>
+
+               
 
                 <div class="images_publishBtns">
                     <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
@@ -103,10 +107,10 @@
 
             </div>
         </div>
-        <div class="col-md-6">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 generateSuperRes">
                         <button class=" purple-col-bg form-control text-white border-radius-7" id="generateSuperResolution">Generate</button>
                 </div>
-        </div>
+        
     </div>
 </div>

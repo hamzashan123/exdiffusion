@@ -5,28 +5,28 @@ $(document).ready(function(){
       
     const draggableArea = $('.draggableinputarea');
     const uploadImageInput = $('#super_resolution_uploaded_image');
-    const uploadButton = $('.draggableinputarea');
+    const uploadButton = $('#uploadBtn');
 
     // Make the draggable area draggable
-    draggableArea.on('mousedown', function(e) {
-        e.preventDefault();
-        const offsetX = e.clientX - draggableArea.offset().left;
-        const offsetY = e.clientY - draggableArea.offset().top;
+    // draggableArea.on('mousedown', function(e) {
+    //     e.preventDefault();
+    //     const offsetX = e.clientX - draggableArea.offset().left;
+    //     const offsetY = e.clientY - draggableArea.offset().top;
 
-        $(document).on('mousemove', onMouseMove);
-        $(document).on('mouseup', onMouseUp);
+    //     $(document).on('mousemove', onMouseMove);
+    //     $(document).on('mouseup', onMouseUp);
 
-        function onMouseMove(event) {
-            const x = event.clientX - offsetX;
-            const y = event.clientY - offsetY;
-            draggableArea.css({ left: x + 'px', top: y + 'px' });
-        }
+    //     function onMouseMove(event) {
+    //         const x = event.clientX - offsetX;
+    //         const y = event.clientY - offsetY;
+    //         draggableArea.css({ left: x + 'px', top: y + 'px' });
+    //     }
 
-        function onMouseUp() {
-            $(document).off('mousemove', onMouseMove);
-            $(document).off('mouseup', onMouseUp);
-        }
-    });
+    //     function onMouseUp() {
+    //         $(document).off('mousemove', onMouseMove);
+    //         $(document).off('mouseup', onMouseUp);
+    //     }
+    // });
 
     // Handle image upload and display
     uploadImageInput.on('change', function(e) {
@@ -39,6 +39,8 @@ $(document).ready(function(){
                     const imageUrl = event.target.result;
                     const imageElement = $('<img>').attr('src', imageUrl);
                     draggableArea.find('img').remove();
+                    draggableArea.find('label').hide();
+                    draggableArea.find('input').hide();
                     draggableArea.append(imageElement).addClass('draggable');
                 };
                 reader.readAsDataURL(file);

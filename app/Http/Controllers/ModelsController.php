@@ -220,6 +220,8 @@ class ModelsController extends Controller
         
         $imageUrl = url('/').$imageLink;
         
+        
+
         $payload = [
           "key" => "rfhpc3j1c7kw0t",
           "model_id" => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3", 
@@ -229,6 +231,8 @@ class ModelsController extends Controller
           "face_enhance" => true 
         ];
 
+        dd($payload);
+        
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

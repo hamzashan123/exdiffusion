@@ -411,6 +411,16 @@ $('#generateBtn').on('click', function() {
 });
 
 
+// make super resoltuion
+$('#make_super_resolution').on('click', function(e) {
+  e.preventDefault();
+  $("#superResolution-tab").tab('show');
+  // $('#superResolution-tab a[href="#superResolution"]').tab('show');
+});
+
+
+
+
 // click and select in lora popup
 $(document).on('click', '.bodyInnerLora', function() {
 

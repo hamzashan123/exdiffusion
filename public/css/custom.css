@@ -486,11 +486,10 @@ button#generateBtn::focus {
     margin-bottom: 15px;
 }
 
-.images_result .innerImageDiv img {
-    /* width: 48.7%;
-    display: inline-block;
-    margin: .5%;
-    height: 320px; */
+.images_result .innerImageDiv img , 
+.images_result .innerImageDivSuperResolutionUpload img ,
+.images_result .innerImageDivSuperResolutionOutput img{
+
     object-fit: cover;
     border: 2px solid #374151;
     border-radius:7px;
@@ -883,8 +882,11 @@ header.header ul li a {
     margin: 10px 0px;
 }
 
-.innerImageDiv{
+.innerImageDiv ,
+.innerImageDivSuperResolutionUpload, 
+.innerImageDivSuperResolutionOutput{
     max-height: 550px;
+    height: 475px;
     overflow:auto;
 }
 
@@ -892,13 +894,73 @@ header.header ul li a {
     height: 320px;
 }
 
-div.draggableinputarea {
-    height: 400px;
+button#generateSuperResolution {
+    font-size: 21px;
+    padding: 15px;
+}
+.generateSuperRes {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.innerImageDiv.border-radius-7.superscaleoutputimage {
-    height: 431px;
+button#generateSuperResolution:hover {
+    background: #444f5e;
+    transition: .3s;
 }
+
+.draggableinputarea {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.draggableinputarea input {
+    height: 100%;
+    width: 100%;
+}
+
+.draggableinputarea img {width: 80%;}
+
+label#fileInputLabel {
+ 
+    position: absolute;
+    text-align: center;
+}
+
+label#fileInputLabel img {
+    height: 50px;
+    width: auto;
+}
+
+input#super_resolution_uploaded_image {
+    opacity: 0;
+    position: relative;
+    z-index: 999;
+}
+
+span.fileUploadText {
+    font-size: 12px;
+    position: relative;
+    top: 10px;
+    color: #d6d6d6;
+}
+
+.innerImageDivSuperResolutionOutput img {
+    width: 80%;
+    object-fit: cover;
+}
+
+.innerImageDivSuperResolutionOutput {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
 
 @media only screen and (max-width:991px )  {
 
