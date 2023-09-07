@@ -231,8 +231,8 @@ class ModelsController extends Controller
           "face_enhance" => true 
         ];
 
-        dd($payload);
-        
+        // dd($payload);
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
