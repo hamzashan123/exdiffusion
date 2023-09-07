@@ -226,6 +226,7 @@ class ModelsController extends Controller
           "key" => "rfhpc3j1c7kw0t",
           "model_id" => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3", 
           "url" => $imageUrl, 
+          // "url" => "https://pub-8b49af329fae499aa563997f5d4068a4.r2.dev/generations/e5cd86d3-7305-47fc-82c1-7d1a3b130fa4-0.png",
           "scale" => isset($request->superscale_input) ? $request->superscale_input: 3, 
           "webhook" => null, 
           "face_enhance" => true 

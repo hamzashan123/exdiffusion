@@ -526,13 +526,15 @@ button#generateBtn::focus {
     
 }
   
-  #progress-bar {
+  #progress-bar  , #progress-bar-superResolution  {
     transition: width 0.3s ease-in-out;
     background-color: #a157dc;
 
   }
+
   
-  #progress-label {
+  
+  #progress-label , #progress-label-superResolution {
     margin-top: 15px;
     font-size: 14px;
   }

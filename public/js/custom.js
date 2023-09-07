@@ -287,7 +287,7 @@ function generateImages() {
         console.log(response);
 
         if (response.status == "success") {
-          
+
           $('.hide_progress').css('visibility','visible');
           $('.hide_progress').removeClass('progressheightmanage');
          

@@ -7,27 +7,6 @@ $(document).ready(function(){
     const uploadImageInput = $('#super_resolution_uploaded_image');
     const uploadButton = $('#uploadBtn');
 
-    // Make the draggable area draggable
-    // draggableArea.on('mousedown', function(e) {
-    //     e.preventDefault();
-    //     const offsetX = e.clientX - draggableArea.offset().left;
-    //     const offsetY = e.clientY - draggableArea.offset().top;
-
-    //     $(document).on('mousemove', onMouseMove);
-    //     $(document).on('mouseup', onMouseUp);
-
-    //     function onMouseMove(event) {
-    //         const x = event.clientX - offsetX;
-    //         const y = event.clientY - offsetY;
-    //         draggableArea.css({ left: x + 'px', top: y + 'px' });
-    //     }
-
-    //     function onMouseUp() {
-    //         $(document).off('mousemove', onMouseMove);
-    //         $(document).off('mouseup', onMouseUp);
-    //     }
-    // });
-
     // Handle image upload and display
     uploadImageInput.on('change', function(e) {
         const file = e.target.files[0];
@@ -62,11 +41,12 @@ $(document).ready(function(){
     });
 
 
-    function updateProgressBar(currentTime, totalTime) {
-        const progressBar = $("#progress-bar");
-        const progressLabel = $("#progress-label");
+    function updateProgressBarSuperResolution(currentTime, totalTime) {
+        const progressBar = $("#progress-bar-superResolution");
+        const progressLabel = $("#progress-label-superResolution");
         const percentage = (currentTime / totalTime) * 100;
         const labelSeconds = totalTime - currentTime;
+        console.log("percentage",percentage);
         progressBar.css("width", percentage + "%");
         progressLabel.text(`ETA ${labelSeconds.toFixed(2)} sec`);
       }
@@ -90,6 +70,8 @@ $(document).ready(function(){
          $('#generateSuperResolution').text('Generating');
          $('#generateSuperResolution').addClass('generating');
          $('.superscaleoutputimage center').remove();
+         $('.hide_progress').css('visibility','visible');
+         $('.hide_progress').removeClass('progressheightmanage');
 
           // Create a FormData object
         const formData = new FormData();
@@ -113,17 +95,18 @@ $(document).ready(function(){
               console.log(response);
         if(response.status == "success"){
 
-                $('.hide_progress').css('visibility','visible');
-                $('.hide_progress').removeClass('progressheightmanage');
+            
             
             // progressbar interval time start
             const totalTime = response.generationTime; // Total time in seconds
             let currentTime = 0;
                 
+            console.log("totalTime",totalTime);
+
             const interval = setInterval(function() {
                 currentTime += 0.1; // Simulating a fraction of a second
-                updateProgressBar(currentTime, totalTime);
-                
+                updateProgressBarSuperResolution(currentTime, totalTime);
+                console.log("currentTime",currentTime);
                 if (currentTime >= totalTime) {
                     clearInterval(interval);
                     //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
