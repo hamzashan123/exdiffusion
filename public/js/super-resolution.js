@@ -77,8 +77,7 @@ $(document).ready(function(){
          $('#generateSuperResolution').text('Generating');
          $('#generateSuperResolution').addClass('generating');
          $('.superscaleoutputimage center').remove();
-         $('.hide_progress').css('visibility','visible');
-         $('.hide_progress').removeClass('progressheightmanage');
+         
 
           // Create a FormData object
         const formData = new FormData();
@@ -107,7 +106,8 @@ $(document).ready(function(){
         if(response.status == "success"){
 
             
-            
+            $('.hide_progress').css('visibility','visible');
+            $('.hide_progress').removeClass('progressheightmanage');
             // progressbar interval time start
             const totalTime = response.generationTime; // Total time in seconds
             let currentTime = 0;
