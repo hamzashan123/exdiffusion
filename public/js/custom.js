@@ -287,7 +287,7 @@ function generateImages() {
         console.log(response);
 
         if (response.status == "success") {
-
+          
           $('.hide_progress').css('visibility','visible');
           $('.hide_progress').removeClass('progressheightmanage');
          
@@ -314,7 +314,7 @@ function generateImages() {
                 pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
               });
               pageHTML += "</div> </center>";
-
+              
               $(".innerImageDiv").append(pageHTML);
               $(".processing").remove();
               $('#generateBtn').text('Generate');

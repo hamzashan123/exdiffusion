@@ -62,6 +62,15 @@ $(document).ready(function(){
     });
 
 
+    function updateProgressBar(currentTime, totalTime) {
+        const progressBar = $("#progress-bar");
+        const progressLabel = $("#progress-label");
+        const percentage = (currentTime / totalTime) * 100;
+        const labelSeconds = totalTime - currentTime;
+        progressBar.css("width", percentage + "%");
+        progressLabel.text(`ETA ${labelSeconds.toFixed(2)} sec`);
+      }
+
     $('#generateSuperResolution').on('click', function(){
 
        
@@ -80,6 +89,7 @@ $(document).ready(function(){
          
          $('#generateSuperResolution').text('Generating');
          $('#generateSuperResolution').addClass('generating');
+         $('.superscaleoutputimage center').remove();
 
           // Create a FormData object
         const formData = new FormData();
@@ -101,30 +111,29 @@ $(document).ready(function(){
             success: function (response) {
               var response = JSON.parse(response);
               console.log(response);
-              if(response.status == "success"){
-            $('.hide_progress').css('visibility','visible');
-            $('.hide_progress').removeClass('progressheightmanage');
-         
-          // progressbar interval time start
-          const totalTime = response.generationTime; // Total time in seconds
-          let currentTime = 0;
+        if(response.status == "success"){
+
+                $('.hide_progress').css('visibility','visible');
+                $('.hide_progress').removeClass('progressheightmanage');
             
-          const interval = setInterval(function() {
-              currentTime += 0.1; // Simulating a fraction of a second
-              updateProgressBar(currentTime, totalTime);
-              
-              if (currentTime >= totalTime) {
-                  clearInterval(interval);
-                  //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
-              }
-          }, 100); // Update every 100 milliseconds
+            // progressbar interval time start
+            const totalTime = response.generationTime; // Total time in seconds
+            let currentTime = 0;
+                
+            const interval = setInterval(function() {
+                currentTime += 0.1; // Simulating a fraction of a second
+                updateProgressBar(currentTime, totalTime);
+                
+                if (currentTime >= totalTime) {
+                    clearInterval(interval);
+                    //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
+                }
+            }, 100); // Update every 100 milliseconds
 
             // Function to append images
          const etaInSeconds = response.generationTime;   
          function appendSuccessImages() {
 
-               
-            
               var pageHTML = "<center> "; 
               pageHTML += " <a data-fancybox='images' href='" + response.output[0] + "'> <img src='" + response.output[0] + "' alt=''> </a>";
               pageHTML += "</center>";
