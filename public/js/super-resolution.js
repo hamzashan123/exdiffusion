@@ -63,6 +63,9 @@ $(document).ready(function(){
 
 
     $('#generateSuperResolution').on('click', function(){
+
+       
+
         const face_enhance = $('#face_enhance').is(':checked');
         const super_resolution = $('#super_resolution').is(':checked');
         const superscale_input = $('#superscale_input').val();
@@ -75,6 +78,9 @@ $(document).ready(function(){
             return;
          }
          
+         $('#generateSuperResolution').text('Generating');
+         $('#generateSuperResolution').addClass('generating');
+
           // Create a FormData object
         const formData = new FormData();
 
@@ -96,12 +102,56 @@ $(document).ready(function(){
               var response = JSON.parse(response);
               console.log(response);
               if(response.status == "success"){
-                var pageHTML = "<img src='"+response.output[0]+"'>";      
-                $(".superscaleoutputimage").append(pageHTML);
-              }else if(response.status == "processing"){
-                var pageHTML = "<span> Image will be available </span>";      
-                $(".superscaleoutputimage").append(pageHTML);
+            $('.hide_progress').css('visibility','visible');
+            $('.hide_progress').removeClass('progressheightmanage');
+         
+          // progressbar interval time start
+          const totalTime = response.generationTime; // Total time in seconds
+          let currentTime = 0;
+            
+          const interval = setInterval(function() {
+              currentTime += 0.1; // Simulating a fraction of a second
+              updateProgressBar(currentTime, totalTime);
+              
+              if (currentTime >= totalTime) {
+                  clearInterval(interval);
+                  //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
               }
+          }, 100); // Update every 100 milliseconds
+
+            // Function to append images
+         const etaInSeconds = response.generationTime;   
+         function appendSuccessImages() {
+
+               
+            
+              var pageHTML = "<center> "; 
+              pageHTML += " <a data-fancybox='images' href='" + response.output[0] + "'> <img src='" + response.output[0] + "' alt=''> </a>";
+              pageHTML += "</center>";
+
+              $(".superscaleoutputimage").append(pageHTML);
+              $(".processing").remove();
+              $('#generateSuperResolution').text('Generate');
+              $('#generateSuperResolution').removeClass('generating');
+              $('.hide_progress').css('visibility','hidden');
+              $('.hide_progress').addClass('progressheightmanage');
+
+         }
+         
+           // Calculate milliseconds for ETA time
+           const etaInMilliseconds = etaInSeconds * 1000;
+
+           // Set timeout to append images after ETA time
+           setTimeout(function() {
+              appendSuccessImages();
+           }, etaInMilliseconds);
+
+             
+              }
+            //   else if(response.status == "processing"){
+            //     var pageHTML = "<span> Image will be available </span>";      
+            //     $(".superscaleoutputimage").append(pageHTML);
+            //   }
             },
             error: function () {
               $("#result").text("Error occurred while fetching data from the API.");

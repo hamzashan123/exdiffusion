@@ -31,8 +31,8 @@
 
                 <div class="innerImageDivSuperResolutionOutput border-radius-7 superscaleoutputimage" style="background: #0b0f19;padding: 10px;width: 100%;">
 
-                <div id="progress-label" class="text-center ">Completed 0%</div>
-                    <div class="progress ">
+                <div id="progress-label" class="text-center hide_progress">Completed 0%</div>
+                    <div class="progress hide_progress">
                         <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
 
