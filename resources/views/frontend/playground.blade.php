@@ -58,18 +58,7 @@
                 <button class="nav-link text-light-grey" id="TokenExchange-tab" data-bs-toggle="tab" data-bs-target="#TokenExchange" type="button" role="tab" aria-controls="TokenExchange" aria-selected="false">Token Exchange</button>
             </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
-
-
-            <!-- Start txt2img content -->
-            @include('pages.txt2img')
-            <!-- End txt2img content -->
-
-            <!-- Start super resolution content -->
-            @include('pages.super-resolution')
-            <!-- End super resolution content -->
-
-
+        <div class="tab-content" id="myTabContent">@include('pages.txt2img')@include('pages.super-resolution')
             <div class="tab-pane fade text-white" id="txt2video" role="tabpanel" aria-labelledby="txt2video-tab">
                 Coming Soon
             </div>
