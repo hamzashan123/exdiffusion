@@ -35,7 +35,7 @@ $(document).ready(function(){
 
     // Trigger file input click when upload button is clicked
     uploadButton.on('click', function() {
-        superResolutionArray = [];
+        // superResolutionArray = [];
         uploadImageInput.click();
     });
 
