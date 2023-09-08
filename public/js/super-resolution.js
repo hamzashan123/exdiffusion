@@ -22,7 +22,7 @@ $(document).ready(function(){
                     draggableArea.find('label').hide();
                     draggableArea.find('input').hide();
                     draggableArea.append(imageElement).addClass('draggable');
-                    superResolutionArray = [];
+                    // superResolutionArray = [];
                 };
                 reader.readAsDataURL(file);
             }
