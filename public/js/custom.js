@@ -308,7 +308,7 @@ function generateImages() {
             // Function to append images
          const etaInSeconds = response.generationTime;   
          function appendSuccessImages() {
-
+              superResolutionArray = [];
               var pageHTML = "<center> <div class='generated_images'>";
               response.output.forEach((element) => {
                 superResolutionArray.push(element);
@@ -359,8 +359,10 @@ function generateImages() {
              // Function to append images
           const etaInSeconds = response.eta;   
           function appendProcessingImages() {
+              superResolutionArray = [];
               var pageHTML = "<center> <div class='generated_images'>";
               response.image_links.forEach((element) => {
+                superResolutionArray.push(element);
                 pageHTML += " <a data-fancybox='images' href='" + element + "'> <img src='" + element + "' alt=''> </a>";
               });
               pageHTML += "</div> </center>";
