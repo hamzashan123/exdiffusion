@@ -72,6 +72,7 @@ $(document).ready(function(){
         //     return;
         //  }
 
+
         
          
          $('#generateSuperResolution').text('Generating');
@@ -83,15 +84,22 @@ $(document).ready(function(){
         const formData = new FormData();
 
         // Append the selected file to the FormData object
-        formData.append("face_enhance", face_enhance);
+        
         formData.append("super_resolution", super_resolution);
-        formData.append("superscale_input", superscale_input);
+    
         formData.append("file", uploadedImage[0].files[0]);
-        formData.append("super_resultion_model_id", super_resultion_model_id);
+        
 
         if (superResolutionArray.length > 0) { 
             formData.append("image_url", superResolutionArray[0]);
-         }
+        }
+        if ($('#super_resolution').is(':checked'))  {
+            formData.append("super_resultion_model_id", super_resultion_model_id);
+            formData.append("superscale_input", superscale_input);
+        } 
+        if ($('#face_enhance').is(':checked'))  {
+            formData.append("face_enhance", face_enhance);
+        } 
 
         $.ajax({
             url: '' + baseUrl + '/get-superResolution',
