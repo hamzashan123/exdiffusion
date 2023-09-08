@@ -156,8 +156,8 @@ $('#restart_server').on('click' , function(){
       var response = JSON.parse(response);
 
       $(".server_restart").remove();
+      $(".innerImageDiv").find("img").remove(); 
       var pageHTML = "<div class='server_restart'> <p> "+ response.message+"</p> </div>";
-             
       $(".innerImageDiv").append(pageHTML);
       console.log(response);
     },
@@ -370,6 +370,9 @@ function generateImages() {
               $('#generateBtn').removeClass('generating');
               $('.hide_progress').css('visibility','hidden');
               $('.hide_progress').addClass('progressheightmanage');
+              if(superResolutionArray.length > 0 ){
+                $('#make_super_resolution').removeAttr('disabled');
+              }
           }
           
             // Calculate milliseconds for ETA time
