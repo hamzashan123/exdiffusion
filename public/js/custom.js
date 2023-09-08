@@ -213,14 +213,14 @@ function generateImages() {
     var clickskip = null
   }
 
-  // if ($('#super_resolution').is(':checked'))  {
-  //   face_enhance = true;
-  //   var super_resultion_model_id = $('#super_resultion_model_id').val();
-  //   var super_resultion_scale = $('#superscale_input').val();
-  // } else {
-  //   var super_resultion_model_id = null;
-  //   var super_resultion_scale = null;
-  // }
+  if ($('#super_resolution').is(':checked'))  {
+    face_enhance = true;
+    var super_resultion_model_id = $('#super_resultion_model_id').val();
+    var super_resultion_scale = $('#superscale_input').val();
+  } else {
+    var super_resultion_model_id = null;
+    var super_resultion_scale = null;
+  }
 
   console.log('prompt',prompt);
   console.log('negative_prompt',negative_prompt);
