@@ -9,7 +9,7 @@
           <li><a href="#" class="nav-link px-3 text-light-grey">Home</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey">Playground</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey">Published Creations</a></li>
-          <li><a href="#" class="nav-link px-3 text-light-grey">Creative History</a></li>
+          <li><a href="#" class="nav-link px-3 text-light-grey">My Assets</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#uploadModels">Upload Models</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#invitationUser" >Invitation Request</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" id="restart_server">Restart Server</a></li>
