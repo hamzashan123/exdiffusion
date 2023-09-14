@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,30 +15,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+ 
   @yield('style')
 </head>
 
 <body style="background: #0b0f19;">
   <div class="blur-container">
-    @include('partials.header')
+    @include('partials.frontend.header')
 
     <div class="mainSection">
       @yield('content')
     </div>
 
-    @include('partials.footer')
+    @include('partials.frontend.footer')
 
 
   </div>
 
-  @include('pages.modals')
+
+  @include('auth.login-modal')
+  @include('auth.register-modal')
+  @include('frontend.modals.signup-success')
+  @include('frontend.modals.upload-models')
+  @include('frontend.modals.upload-modelsuccess')
+  @include('frontend.modals.invite-modelsuccess')
+  @include('frontend.modals.invitation')
   
+  @include('frontend.pages.modals')
+  
+ 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script src="{{ asset('js/custom.js') }}"> </script>
-  <script src="{{ asset('js/super-resolution.js') }}"> </script>
-  <script src="{{ asset('js/textareaFunctions.js') }}"> </script>
+  <script src="{{ asset('frontend/js/custom.js') }}"> </script>
+  <script src="{{ asset('frontend/js/super-resolution.js') }}"> </script>
+  <script src="{{ asset('frontend/js/textareaFunctions.js') }}"> </script>
+  
   @yield('script')
 </body>
 
