@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="#">
+                <!-- <form method="POST" action="#"> -->
                     @csrf
 
                     <div class="form-group">
@@ -17,10 +17,10 @@
                         <input type="email" name="email" id="email" class="form-control">
                     </div>
                    
-                    <div class="form-group forgetPasswordBtn">
+                    <div class="form-group forgetPasswordBtn" style="margin-top: 10px;">
                         <button  class="btn btn-primary">Send</button>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>

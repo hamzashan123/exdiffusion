@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="#">
+                <!-- <form method="POST" action="#"> -->
                     @csrf
 
                     <div class="form-group">
@@ -33,7 +33,7 @@
                     <div class="form-group signinPopupBtn">
                         <button  class="btn btn-primary">Sign in</button>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>
