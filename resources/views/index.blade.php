@@ -40,12 +40,12 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <a href="http://127.0.0.1:8000/admin/users">
+                                    <a href="#">
                                     
                                         Instant Stable Diffusion
                                     
                                     </a>
-                                    <p> Craete stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
+                                    <p> Create stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -61,12 +61,12 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                <a href="http://127.0.0.1:8000/admin/users">
+                                <a href="#">
                                     
-                                    Instant Stable Diffusion
+                                    Clone, Craft, Customize
                                 
                                 </a>
-                                <p> Craete stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
+                                <p> Easily clone public AI image settings and craft your own customized visuals.  </p>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -82,34 +82,12 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                <a href="http://127.0.0.1:8000/admin/users">
+                                <a href="#">
                                     
-                                    Instant Stable Diffusion
+                                    Train, Refine, Voice
                                 
                                 </a>
-                                <p> Craete stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-users fa-2x text-gray-300"></i>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                <a href="http://127.0.0.1:8000/admin/users">
-                                    
-                                    Instant Stable Diffusion
-                                
-                                </a>
-                                <p> Craete stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
+                                <p> Coming soon: Harness the power of AI to train and refine voice outputs.  </p>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -126,12 +104,34 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                <a href="http://127.0.0.1:8000/admin/users">
+                                <a href="#">
                                     
-                                    Instant Stable Diffusion
+                                    Voice, Visual, Harmony 
                                 
                                 </a>
-                                <p> Craete stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
+                                <p> Coming soon: Seamlessly combine AI-trained voices with your generated images for a harmonious experience.  </p>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                <a href="#">
+                                    
+                                    Image2Video 
+                                
+                                </a>
+                                <p> Coming soon: Transform your AI-generated images into captivating videos. </p>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -147,12 +147,12 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                <a href="http://127.0.0.1:8000/admin/users">
+                                <a href="#">
                                     
-                                    Instant Stable Diffusion
+                                    ChatGPT-image Fusion
                                 
                                 </a>
-                                    <p> Craete stunning AI generated images with stable Diffusion, no installation or setup required.  </p>
+                                    <p> Coming soon: Blend AI imagery with chatGPT. Explore diverse interactive possibillites.  </p>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -166,10 +166,7 @@
           
             <div class="row exclusiveAccessRequest">
                     <div class="col-xl-12 col-md-12 mb-4 ">
-                    <a href="{{route('home')}}" class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu" style="background-color: #a157dc;
-    border: 2px solid #374151;
-    font-size: 18px;
-    padding: 7px 15px;"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</a>
+                    <button  data-bs-toggle="modal" data-bs-target="#invitationUser" class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png"  class="btn_img"> Exclusive Access Request</button>
                     </div>
             </div>
            
@@ -183,7 +180,7 @@
 
 
 
-  
+
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
@@ -191,7 +188,10 @@
   <script src="{{ asset('frontend/js/super-resolution.js') }}"> </script>
   <script src="{{ asset('frontend/js/textareaFunctions.js') }}"> </script>
   
- 
+    
 </body>
 
+
+@include('frontend.modals.invite-modelsuccess')
+@include('frontend.modals.invitation')
 </html>
