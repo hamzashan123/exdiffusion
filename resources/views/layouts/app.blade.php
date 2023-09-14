@@ -35,6 +35,7 @@
 
 
   @include('auth.login-modal')
+  @include('auth.forget-passwordmodal')
   @include('auth.register-modal')
   @include('frontend.modals.signup-success')
   @include('frontend.modals.upload-models')

@@ -1173,13 +1173,25 @@ div#loginModal label {
     color: white;
 }
 
-
-
 div#loginModal input {
     background: transparent;
     border: 2px solid #374151;
 }
 
+
+div#forgetPasswordModal .modal-header h5 {
+    color: white !important;
+}
+
+div#forgetPasswordModal label {
+    margin: 5px 0px;
+    color: white;
+}
+
+div#forgetPasswordModal input {
+    background: transparent;
+    border: 2px solid #374151;
+}
 
 
 .form-group.forgetPassdiv .form-check {
@@ -1200,6 +1212,19 @@ div#loginModal input {
 }
 
 .form-group.signinPopupBtn .btn {
+    margin: 0px 5px;
+    padding: 5px 26px;
+    border: 1px solid #374151;
+    background: #6c757d;
+}
+
+.form-group.forgetPasswordBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group.forgetPasswordBtn .btn {
     margin: 0px 5px;
     padding: 5px 26px;
     border: 1px solid #374151;

@@ -26,7 +26,7 @@
                     <div class="form-group forgetPassdiv">
                         <div class="form-check">
                             
-                          <a href="" class="forgetPassword"> Forget Password?</a> 
+                          <a href="#" class="forgetPassword" data-bs-toggle="modal" data-bs-target="#forgetPasswordModal"> Forget Password?</a> 
                         </div>
                     </div>
 
