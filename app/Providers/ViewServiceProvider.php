@@ -1,12 +1,7 @@
 <?php
 
 namespace App\Providers;
-
-use App\Models\Category;
 use App\Models\Link;
-use App\Models\Page;
-use App\Models\Review;
-use App\Models\Tag;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
