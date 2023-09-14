@@ -1,7 +1,7 @@
 ﻿<header class="header">
    
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="logoAnchor">
+        <a href="{{route('index')}}" class="logoAnchor">
           <img src="{{asset('img/logo.png')}}" class="HeaderLogo">
         </a>
 
