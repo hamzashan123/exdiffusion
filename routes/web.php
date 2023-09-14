@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/index',function(){
+Route::get('/',function(){
         return view('index');
 })->name('index');
 
-Route::get('/', [ModelsController::class, 'index'])->name('home');
+Route::get('/playground', [ModelsController::class, 'index'])->name('home');
 
 Route::get('/get-base-models',[ModelsController::class, 'getBaseModels'])->name('getbasemodels');
 Route::get('/get-schedulers',[ModelsController::class, 'getSchedulers'])->name('getschedulers');

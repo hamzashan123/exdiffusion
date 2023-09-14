@@ -166,7 +166,10 @@
           
             <div class="row exclusiveAccessRequest">
                     <div class="col-xl-12 col-md-12 mb-4 ">
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
+                    <a href="{{route('home')}}" class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu" style="background-color: #a157dc;
+    border: 2px solid #374151;
+    font-size: 18px;
+    padding: 7px 15px;"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</a>
                     </div>
             </div>
            
