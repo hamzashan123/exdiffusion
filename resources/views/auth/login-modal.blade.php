@@ -27,11 +27,21 @@
                         <div class="form-check">
                             
                           <a href="#" class="forgetPassword" data-bs-toggle="modal" data-bs-target="#forgetPasswordModal"> Forget Password?</a> 
+                        
+                          
                         </div>
                     </div>
 
                     <div class="form-group signinPopupBtn">
                         <button  class="btn btn-primary">Sign in</button>
+                    </div>
+
+                    <div class="form-group donthaveaccount">
+                     
+                            
+                       Don't have an account? &nbsp; <a href="#" class="donthaveaccount" data-bs-toggle="modal" data-bs-target="#signupModal">  Sign up </a>  
+                          
+                       
                     </div>
                 <!-- </form> -->
             </div>

@@ -1273,6 +1273,20 @@ div#signup-success .modal-body h5 {
     font-weight: 300;
 }
 
+.form-group.donthaveaccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    color: white !important;
+}
+
+.form-group.donthaveaccount a {
+    color: #b66cf2;
+    text-decoration: none;
+}
+
+
 @media only screen and (min-width:1400px) {
     .row.contentSectionIndex {max-width: 50%;margin-top: 40px;}
 

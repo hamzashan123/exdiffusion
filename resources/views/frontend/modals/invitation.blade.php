@@ -33,8 +33,7 @@
                     <div class="form-group">
                         <label for="invite_country">Country</label>
                         <select name="invite_country" id="invite_country" class="form-control" >
-                            <option value="Usa">Usa</option>
-                            <option value="Japan">Japan</option>
+                            @include('frontend.pages.countries')
                         </select>
                     </div>
 
@@ -42,9 +41,22 @@
                     <div class="form-group">
                         <label for="invite_occupation">Occupation</label>
                         <select name="invite_occupation" id="invite_occupation" class="form-control" >
-                            <option value="ABC">ABC</option>
-                            <option value="XYZ">XYZ</option>
-                            <option value="ABC">ABC</option>
+                            <option value="">Select Occupation</option>
+                            <option value="Accounting & Finance">Accounting & Finance</option>
+                            <option value="Arts & Design">Arts & Design</option>
+                            <option value="Education & Training">Education & Training</option>
+                            <option value="Engineering & Architecture">Engineering & Architecture</option>
+                            <option value="Healthcare & Medical">Healthcare & Medical</option>
+                            <option value="Human Resources">Human Resources</option>
+                            <option value="IT & Software">IT & Software</option>
+                            <option value="Legal">Legal</option>
+                            <option value="Marketing & Sales">Marketing & Sales</option>
+                            <option value="Media & Communication">Media & Communication</option>
+                            <option value="Retail & Customer Service">Retail & Customer Service</option>
+                            <option value="Science & Research">Science & Research</option>
+                            <option value="Skilled Trades">Skilled Trades</option>
+                            <option value="Transportation & Logistics">Transportation & Logistics</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
 

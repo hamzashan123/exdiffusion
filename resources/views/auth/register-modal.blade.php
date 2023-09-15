@@ -35,6 +35,14 @@
                         <button  class="btn btn-primary" id="signUpBtn">Sign Up</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
                     </div>
+
+                    <div class="form-group donthaveaccount">
+                     
+                            
+                    Already have an account?   &nbsp; <a href="#" class="donthaveaccount" data-bs-toggle="modal" data-bs-target="#loginModal">  Sign in </a>  
+                          
+                       
+                    </div>
                 <!-- </form> -->
             </div>
         </div>

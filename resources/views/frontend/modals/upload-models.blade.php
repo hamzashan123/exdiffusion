@@ -27,9 +27,9 @@
                     <div class="form-group">
                         <label for="base_model_type">Base Model Type<span class="required">*</span></label>
                         <select name="base_model_type" id="base_model_type" class="form-control" >
-                            <option value="wifu-diffusion">wifu-diffusion</option>
-                            <option value="unglobal-model">unglobal-model</option>
-                            <option value="protogen-3.4">protogen-3.4</option>
+                            <option value="Stable Diffusion XL">Stable Diffusion XL</option>
+                            <option value="Stable Diffusion 1.5">Stable Diffusion 1.5</option>
+                            <option value="Stable Diffusion 2.00">Stable Diffusion 2.00</option>
                         </select>
                     </div>
 
@@ -37,9 +37,12 @@
                     <div class="form-group">
                         <label for="model_kind">Model Kind<span class="required">*</span></label>
                         <select name="model_kind" id="model_kind" class="form-control" >
-                            <option value="wifu-diffusion">wifu-diffusion</option>
-                            <option value="unglobal-model">unglobal-model</option>
-                            <option value="protogen-3.4">protogen-3.4</option>
+                                <option value="SDXL Lora">SDXL Lora</option>
+                                <option value="StableDiffusionXLFullModel">StableDiffusionXLFullModel</option>
+                                <option value="Stable Diffusion 1.5">Stable Diffusion 1.5</option>
+                                <option value="SD 1.5 Lora">SD 1.5 Lora</option>
+                                <option value="Embeddings">Embeddings</option>
+                                <option value="Controlnet">Controlnet</option>
                         </select>
                     </div>
 
@@ -47,9 +50,10 @@
                     <div class="form-group">
                         <label for="model_format">Model Format<span class="required">*</span></label>
                         <select name="model_format" id="model_format" class="form-control" >
-                            <option value="wifu-diffusion">wifu-diffusion</option>
-                            <option value="unglobal-model">unglobal-model</option>
-                            <option value="protogen-3.4">protogen-3.4</option>
+                                <option value="Safetensors Model">Safetensors Model</option>
+                                <option value="Huggingface Diffusion Model">Huggingface Diffusion Model</option>
+                                <option value="Ckpt Model">Ckpt Model</option>
+                                <option value="PT Embeddings">PT Embeddings</option>
                         </select>
                     </div>
 
