@@ -29,7 +29,7 @@
                         <select name="base_model_type" id="base_model_type" class="form-control" >
                             <option value="Stable Diffusion XL">Stable Diffusion XL</option>
                             <option value="Stable Diffusion 1.5">Stable Diffusion 1.5</option>
-                            <option value="Stable Diffusion 2.00">Stable Diffusion 2.00</option>
+                            <option value="Stable Diffusion 2.0">Stable Diffusion 2.0</option>
                         </select>
                     </div>
 
