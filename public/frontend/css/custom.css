@@ -994,11 +994,12 @@ span.fileUploadText {
 
 .row.contentSectionIndex {max-width: 70%;margin-top: 40px;}
 
-.row.contentSectionIndex h2 {
+.row.contentSectionIndex h2  {
     padding: 0px !important;
     color: #c78ef6;
     font-size: 32px;
     font-weight: 400;
+    text-align: center;
 }
 
 .row.contentSectionIndex h2:nth-child(3) {
