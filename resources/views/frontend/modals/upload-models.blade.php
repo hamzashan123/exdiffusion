@@ -50,10 +50,10 @@
                     <div class="form-group">
                         <label for="model_format">Model Format<span class="required">*</span></label>
                         <select name="model_format" id="model_format" class="form-control" >
-                                <option value="Safetensors Model">Safetensors Model</option>
+                                <option value=".Safetensors Model">.Safetensors Model</option>
                                 <option value="Huggingface Diffusion Model">Huggingface Diffusion Model</option>
-                                <option value="Ckpt Model">Ckpt Model</option>
-                                <option value="PT Embeddings">PT Embeddings</option>
+                                <option value=".Ckpt Model">.Ckpt Model</option>
+                                <option value=".PT Embeddings">.PT Embeddings</option>
                         </select>
                     </div>
 
