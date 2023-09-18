@@ -1,5 +1,5 @@
-﻿// var baseUrl = 'https://exdiffusion.com/newproject/public';
-var baseUrl = '';
+﻿var baseUrl = 'https://exdiffusion.com/newproject/public';
+// var baseUrl = '';
 
 var superResolutionArray = [];
 $(document).ready(function(){
