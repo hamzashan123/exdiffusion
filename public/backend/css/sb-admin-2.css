@@ -11285,7 +11285,8 @@ body.sidebar-toggled footer.sticky-footer {
 .bg-gradient-primary {
   background-color: #000000 !important;
   /* background-image:linear-gradient(180deg,#4e73df 10%,#224abe 100%); */
-  background-size: cover !important
+  /* background-size: cover !important; */
+  background: linear-gradient(217deg, rgba(112,31,176,1) 15%, rgba(147,74,205,1) 44%, rgba(149,61,218,1) 85%);
 }
 
 .sidebar-dark .nav-item .nav-link {

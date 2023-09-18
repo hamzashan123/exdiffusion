@@ -1,21 +1,11 @@
-# Laravel E-commerce
+# Laravel
 
-<!-- PROJECT LOGO -->
-<p align="center"><a href="https://demoshop.alialqahtani.sa" target="_blank"><img src="https://demoshop.alialqahtani.sa/img/logo.png" width="400" alt="Laravel-Ecommerce"></a></p>
 
-<p align="center">
-  <p align="center">
-    <a href="https://github.com/alijumaan/laravel-ecommerce/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/alijumaan/laravel-ecommerce/issues">Request Feature</a>
-  </p>
 
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/alijumaan/laravel-ecommerce.git
-   ```
+   
 2. Install Composer packages
    ```sh
    composer install
@@ -56,11 +46,6 @@
    add mail configuration in .env
    ```
 
-## Permission folder
-sudo chmod -R 777 settings.json
 
-## Notes
-if you need countries, states, cities data (change database in public/ecommerce_world.sql line 22)
 
-## Contact
-* [Ali AlQahtani](https://alialqahtani.sa/#contacts)
+
