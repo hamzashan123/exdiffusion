@@ -48,9 +48,11 @@
  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  
   <script src="{{ asset('frontend/js/custom.js') }}"> </script>
   <script src="{{ asset('frontend/js/super-resolution.js') }}"> </script>
   <script src="{{ asset('frontend/js/textareaFunctions.js') }}"> </script>
+ 
   
   @yield('script')
 </body>

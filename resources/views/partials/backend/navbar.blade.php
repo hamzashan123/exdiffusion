@@ -9,7 +9,7 @@
     <ul class="navbar-nav ml-auto">
 
         <!-- Nav Item - Alerts -->
-        <li class="nav-item dropdown no-arrow mx-1">
+        <li class="nav-item dropdown no-arrow mx-1" style="display: none;">
             <livewire:backend.notification-component />
         </li>
 

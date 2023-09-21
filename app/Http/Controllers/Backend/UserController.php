@@ -12,6 +12,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -48,35 +50,35 @@ class UserController extends Controller
         return view('backend.users.create');
     }
 
-    public function store(UserRequest $request): RedirectResponse
+    public function signUp(Request $request)
     {
-        $this->authorize('create_user');
+        
 
-        if ($request->hasFile('user_image')) {
-            $userImage = $this->imageService->storeUserImages($request->username, $request->user_image);
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
         $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'username' => $request->username,
-            'customer_type' => $request->customer_type,
+            'first_name' => '',
+            'last_name' => '',
             'email' => $request->email,
             'email_verified_at' => now(),
-            'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'status' => $request->status,
             'receive_email' => true,
-           'user_image' => $userImage ?? NULL
+            'user_image' => $userImage ?? NULL
         ]);
+        
 
         $user->markEmailAsVerified();
         $user->assignRole('user');
 
-        return redirect()->route('admin.users.index')->with([
-            'message' => 'Created successfully',
-            'alert-type' => 'success'
-        ]);
+        return response()->json(['message' => 'Registration successful'], 200);
     }
 
     public function show(User $user): View

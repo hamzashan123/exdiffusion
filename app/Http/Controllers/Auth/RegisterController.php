@@ -53,6 +53,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+     
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -79,8 +80,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
-      // dd($data);
+
+        // dd($data);
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -112,14 +113,13 @@ class RegisterController extends Controller
             'username' => $user->username,
             'email' => $user->email,
             'subject' => 'Registration Successful',
-            'msg' => 'You have successfully registered to koimports.co.uk . Your Account is Under Reviewed. As soon as it will active you will receive an updates through Email.'
+            'msg' => 'You have successfully registered . Your Account is Under Reviewed. As soon as it will active you will receive an updates through Email.'
         ];
 
         try {
             Mail::to($user->email)->send(new UserSignUp($userdata));
-            Session::flash('success', 'Registration Successfull!'); 
+            Session::flash('success', 'Registration Successfull!');
         } catch (\Exception $e) {
-          
         }
 
         $admindata = [
@@ -129,15 +129,14 @@ class RegisterController extends Controller
             'username' => $user->username,
             'email' => $user->email,
             'subject' => 'KOImports User Registration',
-            'msg' => 'A new user registered into koimports.co.uk . Please check the admin and change status to active also assign customer type.'
+            'msg' => 'A new user registered'
         ];
 
         try {
-            
+
             $adminemail = User::role('admin')->first();
             Mail::to($adminemail->email)->send(new UserSignUp($admindata));
         } catch (\Exception $e) {
-          
         }
 
         return $user;

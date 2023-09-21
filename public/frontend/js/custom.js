@@ -1,5 +1,5 @@
-﻿var baseUrl = 'https://exdiffusion.com/newproject/public';
-// var baseUrl = '';
+﻿// var baseUrl = 'https://exdiffusion.com/newproject/public';
+var baseUrl = '';
 
 var superResolutionArray = [];
 $(document).ready(function(){
@@ -18,19 +18,9 @@ $(document).ready(function(){
         },500);
       });
 
-      $(document).on('click',"#inviteSendBtn" , function() {
-        $("#invitationUser").modal("hide");
-        setTimeout(function(){
-          $("#invitemodels-success").modal("show");
-        },500);
-      });
+     
 
-      $(document).on('click',"#signUpBtn" , function() {
-        $("#signupModal").modal("hide");
-        setTimeout(function(){
-          $("#signup-success").modal("show");
-        },500);
-      });
+      
 
     
 
@@ -736,6 +726,101 @@ $('#read_lastgeneration').on('click', function(){
 
 });
 
+
+$(document).on('click',"#inviteSendBtn" , function() {
+
+  var invite_first_name = $('#invite_firstname').val();
+  var invite_lastname = $('#invite_lastname').val();
+  var invite_email = $('#invite_email').val();
+  var invite_country = $('#invite_country').val();
+  var invite_occupation = $('#invite_occupation').val();
+  
+  $.ajax({
+  url: '' + baseUrl + '/sendInvite',
+  method: "POST",
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  data: {
+    invite_first_name : invite_first_name,
+    invite_lastname : invite_lastname,
+    invite_email : invite_email,
+    invite_country : invite_country,
+    invite_occupation : invite_occupation,
+  },
+  success: function (response) {
+      
+      var response = response;    
+      console.log(response.status);
+
+      if(response.status == "success"){
+        $("#invitationUser").modal("hide");
+        setTimeout(function(){
+            $("#invitemodels-success").modal("show");
+        },500);
+      }else if(response.status == "failed"){
+          $('#invitationError').text("");
+          $('#invitationError').text("Invitation already sent!");
+          
+      }
+      else{
+        alert("Something went wront!");
+      }
+      
+  },
+  error: function () {
+      alert("Error occurred while fetching data from the API.");
+  },
+  });
+
+
+});
+
+
+$(document).on('click',"#signUpBtn" , function() {
+
+  var first_name = $('#firstname').val();
+  var last_name = $('#lastname').val();
+  var email = $('#email').val();
+
+  $.ajax({
+  url: '' + baseUrl + '/sendInvite',
+  method: "POST",
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  data: {
+    first_name : first_name,
+    last_name : last_name,
+    email : email,
+  },
+  success: function (response) {
+      
+      var response = response;    
+      console.log(response.status);
+
+      if(response.status == "success"){
+
+        $("#signupModal").modal("hide");
+          setTimeout(function(){
+            $("#signup-success").modal("show");
+          },500);
+
+      }else if(response.status == "failed"){
+          $('#RegisterError').text("");
+          $('#RegisterError').text("User already registered!");
+          
+      }
+      else{
+        alert("Something went wront!");
+      }
+      
+  },
+  error: function () {
+      alert("Error occurred while fetching data from the API.");
+  },
+  });
+
+  
+});
+
+
 const Styles = {};
 $(document).on('click' ,'#save_style', function () {
   var style_name = $('#style_name').val();
@@ -783,3 +868,6 @@ function removeValueFromArray(array, valueToRemove) {
     array.splice(index, 1);
   }
 }
+
+
+

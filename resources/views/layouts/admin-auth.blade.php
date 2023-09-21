@@ -17,19 +17,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/sb-admin-2.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
-<body class="bg-gradient-primary">
+<body class="new-bg-gradient-primary">
 
-<div class="container">
+<div class="container adminContainer">
     @yield('content')
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('backend/js/sb-admin-2.js') }}"></script>
 
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>

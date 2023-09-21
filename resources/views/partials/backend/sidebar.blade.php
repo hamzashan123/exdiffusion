@@ -2,7 +2,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon rotate-n-15"></div>
-        <div class="sidebar-brand-text mx-3">{{ config('app.name') }}</div>
+        <div class="sidebar-brand-text mx-3"> <img src="{{asset('img/logo.png')}}" class="adminLogo">  </div>
     </a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -19,28 +19,141 @@
         Interface
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
-    @forelse($admin_side_menu as $link)
-        @can($link->permission_title)
+    
+       
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{ $link->as }}"
-                   aria-expanded="true" aria-controls="collapse{{ $link->as }}">
-                    <i class="{{ $link->icon }}"></i>
-                    <span>{{ $link->title }}</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                   aria-expanded="true" aria-controls="collapseUser">
+                    <i class="fas fa-users"></i>
+                    <span> Users</span>
                 </a>
-                <div id="collapse{{ $link->as }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        @if(in_array($link->to, $routes_name))
-                            <a class="collapse-item" href="{{ route($link->to) }}">
-                                {{ $link->title }}
+                       
+                            <a class="collapse-item" href="{{ route('admin.invitation.index') }}">
+                                Invitation Request
                             </a>
-                        @endif
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                             Registered Users
+                            </a>
+                       
                     </div>
                 </div>
             </li>
-        @endcan
-    @empty
-    @endforelse
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImages"
+                   aria-expanded="true" aria-controls="collapseImages">
+                    <i class="fas fa-image"></i>
+                    <span> Images</span>
+                </a>
+                <div id="collapseImages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                             Published Images
+                            </a>
+                       
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModel"
+                   aria-expanded="true" aria-controls="collapseModel">
+                    <i class="fas fa-image"></i>
+                    <span> Models</span>
+                </a>
+                <div id="collapseModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Base Models
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Lora
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Embeddings
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Controlnet
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            SDXL
+                            </a>
+                       
+                    </div>
+                </div>
+            </li>
+
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePublicModel"
+                   aria-expanded="true" aria-controls="collapsePublicModel">
+                    <i class="fas fa-image"></i>
+                    <span> Public Models</span>
+                </a>
+                <div id="collapsePublicModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Base Models
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Lora
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Embeddings
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Controlnet
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            SDXL
+                            </a>
+                       
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmail"
+                   aria-expanded="true" aria-controls="collapseEmail">
+                    <i class="fas fa-envelope"></i>
+                    <span> Email Form</span>
+                </a>
+                <div id="collapseEmail" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Send
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Recieve
+                            </a>
+                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            Template
+                            </a>
+                       
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile"
+                   aria-expanded="true" aria-controls="collapseProfile">
+                    <i class="fas fa-cog"></i>
+                    <span> Settings</span>
+                </a>
+                <div id="collapseProfile" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.account_setting') }}">
+                            Profile
+                            </a>
+                           
+                       
+                    </div>
+                </div>
+            </li>
+       
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Heading -->

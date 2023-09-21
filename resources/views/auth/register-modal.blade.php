@@ -9,6 +9,7 @@
                    
                 </button>
             </div>
+            <h5 id="RegisterError" style="color:red"></h5>
             <div class="modal-body">
                 <!-- <form method="POST" action="#"> -->
                     @csrf

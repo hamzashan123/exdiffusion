@@ -7,6 +7,7 @@
                     
                 </button>
             </div>
+            <h5 id="invitationError" style="color:red"></h5>
             <div class="modal-body">
                 <!-- <form method="POST" action="#" enctype="multipart/form-data"> -->
                     @csrf
@@ -14,19 +15,19 @@
                     <!-- First Name -->
                     <div class="form-group">
                         <label for="invite_firstname">First Name</label>
-                        <input type="text" name="invite_firstname" id="invite_firstname" class="form-control" >
+                        <input type="text" name="invite_firstname" id="invite_firstname" class="form-control" required>
                     </div>
 
                     <!-- Last Name -->
                     <div class="form-group">
                         <label for="invite_lastname">Last Name</label>
-                        <input type="text" name="invite_lastname" id="invite_lastname" class="form-control" >
+                        <input type="text" name="invite_lastname" id="invite_lastname" class="form-control" required>
                     </div>
 
                      <!-- Email -->
                      <div class="form-group">
                         <label for="invite_email">Email</label>
-                        <input type="text" name="invite_email" id="invite_email" class="form-control" >
+                        <input type="email" name="invite_email" id="invite_email" class="form-control" required>
                     </div>
 
                     <!-- Base Model Type -->

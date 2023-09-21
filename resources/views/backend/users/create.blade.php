@@ -37,14 +37,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="username" class="text-small text-uppercase">{{ __('Username') }}</label>
-                            <input id="username" type="text" class="form-control form-control-lg" name="username"
-                                   value="{{ old('username') }}" placeholder="Username">
-                            @error('username')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
+                    
                     <div class="col-6">
                         <div class="form-group">
                             <label for="email" class="text-small text-uppercase">{{ __('E-Mail Address') }}</label>
@@ -53,20 +46,10 @@
                             @error('email')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="phone" class="text-small text-uppercase">{{ __('Phone') }}</label>
-                            <input id="phone" type="text" class="form-control form-control-lg" name="phone"
-                                   placeholder="Enter your Phone Number">
-                            @error('phone')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select name="status" id="status" class="form-control">
+                            <select name="status" id="status" class="form-control form-control-lg">
                                 <option value="">-- Choose Status User --</option>
                                 <option value="1" {{ old('status') == "1" ? 'selected' : null }}>Active</option>
                                 <option value="0" {{ old('status') == "0" ? 'selected' : null }}>Inactive</option>
@@ -75,6 +58,7 @@
                         </div>
                     </div>
                 </div>
+                
                 
                 <div class="row">
                     <div class="col-6">
@@ -96,18 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <label for="receive-email">Customer Type</label>
-                        <select name="customer_type" id="customer_type" class="form-control">
-                            
-                            <option value="general" >General Customer</option>
-                            <option value="premium" >Premium Customer</option>
-                        </select>
-                        @error('customer_type')<span class="text-danger">{{ $message }}</span>@enderror
-                    </div>
-                    
-                </div>
+                
                 <div class="row">
                     <div class="col-12">
                         <label for="user_image">User image</label>

@@ -7,11 +7,13 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image column1">
+                            <img src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png"/>
+                        </div>
+                        <div class="col-lg-6 column2">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">ADMIN LOGIN!</h1>
                                 </div>
                                 <form class="user" action="{{ route('login') }}" method="POST">
                                     @csrf
@@ -27,7 +29,7 @@
                                                placeholder="Enter Your Password">
                                         @error('password')<span class="text-danger">{{ $message }}</span>@enderror
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input"
                                                    name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -35,7 +37,7 @@
                                                 Remember Me
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <button class="btn btn-primary btn-user btn-block" type="submit" name="login">
                                         Login
                                     </button>
