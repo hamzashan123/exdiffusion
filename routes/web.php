@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/',function(){
-        return view('index');
+        if(Auth::user()){
+            return view('frontend.exdiffusion.playground'); 
+        }else{
+            return view('index');
+        }
+        
 })->name('index');
 
 Route::get('/playground', [ModelsController::class, 'index'])->name('home');

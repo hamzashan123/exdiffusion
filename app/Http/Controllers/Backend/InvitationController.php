@@ -141,7 +141,7 @@ class InvitationController extends Controller
               
             }
 
-            return redirect()->back()->with('success','Request Declined!');
+            return redirect()->back()->with('failed','Request Declined!');
         }
         
     }

@@ -775,50 +775,50 @@ $(document).on('click',"#inviteSendBtn" , function() {
 });
 
 
-$(document).on('click',"#signUpBtn" , function() {
+// $(document).on('click',"#signUpBtn" , function() {
 
-  var first_name = $('#firstname').val();
-  var last_name = $('#lastname').val();
-  var email = $('#email').val();
+//   var first_name = $('#firstname').val();
+//   var last_name = $('#lastname').val();
+//   var email = $('#email').val();
 
-  $.ajax({
-  url: '' + baseUrl + '/sendInvite',
-  method: "POST",
-  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-  data: {
-    first_name : first_name,
-    last_name : last_name,
-    email : email,
-  },
-  success: function (response) {
+//   $.ajax({
+//   url: '' + baseUrl + '/sendInvite',
+//   method: "POST",
+//   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+//   data: {
+//     first_name : first_name,
+//     last_name : last_name,
+//     email : email,
+//   },
+//   success: function (response) {
       
-      var response = response;    
-      console.log(response.status);
+//       var response = response;    
+//       console.log(response.status);
 
-      if(response.status == "success"){
+//       if(response.status == "success"){
 
-        $("#signupModal").modal("hide");
-          setTimeout(function(){
-            $("#signup-success").modal("show");
-          },500);
+//         $("#signupModal").modal("hide");
+//           setTimeout(function(){
+//             $("#signup-success").modal("show");
+//           },500);
 
-      }else if(response.status == "failed"){
-          $('#RegisterError').text("");
-          $('#RegisterError').text("User already registered!");
+//       }else if(response.status == "failed"){
+//           $('#RegisterError').text("");
+//           $('#RegisterError').text("User already registered!");
           
-      }
-      else{
-        alert("Something went wront!");
-      }
+//       }
+//       else{
+//         alert("Something went wront!");
+//       }
       
-  },
-  error: function () {
-      alert("Error occurred while fetching data from the API.");
-  },
-  });
+//   },
+//   error: function () {
+//       alert("Error occurred while fetching data from the API.");
+//   },
+//   });
 
   
-});
+// });
 
 
 const Styles = {};

@@ -9,15 +9,12 @@
             </h6>
             <div class="ml-auto">
                 @can('create_user')
-                    <!-- <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
-                    
-                        <span class="text">Add user</span>
-                    </a> -->
-
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
                     
                         <span class="text">Add user</span>
                     </a>
+
+                    
                 @endcan
             </div>
         </div>

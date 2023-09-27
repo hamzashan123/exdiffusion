@@ -1,11 +1,6 @@
 ﻿@extends('layouts.admin')
-
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+   
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
             <h6 class="m-0 font-weight-bold text-primary">
@@ -45,7 +40,7 @@
                          
                         <td>{{ $user->occupation }}</td>
                         <td>{{ $user->status }}</td>
-                        <td>
+                        <!-- <td>
                             <div class="btn-group btn-group-sm actionbtn">
                                 <a  href="#" class="approve btn btn-sm btn-primary">
                                    Approve
@@ -56,9 +51,9 @@
                                 </a>
                             </div>
                             
-                        </td>
+                        </td> -->
 
-                        <!-- <td>
+                        <td>
                             <div class="btn-group btn-group-sm actionbtn">
                                 <a  href="{{route('admin.inviteStatus',['id' => $user->id , 'status' => 'approved'])}}" class="approve btn btn-sm btn-primary">
                                    Approve
@@ -69,7 +64,7 @@
                                 </a>
                             </div>
                             
-                        </td> -->
+                        </td>
                     </tr>
                 
                     
@@ -81,10 +76,29 @@
     </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script>
-    $(document).ready(function(){
-        // $('#invitationTable').DataTable( {
-        //     lengthChange: false
-        // });
-    });
-</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+    <script>
+        $(document).ready(function(){
+            Swal.fire({
+                title: '<?php echo session('success') ?>',
+                icon: 'success',
+                timer: 4000, // Auto-close the alert after 4 seconds
+                showConfirmButton: false
+            });
+        })
+    </script>
+@endif
+
+@if(session('failed'))
+    <script>
+        $(document).ready(function(){
+            Swal.fire({
+                title: '<?php echo session('failed') ?>',
+                icon: 'error',
+                timer: 4000, // Auto-close the alert after 4 seconds
+                showConfirmButton: false
+            });
+        })
+    </script>
+@endif

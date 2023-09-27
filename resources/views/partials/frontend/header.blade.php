@@ -14,6 +14,12 @@
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#uploadModels">Upload Models</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#invitationUser" >Invitation Request</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" id="restart_server">Restart Server</a></li>
+          @if(Auth::user())
+          <li><form action="{{ route('logout') }}" method="POST" class="nav-link px-3 text-light-grey">
+                @csrf
+                <button type="submit">Logout</button>
+            </form></li>
+          @endif
           <!-- <li><a href="#" class="nav-link px-3 text-light-grey signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</a></li> -->
           <!-- <li><a href="#" class="nav-link px-3 text-light-grey signUpBtn" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a></li> -->
         </ul>
