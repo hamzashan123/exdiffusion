@@ -1,4 +1,5 @@
-﻿<header class="header">
+﻿@if(Auth::user())
+<header class="header">
    
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="{{route('index')}}" class="logoAnchor">
@@ -7,6 +8,7 @@
 
         
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        
           <li><a href="#" class="nav-link px-3 text-light-grey">Home</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey">Playground</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey">Published Creations</a></li>
@@ -14,11 +16,13 @@
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#uploadModels">Upload Models</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#invitationUser" >Invitation Request</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" id="restart_server">Restart Server</a></li>
+          
           @if(Auth::user())
-          <li><form action="{{ route('logout') }}" method="POST" class="nav-link px-3 text-light-grey">
+          <li class="logoutNav"><form action="{{ route('logout') }}" method="POST" class="nav-link px-3 text-light-grey">
                 @csrf
-                <button type="submit">Logout</button>
-            </form></li>
+                <button type="submit"> Logout</button>
+            </form>
+          </li>
           @endif
           <!-- <li><a href="#" class="nav-link px-3 text-light-grey signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</a></li> -->
           <!-- <li><a href="#" class="nav-link px-3 text-light-grey signUpBtn" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a></li> -->
@@ -28,3 +32,4 @@
       </div>
   
   </header>
+  @endif

@@ -23,6 +23,8 @@ Route::group(['middleware' => ['roles']], function () {
     Route::get('/supervisors/{supervisor}/remove-image', [SupervisorController::class, 'removeImage'])->name('supervisors.remove_image');
     Route::resource('supervisors', SupervisorController::class);
     Route::resource('users', UserController::class);
+    Route::post('/save-user', [UserController::class, 'saveUser'])->name('users.saveUser');
+    
     Route::resource('settings', SettingController::class)->only('index', 'update');
     Route::resource('links', LinkController::class)->except('show');
 

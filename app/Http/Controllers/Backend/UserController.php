@@ -52,10 +52,10 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        
-
+        $this->authorize('edit_user');
+        //dd($request->hasFile('user_image'));
         if ($request->hasFile('user_image')) {
-            $userImage = $this->imageService->storeUserImages($request->username, $request->user_image);
+            // $userImage = $this->imageService->storeUserImages($request->username, $request->user_image);
         }
 
         $user = User::create([
@@ -79,6 +79,12 @@ class UserController extends Controller
             'message' => 'Created successfully',
             'alert-type' => 'success'
         ]);
+    }
+
+    public function saveUser(Request $request)
+    {
+        $this->authorize('edit_user');
+       // dd($request);
     }
 
     public function show(User $user): View

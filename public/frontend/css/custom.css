@@ -1287,6 +1287,38 @@ div#signup-success .modal-body h5 {
     text-decoration: none;
 }
 
+div#signupModal .modal-content {
+    padding: 20px;
+    border-radius: 7px;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mainSection {
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+li.logoutNav button {
+    background: #a157dc;
+    padding: 2px 17px;
+    font-size: 19px;
+    font-weight: 300 !important;
+    border-radius: 7px;
+    border: 2px solid #374151;
+}
+
+li.logoutNav form {
+    margin-bottom: 0px !important;
+}
+
+.header ul.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media only screen and (min-width:1400px) {
     .row.contentSectionIndex {max-width: 50%;margin-top: 40px;}
@@ -1410,4 +1442,5 @@ div#signup-success .modal-body h5 {
     display: block;
 }
 }
+
 

@@ -2,9 +2,18 @@
 @section('title', 'Registration')
 @section('content')
 
+
+
+
 <div id="signupModal">
     <div >
         <div class="modal-content">
+
+        @if(session()->has('message'))
+            <div class="alert alert-{{ session()->get('alert-type') }} alert-dismissible fade show" role="alert" id="alert-message">
+                {{ session()->get('message') }}
+            </div>
+        @endif
             <div class="modal-header">
                 <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
                 
@@ -37,13 +46,13 @@
 
                     <div class="form-group signupPopupBtn">
                         <button  class="btn btn-primary" id="signUpBtn">Sign Up</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
+                       
                     </div>
 
                     <div class="form-group donthaveaccount">
                      
                             
-                    Already have an account?   &nbsp; <a href="#" class="donthaveaccount" data-bs-toggle="modal" data-bs-target="#loginModal">  Sign in </a>  
+                        Already have an account?   &nbsp; <a href="{{route('login')}}" class="donthaveaccount" >  Sign in </a>  
                           
                        
                     </div>

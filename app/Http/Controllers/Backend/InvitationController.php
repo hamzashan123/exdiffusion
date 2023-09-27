@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\InviteApprove;
+use App\Mail\UserInvite;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
@@ -43,50 +45,28 @@ class InvitationController extends Controller
                 'update_at' => now()
             ]);
 
+                $admindata = [
+                    'admin' => true,
+                    'firstname' => $request->invite_first_name,
+                    'lastname' => $request->invite_lastname,
+                    'email' => $request->invite_email,
+                    'subject' => 'Exdiffusion User Invite',
+                    'msg' => "New invitation has been received. You can now login to Exdiffusion  <a href='" . route('admin.login') . "'>Admin</a> accept or decline invite."
+                ];
+
+                // try {
+
+                    $adminemail = User::role('admin')->first();
+                    Mail::to($adminemail->email)->send(new UserInvite($admindata));
+                // } catch (\Exception $e) {
+                // }
+
             return response()->json([
                 'status' => 'success',
                 'code' => 200,
                 'msg' => "Invite Sent Successfully!"
             ]);
-        }
-        
-
-        
-
-        // $userdata = [
-        //     'admin' => false,
-        //     'firstname' => $user->first_name,
-        //     'lastname' => $user->last_name,
-        //     'username' => $user->username,
-        //     'email' => $user->email,
-        //     'subject' => 'Registration Successful',
-        //     'msg' => 'You have successfully registered . Your Account is Under Reviewed. As soon as it will active you will receive an updates through Email.'
-        // ];
-
-        // try {
-        //     Mail::to($user->email)->send(new UserSignUp($userdata));
-        //     Session::flash('success', 'Registration Successfull!');
-        // } catch (\Exception $e) {
-        // }
-
-        // $admindata = [
-        //     'admin' => true,
-        //     'firstname' => $user->invite_first_name,
-        //     'lastname' => $user->invite_last_name,
-        //     'username' => $user->username,
-        //     'email' => $user->email,
-        //     'subject' => 'KOImports User Registration',
-        //     'msg' => 'A new user registered'
-        // ];
-
-        // try {
-
-        //     $adminemail = User::role('admin')->first();
-        //     Mail::to($adminemail->email)->send(new UserSignUp($admindata));
-        // } catch (\Exception $e) {
-        // }
-
-        
+        } 
 
     }
 
@@ -109,6 +89,7 @@ class InvitationController extends Controller
                 'email' => $user->email,
                 'subject' => 'Account Activated',
                 'msg' => "Your invitation has been approved. You can now signup for the exdiffusion playground. <br> Click on this link to <a href='" . route('register') . "'>Sign Up</a>"
+                
             ];
     
             
