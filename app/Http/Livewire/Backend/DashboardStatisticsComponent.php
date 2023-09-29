@@ -14,7 +14,11 @@ class DashboardStatisticsComponent extends Component
 
     public function mount()
     {
-        $this->users = User::get();
+        $this->users = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'user');
+            }
+        )->get();
      
     }
 
