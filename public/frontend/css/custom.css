@@ -1,5 +1,10 @@
 ﻿* {
-    font-family: 'Lato', sans-serif !important;
+    font-family: 'Lato', sans-serif ;
+}
+
+i#eyeIcon:before {
+    content: "\f06e";
+    font-family: "Font Awesome 5 Free" !important;
 }
 
 body {
@@ -1319,6 +1324,10 @@ li.logoutNav form {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
 
 @media only screen and (min-width:1400px) {
     .row.contentSectionIndex {max-width: 50%;margin-top: 40px;}
