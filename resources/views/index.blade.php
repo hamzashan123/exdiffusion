@@ -169,6 +169,10 @@
                     <button  data-bs-toggle="modal" data-bs-target="#invitationUser" class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png"  class="btn_img"> Exclusive Access Request</button>
                     </div>
             </div>
+
+            <div class="form-group donthaveaccount">                   
+                        Already have an account?   &nbsp; <a href="{{route('login')}}" class="donthaveaccount" >  Sign in </a>             
+            </div>
            
             
         

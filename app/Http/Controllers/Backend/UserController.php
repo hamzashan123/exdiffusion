@@ -103,6 +103,7 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user): RedirectResponse
     {
+        
         $this->authorize('edit_user');
 
         if ($request->hasFile('user_image')) {

@@ -71,7 +71,16 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="password" class="text-danger">Change password</label>
-                            <input class="form-control" id="password" type="password" name="password" value="{{ old('password') }}">
+                            <div class="input-group">
+                            
+                            <input class="form-control" id="admin_password" type="password" name="password" value="{{ old('password') }}">
+                            <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                        <i class="fa fa-eye" id="eyeIcon"></i>
+                                                    </button>
+                            </div> 
+                                
+                            </div> 
                             @error('password')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -96,4 +105,23 @@
     </div>
 
     @include('backend.users.edit_password')
+@endsection
+@section('scripts')
+<script>
+        $(document).ready(function () {
+            const passwordInput = $('#admin_password');
+            const eyeIcon = $('#eyeIcon');
+            const togglePassword = $('#togglePassword');
+
+            togglePassword.click(function () {
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+</script>
 @endsection

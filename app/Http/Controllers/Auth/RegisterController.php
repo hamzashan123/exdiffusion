@@ -98,7 +98,7 @@ class RegisterController extends Controller
                 'username' => $user->username,
                 'email' => $user->email,
                 'subject' => 'Registration Successful',
-                'msg' => 'You have successfully registered . Your Account is Under Reviewed. As soon as it will active you will receive an updates through Email.'
+                'msg' => "You have successfully registered . Your Account is Under Reviewed. As soon as it will active you will receive an updates through Email. <br> You can <a href='" . route('login') . "'> Sign In </a> to use playground."
             ];
 
             try {

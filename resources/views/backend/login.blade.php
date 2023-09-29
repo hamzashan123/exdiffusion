@@ -23,10 +23,15 @@
                                                placeholder="Enter Your email">
                                         @error('email')<span class="text-danger">{{ $message }}</span>@enderror
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" value="{{ old('password') }}"
+                                    <div class="form-group input-group mb-3">
+                                        <input type="password" name="password" id="passwordInput" value="{{ old('password') }}"
                                                class="form-control form-control-user"
                                                placeholder="Enter Your Password">
+                                               <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                        <i class="fa fa-eye" id="eyeIcon"></i>
+                                                    </button>
+                                                </div>       
                                         @error('password')<span class="text-danger">{{ $message }}</span>@enderror
                                     </div>
                                     <!-- <div class="form-group">
@@ -53,4 +58,23 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+<script>
+        $(document).ready(function () {
+            const passwordInput = $('#passwordInput');
+            const eyeIcon = $('#eyeIcon');
+            const togglePassword = $('#togglePassword');
+
+            togglePassword.click(function () {
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+</script>
 @endsection
