@@ -6,7 +6,10 @@ i#eyeIcon:before {
     content: "\f06e";
     font-family: "Font Awesome 5 Free" !important;
 }
+button#togglePassword {
+    height: 100%;
 
+}
 body {
     padding: 0px 2%;
     /* zoom: 85%; */
