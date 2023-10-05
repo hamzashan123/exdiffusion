@@ -278,13 +278,13 @@ class ModelsController extends Controller
     public function uploadModels(Request $request){
       $payload = [
         "key" => "rfhpc3j1c7kw0t",
-        "url" => "prompthero/openjourney",
-        "model_id" => "midjourney22",
+        "url" => $request->url,
+        "model_id" => $request->model_id,
         "from_safetensors" => 'no',
-        "model_type" => "huggingface",
+        "model_type" => $request->model_type,
         "webhook" => "https://stablediffusionapi.com",
-        "revision" => "fp32",
-        "upcast_attention" => "no"
+        "revision" => $request->revision,
+        "upcast_attention" => $request->upcast_attention
       ];
       
       $curl = curl_init();

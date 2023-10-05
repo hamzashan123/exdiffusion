@@ -11,12 +11,12 @@ $(document).ready(function(){
         // Customize options here
       });
 
-      $(document).on('click',"#uploadModelBtn" , function() {
-        $("#uploadModels").modal("hide");
-        setTimeout(function(){
-          $("#uploadmodels-success").modal("show");
-        },500);
-      });
+      // $(document).on('click',"#uploadModelBtn" , function() {
+      //   $("#uploadModels").modal("hide");
+      //   setTimeout(function(){
+      //     $("#uploadmodels-success").modal("show");
+      //   },500);
+      // });
 
      
 
@@ -729,16 +729,34 @@ $('#read_lastgeneration').on('click', function(){
 
 // Load Model In StableDiffusion Server
 $('#uploadModelBtn').on('click' , function(){
+
+  if($('#model_url').val() == '' || $('#model_url').val() == null){
+    $('#uploadModelErros').text('');
+    $('#uploadModelErros').text('Url not defined!');
+    return;
+  }else if($('#model_id').val() == '' || $('#model_id').val() == null){
+    $('#uploadModelErros').text('');
+    $('#uploadModelErros').text('Model Id not defined');
+    return;
+  }
+
   $(this).attr('disabled','disabled');
   $(this).text('');
   $(this).text('Uploading...');
 
+  
   $.ajax({
     url: '' + baseUrl + '/upload-model',
     method: "POST",
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     data: {
-    
+      "url" : $('#model_url').val(),
+      "model_id" : $('#model_id').val(),
+      "from_safetensors" : 'no',
+      "model_type" : $('#model_type').val(),
+      "webhook" : $('#model_webhook').val(),
+      "revision" : $('#model_revision').val(),
+      "upcast_attention" : $('#model_upcast_attention').val()
     },
     success: function (response) {
 
@@ -750,9 +768,20 @@ $('#uploadModelBtn').on('click' , function(){
       if(response.status == "success" && response.message == "model already exists"){
           $('#uploadModelErros').text('');
           $('#uploadModelErros').text(response.message);
+          
       }else if(response.status == 'success' && response.message == 'model load started'){
           $('#uploadModelErros').text('');
           $('#uploadModelErros').text('Model Successfully Loaded!');
+          
+
+          setTimeout(function(){
+            $("#uploadModels").modal("hide");
+            $("#uploadmodels-success").modal("show");
+          },500);
+
+      }else if(response.status == 'error'){
+          $('#uploadModelErros').text('');
+          $('#uploadModelErros').text(response.message);  
       }
       console.log(response);
     },
