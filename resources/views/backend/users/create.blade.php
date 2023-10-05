@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-12">
                         <label for="user_image">User image</label>
                         <br>
@@ -127,7 +127,7 @@
                         </div>
                         @error('user_image')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Register') }}

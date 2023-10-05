@@ -55,11 +55,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->authorize('edit_user');
-        //dd($request->hasFile('user_image'));
-        if ($request->hasFile('user_image')) {
+        
+        // if ($request->hasFile('user_image')) {
             
-            $userImage = $this->imageService->storeUserImages($request->first_name.'-'.$request->last_name, $request->user_image);
-        }
+        //     $userImage = $this->imageService->storeUserImages($request->first_name.'-'.$request->last_name, $request->user_image);
+        // }
 
         $password = bcrypt($request->password);
         $user = User::create([
@@ -73,7 +73,7 @@ class UserController extends Controller
             'password' => $password,
             'status' => $request->status,
             'receive_email' => true,
-           'user_image' => $userImage ?? NULL
+        //    'user_image' => $userImage ?? NULL
         ]);
 
         $user->markEmailAsVerified();
