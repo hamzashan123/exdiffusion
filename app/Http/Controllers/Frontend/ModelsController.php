@@ -280,6 +280,7 @@ class ModelsController extends Controller
         "key" => "rfhpc3j1c7kw0t",
         "url" => "prompthero/openjourney",
         "model_id" => "midjourney22",
+        "from_safetensors" => 'no',
         "model_type" => "huggingface",
         "webhook" => "https://stablediffusionapi.com",
         "revision" => "fp32",
