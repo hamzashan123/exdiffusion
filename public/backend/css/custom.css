@@ -62,6 +62,31 @@ form.importProductsForm input.form-control.fileUpload {
     font-size: 24px;
 }
 
+div#usersTable_wrapper .row:nth-child(1)  , div#usersTable_wrapper .row:nth-child(3) {
+    padding: 5px 10px;
+}
+
+div#usersTable_wrapper  div#usersTable_filter label {
+     width: 100%;
+   position: relative;
+   top: 2px;
+  }
+
+div#usersTable_wrapper  div#usersTable_filter input {height: 100%;width: 90%;}
+
+
+
+div#invitationTable_wrapper .row:nth-child(1)  , div#invitationTable_wrapper .row:nth-child(3) {
+    padding: 5px 10px;
+}
+
+div#invitationTable_wrapper div#invitationTable_filter input {height: 100%;width: 90%;}
+
+div#invitationTable_wrapper div#invitationTable_filter label {
+     width: 100%;
+   position: relative;
+   top:2px;
+}
 
 @media only screen and (max-width:768px) {
 
