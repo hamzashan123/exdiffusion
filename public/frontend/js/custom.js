@@ -727,6 +727,44 @@ $('#read_lastgeneration').on('click', function(){
 });
 
 
+// Load Model In StableDiffusion Server
+$('#uploadModelBtn').on('click' , function(){
+  $(this).attr('disabled','disabled');
+  $(this).text('');
+  $(this).text('Uploading...');
+
+  $.ajax({
+    url: '' + baseUrl + '/upload-model',
+    method: "POST",
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    data: {
+    
+    },
+    success: function (response) {
+
+      $('#uploadModelBtn').removeAttr('disabled');
+      $('#uploadModelBtn').text('');
+      $('#uploadModelBtn').text('Upload Model');
+      
+      var response = JSON.parse(response);
+      if(response.status == "success" && response.message == "model already exists"){
+          $('#uploadModelErros').text('');
+          $('#uploadModelErros').text(response.message);
+      }else if(response.status == 'success' && response.message == 'model load started'){
+          $('#uploadModelErros').text('');
+          $('#uploadModelErros').text('Model Successfully Loaded!');
+      }
+      console.log(response);
+    },
+    error: function () {
+      $('#uploadModelBtn').removeAttr('disabled');
+      $('#uploadModelBtn').text('');
+      $('#uploadModelBtn').text('Upload Model');
+      $("#result").text("Error occurred while fetching data from the API.");
+    },
+  });
+});
+
 $(document).on('click',"#inviteSendBtn" , function() {
 
   var invite_first_name = $('#invite_firstname').val();

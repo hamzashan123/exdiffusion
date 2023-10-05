@@ -107,6 +107,7 @@
                     <div class="form-group upload-model-btn-div">
                         <button  class="btn btn-primary" id="uploadModelBtn">Upload Model</button>
                     </div>
+                    <p id="uploadModelErros"></p>
                 </form>
             </div>
         </div>

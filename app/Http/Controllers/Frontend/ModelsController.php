@@ -275,6 +275,39 @@ class ModelsController extends Controller
     } 
 
     
+    public function uploadModels(Request $request){
+      $payload = [
+        "key" => "rfhpc3j1c7kw0t",
+        "url" => "prompthero/openjourney",
+        "model_id" => "midjourney22",
+        "model_type" => "huggingface",
+        "webhook" => "https://stablediffusionapi.com",
+        "revision" => "fp32",
+        "upcast_attention" => "no"
+      ];
+      
+      $curl = curl_init();
+      
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://stablediffusionapi.com/api/v1/enterprise/load_model',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($payload),
+        CURLOPT_HTTPHEADER => array(
+          'Content-Type: application/json'
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      
+      curl_close($curl);
+      echo $response;
+    }
 
     public function restartServer(){
       $payload = [

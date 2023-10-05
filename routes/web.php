@@ -25,6 +25,7 @@ Route::post('/generate-images',[ModelsController::class, 'generateImages'])->nam
 Route::post('/get-superResolution',[ModelsController::class, 'getSuperResolutionImage'])->name('getSuperResolutionImage');
 Route::post('/save-superResolution',[ModelsController::class, 'saveSuperResolutionImage'])->name('saveSuperResolutionImage');
 Route::post('/restart',[ModelsController::class, 'restartServer'])->name('restart');
+Route::post('/upload-model',[ModelsController::class, 'uploadModels'])->name('uploadmodel');
 
 Route::post('/sendInvite',[InvitationController::class, 'sendInvite'])->name('sendInvite');
 Route::post('/signUp',[UserController::class, 'signUp'])->name('signUp');

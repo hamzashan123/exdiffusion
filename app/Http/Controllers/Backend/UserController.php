@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\UserRequest;
 use App\Mail\UserRoleAssignActive;
+use App\Mail\UserSignUp;
 use App\Models\User;
 use App\Services\ImageService;
 use App\Traits\ImageUploadTrait;
@@ -12,8 +13,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Request;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -55,18 +57,20 @@ class UserController extends Controller
         $this->authorize('edit_user');
         //dd($request->hasFile('user_image'));
         if ($request->hasFile('user_image')) {
-            // $userImage = $this->imageService->storeUserImages($request->username, $request->user_image);
+            
+            $userImage = $this->imageService->storeUserImages($request->first_name.'-'.$request->last_name, $request->user_image);
         }
 
+        $password = bcrypt($request->password);
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'username' => $request->username,
-            'customer_type' => $request->customer_type,
+            'username' => $request->first_name.'-'.$request->last_name,
             'email' => $request->email,
+            'country' => $request->user_country,
+            'occupation' => $request->user_occupation,
             'email_verified_at' => now(),
-            'phone' => $request->phone,
-            'password' => bcrypt($request->password),
+            'password' => $password,
             'status' => $request->status,
             'receive_email' => true,
            'user_image' => $userImage ?? NULL
@@ -74,6 +78,22 @@ class UserController extends Controller
 
         $user->markEmailAsVerified();
         $user->assignRole('user');
+
+        $userdata = [
+            'admin' => false,
+            'firstname' => $user->first_name,
+            'lastname' => $user->last_name,
+            'username' => $user->username,
+            'email' => $user->email,
+            'subject' => 'Registration Successful',
+            'msg' => "You account has been created to Exdiffusion. <br> You can now <a href='" . route('login') . "'> Sign In </a> to use playground. <br> Your Login Details : email: '".$request->email."' <br> password: '".$request->password."'"
+        ];
+
+        try {
+            Mail::to($user->email)->send(new UserSignUp($userdata));
+            Session::flash('success', 'Registration Successfull!');
+        } catch (\Exception $e) {
+        }
 
         return redirect()->route('admin.users.index')->with([
             'message' => 'Created successfully',

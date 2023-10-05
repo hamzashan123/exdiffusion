@@ -1333,7 +1333,9 @@ li.logoutNav form {
 }
 
 
-
+#uploadModelErros {
+    color: red;
+}
 
 
 @media only screen and (min-width:1400px) {
