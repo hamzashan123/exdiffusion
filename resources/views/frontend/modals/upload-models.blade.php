@@ -53,7 +53,7 @@
                         <label for="model_revision">Revision<span class="required">*</span></label>
                         <select name="model_revision" id="model_revision" class="form-control" >
                                 <option value="fp16">fp16</option>
-                                <option value="fp32">fp32</option>
+                                <option value="fp32" selected>fp32</option>
                         </select>
                     </div>
 
