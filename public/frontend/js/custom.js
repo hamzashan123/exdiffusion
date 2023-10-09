@@ -743,6 +743,7 @@ $('#uploadModelBtn').on('click' , function(){
   $(this).attr('disabled','disabled');
   $(this).text('');
   $(this).text('Uploading...');
+  $('#uploadModelErros').text('');
 
   
   $.ajax({
@@ -765,7 +766,7 @@ $('#uploadModelBtn').on('click' , function(){
       $('#uploadModelBtn').text('Upload Model');
       
       var response = JSON.parse(response);
-      if(response.status == "success" && response.message == "Model Loaded"){
+      if(response.status == "success" && response.message == "Model loaded"){
           $('#uploadModelErros').text('');
           $('#uploadModelErros').text(response.message);
 
