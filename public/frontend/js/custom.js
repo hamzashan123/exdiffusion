@@ -11,11 +11,11 @@ $(document).ready(function(){
         // Customize options here
       });
 
-      // $(document).on('click',"#uploadModelBtn" , function() {
-      //   $("#uploadModels").modal("hide");
-      //   setTimeout(function(){
-      //     $("#uploadmodels-success").modal("show");
-      //   },500);
+      // $(document).on('click',"#openUploadModal" , function() {
+
+      //   $('#uploadModels').modal({backdrop: 'static', keyboard: false}, 'show');
+      //   // $("#uploadModels").modal("hide");
+        
       // });
 
      
