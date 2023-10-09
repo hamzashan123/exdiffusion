@@ -779,6 +779,7 @@ $('#uploadModelBtn').on('click' , function(){
             $("#uploadmodels-success").modal("show");
             $('#model_url').val('');
             $('#model_id').val('');
+            $('#uploadModelErros').text('');
           },500);
 
       }else if(response.status == 'error'){
