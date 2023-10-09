@@ -765,11 +765,19 @@ $('#uploadModelBtn').on('click' , function(){
       $('#uploadModelBtn').text('Upload Model');
       
       var response = JSON.parse(response);
-      if(response.status == "success" && response.message == "model already exists"){
+      if(response.status == "success" && response.message == "Model Loaded"){
           $('#uploadModelErros').text('');
           $('#uploadModelErros').text(response.message);
-          
-      }else if(response.status == 'success' && response.message == 'model load started'){
+
+          setTimeout(function(){
+            $("#uploadModels").modal("hide");
+            $("#uploadmodels-success").modal("show");
+            $('#model_url').val('');
+            $('#model_id').val('');
+            $('#uploadModelErros').text('');
+          },1000);
+      }
+      else if(response.status == 'success' && response.message == 'model load started'){
           $('#uploadModelErros').text('');
           $('#uploadModelErros').text(response.message);
           
@@ -780,9 +788,15 @@ $('#uploadModelBtn').on('click' , function(){
             $('#model_url').val('');
             $('#model_id').val('');
             $('#uploadModelErros').text('');
-          },500);
+          },1000);
 
-      }else if(response.status == 'error'){
+      }
+      else if(response.status == "success" && response.message == "model already exists"){
+        $('#uploadModelErros').text('');
+        $('#uploadModelErros').text(response.message);
+        
+      }
+      else if(response.status == 'error'){
           $('#uploadModelErros').text('');
           $('#uploadModelErros').text(response.message);  
       }
