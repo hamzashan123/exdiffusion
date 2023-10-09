@@ -771,12 +771,14 @@ $('#uploadModelBtn').on('click' , function(){
           
       }else if(response.status == 'success' && response.message == 'model load started'){
           $('#uploadModelErros').text('');
-          $('#uploadModelErros').text('Model Successfully Loaded!');
+          $('#uploadModelErros').text(response.message);
           
 
           setTimeout(function(){
             $("#uploadModels").modal("hide");
             $("#uploadmodels-success").modal("show");
+            $('#model_url').val('');
+            $('#model_id').val('');
           },500);
 
       }else if(response.status == 'error'){
