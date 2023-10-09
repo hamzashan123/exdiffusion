@@ -40,7 +40,7 @@
                                 <option value="yes">yes</option>
                                 <option value="no" selected>no</option>
                         </select>
-                        <label >Set this to "yes" only when you are loading a stable diffusion 2.1 model; otherwise keep it "no".</label>
+                        <label >Set this to "yes" if you are loading a .safetensor file; otherwise pass "no".</label>
                     </div>
 
                     <div class="form-group">
