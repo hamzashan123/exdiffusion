@@ -752,7 +752,7 @@ $('#uploadModelBtn').on('click' , function(){
     data: {
       "url" : $('#model_url').val(),
       "model_id" : $('#model_id').val(),
-      "from_safetensors" : 'no',
+      "from_safetensors" : $('#from_safetensors').val(),
       "model_type" : $('#model_type').val(),
       "webhook" : $('#model_webhook').val(),
       "revision" : $('#model_revision').val(),

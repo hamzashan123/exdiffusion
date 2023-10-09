@@ -35,6 +35,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="from_safetensors">From Safetensors<span class="required">*</span></label>
+                        <select name="from_safetensors" id="from_safetensors" class="form-control" >
+                                <option value="yes">yes</option>
+                                <option value="no" selected>no</option>
+                        </select>
+                        <label >Set this to "yes" only when you are loading a stable diffusion 2.1 model; otherwise keep it "no".</label>
+                    </div>
+
+                    <div class="form-group">
                         <label for="model_webhook">Webhook<span class="required">*</span></label>
                         <input type="text" name="model_webhook" id="model_webhook" value="https://stablediffusionapi.com" disabled readonly class="form-control" required>
                     </div>
@@ -49,10 +58,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="model_upcast_attention">Revision<span class="required">*</span></label>
+                        <label for="model_upcast_attention">Upcast Attention<span class="required">*</span></label>
                         <select name="model_upcast_attention" id="model_upcast_attention" class="form-control" >
-                                <option value="Yes">Yes</option>
-                                <option value="No" selected>No</option>
+                                <option value="yes">yes</option>
+                                <option value="no" selected>no</option>
                         </select>
                         <label >Set this to "yes" only when you are loading a stable diffusion 2.1 model; otherwise keep it "no".</label>
                     </div>

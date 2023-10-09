@@ -280,13 +280,15 @@ class ModelsController extends Controller
         "key" => "rfhpc3j1c7kw0t",
         "url" => $request->url,
         "model_id" => $request->model_id,
-        "from_safetensors" => 'no',
         "model_type" => $request->model_type,
+        "from_safetensors" => $request->from_safetensors,
         "webhook" => "https://stablediffusionapi.com",
         "revision" => $request->revision,
         "upcast_attention" => $request->upcast_attention
       ];
       
+      // dd($payload);
+
       $curl = curl_init();
       
       curl_setopt_array($curl, array(

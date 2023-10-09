@@ -1337,7 +1337,11 @@ li.logoutNav form {
     color: red;
 }
 
-
+div#LoraModelsList, div#EmbeddingsModelsList {
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
 
 @media only screen and (min-width:1400px) {
     .row.contentSectionIndex {max-width: 50%;margin-top: 40px;}
