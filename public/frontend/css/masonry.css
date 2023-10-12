@@ -139,3 +139,8 @@
     background: #1f2937;
     border: 2px solid #374151;
 }
+
+.grid__body input[type="checkbox"] {
+    position: relative;
+    z-index: 9;
+}
