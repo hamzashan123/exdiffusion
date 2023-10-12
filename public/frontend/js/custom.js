@@ -3,8 +3,14 @@
 
 var superResolutionArray = [];
 $(document).ready(function(){
-      getBaseModels();
-      getSchedulers();  
+      
+      $("#loader").show();
+
+      
+        getBaseModels();
+        getSchedulers(); 
+      
+      
      
       
       $("[data-fancybox]").fancybox({
@@ -30,7 +36,7 @@ $(document).ready(function(){
 
 function getBaseModels(){
            
-    $("#loader").show();
+   
  
     // // Make an API request
     
@@ -49,11 +55,7 @@ function getBaseModels(){
 
         if(response.status == "success"){
             $("#container").show();
-            $("#loader").hide();   
-
-
-
-
+             
             response.models.forEach((element) => {
                 var pageHTML = "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
                 pageHTML += "<div class='bodyInner'>";
@@ -99,12 +101,17 @@ function getBaseModels(){
               $("#EmbeddingsModelsList").append(pageHTML);
                   
             });
-        
+
+            
+            $("#loader").hide();
+            $('.header').show();
+            $('.mainSection').show();
+            $('.footer').show();
           }
    
  },
  error: function () {
-  $("#loader").hide();  
+  
    $("#result").text(
      "Error occurred while fetching data from the API."
    );
@@ -114,7 +121,7 @@ function getBaseModels(){
 
 function getSchedulers(){
            
-    $("#loader").show();
+   
 
     // // Make an API request
     
@@ -133,7 +140,7 @@ function getSchedulers(){
 
         if(response.status == "success"){
 
-            $("#loader").hide();   
+               
 
             if(response.message[0] !== undefined){
 
@@ -149,7 +156,7 @@ function getSchedulers(){
   
     },
     error: function () {
-        $("#loader").hide();  
+       
         $("#result").text(
           "Error occurred while fetching data from the API."
         );
@@ -264,7 +271,12 @@ function generateImages() {
 
 
     // runProgressBar(progressBarDuration);
-
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      $('html, body').animate({
+        scrollTop: $("#generateImageDiv").offset().top
+      },1000);
+    }
+    
     $.ajax({
       url: '' + baseUrl + '/generate-images',
       method: "POST",
@@ -410,7 +422,7 @@ function generateImages() {
         // updateProgressBar(0);
       },
       error: function () {
-        $("#loader").hide();
+        
         $('.hide_progress').css('visibility','hidden');
         $('.hide_progress').addClass('progressheightmanage');
         $("#result").text("Error occurred while fetching data from the API.");
@@ -860,50 +872,6 @@ $(document).on('click',"#inviteSendBtn" , function() {
 });
 
 
-// $(document).on('click',"#signUpBtn" , function() {
-
-//   var first_name = $('#firstname').val();
-//   var last_name = $('#lastname').val();
-//   var email = $('#email').val();
-
-//   $.ajax({
-//   url: '' + baseUrl + '/sendInvite',
-//   method: "POST",
-//   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-//   data: {
-//     first_name : first_name,
-//     last_name : last_name,
-//     email : email,
-//   },
-//   success: function (response) {
-      
-//       var response = response;    
-//       console.log(response.status);
-
-//       if(response.status == "success"){
-
-//         $("#signupModal").modal("hide");
-//           setTimeout(function(){
-//             $("#signup-success").modal("show");
-//           },500);
-
-//       }else if(response.status == "failed"){
-//           $('#RegisterError').text("");
-//           $('#RegisterError').text("User already registered!");
-          
-//       }
-//       else{
-//         alert("Something went wront!");
-//       }
-      
-//   },
-//   error: function () {
-//       alert("Error occurred while fetching data from the API.");
-//   },
-//   });
-
-  
-// });
 
 
 const Styles = {};

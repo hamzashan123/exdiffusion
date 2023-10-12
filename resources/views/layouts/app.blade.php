@@ -21,11 +21,13 @@
   @yield('style')
 </head>
 
-<body style="background: #0b0f19;">
+<body style="background: #0b0f19;"  @if(Auth::user()) class="loggedIn" @endif>
+  <div class="loader" id="loader"></div>
+
   <div class="blur-container">
     @include('partials.frontend.header')
 
-    <div class="mainSection">
+    <div class="mainSection" style="display: none;">
       @yield('content')
     </div>
 

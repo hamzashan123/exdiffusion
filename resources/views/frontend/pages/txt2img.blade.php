@@ -282,7 +282,7 @@
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" id="generateImageDiv">
             <div class="images_result p-3">
 
                 <div class="innerImageDiv border-radius-7" style="background: #0b0f19;padding: 10px;width: 100%;">
