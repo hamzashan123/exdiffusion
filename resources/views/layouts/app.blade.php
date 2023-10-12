@@ -16,6 +16,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
   <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('frontend/css/masonry.css') }}">
   <link href="https://exdiffusion.com/newproject/public/backend/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
  
   @yield('style')
