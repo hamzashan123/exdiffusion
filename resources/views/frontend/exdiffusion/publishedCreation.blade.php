@@ -121,6 +121,20 @@
         background: #a157dc !important;
         border-color: #a157dc !important;
     }
+
+    .grid__body input[type="checkbox"],
+    .masonry-btn-generate {
+        display: none;
+    }
+
+    .grid:hover .grid__body input[type="checkbox"] {
+        display: block;
+    }
+
+    .grid:hover .masonry-btn-generate {
+        display: block;
+        transition: .3s;
+    }
 </style>
 @section('content')
 <div class="publishCreationMain">
