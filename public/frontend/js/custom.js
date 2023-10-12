@@ -12,12 +12,10 @@ $(document).ready(function () {
         // Customize options here
     });
 
-    // $(document).on('click',"#openUploadModal" , function() {
-
-    //   $('#uploadModels').modal({backdrop: 'static', keyboard: false}, 'show');
-    //   // $("#uploadModels").modal("hide");
-
-    // });
+    jQuery(".masonry .grid").on("click", function () {
+        window.location.href =
+            "https://exdiffusion.com/newproject/public/image-detail";
+    });
 });
 
 function getBaseModels() {
