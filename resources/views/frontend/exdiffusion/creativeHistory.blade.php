@@ -49,7 +49,7 @@
                     <img src="https://source.unsplash.com/random/1">
                     <div class="grid__body">
                         <div class="relative">
-                            <a class="grid__link" href="#"></a>
+                            <a class="grid__link" href=""></a>
                             <input type="checkbox" name="">
 
                         </div>

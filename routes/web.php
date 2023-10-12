@@ -22,6 +22,7 @@ Route::get('/',function(){
 Route::get('/playground', [ModelsController::class, 'index'])->name('home');
 Route::get('/publish-creation', [PublishCreationController::class, 'publishCreation'])->name('publishcreation');
 Route::get('/my-asset', [PublishCreationController::class, 'myAsset'])->name('myasset');
+Route::get('/image-detail', [PublishCreationController::class, 'imageDetail'])->name('imageDetail');
 
 Route::get('/get-base-models',[PublicModelsController::class, 'getBaseModels'])->name('getbasemodels');
 Route::get('/get-schedulers',[PublicModelsController::class, 'getSchedulers'])->name('getschedulers');
