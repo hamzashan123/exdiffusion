@@ -153,3 +153,14 @@
 .relative {
     margin-left: auto;
 }
+
+.navigation select {
+    border: none;
+}
+
+.navigation select:focus, .navigation select {
+    background: url() !important;
+    appearance: none;
+    margin: 0px 21px;
+    margin-right: 0px;
+}
