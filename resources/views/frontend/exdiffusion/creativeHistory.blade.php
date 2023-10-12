@@ -7,10 +7,15 @@
         </div>
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 navigation">
 
-            <a href="#" class="active"> Images</a>
-            <a href="#"> Base Model</a>
-            <a href="#"> Lora</a>
-            <a href="#"> Embedding</a>
+            <a href="#" class="active"> Creative History</a>
+            <a href="#"> Favorite</a>
+            <select name="" id="">
+                <option value="">Custom Model</option>
+                <option value="">Base Models</option>
+                <option value="">Lora Models</option>
+                <option value="">Embedding Models</option>
+            </select>
+            <a href="#"> Trained Model</a>
 
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 filters">
