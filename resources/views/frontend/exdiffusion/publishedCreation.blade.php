@@ -136,6 +136,11 @@
         display: block;
         transition: .3s;
     }
+
+    .masonry-btn-generate .btn:hover {
+        background: #1f2937;
+        border: 2px solid #374151;
+    }
 </style>
 @section('content')
 <div class="publishCreationMain">
