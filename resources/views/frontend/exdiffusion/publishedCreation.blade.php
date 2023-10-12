@@ -81,6 +81,41 @@
     .mt-auto {
         margin-top: auto;
     }
+
+    .title img {
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .title {
+        color: #adadad;
+        font-size: 17px;
+    }
+
+    .mainrow {
+        display: flex;
+        align-items: center;
+        padding-bottom: 30px;
+    }
+
+    .navigation a {
+        margin: 0px 21px;
+        text-decoration: none;
+        color: #adadad;
+    }
+
+    .navigation a:first-child {
+        margin-left: 0px;
+    }
+
+    .navigation a.active {
+        color: white !important;
+    }
+
+    .filters select {
+        position: relative;
+        left: -10px;
+    }
 </style>
 @section('content')
 <div class="publishCreationMain">
