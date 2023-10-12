@@ -143,4 +143,9 @@
 .grid__body input[type="checkbox"] {
     position: relative;
     z-index: 9;
+    accent-color: #a157dc;
+    transform: scale(1.2);
+    height: auto !important;
+    width: auto !important;
+    margin-right: 10px;
 }
