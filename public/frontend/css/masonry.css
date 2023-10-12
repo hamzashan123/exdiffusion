@@ -149,3 +149,7 @@
     width: auto !important;
     margin-right: 10px;
 }
+
+.relative {
+    margin-left: auto;
+}
