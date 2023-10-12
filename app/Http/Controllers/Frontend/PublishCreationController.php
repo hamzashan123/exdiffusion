@@ -14,4 +14,8 @@ class PublishCreationController extends Controller
     public function myAsset(){
         return view('frontend.exdiffusion.creativeHistory');
     }
+
+    public function imageDetail(){
+        return view('frontend.exdiffusion.imageDetails');
+    }
 }
