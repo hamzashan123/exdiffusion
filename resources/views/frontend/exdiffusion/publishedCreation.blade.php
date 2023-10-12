@@ -37,6 +37,7 @@
     .masonry .grid img {
         width: 100%;
         border-radius: 5px;
+        border: 2px solid #374151;
     }
 
     .masonry .grid__title {
