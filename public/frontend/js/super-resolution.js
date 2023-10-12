@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-﻿// var baseUrl = 'https://exdiffusion.com/newproject/public';
-var baseUrl = "";
-=======
-﻿var baseUrl = 'https://exdiffusion.com/newproject/public';
-// var baseUrl = '';
->>>>>>> 43b67c00ea3417284479500d115ff4b24666bba2
+var baseUrl = "https://exdiffusion.com/newproject/public";
+// var baseUrl = "";
 
 $(document).ready(function () {
     const draggableArea = $(".draggableinputarea");
