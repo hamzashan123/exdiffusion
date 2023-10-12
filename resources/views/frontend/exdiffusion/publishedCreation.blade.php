@@ -116,6 +116,11 @@
         position: relative;
         left: -10px;
     }
+
+    .filters .btn:hover {
+        background: #a157dc !important;
+        border-color: #a157dc !important;
+    }
 </style>
 @section('content')
 <div class="publishCreationMain">
@@ -159,7 +164,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
 
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
@@ -174,7 +179,7 @@
 
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -187,7 +192,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -200,7 +205,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -213,7 +218,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -226,7 +231,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -239,7 +244,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -252,7 +257,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -265,7 +270,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -278,7 +283,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -291,7 +296,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -304,7 +309,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -317,7 +322,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -330,7 +335,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -343,7 +348,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -356,7 +361,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -369,7 +374,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -382,7 +387,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -395,7 +400,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
@@ -408,7 +413,7 @@
                             <input type="checkbox" name="">
 
                         </div>
-                        <div class="mt-auto">
+                        <div class="mt-auto masonry-btn-generate">
                             <button class="btn purple-col-bg form-control text-white border-radius-7">Generate</button>
                         </div>
                     </div>
