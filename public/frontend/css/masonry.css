@@ -164,3 +164,11 @@
     margin: 0px 21px;
     margin-right: 0px;
 }
+
+.navigation select option{
+    background-color: #1f2937;
+}
+
+.navigation select {
+    padding: 10px;
+}
