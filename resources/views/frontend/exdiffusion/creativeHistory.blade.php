@@ -26,6 +26,7 @@
                     <select name="filterlist" id="filterlist" class="form-control dark-grey border-radius-7">
                         <option value="" selected></option>
                         <option value="">Add to Favorite</option>
+                        <option value="">Delete</option>
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
