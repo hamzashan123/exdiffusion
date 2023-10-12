@@ -100,16 +100,13 @@
 .navigation a {
     margin: 0px 21px;
     text-decoration: none;
-    color: #adadad;
+    color: white;
 }
 
 .navigation a:first-child {
     margin-left: 0px;
 }
 
-.navigation a.active {
-    color: white !important;
-}
 
 .filters select {
     position: relative;
@@ -161,8 +158,9 @@
 .navigation select:focus, .navigation select {
     background: url() !important;
     appearance: none;
-    margin: 0px 21px;
+    /* margin: 0px 21px; */
     margin-right: 0px;
+    text-align: center;
 }
 
 .navigation select option{
