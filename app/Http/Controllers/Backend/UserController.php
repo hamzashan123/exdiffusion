@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -182,7 +183,15 @@ class UserController extends Controller
             $this->imageService->unlinkImage($user->user_image, 'users');
         }
 
+       
+
         $user->delete();
+
+        try {
+            DB::table('invites')->where('email',$user->email)->delete();
+        } catch (\Exception $e) {
+          
+        }
 
         return redirect()->route('admin.users.index')->with([
             'message' => 'Deleted successfully',

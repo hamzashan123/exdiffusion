@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PublishCreationController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+    
     public function publishCreation(){
         return view('frontend.exdiffusion.publishedCreation');
     }
