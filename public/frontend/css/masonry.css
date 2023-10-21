@@ -170,3 +170,8 @@
 .navigation select {
     padding: 10px;
 }
+
+
+.masonry .grid {
+    cursor: pointer;
+}
