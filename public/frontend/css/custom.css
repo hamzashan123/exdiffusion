@@ -1313,12 +1313,13 @@ div#signupModal .modal-content {
     margin-right: auto;
 }
 
-div#signupModal {
+.newSignUpForm {
     min-height: 78vh;
     display: flex;
     flex-direction: column;
     justify-content:center;
 }
+
 li.logoutNav button {
     background: #a157dc;
     padding: 2px 17px;
