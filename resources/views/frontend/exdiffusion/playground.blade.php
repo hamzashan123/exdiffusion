@@ -94,6 +94,7 @@
 @endsection('content')
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
@@ -292,5 +293,91 @@
         rangeSlider.on('input', function() {
             numberInput.val(rangeSlider.val());
         });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+            const urlString = window.location;
+            // Create a URL object
+            const url = new URL(urlString);
+            // Check if the URL has a specific parameter
+            const paramName = "generated";
+        if (url.searchParams.has(paramName)) {
+            
+            var creativeData = localStorage.getItem("creativeData");
+            if(creativeData !== null){
+                creativeData =  JSON.parse(creativeData);
+                console.log('creativeData',creativeData);
+                $('#selectedBaseModelText').val(creativeData['selectedBaseModelText']);
+                $('#vaemodelslist').val(creativeData['vaemodelslist']);
+                $('#prompt').text(creativeData['prompt']);
+                $('#neg_prompt').text(creativeData['neg_prompt']);
+                
+                $('#interference_input').val(creativeData['interference_input']);
+                $('#interference_range').val(creativeData['interference_input']);
+                $('#seed').val(creativeData['seed']);
+                $('#clickskip_input').val(creativeData['clickskip_input']);
+                $('#clickskip_range').val(creativeData['clickskip_input']);
+                
+                $('#width_input').val(creativeData['width_input']);
+                $('#width_range').val(creativeData['width_input']);
+                $('#height_input').val(creativeData['height_input']);
+                $('#height_range').val(creativeData['height_input']);
+                $('#samples_input').val(creativeData['samples_input']);
+                $('#samples_range').val(creativeData['samples_input']);
+                $('#guidance_input').val(creativeData['guidance_input']);
+                $('#guidance_range').val(creativeData['guidance_input']);
+                
+                $("#safety_checker").attr("checked", JSON.parse(creativeData['safety_checker']));
+                $("#enhance_prompt").attr("checked", JSON.parse(creativeData['enhance_prompt']));
+                $("#multi_lingual").attr("checked", JSON.parse(creativeData['multi_lingual']));
+                $("#panorama").attr("checked", JSON.parse(creativeData['panorama']));
+                $("#self_attention").attr("checked", JSON.parse(creativeData['self_attention']));
+                $("#upscale").attr("checked", JSON.parse(creativeData['upscale']));
+                $("#tomesd").attr("checked", JSON.parse(creativeData['tomesd']));
+                $("#karras_sigmas").attr("checked", JSON.parse(creativeData['karras_sigmas']));
+
+                
+                //very imporatant for future changes    
+                // calling this function from custom.js to make dynamic div when genereate button click from my-assets page.
+                var creativeLoraModelArray = [];
+                const creativeDataloraModelArray = creativeData['loraModelArray'].split(',');
+                creativeLoraModelArray.push(...creativeDataloraModelArray);
+                generateLoraDynamicContent(creativeLoraModelArray);
+                setTimeout(function(){
+                    $('#scheduler_list').val(creativeData['scheduler_list']);
+                    
+                    $('.bodyInnerLora').each(function(element){
+                        var bodyInnerLoraText = $(this).siblings('span').text().trim();
+                    
+                        if(creativeLoraModelArray.includes(bodyInnerLoraText)){
+                            console.log("bodyInnerLoraText",bodyInnerLoraText);
+                            $(this).trigger('click');
+                        }
+                    });
+                },4000);
+
+
+
+                //very imporatant for future changes  
+                // calling this function from custom.js to make dynamic div when genereate button click from my-assets page.
+                var creativeEmbeddingModelArray = [];
+                const creativeDataEmbeddingModelArray = creativeData['embeddingModelArray'].split(',');
+                creativeEmbeddingModelArray.push(...creativeDataEmbeddingModelArray);
+
+                generateEmbeddingDynamicContent(creativeEmbeddingModelArray);
+                setTimeout(function(){
+                    $('.bodyInnerEmbedding').each(function(element){
+                        var bodyInnerEmbeddingText = $(this).siblings('span').text().trim();
+                    
+                        if(creativeEmbeddingModelArray.includes(bodyInnerEmbeddingText)){
+                            console.log("bodyInnerEmbeddingText",bodyInnerEmbeddingText);
+                            $(this).trigger('click');
+                        }
+                    });
+                },4000);
+            }
+        }
+        
     });
 </script>

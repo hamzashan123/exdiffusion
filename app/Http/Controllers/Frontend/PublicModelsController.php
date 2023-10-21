@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -99,4 +100,169 @@ class PublicModelsController extends Controller
       // Closing curl
       curl_close($curl);
   }
+
+
+  public function creativeHistory(Request $request){
+      $imagesUrl = explode(",", $request->images); 
+      //dd($imagesUrl);
+      // Specify the folder in your storage where you want to save the images
+      $storageFolder = 'public/images/creativehistory';
+
+      if(!empty($imagesUrl)){
+        foreach ($imagesUrl as $key => $url) {
+            // Generate a unique filename for each image
+            $filename = auth()->user()->id.'-'.uniqid();
+            // Save the image to the storage
+            Storage::put("$storageFolder/$filename", file_get_contents($url));
+            // You can use the $filename variable to store the file path in your database or perform other operations.
+            DB::table('creativehistory')->insertGetId([
+                'user_id' => auth()->user()->id,
+                'selectedBaseModelText' => $request->selectedBaseModelText,
+                'vaemodelslist' => $request->vaemodelslist,
+                'prompt' => $request->prompt,
+                'neg_prompt' => $request->neg_prompt,
+                'scheduler_list' => $request->scheduler_list,
+                'seed' => $request->seed,
+                'interference_input' => $request->interference_input,
+                'clickskip_input' => $request->clickskip_input,
+                'width_input' => $request->width_input,
+                'samples_input' => $request->samples_input,
+                'height_input' => $request->height_input,
+                'guidance_input' => $request->guidance_input,
+                'safety_checker' => $request->safety_checker,
+                'enhance_prompt' => $request->enhance_prompt,
+                'multi_lingual' => $request->multi_lingual,
+                'panorama' => $request->panorama,
+                'self_attention' => $request->self_attention,
+                'upscale' => $request->upscale,
+                'tomesd' => $request->tomesd,
+                'karras_sigmas' => $request->karras_sigmas,
+                'image_url' => $imagesUrl[$key],
+                'loraModelArray' => $request->loraModelArray,
+                'embeddingModelArray' => $request->embeddingModelArray
+                
+            ]);
+        }
+          return response()->json([
+            'status' => 'success',
+            'message' => 'Data saved!'
+          ]);
+      }else{
+          return response()->json([
+            'status' => 'failure',
+            'message' => 'Something went wrong!'
+          ]);
+      }
+      
+  }
+
+  public function getUserCreativeHistory(Request $request){
+    $user = Auth::user();
+    if($user){
+
+      $userCreativeHistory = DB::table('creativehistory')->where('user_id',$user->id);
+      if($request->modelType == 'creativeHistory'){
+        $userCreativeHistory =  $userCreativeHistory;
+      }elseif($request->modelType == 'Images'){
+        $userCreativeHistory =  $userCreativeHistory->where('is_favorite','true');
+      }
+      elseif($request->modelType == 'Base_Models'){
+        $userCreativeHistory =  $userCreativeHistory;
+      }
+      elseif($request->modelType == 'Lora_Models'){
+        $userCreativeHistory =  $userCreativeHistory->where('loraModelArray','!=',null);
+      }
+      elseif($request->modelType == 'Embedding_Models'){
+        $userCreativeHistory =  $userCreativeHistory->where('embeddingModelArray','!=',null);
+      }
+
+      $userCreativeHistory = $userCreativeHistory->get();
+      return response()->json([
+        'status' => 'success',
+        'data' => $userCreativeHistory,
+        'message' => 'Data found!'
+      ]);
+
+    }else{
+
+      return response()->json([
+        'status' => 'failure',
+        'message' => 'Something went wrong!'
+      ]);
+
+    }
+
+  }
+
+  public function deleteUserCreativeHistory(Request $request){
+      $user = Auth::user();
+      
+      if(!empty($request->creativeArray)){
+
+        foreach($request->creativeArray as $creativeId){
+          DB::table('creativehistory')->where('user_id',$user->id)->where('id',$creativeId)->delete();
+        }
+        
+        return response()->json([
+          'status' => 'success',
+          'message' => 'Creative history deleted!'
+        ]);
+
+      }else{
+
+        return response()->json([
+          'status' => 'failure',
+          'message' => 'Something went wrong!'
+        ]);
+
+      }
+  }
+
+  public function addToFavoriteCreativeHistory(Request $request){
+      $user = Auth::user();
+      if(!empty($request->creativeArray)){
+
+        foreach($request->creativeArray as $creativeId){
+          DB::table('creativehistory')->where('user_id',$user->id)->where('id',$creativeId)
+          ->update([
+            'is_favorite' => 'true',
+          ]);
+        }
+        return response()->json([
+          'status' => 'success',
+          'message' => 'Added to favorites list!'
+        ]);
+
+      }else{
+
+        return response()->json([
+          'status' => 'failure',
+          'message' => 'Something went wrong!'
+        ]);
+
+      }
+  }
+
+  public function getGeneratedImageHistory(Request $request){
+      $user = Auth::user();
+      $generatedHistory = DB::table('creativehistory')->where('user_id',$user->id)->where('id',$request->creativeId)->first();
+      
+      if(!empty($generatedHistory)){
+        
+        return response()->json([
+          'status' => 'success',
+          'data' => $generatedHistory,
+          'message' => 'Data Found!'
+        ]);
+
+      }else{
+
+        return response()->json([
+          'status' => 'failure',
+          'message' => 'Something went wrong!'
+        ]);
+
+      }
+  }
+
 }

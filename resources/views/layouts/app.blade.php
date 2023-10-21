@@ -55,6 +55,7 @@
   
   <script src="{{ asset('frontend/js/custom.js') }}"> </script>
   <script src="{{ asset('frontend/js/super-resolution.js') }}"> </script>
+  <script src="{{ asset('frontend/js/creative-history.js') }}"> </script>
   <script src="{{ asset('frontend/js/textareaFunctions.js') }}"> </script>
  
   

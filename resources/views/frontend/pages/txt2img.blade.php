@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <button class="btn generate purple-col-bg form-control text-white border-radius-7" id="generateBtn">Generate</button>
+            <button class="btn generate purple-col-bg form-control text-white border-radius-7 ajax-button relativeBtns" id="generateBtn"><div class="loaderbtn"></div> Generate</button>
 
             <div class="input-group mb-2 mt-2 fourEventsActions">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 tooltipAction">
@@ -298,9 +298,9 @@
                 </div>
 
                 <div class="images_publishBtns">
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
-                    <button id="make_super_resolution" disabled class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"> Make Super Resolution</button>
+                    <button id="make_publishimage" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" disabled fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
+                    <button id="make_creativehistory" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"><div class="loaderbtn"></div> Creative History</button>
+                    <button id="make_super_resolution" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"> Make Super Resolution</button>
                 </div>
 
 

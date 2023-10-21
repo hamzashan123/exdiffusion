@@ -121,6 +121,13 @@ class ModelsController extends Controller
         $lora_models = null;
       } 
 
+      if($request->lora_strength != null){
+        $lora_strength = implode(',', $request->lora_strength);
+      }else{
+        $lora_strength = null;
+      } 
+
+
       if($request->embeddings_model != null){
         $embedding_models = implode(',', $request->embeddings_model);
       }else{
@@ -168,7 +175,7 @@ class ModelsController extends Controller
         "tomesd" => $tomesd,
         "use_karras_sigmas" => $karras_sigmas,
         "vae" => isset($request->vae) ? $request->vae: null,
-        "lora_strength" => null,
+        "lora_strength" => $lora_strength,
         "scheduler" => isset($request->scheduler) ? $request->scheduler: null,
         "clip_skip" => isset($request->clip_skip) ? $request->clip_skip: null,
         "webhook" => null, 

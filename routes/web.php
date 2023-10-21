@@ -23,6 +23,11 @@ Route::get('/playground', [ModelsController::class, 'index'])->name('home');
 Route::get('/publish-creation', [PublishCreationController::class, 'publishCreation'])->name('publishcreation');
 Route::get('/my-asset', [PublishCreationController::class, 'myAsset'])->name('myasset');
 Route::get('/image-detail', [PublishCreationController::class, 'imageDetail'])->name('imageDetail');
+Route::post('/creative-history',[PublicModelsController::class, 'creativeHistory'])->name('creativeHistory');
+Route::post('/user-creative-history', [PublicModelsController::class, 'getUserCreativeHistory'])->name('UserCreativeHistory');
+Route::post('/delete-userCreativeHistory', [PublicModelsController::class, 'deleteUserCreativeHistory'])->name('DeleteCreativeHistory');
+Route::post('/addToFavoriteCreativeHistory', [PublicModelsController::class, 'addToFavoriteCreativeHistory'])->name('addToFavoriteCreativeHistory');
+Route::post('/getGeneratedImageHistory', [PublicModelsController::class, 'getGeneratedImageHistory'])->name('getGeneratedImageHistory');
 
 Route::get('/get-base-models',[PublicModelsController::class, 'getBaseModels'])->name('getbasemodels');
 Route::get('/get-schedulers',[PublicModelsController::class, 'getSchedulers'])->name('getschedulers');

@@ -476,6 +476,10 @@ button#generateBtn::focus {
     border-color: #374151 !important;
 }
 
+.relativeBtns {
+    position: relative;
+}
+
 .generating {
     background: #444f5e !important;
     color: white !important;
@@ -526,7 +530,9 @@ button#generateBtn::focus {
 }
 
 
-
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    border-color: #a157dc;
+}
 
 .progress {
     position: relative;
@@ -1345,6 +1351,25 @@ div#LoraModelsList, div#EmbeddingsModelsList {
 
 body.modal-open {
     pointer-events: none !important;
+}
+.ajax-button {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+
+.loaderbtn {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #a157dc;
+    animation: spin 2s linear infinite;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .loader {
