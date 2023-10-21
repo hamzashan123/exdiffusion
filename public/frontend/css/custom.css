@@ -1431,6 +1431,11 @@ body.modal-open {
     padding-bottom: 50px;
 }
 
+.loaderbtn {
+    left: 10%;
+    top: 36%;
+}
+
 @media only screen and (min-width:1400px) {
     .row.contentSectionIndex {max-width: 50%;margin-top: 40px;}
 
