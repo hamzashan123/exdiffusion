@@ -95,6 +95,7 @@
                             pageHTML += "</div>";
                         $(".masonry").append(pageHTML);
                         });
+                        $('#creativeHistoryFilter').val('');
                         $("#loader").hide();
                     }else{
                         var pageHTML = "<div class='grid'>";
@@ -102,6 +103,8 @@
                         pageHTML += "</div>";
 
                         $(".masonry").append(pageHTML);
+                        $('#creativeHistoryFilter').val('');    
+                        
                         $("#loader").hide();
                     }
                    
@@ -269,7 +272,7 @@
                         localStorage.setItem("globalLoraModelArray",loraModelArray);
 
                         window.open(
-                        '/playground?generated=true',
+                        '/newproject/public/playground?generated=true',
                         '_blank' // <- This is what makes it open in a new window.
                         );
                     }else{
