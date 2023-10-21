@@ -9,7 +9,7 @@
 
             <a href="#" class="active" id="creativeHistoryFilter"> Creative History</a>
             <select name="" id="myCreativeModelFilters">
-                <option value="" disabled selected>Favorite</option>
+                <option value="Favorite" disabled selected>Favorite</option>
                 <option value="Images">Images</option>
                 <option value="Base_Models">Base Models</option>
                 <option value="Lora_Models">Lora Models</option>
@@ -87,6 +87,7 @@
                             pageHTML += "<div class='relative'>";
                             pageHTML += "<a class='grid__link' href=''></a>";
                             pageHTML += "<input type='checkbox' name='' data-creativeId='"+element.id+"' class='imageCheckCreativehistory'>";
+                            
                             pageHTML += "</div>";
                             pageHTML += "<div class='mt-auto masonry-btn-generate'>";
                             pageHTML += "<button class='btn purple-col-bg form-control text-white border-radius-7 generateCreativeHistory' data-creativeId='"+element.id+"'>Generate</button>";
@@ -95,7 +96,8 @@
                             pageHTML += "</div>";
                         $(".masonry").append(pageHTML);
                         });
-                        $('#creativeHistoryFilter').val('');
+                        
+                     
                         $("#loader").hide();
                     }else{
                         var pageHTML = "<div class='grid'>";
@@ -103,7 +105,7 @@
                         pageHTML += "</div>";
 
                         $(".masonry").append(pageHTML);
-                        $('#creativeHistoryFilter').val('');    
+                       
                         
                         $("#loader").hide();
                     }
@@ -226,7 +228,7 @@
             var selectedAction = $('#myCreativeModelFilters').val();
             if(selectedAction == 'Images'){
                 $("#loader").show();
-                getUserCreativeHistory(selectedAction);    
+                getUserCreativeHistory(selectedAction); 
             }else if(selectedAction == 'Base_Models'){
                 $("#loader").show();
                 getUserCreativeHistory(selectedAction);    
@@ -245,6 +247,7 @@
         $(document).on('click','#creativeHistoryFilter', function() { 
             $("#loader").show();
             getUserCreativeHistory("creativeHistory");
+            jQuery('#myCreativeModelFilters').val('Favorite')
         });
 
         $(document).on('click','.generateCreativeHistory', function() {
@@ -273,6 +276,7 @@
 
                         window.open(
                         '/newproject/public/playground?generated=true',
+                        // '/playground?generated=true',
                         '_blank' // <- This is what makes it open in a new window.
                         );
                     }else{
