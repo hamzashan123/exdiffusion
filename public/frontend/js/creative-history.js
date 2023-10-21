@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    //  var baseUrl = 'https://exdiffusion.com/newproject/public';
-     var baseUrl = '';
+     var baseUrl = 'https://exdiffusion.com/newproject/public';
+    //  var baseUrl = '';
      
     $(document).on('click','#make_creativehistory',  function(){
 
