@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- login-area start -->
-<div id="signupModal">
+<div id="signupModal" class="newSignUpForm">
     <div>
         <div class="modal-content">
             <div class="modal-header">
