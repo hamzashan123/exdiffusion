@@ -1313,7 +1313,7 @@ div#signupModal .modal-content {
     margin-right: auto;
 }
 
-.mainSection {
+div#signupModal {
     min-height: 78vh;
     display: flex;
     flex-direction: column;
