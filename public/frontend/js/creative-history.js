@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-     var baseUrl = 'https://exdiffusion.com/newproject/public';
-    //  var baseUrl = '';
+    //  var baseUrl = 'https://exdiffusion.com/newproject/public';
+     var baseUrl = '';
      
     $(document).on('click','#make_creativehistory',  function(){
 
@@ -73,7 +73,8 @@
                 console.log(response);
 
                 if (response.status == "success") {
-                    window.location.href = '/my-asset';
+                    window.location.href = '/newproject/public/my-asset';
+                    // window.location.href = '/my-asset';
                 }else if(response.status == "failure"){
                     alert(response.message);    
                 }
