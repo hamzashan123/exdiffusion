@@ -6,6 +6,7 @@ var generatedImageArray = [];
 var loraModelArray = [];
 var loraModelStrength = [];
 var embeddingModelArray = [];
+var embeddingModelStrength = [];
 $(document).ready(function () {
     $("#loader").show();
 
@@ -596,32 +597,31 @@ $("#make_super_resolution").on("click", function (e) {
 });
 
 // click and select in lora popup
+// $(document).on("click", ".bodyInnerLora", function () {
+    
+// });
+
+// click and select in embedding popup
+// $(document).on("click", ".bodyInnerEmbedding", function () {
+    
+// });
+
+
 $(document).on("click", ".bodyInnerLora", function () {
+
     if ($(this).hasClass("selectedLoraModel")) {
         $(this).removeClass("selectedLoraModel");
     } else {
         $(this).addClass("selectedLoraModel");
     }
-});
 
-// click and select in embedding popup
-$(document).on("click", ".bodyInnerEmbedding", function () {
-    if ($(this).hasClass("selectedEmbeddingModel")) {
-        $(this).removeClass("selectedEmbeddingModel");
-    } else {
-        $(this).addClass("selectedEmbeddingModel");
-    }
-});
-
-
-$(document).on("click", ".bodyInnerLora", function () {
     var selectedLoraModel = $(this).attr("data-lora");
-    // selectedLoraStrength = $('.lora_dynamic_input');
+    var selectedLoraStrength = 0.8;
    
     if (!loraModelArray.includes(selectedLoraModel)) {
         // Push the value if it's not already in the array
         loraModelArray.push(selectedLoraModel);
-        // loraModelStrength.push(selectedLoraStrength.val());
+        loraModelStrength.push(selectedLoraStrength);
         //  console.log('loraModelStrength', loraModelStrength);
     } else {
         let index = loraModelArray.indexOf(selectedLoraModel);
@@ -633,6 +633,33 @@ $(document).on("click", ".bodyInnerLora", function () {
 
     generateLoraDynamicContent(loraModelArray);
     console.log("selectedLoraModel", loraModelArray);
+    console.log("selectedLoraModelStrength", loraModelStrength);
+});
+
+$(document).on('change','.lora_dynamic_input',  function() {
+    
+    var index = $('.lora_dynamic_input').index(this);
+    // var RangeIindex = $('.lora_dynamic_range').index(this);
+    // console.log('Clicked element inputIndex:', inputIndex);
+    console.log('Clicked element index:', index);
+    var lora_dynamic_new_value = $(this).val();
+    loraModelStrength[index] = lora_dynamic_new_value;
+   
+    console.log("loraModelArray", loraModelArray);
+    console.log("loraModelStrength", loraModelStrength);
+  });
+
+$(document).on('change','.lora_dynamic_range',  function() {
+    
+    var index = $('.lora_dynamic_range').index(this);
+    // var RangeIindex = $('.lora_dynamic_range').index(this);
+    // console.log('Clicked element inputIndex:', inputIndex);
+    console.log('Clicked element index:', index);
+    var lora_dynamic_new_value = $(this).val();
+    loraModelStrength[index] = lora_dynamic_new_value;
+   
+    console.log("loraModelArray", loraModelArray);
+    console.log("loraModelStrength", loraModelStrength);
 });
 
 function generateLoraDynamicContent(loraModelArray){
@@ -690,9 +717,15 @@ $(document).on("input", ".lora_dynamic_range", function () {
 });
 
 //embedding model working events
-
+// EMBEDDING WORK STARTS HERE
 
 $(document).on("click", ".bodyInnerEmbedding", function () {
+
+    if ($(this).hasClass("selectedEmbeddingModel")) {
+        $(this).removeClass("selectedEmbeddingModel");
+    } else {
+        $(this).addClass("selectedEmbeddingModel");
+    }
     var selectedEmbeddingModel = $(this).attr("data-embedding");
 
     if (!embeddingModelArray.includes(selectedEmbeddingModel)) {
@@ -706,6 +739,27 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
     }
 
     generateEmbeddingDynamicContent(embeddingModelArray);
+});
+
+$(document).on('change','.embedding_dynamic_input',  function() {
+    
+    var index = $('.embedding_dynamic_input').index(this);
+    console.log('Clicked element index:', index);
+    var embedding_dynamic_new_value = $(this).val();
+    embeddingModelStrength[index] = embedding_dynamic_new_value;
+    console.log("embeddingModelArray", embeddingModelArray);
+    console.log("embeddingModelStrength", embeddingModelStrength);
+  });
+
+$(document).on('change','.embedding_dynamic_range',  function() {
+    
+    var index = $('.embedding_dynamic_range').index(this);
+    console.log('Clicked element index:', index);
+    var embedding_dynamic_new_value = $(this).val();
+    embeddingModelStrength[index] = embedding_dynamic_new_value;
+   
+    console.log("embeddingModelArray", embeddingModelArray);
+    console.log("embeddingModelStrength", embeddingModelStrength);
 });
 
 function generateEmbeddingDynamicContent(embeddingModelArray){
@@ -749,7 +803,7 @@ function generateEmbeddingDynamicContent(embeddingModelArray){
 }
 
 $(document).on("input", ".embedding_dynamic_input", function () {
-    $(this)
+        $(this)
         .closest(".embedding_content")
         .find(".embedding_dynamic_range")
         .val($(this).val());
@@ -765,15 +819,18 @@ $(document).on("input", ".embedding_dynamic_range", function () {
 //remove dynamic created lora content divs
 
 var reflora;
+var refLoraStrengthIndex;
 
 $(document).on("click", ".btn_lora_model_trash", function () {
     $("#delete_popup_lora").modal("show");
     reflora = $(this).closest(".lora_popup_content");
+    refLoraStrengthIndex = $('.btn_lora_model_trash').index(this);
 });
 
 $(document).on("click", ".yeslora", function () {
     var lora_value = $(reflora).attr("data-added-model");
     removeValueFromArray(loraModelArray, lora_value);
+    loraModelStrength.splice(refLoraStrengthIndex, 1);
     var correspondingElement = $(
         '#lora_model [data-lora="' + lora_value + '"]'
     );
@@ -784,15 +841,18 @@ $(document).on("click", ".yeslora", function () {
 
 //remove dynamic created embedding content divs
 var refEmbedding;
+var refEmbeddingStrengthIndex;
 
 $(document).on("click", ".btn_embedding_model_trash", function () {
     $("#delete_popup_embedding").modal("show");
     refEmbedding = $(this).closest(".embedding_popup_content");
+    refEmbeddingStrengthIndex = $('.btn_embedding_model_trash').index(this);
 });
 
 $(document).on("click", ".yesembedding", function () {
     var embedding_value = $(refEmbedding).attr("data-added-model");
     removeValueFromArray(embeddingModelArray, embedding_value);
+    embeddingModelStrength.splice(refEmbeddingStrengthIndex, 1);
     var correspondingElement = $(
         '#embedding_model [data-embedding="' + embedding_value + '"]'
     );
