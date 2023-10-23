@@ -57,7 +57,7 @@
 <script>
      
      $(document).ready(function () {
-        var baseUrl = 'https://exdiffusion.com/newproject/public';
+        // var baseUrl = 'https://exdiffusion.com/newproject/public';
         // var baseUrl = '';
 
         
@@ -273,12 +273,9 @@
 
                         localStorage.removeItem("globalLoraModelArray");
                         localStorage.setItem("globalLoraModelArray",loraModelArray);
-
-                        window.open(
-                        '/newproject/public/playground?generated=true',
-                        // '/playground?generated=true',
-                        '_blank' // <- This is what makes it open in a new window.
-                        );
+                        
+                        window.location.href = '/playground?generated=true';
+                       
                     }else{
                         console.log(response);
                         $("#loader").hide();

@@ -309,22 +309,27 @@
                 creativeData =  JSON.parse(creativeData);
                 console.log('creativeData',creativeData);
                 $('#selectedBaseModelText').val(creativeData['selectedBaseModelText']);
-                $('#vaemodelslist').val(creativeData['vaemodelslist']);
+                
                 $('#prompt').text(creativeData['prompt']);
                 $('#neg_prompt').text(creativeData['neg_prompt']);
                 
                 $('#interference_input').val(creativeData['interference_input']);
                 $('#interference_range').val(creativeData['interference_input']);
                 $('#seed').val(creativeData['seed']);
-                $('#clickskip_input').val(creativeData['clickskip_input']);
-                $('#clickskip_range').val(creativeData['clickskip_input']);
+                if(creativeData['clickskip_input'] > 1 ) {
+                    $('#clickskip_input').val(creativeData['clickskip_input']);
+                    $('#clickskip_range').val(creativeData['clickskip_input']);
+                    $('#clickskip_input').prop('disabled',false);
+                    $('#clickskip_range').prop('disabled',false);
+                    $('#clickskip_checkbox').prop('checked','checked');
+                }
                 
                 $('#width_input').val(creativeData['width_input']);
                 $('#width_range').val(creativeData['width_input']);
                 $('#height_input').val(creativeData['height_input']);
                 $('#height_range').val(creativeData['height_input']);
-                $('#samples_input').val(creativeData['samples_input']);
-                $('#samples_range').val(creativeData['samples_input']);
+                // $('#samples_input').val(creativeData['samples_input']);
+                // $('#samples_range').val(creativeData['samples_input']);
                 $('#guidance_input').val(creativeData['guidance_input']);
                 $('#guidance_range').val(creativeData['guidance_input']);
                 
@@ -345,8 +350,10 @@
                 creativeLoraModelArray.push(...creativeDataloraModelArray);
                 generateLoraDynamicContent(creativeLoraModelArray);
                 setTimeout(function(){
+                    console.log('creativeData-scheduler_list', creativeData['scheduler_list']);
                     $('#scheduler_list').val(creativeData['scheduler_list']);
-                    
+                    $('#vaemodelslist').val(creativeData['vaemodelslist']);
+
                     $('.bodyInnerLora').each(function(element){
                         var bodyInnerLoraText = $(this).siblings('span').text().trim();
                     
@@ -355,7 +362,7 @@
                             $(this).trigger('click');
                         }
                     });
-                },4000);
+                },5000);
 
 
 
@@ -375,7 +382,7 @@
                             $(this).trigger('click');
                         }
                     });
-                },4000);
+                },5000);
             }
         }
         

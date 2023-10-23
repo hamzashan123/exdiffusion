@@ -1,4 +1,4 @@
-var baseUrl = 'https://exdiffusion.com/newproject/public';
+// var baseUrl = 'https://exdiffusion.com/newproject/public';
 // var baseUrl = '';
 
 $(document).ready(function () {
