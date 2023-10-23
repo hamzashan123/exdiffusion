@@ -576,8 +576,8 @@ $("#generateBtn").on("click", function () {
 });
 
 $('#make_creativehistory').on('click',function(){
-    // window.location.href =  'newproject/public/my-asset';
-    window.location.href =  '/my-asset';
+    window.location.href =  'newproject/public/my-asset';
+    // window.location.href =  '/my-asset';
 });
 
 // make super resoltuion
