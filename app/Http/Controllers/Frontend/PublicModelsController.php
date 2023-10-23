@@ -110,10 +110,13 @@ class PublicModelsController extends Controller
 
       if(!empty($imagesUrl)){
         foreach ($imagesUrl as $key => $url) {
+
+           
             // Generate a unique filename for each image
             $filename = auth()->user()->id.'-'.uniqid();
             // Save the image to the storage
             Storage::put("$storageFolder/$filename", file_get_contents($url));
+          
             // You can use the $filename variable to store the file path in your database or perform other operations.
             DB::table('creativehistory')->insertGetId([
                 'user_id' => auth()->user()->id,
@@ -137,7 +140,7 @@ class PublicModelsController extends Controller
                 'upscale' => $request->upscale,
                 'tomesd' => $request->tomesd,
                 'karras_sigmas' => $request->karras_sigmas,
-                'image_url' => $imagesUrl[$key],
+                'image_url' => url('/').'/storage/images/creativehistory/'.$filename,
                 'loraModelArray' => $request->loraModelArray,
                 'embeddingModelArray' => $request->embeddingModelArray
                 

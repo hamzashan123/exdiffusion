@@ -274,8 +274,8 @@
                         localStorage.removeItem("globalLoraModelArray");
                         localStorage.setItem("globalLoraModelArray",loraModelArray);
                         
-                        window.location.href = 'newproject/public/playground?generated=true';
-                        // window.location.href = '/playground?generated=true';
+                        // window.location.href = 'newproject/public/playground?generated=true';
+                        window.location.href = baseUrl+'/playground?generated=true';
                        
                     }else{
                         console.log(response);
