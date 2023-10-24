@@ -349,8 +349,7 @@
                 var creativeLoraModelStrengthArray = [];
                 if(creativeData['loraModelArray'] != null){
                     const creativeDataloraModelArray = creativeData['loraModelArray'].split(',');
-                    
-                    // const creativeDataloraStrengthArray = creativeData['loraModelStrength'].split(',');
+                    const creativeDataloraStrengthArray = creativeData['loraModelStrength'].split(',');
                     creativeLoraModelArray.push(...creativeDataloraModelArray);
                     // creativeLoraModelStrengthArray.push(...creativeDataloraStrengthArray);
                     
@@ -359,15 +358,20 @@
                         $('#scheduler_list').val(creativeData['scheduler_list']);
                         $('#vaemodelslist').val(creativeData['vaemodelslist']);
 
+                        //fill loraModel List on playground when generate=true 
                         $('.bodyInnerLora').each(function(element){
                             var bodyInnerLoraText = $(this).siblings('span').text().trim();
                         
                             if(creativeLoraModelArray.includes(bodyInnerLoraText)){
                                 console.log("bodyInnerLoraText",bodyInnerLoraText);
-                                // generateLoraDynamicContent(bodyInnerLoraText);
                                 $(this).trigger('click');
                             }
                         });
+
+                        $('.lora_dynamic_input').each(function(index,element){
+                            $(this).val(creativeDataloraStrengthArray[index]); 
+                        });
+
                     },5000);
                 }
 
