@@ -1437,6 +1437,19 @@ body.modal-open {
     top: 36%;
 }
 
+/* embedding range removed */
+
+
+.embedding_content .inner .embedding_dynamic_input {
+    display: none;
+}
+
+.embedding_content input[type="range"] {
+    visibility: hidden;
+}
+
+/* end here */
+
 @media only screen and (min-width:1400px) {
     .row.contentSectionIndex {max-width: 50%;margin-top: 40px;}
 
