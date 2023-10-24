@@ -346,43 +346,51 @@
                 //very imporatant for future changes    
                 // calling this function from custom.js to make dynamic div when genereate button click from my-assets page.
                 var creativeLoraModelArray = [];
-                const creativeDataloraModelArray = creativeData['loraModelArray'].split(',');
-                creativeLoraModelArray.push(...creativeDataloraModelArray);
-                generateLoraDynamicContent(creativeLoraModelArray);
-                setTimeout(function(){
-                    console.log('creativeData-scheduler_list', creativeData['scheduler_list']);
-                    $('#scheduler_list').val(creativeData['scheduler_list']);
-                    $('#vaemodelslist').val(creativeData['vaemodelslist']);
-
-                    $('.bodyInnerLora').each(function(element){
-                        var bodyInnerLoraText = $(this).siblings('span').text().trim();
+                var creativeLoraModelStrengthArray = [];
+                if(creativeData['loraModelArray'] != null){
+                    const creativeDataloraModelArray = creativeData['loraModelArray'].split(',');
                     
-                        if(creativeLoraModelArray.includes(bodyInnerLoraText)){
-                            console.log("bodyInnerLoraText",bodyInnerLoraText);
-                            $(this).trigger('click');
-                        }
-                    });
-                },5000);
+                    // const creativeDataloraStrengthArray = creativeData['loraModelStrength'].split(',');
+                    creativeLoraModelArray.push(...creativeDataloraModelArray);
+                    // creativeLoraModelStrengthArray.push(...creativeDataloraStrengthArray);
+                    
+                    setTimeout(function(){
+                        console.log('creativeData-scheduler_list', creativeData['scheduler_list']);
+                        $('#scheduler_list').val(creativeData['scheduler_list']);
+                        $('#vaemodelslist').val(creativeData['vaemodelslist']);
 
-
+                        $('.bodyInnerLora').each(function(element){
+                            var bodyInnerLoraText = $(this).siblings('span').text().trim();
+                        
+                            if(creativeLoraModelArray.includes(bodyInnerLoraText)){
+                                console.log("bodyInnerLoraText",bodyInnerLoraText);
+                                // generateLoraDynamicContent(bodyInnerLoraText);
+                                $(this).trigger('click');
+                            }
+                        });
+                    },5000);
+                }
 
                 //very imporatant for future changes  
                 // calling this function from custom.js to make dynamic div when genereate button click from my-assets page.
                 var creativeEmbeddingModelArray = [];
-                const creativeDataEmbeddingModelArray = creativeData['embeddingModelArray'].split(',');
-                creativeEmbeddingModelArray.push(...creativeDataEmbeddingModelArray);
+                if(creativeData['embeddingModelArray'] != null){
+                    const creativeDataEmbeddingModelArray = creativeData['embeddingModelArray'].split(',');
+                    creativeEmbeddingModelArray.push(...creativeDataEmbeddingModelArray);
 
-                generateEmbeddingDynamicContent(creativeEmbeddingModelArray);
-                setTimeout(function(){
-                    $('.bodyInnerEmbedding').each(function(element){
-                        var bodyInnerEmbeddingText = $(this).siblings('span').text().trim();
-                    
-                        if(creativeEmbeddingModelArray.includes(bodyInnerEmbeddingText)){
-                            console.log("bodyInnerEmbeddingText",bodyInnerEmbeddingText);
-                            $(this).trigger('click');
-                        }
-                    });
-                },5000);
+                    generateEmbeddingDynamicContent(creativeEmbeddingModelArray);
+                    setTimeout(function(){
+                        $('.bodyInnerEmbedding').each(function(element){
+                            var bodyInnerEmbeddingText = $(this).siblings('span').text().trim();
+                        
+                            if(creativeEmbeddingModelArray.includes(bodyInnerEmbeddingText)){
+                                console.log("bodyInnerEmbeddingText",bodyInnerEmbeddingText);
+                                $(this).trigger('click');
+                            }
+                        });
+                    },5000);
+                }
+                
             }
         }
         

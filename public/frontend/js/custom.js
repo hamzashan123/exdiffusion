@@ -352,7 +352,7 @@ function generateImages() {
                         });
                         pageHTML += "</div> </center>";
                         // save All data to userHistory
-                        saveUserCreativeHistory();
+                        saveUserCreativeHistory(response);
 
                         $(".innerImageDiv").append(pageHTML);
                         $(".processing").remove();
@@ -474,7 +474,7 @@ function generateImages() {
     }
 }
 
-function saveUserCreativeHistory(){
+function saveUserCreativeHistory(response){
         const selectedBaseModelText = $('#selectedBaseModelText').val();
         const vaemodelslist = $('#vaemodelslist').val();
         const prompt = $('#prompt').val();
@@ -505,7 +505,7 @@ function saveUserCreativeHistory(){
         formData.append("prompt", prompt);
         formData.append("neg_prompt", neg_prompt);
         formData.append("scheduler_list", scheduler_list);
-        formData.append("seed", seed);
+        formData.append("seed", response.meta.seed);
         formData.append("interference_input", interference_input);
         formData.append("clickskip_input", clickskip_input);
         formData.append("width_input", width_input);
@@ -522,6 +522,7 @@ function saveUserCreativeHistory(){
         formData.append("karras_sigmas", karras_sigmas);
         // Array data
         formData.append("loraModelArray", loraModelArray);
+        formData.append("loraModelStrength", loraModelStrength);
         formData.append("embeddingModelArray", embeddingModelArray);
         formData.append("images", generatedImageArray);
 
@@ -611,6 +612,7 @@ $(document).on("click", ".bodyInnerLora", function () {
 
     if ($(this).hasClass("selectedLoraModel")) {
         $(this).removeClass("selectedLoraModel");
+
     } else {
         $(this).addClass("selectedLoraModel");
     }
@@ -622,6 +624,7 @@ $(document).on("click", ".bodyInnerLora", function () {
         // Push the value if it's not already in the array
         loraModelArray.push(selectedLoraModel);
         loraModelStrength.push(selectedLoraStrength);
+        generateLoraDynamicContent(selectedLoraModel);
         //  console.log('loraModelStrength', loraModelStrength);
     } else {
         let index = loraModelArray.indexOf(selectedLoraModel);
@@ -629,11 +632,14 @@ $(document).on("click", ".bodyInnerLora", function () {
             loraModelArray.splice(index, 1);
             loraModelStrength.splice(index, 1);
         }
+        
+        console.log("selectedLoraModel", selectedLoraModel);
+        $("div[data-added-model='"+selectedLoraModel+"']").remove();
     }
 
-    generateLoraDynamicContent(loraModelArray);
-    console.log("selectedLoraModel", loraModelArray);
-    console.log("selectedLoraModelStrength", loraModelStrength);
+    
+    // console.log("selectedLoraModel", loraModelArray);
+    // console.log("selectedLoraModelStrength", loraModelStrength);
 });
 
 $(document).on('change','.lora_dynamic_input',  function() {
@@ -662,13 +668,13 @@ $(document).on('change','.lora_dynamic_range',  function() {
     console.log("loraModelStrength", loraModelStrength);
 });
 
-function generateLoraDynamicContent(loraModelArray){
+function generateLoraDynamicContent(selectedLoraModel){
 
-    $(".lora_popup_content").remove();
-    loraModelArray.forEach((element) => {
+    // $(".lora_popup_content").remove();
+    // loraModelArray.forEach((element) => {
         var pageHTML =
             "<div class='d-flex lora_popup_content'  data-added-model=" +
-            element +
+            selectedLoraModel +
             ">";
         pageHTML +=
             "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 lora_images'>";
@@ -680,7 +686,7 @@ function generateLoraDynamicContent(loraModelArray){
         pageHTML +=
             "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 lora_content'>";
         pageHTML += "<div class='spaceBetween'>";
-        pageHTML += "<label for=''>" + element + "</label>";
+        pageHTML += "<label for=''>" + selectedLoraModel + "</label>";
         pageHTML += "<div class='inner'>";
         pageHTML +=
             " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_lora_model_trash' ><img src='" +
@@ -699,7 +705,7 @@ function generateLoraDynamicContent(loraModelArray){
         pageHTML += "</div>";
 
         $(".lora_appenddiv").append(pageHTML);
-    });
+    // });
 } 
 
 $(document).on("input", ".lora_dynamic_input", function () {

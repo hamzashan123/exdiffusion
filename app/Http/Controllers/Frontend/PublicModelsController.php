@@ -142,6 +142,7 @@ class PublicModelsController extends Controller
                 'karras_sigmas' => $request->karras_sigmas,
                 'image_url' => url('/').'/storage/images/creativehistory/'.$filename,
                 'loraModelArray' => $request->loraModelArray,
+                'loraModelStrength' => $request->loraModelStrength,
                 'embeddingModelArray' => $request->embeddingModelArray
                 
             ]);
