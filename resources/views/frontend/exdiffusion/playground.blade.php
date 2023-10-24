@@ -370,6 +370,7 @@
 
                         $('.lora_dynamic_input').each(function(index,element){
                             $(this).val(creativeDataloraStrengthArray[index]); 
+                            loraModelStrength[index] = creativeDataloraStrengthArray[index];
                         });
 
                     },5000);
