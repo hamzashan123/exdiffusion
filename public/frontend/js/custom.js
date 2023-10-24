@@ -17,10 +17,7 @@ $(document).ready(function () {
         // Customize options here
     });
 
-    // jQuery(".masonry .grid").on("click", function () {
-    //     window.location.href =
-    //         "https://exdiffusion.com/newproject/public/image-detail";
-    // });
+
 });
 
 function getBaseModels() {
