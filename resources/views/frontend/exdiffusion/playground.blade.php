@@ -368,7 +368,12 @@
                             }
                         });
 
+                        //fill lora models dynamic created input and slider value on load of page when generate = true
                         $('.lora_dynamic_input').each(function(index,element){
+                            $(this).val(creativeDataloraStrengthArray[index]); 
+                            loraModelStrength[index] = creativeDataloraStrengthArray[index];
+                        });
+                        $('.lora_dynamic_range').each(function(index,element){
                             $(this).val(creativeDataloraStrengthArray[index]); 
                             loraModelStrength[index] = creativeDataloraStrengthArray[index];
                         });
