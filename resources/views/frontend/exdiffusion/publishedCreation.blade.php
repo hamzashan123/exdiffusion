@@ -8,6 +8,7 @@
         <div class="col-lg-7 col-md-4 col-sm-12 col-xs-12 navigation">
 
             <a href="#" class="active"> Images</a>
+            <a href="#"> Favourite</a>
             <a href="#"> Base Model</a>
             <a href="#"> Lora</a>
             <a href="#"> Embedding</a>
