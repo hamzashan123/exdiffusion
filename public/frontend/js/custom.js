@@ -1,5 +1,10 @@
-var baseUrl = 'https://exdiffusion.com/newproject/public';
-// var baseUrl = '';
+var baseUrl = '';
+
+if (window.location.hostname === 'localhost') {
+  baseUrl = ''; // Set the base URL for localhost
+} else {
+  baseUrl = 'https://exdiffusion.com/newproject/public'; // Set the base URL for other domains
+}
 
 var superResolutionArray = [];
 var generatedImageArray = [];

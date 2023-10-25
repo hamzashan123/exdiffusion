@@ -1,5 +1,3 @@
-// var baseUrl = 'https://exdiffusion.com/newproject/public';
-// var baseUrl = '';
 
 $(document).ready(function () {
     const draggableArea = $(".draggableinputarea");
