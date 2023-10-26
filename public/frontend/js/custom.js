@@ -12,6 +12,7 @@ var loraModelArray = [];
 var loraModelStrength = [];
 var embeddingModelArray = [];
 var embeddingModelStrength = [];
+var generatedImageResponse;
 $(document).ready(function () {
     $("#loader").show();
 
@@ -355,6 +356,7 @@ function generateImages() {
                         pageHTML += "</div> </center>";
                         // save All data to userHistory
                         saveUserCreativeHistory(response);
+                        
 
                         $(".innerImageDiv").append(pageHTML);
                         $(".processing").remove();
@@ -547,7 +549,7 @@ function saveUserCreativeHistory(response){
                 console.log(response);
 
                 if (response.status == "success") {
-                    
+                    generatedImageResponse = response;
                 }else if(response.status == "failure"){
                     alert(response.message);    
                 }
@@ -561,6 +563,47 @@ function saveUserCreativeHistory(response){
             },
         });
 }
+
+//publish the images to publish creation scree
+$(document).on('click','#make_publishimage', function(){
+    
+    if(generatedImageResponse != null || generatedImageResponse.length > 0 ){
+        console.log(generatedImageResponse);
+        $.ajax({
+            url: "" + baseUrl + "/publish-images",
+            method: "POST",
+            data: {
+                generatedImageResponse
+            },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+      
+                console.log(response);
+                if (response.status == "success") {
+                    Swal.fire({
+                        title: response.message,
+                        icon: 'success',
+                        timer: 4000, // Auto-close the alert after 4 seconds
+                        showConfirmButton: true
+                    });
+                    
+                }else if(response.status == "failure"){
+                    alert(response.message);    
+                }
+            },
+            error: function () {
+                
+            
+                $("#result").text(
+                    "Error occurred while fetching data from the API."
+                );
+            },
+        });
+    }
+    
+});
 
 //click generate images
 $("#generateBtn").on("click", function () {

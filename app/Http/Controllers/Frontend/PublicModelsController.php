@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class PublicModelsController extends Controller
 {
-    public function getBaseModels(Request $request){
+  
+  public function getBaseModels(Request $request){
 
         $payload = [
           "key" => "rfhpc3j1c7kw0t", 
@@ -104,21 +105,19 @@ class PublicModelsController extends Controller
 
   public function creativeHistory(Request $request){
       $imagesUrl = explode(",", $request->images); 
-      //dd($imagesUrl);
+      $dataArray = [];
       // Specify the folder in your storage where you want to save the images
       $storageFolder = 'public/images/creativehistory';
 
       if(!empty($imagesUrl)){
         foreach ($imagesUrl as $key => $url) {
-
-           
             // Generate a unique filename for each image
             $filename = auth()->user()->id.'-'.uniqid();
             // Save the image to the storage
             Storage::put("$storageFolder/$filename", file_get_contents($url));
           
             // You can use the $filename variable to store the file path in your database or perform other operations.
-            DB::table('creativehistory')->insertGetId([
+            $Id  = DB::table('creativehistory')->insertGetId([
                 'user_id' => auth()->user()->id,
                 'selectedBaseModelText' => $request->selectedBaseModelText,
                 'vaemodelslist' => $request->vaemodelslist,
@@ -146,9 +145,11 @@ class PublicModelsController extends Controller
                 'embeddingModelArray' => $request->embeddingModelArray
                 
             ]);
+            array_push($dataArray,  $Id);
         }
           return response()->json([
             'status' => 'success',
+            'data' => $dataArray,
             'message' => 'Data saved!'
           ]);
       }else{
@@ -198,6 +199,57 @@ class PublicModelsController extends Controller
 
   }
 
+  public function getPublishCreation(Request $request){
+      $user = Auth::user();
+      if($user){
+
+        $userCreativeHistory = DB::table('creativehistory');
+        if($request->modelType == 'Images'){
+          $userCreativeHistory =  $userCreativeHistory;
+        }elseif($request->modelType == 'Favourite'){
+          $userCreativeHistory =  $userCreativeHistory->where('is_publishcreation_favorite','true');
+        }
+        $userCreativeHistory = $userCreativeHistory->get();
+        return response()->json([
+          'status' => 'success',
+          'data' => $userCreativeHistory,
+          'message' => 'Data found!'
+        ]);
+
+      }else{
+
+        return response()->json([
+          'status' => 'failure',
+          'message' => 'Something went wrong!'
+        ]);
+
+      }
+  }
+
+  public function publishImages(Request $request){
+    
+    $user = Auth::user();
+      if($user){
+        foreach($request->generatedImageResponse['data'] as $id){
+          $is_published = DB::table('creativehistory')->where('user_id',$user->id)->where('id',$id)->update([
+            'is_published' => "true"
+          ]);
+        }
+        return response()->json([
+          'status' => 'success',
+          'message' => 'Published Successfully'
+        ]);
+
+      }else{
+
+        return response()->json([
+          'status' => 'failure',
+          'message' => 'Something went wrong!'
+        ]);
+
+      }
+  }
+
   public function deleteUserCreativeHistory(Request $request){
       $user = Auth::user();
       
@@ -226,12 +278,22 @@ class PublicModelsController extends Controller
       $user = Auth::user();
       if(!empty($request->creativeArray)){
 
-        foreach($request->creativeArray as $creativeId){
-          DB::table('creativehistory')->where('user_id',$user->id)->where('id',$creativeId)
-          ->update([
-            'is_favorite' => 'true',
-          ]);
+        if($request->publishcreation == true){
+          foreach($request->creativeArray as $creativeId){
+            DB::table('creativehistory')->where('user_id',$user->id)->where('id',$creativeId)
+            ->update([
+              'is_publishcreation_favorite' => 'true',
+            ]);
+          }
+        }else{
+          foreach($request->creativeArray as $creativeId){
+            DB::table('creativehistory')->where('user_id',$user->id)->where('id',$creativeId)
+            ->update([
+              'is_favorite' => 'true',
+            ]);
+          }
         }
+       
         return response()->json([
           'status' => 'success',
           'message' => 'Added to favorites list!'

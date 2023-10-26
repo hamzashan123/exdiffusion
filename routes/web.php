@@ -28,6 +28,8 @@ Route::post('/user-creative-history', [PublicModelsController::class, 'getUserCr
 Route::post('/delete-userCreativeHistory', [PublicModelsController::class, 'deleteUserCreativeHistory'])->name('DeleteCreativeHistory');
 Route::post('/addToFavoriteCreativeHistory', [PublicModelsController::class, 'addToFavoriteCreativeHistory'])->name('addToFavoriteCreativeHistory');
 Route::post('/getGeneratedImageHistory', [PublicModelsController::class, 'getGeneratedImageHistory'])->name('getGeneratedImageHistory');
+Route::post('/get-publish-creation', [PublicModelsController::class, 'getPublishCreation'])->name('getPublishCreation');
+Route::post('/publish-images', [PublicModelsController::class, 'publishImages'])->name('publishImages');
 
 Route::get('/get-base-models',[PublicModelsController::class, 'getBaseModels'])->name('getbasemodels');
 Route::get('/get-schedulers',[PublicModelsController::class, 'getSchedulers'])->name('getschedulers');
