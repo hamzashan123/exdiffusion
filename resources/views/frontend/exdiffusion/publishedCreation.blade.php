@@ -31,12 +31,15 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="publicCreationImagesList">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="masonry">
                 
             </div>
         </div>
+    </div>
+    <div class="row" id="publicCreationModelList">
+        
     </div>
 </div>
 @endsection('content')
@@ -49,6 +52,8 @@
         var publishCreationArray = [];
 
         function getPublishCreations(modelType){
+                $('#publicCreationModelList').hide();
+                $('#publicCreationImagesList').show();
 
                 $.ajax({
                     url: "" + baseUrl + "/get-publish-creation",
@@ -107,6 +112,90 @@
             
         }
 
+        function getAllModels(modelType){
+                $('#publicCreationImagesList').hide();
+                $('#publicCreationModelList').show();
+                
+                $.ajax({
+                
+                url: "" + baseUrl + "/get-base-models", // Replace with your API endpoint
+                method: "GET",
+                data: {},
+                success: function (response) {
+                    var response = JSON.parse(response);
+
+                    console.log("response", response);
+
+                    if (response.status == "success") {
+                    
+                        $("#publicCreationModelList").empty();
+                        if(modelType == 'base_models'){
+                            response.models.forEach((element) => {
+                            var pageHTML =
+                                "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
+                            pageHTML += "<div class='bodyInner'>";
+                            pageHTML +=
+                                "<img src='" +
+                                baseUrl +
+                                "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                            pageHTML += " </div>";
+                            pageHTML += " <span> " + element.model_id + "</span>";
+                            pageHTML += "</div>";
+
+                            $("#publicCreationModelList").append(pageHTML);
+                        });
+                        }
+
+                        
+                        if(modelType == 'lora_models'){
+                            if (response.lora_models[0] !== undefined) {
+                                response.lora_models.forEach((element) => {
+                                    var pageHTML =
+                                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
+                                    pageHTML += "<div class='bodyInner'>";
+                                    pageHTML +=
+                                        "<img src='" +
+                                        baseUrl +
+                                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                    pageHTML += " </div>";
+                                    pageHTML += " <span> " + element.model_id + "</span>";
+                                    pageHTML += "</div>";
+
+                                    $("#publicCreationModelList").append(pageHTML);
+                                });
+                            }
+                        }
+                       
+                        if(modelType == 'embedding_models'){
+                            if (response.embeddings_models[0] !== undefined) {
+                                response.embeddings_models.forEach((element) => {
+                                    var pageHTML =
+                                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
+                                    pageHTML += "<div class='bodyInner'>";
+                                    pageHTML +=
+                                        "<img src='" +
+                                        baseUrl +
+                                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                    pageHTML += " </div>";
+                                    pageHTML += " <span> " + element.model_id + "</span>";
+                                    pageHTML += "</div>";
+
+                                    $("#publicCreationModelList").append(pageHTML);
+                                });
+                            }
+                        }
+
+                        $("#loader").hide();
+                    }
+                },
+                error: function () {
+                    $("#result").text(
+                        "Error occurred while fetching data from the API."
+                    );
+                },
+            });
+        }
+
         $(document).on('change','.imageCheckCreativehistory', function() {
             var checkedCheckboxes = $('.imageCheckCreativehistory:checked').length;
             var creativeId = $(this).data("creativeid");
@@ -144,17 +233,17 @@
 
         $(document).on('click','#publishcreation_basemodel_filter', function() { 
             $("#loader").show();
-            getBaseModels();
+            getAllModels('base_models');
         });
 
         $(document).on('click','#publishcreation_lora_filter', function() { 
             $("#loader").show();
-            getPublishCreations("Lora");
+            getAllModels('lora_models');
         });
 
         $(document).on('click','#publishcreation_embedding_filter', function() { 
             $("#loader").show();
-            getPublishCreations("Embedding");
+            getAllModels('embedding_models');
         });
 
         
