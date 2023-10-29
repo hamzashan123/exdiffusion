@@ -1517,6 +1517,17 @@ div#publicCreationModelList .bodyInner img {
 }
 
 @media only screen and (max-width:767px) {
+    .navigation {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    
+    .filters select {
+        left: 0;
+        margin-bottom: 10px;
+    }
+    
     .fourEventsActions .col-md-2 {
         display: inline-block !important;
         width: 23% !important;
