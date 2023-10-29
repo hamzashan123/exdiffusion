@@ -1517,6 +1517,21 @@ div#publicCreationModelList .bodyInner img {
 }
 
 @media only screen and (max-width:767px) {
+
+
+.navigation {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
     .navigation {
         margin-top: 15px;
         margin-bottom: 15px;
@@ -1527,7 +1542,7 @@ div#publicCreationModelList .bodyInner img {
         left: 0;
         margin-bottom: 10px;
     }
-    
+
     .fourEventsActions .col-md-2 {
         display: inline-block !important;
         width: 23% !important;
