@@ -1448,6 +1448,19 @@ body.modal-open {
     visibility: hidden;
 }
 
+div#publicCreationModelList span {
+    color: white;
+}
+
+
+div#publicCreationModelList .bodyInner {
+    margin-bottom: 10px;
+}
+
+div#publicCreationModelList .bodyInner img {
+    margin-bottom: 5px !important;
+}
+
 /* end here */
 
 @media only screen and (min-width:1400px) {
