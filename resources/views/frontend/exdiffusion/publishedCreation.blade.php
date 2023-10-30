@@ -2,10 +2,10 @@
 @section('content')
 <div class="publishCreationMain">
     <div class="row mainrow">
-        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 title">
+        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 title">
             <img src="{{asset('img/icons/myasset.png')}}"> Published Creations
         </div>
-        <div class="col-lg-7 col-md-4 col-sm-12 col-xs-12 navigation">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 navigation">
 
             <a href="#" class="active" id="publishcreation_images_filter">Images</a>
             <a href="#" id="publishcreation_favourite_filter">Favourite</a>
@@ -14,7 +14,7 @@
             <a href="#" id="publishcreation_embedding_filter">Embedding</a>
 
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 filters">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 filters">
             <div class="input-group">
 
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">

@@ -1567,6 +1567,10 @@ div#publicCreationModelList .bodyInner img {
 @media only screen and (max-width:768px ) {
     
 
+    .navigation a:first-child {
+        margin-left: 21px !important;
+    }
+
 .filters .input-group {
     flex-direction: column;
 }
