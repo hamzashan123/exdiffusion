@@ -1543,7 +1543,7 @@ div#publicCreationModelList .bodyInner img {
     
     
     .filters select {
-        left: 0;
+        left: 0 !important;
         margin-bottom: 10px;
     }
 
