@@ -1523,11 +1523,11 @@ div#publicCreationModelList .bodyInner img {
 @media only screen and (max-width:767px) {
 
 
-.navigation {
+/* .navigation {
     justify-content: center;
     align-items: center;
     display: flex;
-}
+} */
 
 .title {
     display: flex;
@@ -1566,6 +1566,11 @@ div#publicCreationModelList .bodyInner img {
 
 @media only screen and (max-width:768px ) {
     
+
+.filters .input-group {
+    flex-direction: column;
+}
+
     .modelsListings  .mx-3{
         margin: 0px !important;
     }
