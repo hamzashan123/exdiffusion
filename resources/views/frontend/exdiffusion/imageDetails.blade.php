@@ -13,7 +13,7 @@
             <div class="imageDetailsMain">
                 <div class="border-radius-7" style="background: #0b0f19;width: 100%;">
                     <div class="imgDiv">
-                        <img src="{{asset('images/car.png')}}" />
+                        <img src="{{$data->image_url}}" />
                     </div>
                 </div>
             </div>
@@ -27,23 +27,23 @@
                 <div class="border-radius-7" style="background: #0b0f19;padding: 10px;width: 100%;">
 
 
-                    <strong> Basic Model: </strong> Realistic Vision V1.3 <br />
-                    <strong> VAE: </strong> vae-kl-ff8-anime2 <br />
-                    <strong> Lora: </strong> Realistic Vision V1.3 <br />
-                    <strong> Embedding: </strong> Realistic Vision V1.3 <br />
-                    <strong> Seed Number: </strong> Realistic Vision V1.3 <br />
+                    <strong> Basic Model: </strong> {{$data->selectedBaseModelText}} <br />
+                    <strong> VAE: </strong> {{$data->vaemodelslist}} <br />
+                    <strong> Lora: </strong> {{$data->loraModelArray}} <br />
+                    <strong> Embedding: </strong> {{$data->embeddingModelArray}} <br />
+                    <strong> Seed Number: </strong> {{$data->seed}} <br />
 
                     <br />
                     <strong> Prompt: </strong>
-                    <br /> An absolutely beautiful beach, with a blend of oranges, pinks, and yellows filling the sky, Crystal-clear waters of the sea gently kissing the shore, with sandy white beach stretching far and wide, The scene is dynamic and breathtaking, with seagulls soaring high in the sky and gently swaying palm trees, Take in the calming atmosphere and let the peacefulness wash over you,
+                    <br /> {{$data->prompt}}
                     <br /><br />
                     <strong> Negative Prompt: </strong>
                     <br />
-                    (nsfw:1.5), ng_deepnegative_v1_75t, badhandv4, (paintings,sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, normal quality, ((monochrome)), ((grayscale)), logo, text
+                    {{$data->neg_prompt}}
                     <br /><br />
                     <strong> Other Setting: </strong>
                     <br />
-                    <strong> Scheduler:</strong> EulerAncestralDiscrete, <strong>Inference Steps: </strong> 25, <strong>Seed Number: </strong> 654765664, <strong>Clip Skip: </strong> 2, <strong>Width: </strong> 512, <strong>Height: </strong> 768, <strong>Guidance Scale: </strong> 7, <strong>Safe Checker: </strong> no, <strong>Enhance Prompt: </strong> yes,<strong>Multi Lingual: </strong> yes, <strong>Panorama: </strong> no, <strong>Self Attention: </strong> no, <strong>Upscale: </strong> yes, <strong>Tomesd: </strong> yes, <strong>Karras Sigmas: </strong> yes
+                    <strong> Scheduler:</strong> {{$data->scheduler_list}} , <strong>Inference Steps: </strong> {{$data->interference_input}} , <strong>Seed Number: </strong>  {{$data->seed}} , <strong>Clip Skip: </strong>  {{$data->clickskip_input}} , <strong>Width: </strong> {{$data->width_input}}, <strong>Height: </strong> {{$data->height_input}} , <strong>Guidance Scale: </strong> {{$data->guidance_input}} , <strong>Safe Checker: </strong> {{$data->safety_checker}} , <strong>Enhance Prompt: </strong> {{$data->enhance_prompt}} ,<strong>Multi Lingual: </strong> {{$data->multi_lingual}} , <strong>Panorama: </strong> {{$data->panorama}} , <strong>Self Attention: </strong> {{$data->self_attention}}, <strong>Upscale: </strong> {{$data->upscale}}, <strong>Tomesd: </strong> {{$data->tomesd}} , <strong>Karras Sigmas: </strong> {{$data->karras_sigmas}}
                     <br /><br />
 
                     <button> Super Resolution </button> <br />
