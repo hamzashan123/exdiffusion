@@ -176,3 +176,7 @@
 .masonry .grid {
     cursor: pointer;
 }
+
+.masonry .grid__link {
+    pointer-events: none;
+}
