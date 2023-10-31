@@ -311,7 +311,7 @@ class PublicModelsController extends Controller
 
   public function getGeneratedImageHistory(Request $request){
       $user = Auth::user();
-      $generatedHistory = DB::table('creativehistory')->where('user_id',$user->id)->where('id',$request->creativeId)->first();
+      $generatedHistory = DB::table('creativehistory')->where('id',$request->creativeId)->first();
       
       if(!empty($generatedHistory)){
         

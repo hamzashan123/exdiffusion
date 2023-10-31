@@ -76,10 +76,10 @@
                             pageHTML += "<img src='" + element.image_url + "'>";
                             pageHTML += "<div class='grid__body'>";
                             pageHTML += "<div class='relative'>";
-                            pageHTML += "<a class='grid__link' href=''></a>";
+                            
                             pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
-
                             pageHTML += "</div>";
+                            pageHTML += "<a class='grid__link' href="+baseUrl+"/image-detail/"+element.id+"></a>";
                             pageHTML += "<div class='mt-auto masonry-btn-generate'>";
                             pageHTML += "<button class='btn purple-col-bg form-control text-white border-radius-7 generateCreativeHistory' data-creativeId='" + element.id + "'>Generate</button>";
                             pageHTML += "</div>";
