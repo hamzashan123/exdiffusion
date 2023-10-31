@@ -17,14 +17,14 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 filters">
             <div class="input-group">
 
-                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12">
 
                     <select name="filterlist" id="public_creation_filterlist" class="form-control dark-grey border-radius-7">
                         <option value="" selected></option>
                         <option value="addToFavoritePublishCreation">Add to Favorite</option>
                     </select>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                     <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="public_creation_apply_filters">Apply</button>
                 </div>
 
