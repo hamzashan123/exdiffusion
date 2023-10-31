@@ -27,7 +27,7 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 filters">
             <div class="input-group">
 
-                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12">
 
                     <select name="filterlist" id="filterlist" disabled class="form-control dark-grey border-radius-7">
                         <option value="" selected></option>
@@ -35,7 +35,7 @@
                         <option value="deleteCreativeHistory">Delete</option>
                     </select>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                     <button class="btn btn-success form-control text-light-grey-bg border-radius-7 relativeBtns" disabled id="apply_filters">
                         <div class="loaderbtn"></div> Apply
                     </button>
