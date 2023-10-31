@@ -121,6 +121,7 @@
 .grid__body input[type="checkbox"],
 .masonry-btn-generate {
     display: none;
+    z-index: 999;
 }
 
 .grid:hover .grid__body input[type="checkbox"] {
