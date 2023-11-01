@@ -16,145 +16,23 @@ var generatedImageResponse;
 $(document).ready(function () {
     $("#loader").show();
 
-    getBaseModels();
-    getSchedulers();
+    
 
     $("[data-fancybox]").fancybox({
         // Customize options here
     });
 
+    setTimeout(() => {
+        $("#loader").hide();
+        $(".header").show();
+        $(".mainSection").show();
+        $(".footer").show();
+    }, 2000);
+    
 
 });
 
-function getBaseModels() {
-    // // Make an API request
 
-    $.ajax({
-        // url: '/get-base-models', // Replace with your API endpoint
-        url: "" + baseUrl + "/get-base-models", // Replace with your API endpoint
-        method: "GET",
-        data: {},
-        success: function (response) {
-            var response = JSON.parse(response);
-
-            console.log("response", response);
-
-            if (response.status == "success") {
-                $("#container").show();
-
-                response.models.forEach((element) => {
-                    var pageHTML =
-                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
-                    pageHTML += "<div class='bodyInner'>";
-                    pageHTML +=
-                        "<img src='" +
-                        baseUrl +
-                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
-                    pageHTML += " </div>";
-                    pageHTML += " <span> " + element.model_id + "</span>";
-                    pageHTML += "</div>";
-
-                    $("#baseModelsList").append(pageHTML);
-                });
-
-                if (response.vae_models[0] !== undefined) {
-                    response.vae_models.forEach((element) => {
-                        var pageHTML =
-                            "<option class='images' value=" +
-                            element.model_id +
-                            "> " +
-                            element.model_id +
-                            "";
-                        pageHTML += "</option>";
-                        $("#vaemodelslist").append(pageHTML);
-                    });
-                }
-
-                response.lora_models.forEach((element) => {
-                    var pageHTML =
-                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
-                    pageHTML +=
-                        "<div class='bodyInnerLora' data-lora='" +
-                        element.model_id +
-                        "'>";
-                    pageHTML +=
-                        "<img src='" +
-                        baseUrl +
-                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
-                    pageHTML += " </div>";
-                    pageHTML += " <span> " + element.model_id + "</span>";
-                    pageHTML += "</div>";
-
-                    $("#LoraModelsList").append(pageHTML);
-                });
-
-                response.embeddings_models.forEach((element) => {
-                    var pageHTML =
-                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
-                    pageHTML +=
-                        "<div class='bodyInnerEmbedding' data-embedding=" +
-                        element.model_id +
-                        ">";
-                    pageHTML +=
-                        "<img src='" +
-                        baseUrl +
-                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
-                    pageHTML += " </div>";
-                    pageHTML += " <span> " + element.model_id + "</span>";
-                    pageHTML += "</div>";
-
-                    $("#EmbeddingsModelsList").append(pageHTML);
-                });
-
-                $("#loader").hide();
-                $(".header").show();
-                $(".mainSection").show();
-                $(".footer").show();
-            }
-        },
-        error: function () {
-            $("#result").text(
-                "Error occurred while fetching data from the API."
-            );
-        },
-    });
-}
-
-function getSchedulers() {
-    // // Make an API request
-
-    $.ajax({
-        //url: '/get-schedulers', // Replace with your API endpoint
-        url: "" + baseUrl + "/get-schedulers", // Replace with your API endpoint
-        method: "GET",
-        data: {},
-        success: function (response) {
-            var response = JSON.parse(response);
-
-            console.log("response", response);
-
-            if (response.status == "success") {
-                if (response.message[0] !== undefined) {
-                    response.message.forEach((element) => {
-                        var pageHTML =
-                            "<option class='images' value=" +
-                            element +
-                            "> " +
-                            element +
-                            "";
-                        pageHTML += "</option>";
-                        $("#scheduler_list").append(pageHTML);
-                    });
-                }
-            }
-        },
-        error: function () {
-            $("#result").text(
-                "Error occurred while fetching data from the API."
-            );
-        },
-    });
-}
 
 // restart stablediffusion server
 $("#restart_server").on("click", function () {
@@ -568,6 +446,7 @@ function saveUserCreativeHistory(response){
 $(document).on('click','#make_publishimage', function(){
     
     if(generatedImageResponse != null || generatedImageResponse.length > 0 ){
+        $("#make_publishimage").find('.loaderbtn').show();
         console.log(generatedImageResponse);
         $.ajax({
             url: "" + baseUrl + "/publish-images",
@@ -579,7 +458,7 @@ $(document).on('click','#make_publishimage', function(){
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-      
+                $("#make_publishimage").find('.loaderbtn').hide();
                 console.log(response);
                 if (response.status == "success") {
                     Swal.fire({
@@ -590,11 +469,16 @@ $(document).on('click','#make_publishimage', function(){
                     });
                     
                 }else if(response.status == "failure"){
-                    alert(response.message);    
+                    Swal.fire({
+                        title: response.message,
+                        icon: 'error',
+                        timer: 4000, // Auto-close the alert after 4 seconds
+                        showConfirmButton: true
+                    });   
                 }
             },
             error: function () {
-                
+                $("#make_publishimage").find('.loaderbtn').hide();
             
                 $("#result").text(
                     "Error occurred while fetching data from the API."

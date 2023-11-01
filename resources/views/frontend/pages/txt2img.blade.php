@@ -298,9 +298,9 @@
                 </div>
 
                 <div class="images_publishBtns">
-                    <button id="make_publishimage" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" disabled fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
+                    <button id="make_publishimage" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" disabled fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
                     <button id="make_creativehistory" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"><div class="loaderbtn"></div> Creative History</button>
-                    <button id="make_super_resolution" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"> Make Super Resolution</button>
+                    <button id="make_super_resolution" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"><div class="loaderbtn"></div> Make Super Resolution</button>
                 </div>
 
 

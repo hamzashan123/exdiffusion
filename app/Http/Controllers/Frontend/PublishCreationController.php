@@ -14,10 +14,6 @@ class PublishCreationController extends Controller
       $this->middleware('auth');
     }
     
-    public function publishCreation(){
-        return view('frontend.exdiffusion.publishedCreation');
-    }
-
     public function myAsset(){
         return view('frontend.exdiffusion.creativeHistory');
     }

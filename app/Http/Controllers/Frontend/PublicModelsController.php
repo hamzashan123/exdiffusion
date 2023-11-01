@@ -161,6 +161,10 @@ class PublicModelsController extends Controller
       
   }
 
+  public function publishCreation(){
+    return view('frontend.exdiffusion.publishedCreation');
+  }
+
   public function getUserCreativeHistory(Request $request){
     $user = Auth::user();
     if($user){
@@ -201,7 +205,7 @@ class PublicModelsController extends Controller
 
   public function getPublishCreation(Request $request){
       $user = Auth::user();
-      if($user){
+    
 
         $userCreativeHistory = DB::table('creativehistory');
         if($request->modelType == 'Images'){
@@ -210,10 +214,33 @@ class PublicModelsController extends Controller
           $userCreativeHistory =  $userCreativeHistory->where('is_publishcreation_favorite','true');
         }
         $userCreativeHistory = $userCreativeHistory->get();
+        if($userCreativeHistory != null){
+          return response()->json([
+            'status' => 'success',
+            'data' => $userCreativeHistory,
+            'message' => 'Data found!'
+          ]);
+        }else{
+          return response()->json([
+            'status' => 'failure',
+            'message' => 'Something went wrong!'
+          ]);
+        }
+      
+  }
+
+  public function publishImages(Request $request){
+    
+    $user = Auth::user();
+      if($user){
+        foreach($request->generatedImageResponse['data'] as $id){
+          $is_published = DB::table('creativehistory')->where('user_id',$user->id)->where('id',$id)->update([
+            'is_published' => "true"
+          ]);
+        }
         return response()->json([
           'status' => 'success',
-          'data' => $userCreativeHistory,
-          'message' => 'Data found!'
+          'message' => 'Published Successfully'
         ]);
 
       }else{
@@ -226,15 +253,14 @@ class PublicModelsController extends Controller
       }
   }
 
-  public function publishImages(Request $request){
-    
+  public function publishSingleImage(Request $request){
     $user = Auth::user();
       if($user){
-        foreach($request->generatedImageResponse['data'] as $id){
-          $is_published = DB::table('creativehistory')->where('user_id',$user->id)->where('id',$id)->update([
+        
+          $is_published = DB::table('creativehistory')->where('id',$request->creativeId)->update([
             'is_published' => "true"
           ]);
-        }
+        
         return response()->json([
           'status' => 'success',
           'message' => 'Published Successfully'

@@ -20,7 +20,7 @@ Route::get('/',function(){
 })->name('index');
 
 Route::get('/playground', [ModelsController::class, 'index'])->name('home');
-Route::get('/publish-creation', [PublishCreationController::class, 'publishCreation'])->name('publishcreation');
+Route::get('/publish-creation', [PublicModelsController::class, 'publishCreation'])->name('publishcreation');
 Route::get('/my-asset', [PublishCreationController::class, 'myAsset'])->name('myasset');
 Route::get('/image-detail/{id?}', [PublishCreationController::class, 'imageDetail'])->name('imageDetail');
 Route::post('/creative-history',[PublicModelsController::class, 'creativeHistory'])->name('creativeHistory');
@@ -30,6 +30,7 @@ Route::post('/addToFavoriteCreativeHistory', [PublicModelsController::class, 'ad
 Route::post('/getGeneratedImageHistory', [PublicModelsController::class, 'getGeneratedImageHistory'])->name('getGeneratedImageHistory');
 Route::post('/get-publish-creation', [PublicModelsController::class, 'getPublishCreation'])->name('getPublishCreation');
 Route::post('/publish-images', [PublicModelsController::class, 'publishImages'])->name('publishImages');
+Route::post('/publish-image', [PublicModelsController::class, 'publishSingleImage'])->name('publishSingleImage');
 
 Route::get('/get-base-models',[PublicModelsController::class, 'getBaseModels'])->name('getbasemodels');
 Route::get('/get-schedulers',[PublicModelsController::class, 'getSchedulers'])->name('getschedulers');

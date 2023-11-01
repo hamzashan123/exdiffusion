@@ -13,7 +13,16 @@
             <div class="imageDetailsMain">
                 <div class="border-radius-7" style="background: #0b0f19;width: 100%;">
                     <div class="imgDiv">
-                        <img src="{{$data->image_url}}" />
+                                @if($data->is_super_resolution == 'true')
+                                <a data-fancybox='images' href="{{$data->image_url_super_resolution}}" >
+                                <img src="{{$data->image_url_super_resolution}}" />
+                                </a>
+                                @else() 
+                                <a data-fancybox='images' href="{{$data->image_url}}" >
+                                <img src="{{$data->image_url}}" />
+                                </a>
+                                @endif
+                        
                     </div>
                 </div>
             </div>
@@ -46,17 +55,18 @@
                     <strong> Scheduler:</strong> {{$data->scheduler_list}} , <strong>Inference Steps: </strong> {{$data->interference_input}} , <strong>Seed Number: </strong>  {{$data->seed}} , <strong>Clip Skip: </strong>  {{$data->clickskip_input}} , <strong>Width: </strong> {{$data->width_input}}, <strong>Height: </strong> {{$data->height_input}} , <strong>Guidance Scale: </strong> {{$data->guidance_input}} , <strong>Safe Checker: </strong> {{$data->safety_checker}} , <strong>Enhance Prompt: </strong> {{$data->enhance_prompt}} ,<strong>Multi Lingual: </strong> {{$data->multi_lingual}} , <strong>Panorama: </strong> {{$data->panorama}} , <strong>Self Attention: </strong> {{$data->self_attention}}, <strong>Upscale: </strong> {{$data->upscale}}, <strong>Tomesd: </strong> {{$data->tomesd}} , <strong>Karras Sigmas: </strong> {{$data->karras_sigmas}}
                     <br /><br />
 
-                    <button> Super Resolution </button> <br />
-                    <strong> Face Enhance: </strong> yes, <strong> Supre Resolution Model: </strong> RealESRNet_x4plus, <strong> Supre Resolution Scale: </strong> 1.5
-
+                    @if($data->is_super_resolution == 'true')
+                        <button> Super Resolution </button> <br />
+                        <strong> Face Enhance: </strong> {{ $data->super_resolution_face_enhance }} , <strong> Supre Resolution Model: </strong> {{ $data->super_resolution_model_id }}, <strong> Supre Resolution Scale: </strong> {{ $data->superscale_input }} 
+                    @endif
 
 
                 </div>
 
                 <div class="images_publishBtns">
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/generate-img.png" class="btn_img"> Generate Images </button>
-                    <button id="" class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"> Make Super Resolution</button>
+                    <button id="btn_publishImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"> <img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
+                    <button id="btn_generateImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <img src="https://exdiffusion.com/newproject/public/img/icons/generate-img.png" class="btn_img"><div class="loaderbtn"></div> Generate Images </button>
+                    <button id="btn_superResolution_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym">  <img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"><div class="loaderbtn"></div> Make Super Resolution</button>
                 </div>
 
 
@@ -69,3 +79,88 @@
 @endsection('content')
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    $(document).on('click','#btn_generateImage_imgDetail', function(){
+            var creativeId = <?php echo $data->id ?>;
+            $("#loader").show();
+            $.ajax({
+                url: "" + baseUrl + "/getGeneratedImageHistory",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    creativeId: creativeId
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 'success') {
+                        console.log(response.data);
+                        $("#loader").hide();
+                        localStorage.removeItem("creativeData");
+                        localStorage.setItem("creativeData", JSON.stringify(response.data));
+                        localStorage.removeItem("globalLoraModelArray");
+                        localStorage.setItem("globalLoraModelArray", loraModelArray);
+                        window.location.href = baseUrl + '/playground?generated=true';
+
+                    } else {
+                        console.log(response);
+                        $("#loader").hide();
+                    }
+
+                },
+                error: function() {
+                    $("#loader").hide();
+                    $("#result").text(
+                        "Error occurred while fetching data from the API."
+                    );
+                },
+            });
+    });
+
+    $(document).on('click','#btn_publishImage_imgDetail', function(){
+                var creativeId = <?php echo $data->id ?>;
+                $("#btn_publishImage_imgDetail").find('.loaderbtn').show();
+                $.ajax({
+                    url: "" + baseUrl + "/publish-image",
+                    method: "POST",
+                    data: {
+                        creativeId : creativeId
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function (response) {
+                        $("#btn_publishImage_imgDetail").find('.loaderbtn').hide();
+                        console.log(response);
+                        if (response.status == "success") {
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'success',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });
+                            
+                        }else if(response.status == "failure"){
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'error',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });   
+                        }
+                    },
+                    error: function () {
+                        
+                    
+                        $("#result").text(
+                            "Error occurred while fetching data from the API."
+                        );
+                    },
+                });
+    });
+    
+
+</script>

@@ -8,12 +8,15 @@
         <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 navigation">
 
             <a href="#" class="active" id="publishcreation_images_filter">Images</a>
+            @if(Auth::user())
             <a href="#" id="publishcreation_favourite_filter">Favourite</a>
             <a href="#" id="publishcreation_basemodel_filter">Base Model</a>
             <a href="#" id="publishcreation_lora_filter">Lora</a>
             <a href="#" id="publishcreation_embedding_filter">Embedding</a>
+            @endif
 
         </div>
+        @if(Auth::user())
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 filters">
             <div class="input-group">
 
@@ -30,6 +33,7 @@
 
             </div>
         </div>
+        @endif
     </div>
     <div class="row" id="publicCreationImagesList">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -76,7 +80,6 @@
                             pageHTML += "<img src='" + element.image_url + "'>";
                             pageHTML += "<div class='grid__body'>";
                             pageHTML += "<div class='relative'>";
-                            
                             pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
                             pageHTML += "</div>";
                             pageHTML += "<a class='grid__link' href="+baseUrl+"/image-detail/"+element.id+"></a>";
