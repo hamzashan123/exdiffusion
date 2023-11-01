@@ -43,7 +43,7 @@
 
                 <div class="images_publishBtns">
                     <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
+                    <button id="super_resolution_creativeHistory" class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
                 </div>
 
 
@@ -114,3 +114,9 @@
         
     </div>
 </div>
+
+<script>
+    $(document).on('click','#super_resolution_creativeHistory' , function(){
+        window.location.href =  baseUrl+'/my-asset';
+    });
+</script>

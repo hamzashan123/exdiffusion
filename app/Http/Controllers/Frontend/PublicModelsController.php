@@ -209,7 +209,7 @@ class PublicModelsController extends Controller
 
         $userCreativeHistory = DB::table('creativehistory');
         if($request->modelType == 'Images'){
-          $userCreativeHistory =  $userCreativeHistory;
+          $userCreativeHistory =  $userCreativeHistory->where('is_published','true');
         }elseif($request->modelType == 'Favourite'){
           $userCreativeHistory =  $userCreativeHistory->where('is_publishcreation_favorite','true');
         }
