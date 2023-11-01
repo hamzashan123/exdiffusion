@@ -205,11 +205,10 @@ class PublicModelsController extends Controller
 
   public function getPublishCreation(Request $request){
       $user = Auth::user();
-    
 
-        $userCreativeHistory = DB::table('creativehistory');
+        $userCreativeHistory = DB::table('creativehistory')->where('is_published','true');
         if($request->modelType == 'Images'){
-          $userCreativeHistory =  $userCreativeHistory->where('is_published','true');
+          $userCreativeHistory =  $userCreativeHistory;
         }elseif($request->modelType == 'Favourite'){
           $userCreativeHistory =  $userCreativeHistory->where('is_publishcreation_favorite','true');
         }
