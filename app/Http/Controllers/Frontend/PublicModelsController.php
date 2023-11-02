@@ -107,8 +107,7 @@ class PublicModelsController extends Controller
   public function creativeHistory(Request $request){
       $imagesUrl = explode(",", $request->images); 
       $dataArray = [];
-      // Specify the folder in your storage where you want to save the images
-      $storageFolder = 'public/images/creativehistory';
+     
 
       if(!empty($imagesUrl)){
         foreach ($imagesUrl as $key => $url) {

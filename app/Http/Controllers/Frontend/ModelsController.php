@@ -299,7 +299,6 @@ class ModelsController extends Controller
         $response = curl_exec($curl);
         $response = json_decode($response,true); 
         
-        try{
             if(!empty($response)){
               $url = $response['output'][0];
                // // Your URL and storage path
@@ -355,12 +354,7 @@ class ModelsController extends Controller
                 'superResolutionId' => $Id
               ]);
           }
-        }catch(Exception $e){
-            return response()->json([
-              'status' => 'error',
-              'data' => $response,
-            ]);
-        }
+        
        
 
         curl_close($curl);
