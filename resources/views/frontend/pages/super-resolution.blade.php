@@ -42,8 +42,8 @@
                
 
                 <div class="images_publishBtns">
-                    <button id="super_resolution_publishImage" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
-                    <button id="super_resolution_creativeHistory" class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
+                    <button id="super_resolution_publishImage" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
+                    <button id="super_resolution_creativeHistory" disabled class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
                 </div>
 
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -233,29 +233,24 @@ class ModelsController extends Controller
     }
 
     public function getSuperResolutionImage(Request $request){
-      // dd($request);
-      if($request->has('image_url') && $request->creativeHistoryId != null){
-        $imageUrl = $request->image_url;
-      }else{
-        $imageData = $this->saveSuperResolutionImage($request);
-        $imageLink = Storage::url('public/images/' . $imageData->original_image_url);
-        $imageUrl = url('/').$imageLink;
-      }
-       
-        
-        
 
+        // dd($request);
+        if($request->has('image_url') && $request->creativeHistoryId != null){
+          $imageUrl = $request->image_url;
+        }else{
+          $imageData = $this->saveSuperResolutionImage($request);
+          $imageLink = Storage::url('public/images/' . $imageData->original_image_url);
+          $imageUrl = url('/').$imageLink;
+        }
+       
         $payload = [
           "key" => "rfhpc3j1c7kw0t",
           "model_id" => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3", 
           "url" => $imageUrl, 
-          // "url" => "https://pub-8b49af329fae499aa563997f5d4068a4.r2.dev/generations/e5cd86d3-7305-47fc-82c1-7d1a3b130fa4-0.png",
           "scale" => isset($request->superscale_input) ? $request->superscale_input: 3, 
           "webhook" => null, 
           "face_enhance" => true 
         ];
-
-        // dd($payload);
 
         $curl = curl_init();
 
@@ -275,60 +270,68 @@ class ModelsController extends Controller
         ));
 
         $response = curl_exec($curl);
-         
-        if(!empty($response)){
-           
-            $dataResponse = json_decode($response,true);
-            $url = $dataResponse['output'][0];
-            $storageFolder = 'public/images/creativehistory';
-            // Generate a unique filename for each image
-            $filename = auth()->user()->id.'-'.uniqid();
-            // Save the image to the storage
-            Storage::put("$storageFolder/$filename", file_get_contents($url));
-
-            $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
-            $Id  = DB::table('creativehistory')->insertGetId([
-              'user_id' => auth()->user()->id,
-              'selectedBaseModelText' => $creativeData->selectedBaseModelText,
-              'vaemodelslist' => $creativeData->vaemodelslist,
-              'prompt' => $creativeData->prompt,
-              'neg_prompt' => $creativeData->neg_prompt,
-              'scheduler_list' => $creativeData->scheduler_list,
-              'seed' => $creativeData->seed,
-              'interference_input' => $creativeData->interference_input,
-              'clickskip_input' => $creativeData->clickskip_input,
-              'width_input' => $creativeData->width_input,
-              'samples_input' => $creativeData->samples_input,
-              'height_input' => $creativeData->height_input,
-              'guidance_input' => $creativeData->guidance_input,
-              'safety_checker' => $creativeData->safety_checker,
-              'enhance_prompt' => $creativeData->enhance_prompt,
-              'multi_lingual' => $creativeData->multi_lingual,
-              'panorama' => $creativeData->panorama,
-              'self_attention' => $creativeData->self_attention,
-              'upscale' => $creativeData->upscale,
-              'tomesd' => $creativeData->tomesd,
-              'karras_sigmas' => $creativeData->karras_sigmas,
-              'image_url' => null,
-              'loraModelArray' => $creativeData->loraModelArray,
-              'loraModelStrength' => $creativeData->loraModelStrength,
-              'embeddingModelArray' => $creativeData->embeddingModelArray,
-              // super resolution data
-              'image_url_super_resolution' => url('/').'/storage/images/creativehistory/'.$filename,
-              'is_super_resolution' => 'true',
-              'super_resolution_model_id' => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3",
-              'superscale_input' => isset($request->superscale_input) ? $request->superscale_input: 3,
-              'super_resolution_face_enhance' => 'true'
-          ]);
-          
+        $response = json_decode($response,true); 
+        try{
+            if(!empty($response)){
+              $url = $response['output'][0];
+              $storageFolder = 'public/images/creativehistory';
+              // Generate a unique filename for each image
+              $filename = auth()->user()->id.'-'.uniqid();
+              // Save the image to the storage
+              Storage::put("$storageFolder/$filename", file_get_contents($url));
+              if(!empty($request->creativeHistoryId)){
+                $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
+                $Id  = DB::table('creativehistory')->insertGetId([
+                  'user_id' => auth()->user()->id,
+                  'selectedBaseModelText' => $creativeData->selectedBaseModelText,
+                  'vaemodelslist' => $creativeData->vaemodelslist,
+                  'prompt' => $creativeData->prompt,
+                  'neg_prompt' => $creativeData->neg_prompt,
+                  'scheduler_list' => $creativeData->scheduler_list,
+                  'seed' => $creativeData->seed,
+                  'interference_input' => $creativeData->interference_input,
+                  'clickskip_input' => $creativeData->clickskip_input,
+                  'width_input' => $creativeData->width_input,
+                  'samples_input' => $creativeData->samples_input,
+                  'height_input' => $creativeData->height_input,
+                  'guidance_input' => $creativeData->guidance_input,
+                  'safety_checker' => $creativeData->safety_checker,
+                  'enhance_prompt' => $creativeData->enhance_prompt,
+                  'multi_lingual' => $creativeData->multi_lingual,
+                  'panorama' => $creativeData->panorama,
+                  'self_attention' => $creativeData->self_attention,
+                  'upscale' => $creativeData->upscale,
+                  'tomesd' => $creativeData->tomesd,
+                  'karras_sigmas' => $creativeData->karras_sigmas,
+                  'image_url' => null,
+                  'loraModelArray' => $creativeData->loraModelArray,
+                  'loraModelStrength' => $creativeData->loraModelStrength,
+                  'embeddingModelArray' => $creativeData->embeddingModelArray,
+                  // super resolution data
+                  'image_url_super_resolution' => url('/').'/storage/images/creativehistory/'.$filename,
+                  'is_super_resolution' => 'true',
+                  'super_resolution_model_id' => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3",
+                  'superscale_input' => isset($request->superscale_input) ? $request->superscale_input: 3,
+                  'super_resolution_face_enhance' => 'true'
+              ]);
+              }
+              return response()->json([
+                'status' => 'success',
+                'data' => $response,
+                'superResolutionId' => $Id
+              ]);
+          }
+        }catch(Exception $e){
+            return response()->json([
+              'status' => 'error',
+              'data' => $response,
+            ]);
         }
+       
 
         curl_close($curl);
 
-        return response()->json([
-          'data' => json_decode($response,true),
-          'superResolutionId' => $Id
-        ]);
+      
     } 
 
     

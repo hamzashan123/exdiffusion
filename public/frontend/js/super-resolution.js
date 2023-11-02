@@ -68,7 +68,7 @@ $(document).ready(function () {
         //     return;
         //  }
 
-        $("#generateSuperResolution").text("Generating");
+        $("#generateSuperResolution").text("Generating...");
         $("#generateSuperResolution").addClass("generating");
         $(".superscaleoutputimage center").remove();
 
@@ -153,6 +153,9 @@ $(document).ready(function () {
                         $("#generateSuperResolution").removeClass("generating");
                         $(".hide_progress").css("visibility", "hidden");
                         $(".hide_progress").addClass("progressheightmanage");
+                        // enable publish super resolution & creative history buttons
+                        $("#super_resolution_publishImage").attr("disabled", false);
+                        $("#super_resolution_creativeHistory").attr("disabled", false);
                     }
 
                     // Calculate milliseconds for ETA time
@@ -166,18 +169,28 @@ $(document).ready(function () {
                     var pageHTML = "<span> Image will be available </span>";
                     $(".superscaleoutputimage").append(pageHTML);
                     $("#generateSuperResolution").find('.loaderbtn').hide();
-                }else{
+                }else if(response.data.status == "error"){
+
+                    $("#generateSuperResolution").text('Generate');
                     $("#generateSuperResolution").find('.loaderbtn').hide();
-                    $("#result").text(
-                        "Error occurred while fetching data from the API."
-                    );
+
+                    Swal.fire({
+                        title: response.data.message,
+                        icon: 'error',
+                        timer: 4000, // Auto-close the alert after 4 seconds
+                        showConfirmButton: false
+                    });
                 }
             },
             error: function () {
+                $("#generateSuperResolution").text('Generate');
                 $("#generateSuperResolution").find('.loaderbtn').hide();
-                $("#result").text(
-                    "Error occurred while fetching data from the API."
-                );
+                Swal.fire({
+                    title: response.data.message,
+                    icon: 'error',
+                    timer: 4000, // Auto-close the alert after 4 seconds
+                    showConfirmButton: false
+                });
             },
         });
     });
