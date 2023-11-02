@@ -151,6 +151,7 @@ $(document).ready(function () {
                         pageHTML += "</center>";
 
                         $(".superscaleoutputimage").append(pageHTML);
+                        localStorage.removeItem("creativeHistoryId");
                         $(".processing").remove();
                         $("#generateSuperResolution").text("Generate");
                         $("#generateSuperResolution").removeClass("generating");
