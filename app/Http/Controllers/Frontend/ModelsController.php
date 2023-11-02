@@ -305,12 +305,12 @@ class ModelsController extends Controller
                // // Your URL and storage path
               $storagePath = 'public/creativehistory'; // Adjust this path as needed
               $client = new Client();
-              $response = $client->get($url);
+              $imgResponse = $client->get($url);
               $extension = pathinfo($url, PATHINFO_EXTENSION); // Get the file extension from the URL
               // Generate a unique filename (you can use a custom logic if needed)
               $filename = auth()->user()->id.'-'.uniqid() . '.' . $extension;
               // Store the image in your storage directory
-              Storage::disk($storagePath)->put($filename, $response->getBody());
+              Storage::disk($storagePath)->put($filename, $imgResponse->getBody());
               // dd($filename);
 
               if(!empty($request->creativeHistoryId)){
