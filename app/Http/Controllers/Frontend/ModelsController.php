@@ -298,7 +298,7 @@ class ModelsController extends Controller
               Storage::disk($storagePath)->put($filename, $imgResponse->getBody());
               // dd($filename);
 
-              if(!empty($request->creativeHistoryId)){
+              if(!empty($request->creativeHistoryId) && $request->creativeHistoryId != null){
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
                   $Id  = DB::table('creativehistory')->insertGetId([
                         'user_id' => auth()->user()->id,
@@ -340,6 +340,7 @@ class ModelsController extends Controller
                   ]);
 
               }else{
+                  // save only upload image data with other fields as blank
                   $Id  = DB::table('creativehistory')->insertGetId([
                           'user_id' => auth()->user()->id,
                           'image_url_super_resolution' => url('/').'/storage/images/creativehistory/'.$filename,
