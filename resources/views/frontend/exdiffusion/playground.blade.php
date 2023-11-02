@@ -536,9 +536,9 @@
             }
             if(url.searchParams.has(superResolutionParam)){
                 superResolutionArray = [];
-                superResolutionArray.push('http://localhost:8000/storage/images/creativehistory/1-65427c489e604');
+                superResolutionArray.push(creativeData['image_url']);
                 console.log("superResolutionArray",superResolutionArray);
-                
+
                 const draggableArea = $(".draggableinputarea");
                 const imageUrl = superResolutionArray[0];
                 const imageElement = $("<img>").attr("src", imageUrl);
