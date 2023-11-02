@@ -433,6 +433,7 @@
             const url = new URL(urlString);
             // Check if the URL has a specific parameter
             const paramName = "generated";
+            const superResolutionParam = "super-resolution";
         if (url.searchParams.has(paramName)) {
             
             var creativeData = localStorage.getItem("creativeData");
@@ -472,7 +473,7 @@
                 $("#upscale").attr("checked", JSON.parse(creativeData['upscale']));
                 $("#tomesd").attr("checked", JSON.parse(creativeData['tomesd']));
                 $("#karras_sigmas").attr("checked", JSON.parse(creativeData['karras_sigmas']));
-
+               
                 
                 //very imporatant for future changes    
                 // calling this function from custom.js to make dynamic div when genereate button click from my-assets page.
@@ -531,6 +532,23 @@
                         });
                     },5000);
                 }
+                
+            }
+            if(url.searchParams.has(superResolutionParam)){
+                superResolutionArray = [];
+                superResolutionArray.push('http://localhost:8000/storage/images/creativehistory/1-65427c489e604');
+                console.log("superResolutionArray",superResolutionArray);
+                
+                const draggableArea = $(".draggableinputarea");
+                const imageUrl = superResolutionArray[0];
+                const imageElement = $("<img>").attr("src", imageUrl);
+                draggableArea.find("img").remove();
+                draggableArea.find("label").hide();
+                draggableArea.find("input").hide();
+                draggableArea.append(imageElement).addClass("draggable");
+
+                $("#superResolution-tab").tab("show");
+                
                 
             }
         }

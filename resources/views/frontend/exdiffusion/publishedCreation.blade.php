@@ -77,7 +77,11 @@
                         response.data.forEach((element) => {
                             console.log("image_url", element.image_url);
                             var pageHTML = "<div class='grid'>";
-                            pageHTML += "<img src='" + element.image_url + "'>";
+                            if(element.is_super_resolution == 'true'){
+                                    pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
+                            }else{
+                                    pageHTML += "<img src='" + element.image_url + "'>";
+                            } 
                             pageHTML += "<div class='grid__body'>";
                             pageHTML += "<div class='relative'>";
                             pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";

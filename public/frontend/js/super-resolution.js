@@ -1,8 +1,10 @@
 
 $(document).ready(function () {
+    var superResolutionCreativeId;
     const draggableArea = $(".draggableinputarea");
     const uploadImageInput = $("#super_resolution_uploaded_image");
     const uploadButton = $("#uploadBtn");
+
 
     // Handle image upload and display
     uploadImageInput.on("change", function (e) {
@@ -46,7 +48,7 @@ $(document).ready(function () {
         const progressLabel = $("#progress-label-superResolution");
         const percentage = (currentTime / totalTime) * 100;
         const labelSeconds = totalTime - currentTime;
-        console.log("percentage", percentage);
+        // console.log("percentage", percentage);
         progressBar.css("width", percentage + "%");
         progressLabel.text(`ETA ${labelSeconds.toFixed(2)} sec`);
     }
@@ -76,9 +78,10 @@ $(document).ready(function () {
         // Append the selected file to the FormData object
 
         formData.append("super_resolution", super_resolution);
-
+        formData.append("creativeHistoryId", creativeHistoryId);
         formData.append("file", uploadedImage[0].files[0]);
 
+        //check other params of super resolution as well
         if (superResolutionArray.length > 0) {
             formData.append("image_url", superResolutionArray[0]);
         }
@@ -93,6 +96,8 @@ $(document).ready(function () {
             formData.append("face_enhance", face_enhance);
         }
 
+        $("#generateSuperResolution").append('<div class="loaderbtn"> </div>');
+        $("#generateSuperResolution").find('.loaderbtn').show();
         $.ajax({
             url: "" + baseUrl + "/get-superResolution",
             method: "POST",
@@ -103,16 +108,19 @@ $(document).ready(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                var response = JSON.parse(response);
+                var response = response;
                 console.log(response);
-                if (response.status == "success") {
+                console.log(response.superResolutionId);
+                if (response.data.status == "success") {
+                    superResolutionCreativeId = response.superResolutionId;
                     $(".hide_progress").css("visibility", "visible");
                     $(".hide_progress").removeClass("progressheightmanage");
+                    $("#generateSuperResolution").find('.loaderbtn').show();
                     // progressbar interval time start
-                    const totalTime = response.generationTime; // Total time in seconds
+                    const totalTime = response.data.generationTime; // Total time in seconds
                     let currentTime = 0;
 
-                    console.log("totalTime", totalTime);
+                    // console.log("totalTime", totalTime);
 
                     const interval = setInterval(function () {
                         currentTime += 0.1; // Simulating a fraction of a second
@@ -120,7 +128,7 @@ $(document).ready(function () {
                             currentTime,
                             totalTime
                         );
-                        console.log("currentTime", currentTime);
+                        // console.log("currentTime", currentTime);
                         if (currentTime >= totalTime) {
                             clearInterval(interval);
                             //$("#progress-label").removeClass("hide_progress").addClass("text-success").text("Completed 100%");
@@ -128,14 +136,14 @@ $(document).ready(function () {
                     }, 100); // Update every 100 milliseconds
 
                     // Function to append images
-                    const etaInSeconds = response.generationTime;
+                    const etaInSeconds = response.data.generationTime;
                     function appendSuccessImages() {
                         var pageHTML = "<center> ";
                         pageHTML +=
                             " <a data-fancybox='images' href='" +
-                            response.output[0] +
+                            response.data.output[0] +
                             "'> <img src='" +
-                            response.output[0] +
+                            response.data.output[0] +
                             "' alt=''> </a>";
                         pageHTML += "</center>";
 
@@ -154,16 +162,68 @@ $(document).ready(function () {
                     setTimeout(function () {
                         appendSuccessImages();
                     }, etaInMilliseconds);
-                } else if (response.status == "processing") {
+                } else if (response.data.status == "processing") {
                     var pageHTML = "<span> Image will be available </span>";
                     $(".superscaleoutputimage").append(pageHTML);
+                    $("#generateSuperResolution").find('.loaderbtn').hide();
+                }else{
+                    $("#generateSuperResolution").find('.loaderbtn').hide();
+                    $("#result").text(
+                        "Error occurred while fetching data from the API."
+                    );
                 }
             },
             error: function () {
+                $("#generateSuperResolution").find('.loaderbtn').hide();
                 $("#result").text(
                     "Error occurred while fetching data from the API."
                 );
             },
         });
     });
+
+    $(document).on('click','#super_resolution_publishImage', function(){
+        
+                superResolutionCreativeId = superResolutionCreativeId;
+                $("#super_resolution_publishImage").find('.loaderbtn').show();
+                $.ajax({
+                    url: "" + baseUrl + "/publish-image",
+                    method: "POST",
+                    data: {
+                        creativeId : superResolutionCreativeId
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function (response) {
+                        $("#super_resolution_publishImage").find('.loaderbtn').hide();
+                        console.log(response);
+                        if (response.status == "success") {
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'success',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });
+                            
+                        }else if(response.status == "failure"){
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'error',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });   
+                        }
+                    },
+                    error: function () {
+                        
+                        $("#super_resolution_publishImage").find('.loaderbtn').hide();
+                        $("#result").text(
+                            "Error occurred while fetching data from the API."
+                        );
+                    },
+                });
+           
+    });
+
 });

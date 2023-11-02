@@ -66,7 +66,9 @@
                 <div class="images_publishBtns">
                     <button id="btn_publishImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"> <img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
                     <button id="btn_generateImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <img src="https://exdiffusion.com/newproject/public/img/icons/generate-img.png" class="btn_img"><div class="loaderbtn"></div> Generate Images </button>
+                    @if($data->is_super_resolution != 'true')
                     <button id="btn_superResolution_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym">  <img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"><div class="loaderbtn"></div> Make Super Resolution</button>
+                    @endif
                 </div>
 
 
@@ -160,6 +162,49 @@
                         );
                     },
                 });
+    });
+
+    // This function will reflect all playground data & super resolution data plus switch to super resolution tab
+    $(document).on('click','#btn_superResolution_imgDetail', function(){
+
+            var creativeId = <?php echo $data->id ?>;
+            $("#loader").show();
+            $.ajax({
+                url: "" + baseUrl + "/getGeneratedImageHistory",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    creativeId: creativeId
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 'success') {
+                        console.log(response.data);
+                        $("#loader").hide();
+                        localStorage.removeItem("creativeData");
+                        localStorage.setItem("creativeData", JSON.stringify(response.data));
+                        localStorage.removeItem("globalLoraModelArray");
+                        localStorage.setItem("globalLoraModelArray", loraModelArray);
+
+                        
+
+                        window.location.href = baseUrl + '/playground?generated=true&super-resolution=true';
+
+                    } else {
+                        console.log(response);
+                        $("#loader").hide();
+                    }
+
+                },
+                error: function() {
+                    $("#loader").hide();
+                    $("#result").text(
+                        "Error occurred while fetching data from the API."
+                    );
+                },
+            });
     });
     
 

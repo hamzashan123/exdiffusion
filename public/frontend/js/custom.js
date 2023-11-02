@@ -13,6 +13,7 @@ var loraModelStrength = [];
 var embeddingModelArray = [];
 var embeddingModelStrength = [];
 var generatedImageResponse;
+var creativeHistoryId;
 $(document).ready(function () {
     $("#loader").show();
 
@@ -217,6 +218,7 @@ function generateImages() {
                     // Function to append images
                     const etaInSeconds = response.generationTime;
                     function appendSuccessImages() {
+                        
                         superResolutionArray = [];
                         generatedImageArray = [];
                         var pageHTML =
@@ -290,6 +292,7 @@ function generateImages() {
                     const etaInSeconds = response.eta;
                     function appendProcessingImages() {
                         superResolutionArray = [];
+                        
                         var pageHTML =
                             "<center> <div class='generated_images'>";
                         response.image_links.forEach((element) => {
@@ -428,6 +431,7 @@ function saveUserCreativeHistory(response){
 
                 if (response.status == "success") {
                     generatedImageResponse = response;
+                    creativeHistoryId =  response.data[0];
                 }else if(response.status == "failure"){
                     alert(response.message);    
                 }

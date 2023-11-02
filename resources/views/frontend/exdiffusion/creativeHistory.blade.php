@@ -79,7 +79,11 @@
                         response.data.forEach((element) => {
                                 console.log("element", element);
                                 var pageHTML = "<div class='grid'>";
-                                pageHTML += "<img src='" + element.image_url + "'>";
+                                if(element.is_super_resolution == 'true'){
+                                    pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
+                                }else{
+                                    pageHTML += "<img src='" + element.image_url + "'>";
+                                }   
                                 pageHTML += "<div class='grid__body'>";
                                 pageHTML += "<div class='relative'>";
                                 pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
@@ -91,22 +95,7 @@
                                 pageHTML += "</div>";
                                 pageHTML += "</div>";
                                 $(".masonry").append(pageHTML);
-                            // if image has its super resolution image also then display super resolution image along with origional image as well.
-                            if(element.is_super_resolution == 'true'){
-                                var pageHTML = "<div class='grid'>";
-                                pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
-                                pageHTML += "<div class='grid__body'>";
-                                pageHTML += "<div class='relative'>";
-                                pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
-                                pageHTML += "</div>";
-                                pageHTML += "<a class='grid__link' href="+baseUrl+"/image-detail/"+element.id+"></a>";
-                                pageHTML += "<div class='mt-auto masonry-btn-generate'>";
-                                pageHTML += "<button class='btn purple-col-bg form-control text-white border-radius-7 generateCreativeHistory' data-creativeId='" + element.id + "'>Generate</button>";
-                                pageHTML += "</div>";
-                                pageHTML += "</div>";
-                                pageHTML += "</div>";
-                                $(".masonry").append(pageHTML);
-                            }
+                            
                            
                         });
 

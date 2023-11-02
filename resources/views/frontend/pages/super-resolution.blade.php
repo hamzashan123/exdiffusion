@@ -42,7 +42,7 @@
                
 
                 <div class="images_publishBtns">
-                    <button class="btn btn-secondary text-light-grey-bg border-radius-7 " fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"> Publish the Image</button>
+                    <button id="super_resolution_publishImage" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
                     <button id="super_resolution_creativeHistory" class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
                 </div>
 
@@ -109,7 +109,7 @@
         </div>
         
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 generateSuperRes">
-                        <button class=" purple-col-bg form-control text-white border-radius-7" id="generateSuperResolution">Generate</button>
+                        <button class=" purple-col-bg form-control text-white border-radius-7 relativeBtns" id="generateSuperResolution"><div class="loaderbtn"></div> Generate</button>
                 </div>
         
     </div>
