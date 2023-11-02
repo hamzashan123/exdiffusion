@@ -232,28 +232,15 @@ class ModelsController extends Controller
 
     }
 
-    private function saveSuperResolutionImage($request){
-      
-      $image = $request->file('file');
-      $imageName = time() . '.' . $image->getClientOriginalExtension();
-      $image->storeAs('public/images', $imageName);
-     
-      $imageId = DB::table('super_resolution')->insertGetId([
-        'original_image_url' => $imageName
-      ]);
-      
-      $imageData = DB::table('super_resolution')->where('id',$imageId)->first();
-      return $imageData;
-      
-    }
-
     public function getSuperResolutionImage(Request $request){
 
         if($request->has('image_url') && $request->creativeHistoryId != null){
           $imageUrl = $request->image_url;
         }else{
-          $imageData = $this->saveSuperResolutionImage($request);
-          $imageLink = Storage::url('public/images/' . $imageData->original_image_url);
+          $imageData = $request->file('file');
+          $imageName = time() . '.' . $imageData->getClientOriginalExtension();
+          $imageData->storeAs('public/images/creativehistory', $imageName);
+          $imageLink = Storage::url('public/images/creativehistory/' . $imageName);
           $imageUrl = url('/').$imageLink;
         }
          
@@ -313,45 +300,62 @@ class ModelsController extends Controller
 
               if(!empty($request->creativeHistoryId)){
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
-                $Id  = DB::table('creativehistory')->insertGetId([
-                  'user_id' => auth()->user()->id,
-                  'selectedBaseModelText' => $creativeData->selectedBaseModelText,
-                  'vaemodelslist' => $creativeData->vaemodelslist,
-                  'prompt' => $creativeData->prompt,
-                  'neg_prompt' => $creativeData->neg_prompt,
-                  'scheduler_list' => $creativeData->scheduler_list,
-                  'seed' => $creativeData->seed,
-                  'interference_input' => $creativeData->interference_input,
-                  'clickskip_input' => $creativeData->clickskip_input,
-                  'width_input' => $creativeData->width_input,
-                  'samples_input' => $creativeData->samples_input,
-                  'height_input' => $creativeData->height_input,
-                  'guidance_input' => $creativeData->guidance_input,
-                  'safety_checker' => $creativeData->safety_checker,
-                  'enhance_prompt' => $creativeData->enhance_prompt,
-                  'multi_lingual' => $creativeData->multi_lingual,
-                  'panorama' => $creativeData->panorama,
-                  'self_attention' => $creativeData->self_attention,
-                  'upscale' => $creativeData->upscale,
-                  'tomesd' => $creativeData->tomesd,
-                  'karras_sigmas' => $creativeData->karras_sigmas,
-                  'image_url' => null,
-                  'loraModelArray' => $creativeData->loraModelArray,
-                  'loraModelStrength' => $creativeData->loraModelStrength,
-                  'embeddingModelArray' => $creativeData->embeddingModelArray,
-                  // super resolution data
-                  'image_url_super_resolution' => url('/').'/storage/images/creativehistory/'.$filename,
-                  'is_super_resolution' => 'true',
-                  'super_resolution_model_id' => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3",
-                  'superscale_input' => isset($request->superscale_input) ? $request->superscale_input: 3,
-                  'super_resolution_face_enhance' => 'true'
-              ]);
+                  $Id  = DB::table('creativehistory')->insertGetId([
+                        'user_id' => auth()->user()->id,
+                        'selectedBaseModelText' => $creativeData->selectedBaseModelText,
+                        'vaemodelslist' => $creativeData->vaemodelslist,
+                        'prompt' => $creativeData->prompt,
+                        'neg_prompt' => $creativeData->neg_prompt,
+                        'scheduler_list' => $creativeData->scheduler_list,
+                        'seed' => $creativeData->seed,
+                        'interference_input' => $creativeData->interference_input,
+                        'clickskip_input' => $creativeData->clickskip_input,
+                        'width_input' => $creativeData->width_input,
+                        'samples_input' => $creativeData->samples_input,
+                        'height_input' => $creativeData->height_input,
+                        'guidance_input' => $creativeData->guidance_input,
+                        'safety_checker' => $creativeData->safety_checker,
+                        'enhance_prompt' => $creativeData->enhance_prompt,
+                        'multi_lingual' => $creativeData->multi_lingual,
+                        'panorama' => $creativeData->panorama,
+                        'self_attention' => $creativeData->self_attention,
+                        'upscale' => $creativeData->upscale,
+                        'tomesd' => $creativeData->tomesd,
+                        'karras_sigmas' => $creativeData->karras_sigmas,
+                        'image_url' => null,
+                        'loraModelArray' => $creativeData->loraModelArray,
+                        'loraModelStrength' => $creativeData->loraModelStrength,
+                        'embeddingModelArray' => $creativeData->embeddingModelArray,
+                        // super resolution data
+                        'image_url_super_resolution' => url('/').'/storage/images/creativehistory/'.$filename,
+                        'is_super_resolution' => 'true',
+                        'super_resolution_model_id' => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3",
+                        'superscale_input' => isset($request->superscale_input) ? $request->superscale_input: 3,
+                        'super_resolution_face_enhance' => 'true'
+                    ]);
+                  return response()->json([
+                    'status' => 'success',
+                    'data' => $response,
+                    'superResolutionId' => $Id
+                  ]);
+
+              }else{
+                  $Id  = DB::table('creativehistory')->insertGetId([
+                          'user_id' => auth()->user()->id,
+                          'image_url_super_resolution' => url('/').'/storage/images/creativehistory/'.$filename,
+                          'is_super_resolution' => 'true',
+                          'super_resolution_model_id' => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3",
+                          'superscale_input' => isset($request->superscale_input) ? $request->superscale_input: 3,
+                          'super_resolution_face_enhance' => 'true'
+                  ]);
+
+                  return response()->json([
+                    'status' => 'success',
+                    'data' => $response,
+                    'superResolutionId' => $Id
+                  ]);
               }
-              return response()->json([
-                'status' => 'success',
-                'data' => $response,
-                'superResolutionId' => $Id
-              ]);
+              
           }
         
        
