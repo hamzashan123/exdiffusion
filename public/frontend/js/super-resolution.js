@@ -78,6 +78,9 @@ $(document).ready(function () {
         // Append the selected file to the FormData object
 
         formData.append("super_resolution", super_resolution);
+        if(creativeHistoryId == undefined || creativeHistoryId == null){
+            creativeHistoryId =  localStorage.getItem("creativeHistoryId");
+        }
         formData.append("creativeHistoryId", creativeHistoryId);
         formData.append("file", uploadedImage[0].files[0]);
 

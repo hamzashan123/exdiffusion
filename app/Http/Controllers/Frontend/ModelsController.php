@@ -249,7 +249,6 @@ class ModelsController extends Controller
 
     public function getSuperResolutionImage(Request $request){
 
-        // dd($request);
         if($request->has('image_url') && $request->creativeHistoryId != null){
           $imageUrl = $request->image_url;
         }else{
