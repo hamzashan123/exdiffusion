@@ -299,6 +299,7 @@ class ModelsController extends Controller
               // dd($filename);
 
               if(!empty($request->creativeHistoryId) && $request->creativeHistoryId != null){
+                dd($request->creativeHistoryId);
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
                   $Id  = DB::table('creativehistory')->insertGetId([
                         'user_id' => auth()->user()->id,
