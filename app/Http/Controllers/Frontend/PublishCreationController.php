@@ -32,4 +32,10 @@ class PublishCreationController extends Controller
         }
        
     }
+
+    public function deleteImageDetail(int $id){
+        $user = Auth::user();
+        $data = DB::table('creativehistory')->where('id',$id)->delete();
+        return redirect()->route('myasset')->with('success','Image Successfully Deleted!');
+    }
 }

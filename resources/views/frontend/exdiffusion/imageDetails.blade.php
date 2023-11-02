@@ -34,8 +34,9 @@
             <div class="dataOfImage p-3">
 
                 <div class="border-radius-7" style="background: #0b0f19;padding: 10px;width: 100%;">
-
-
+                    @if($data->is_published == "true")   
+                    <div class="is_published_badge"></div>    
+                    @endif
                     <strong> Basic Model: </strong> {{$data->selectedBaseModelText}} <br />
                     <strong> VAE: </strong> {{$data->vaemodelslist}} <br />
                     <strong> Lora: </strong> {{$data->loraModelArray}} <br />
@@ -64,8 +65,14 @@
                 </div>
 
                 <div class="images_publishBtns">
+                    @if(Auth::user()->id == $data->user_id)
+                    @if($data->is_published != "true")
                     <button id="btn_publishImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"> <img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
+                    @endif
+                    @endif
+                    
                     <button id="btn_generateImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <img src="https://exdiffusion.com/newproject/public/img/icons/generate-img.png" class="btn_img"><div class="loaderbtn"></div> Generate Images </button>
+                    
                     @if($data->is_super_resolution != 'true')
                     <button id="btn_superResolution_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym">  <img src="https://exdiffusion.com/newproject/public/img/icons/makeSuperResolution.png" class="btn_img"><div class="loaderbtn"></div> Make Super Resolution</button>
                     @endif
@@ -75,6 +82,11 @@
             </div>
 
         </div>
+        @if(Auth::user()->id == $data->user_id)
+        <div class="deleteImagedetailItem">
+        <a href="{{route('deleteImageItem',['id' => $data->id])}}" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <span>x </span> Delete the Image </a>
+        </div> 
+        @endif
     </div>
 
 </div>

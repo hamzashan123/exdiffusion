@@ -24,6 +24,7 @@ Route::get('/playground', [ModelsController::class, 'index'])->name('home');
 Route::get('/publish-creation', [PublicModelsController::class, 'publishCreation'])->name('publishcreation');
 Route::get('/my-asset', [PublishCreationController::class, 'myAsset'])->name('myasset');
 Route::get('/image-detail/{id?}', [PublishCreationController::class, 'imageDetail'])->name('imageDetail');
+Route::get('/image-detail-delete/{id?}', [PublishCreationController::class, 'deleteImageDetail'])->name('deleteImageItem');
 Route::post('/creative-history',[PublicModelsController::class, 'creativeHistory'])->name('creativeHistory');
 Route::post('/user-creative-history', [PublicModelsController::class, 'getUserCreativeHistory'])->name('UserCreativeHistory');
 Route::post('/delete-userCreativeHistory', [PublicModelsController::class, 'deleteUserCreativeHistory'])->name('DeleteCreativeHistory');

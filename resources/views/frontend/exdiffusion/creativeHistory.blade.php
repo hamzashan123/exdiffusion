@@ -44,6 +44,17 @@
             </div>
         </div>
     </div>
+    @if (Session::has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <p>{{ Session::get('success') }}</p>
+        </div>
+
+        <script>
+            setTimeout(function() {
+                $('.alert-success').fadeOut('slow');
+            }, 5000); // 5000 milliseconds = 5 seconds
+        </script>
+    @endif
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="masonry">
