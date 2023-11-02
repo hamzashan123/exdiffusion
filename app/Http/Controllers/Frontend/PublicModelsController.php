@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -112,9 +113,16 @@ class PublicModelsController extends Controller
       if(!empty($imagesUrl)){
         foreach ($imagesUrl as $key => $url) {
             // Generate a unique filename for each image
-            $filename = auth()->user()->id.'-'.uniqid();
+            
             // Save the image to the storage
-            Storage::put("$storageFolder/$filename", file_get_contents($url));
+            $storagePath = 'public/creativehistory'; // Adjust this path as needed
+            $client = new Client();
+            $response = $client->get($url);
+            $extension = pathinfo($url, PATHINFO_EXTENSION); // Get the file extension from the URL
+            // Generate a unique filename (you can use a custom logic if needed)
+            $filename = auth()->user()->id.'-'.uniqid() . '.' . $extension;
+            // Store the image in your storage directory
+            Storage::disk($storagePath)->put($filename, $response->getBody());
           
             // You can use the $filename variable to store the file path in your database or perform other operations.
             $Id  = DB::table('creativehistory')->insertGetId([

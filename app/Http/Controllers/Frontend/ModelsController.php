@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +15,20 @@ class ModelsController extends Controller
     public function __construct()
     {
       $this->middleware('auth');
+    }
+
+    public function test(){
+          $url = 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/temp/0-75128644-4aa0-418f-a35f-42d541983eed.png';   
+          // Save the image to the storage
+          $storagePath = 'public/creativehistory'; // Adjust this path as needed
+          $client = new Client();
+          $response = $client->get($url);
+          $extension = pathinfo($url, PATHINFO_EXTENSION); // Get the file extension from the URL
+          // Generate a unique filename (you can use a custom logic if needed)
+          $filename = auth()->user()->id.'-'.uniqid() . '.' . $extension;
+          // Store the image in your storage directory
+          Storage::disk($storagePath)->put($filename, $response->getBody());
+                    dd($extension);
     }
 
     public function index(){
@@ -242,7 +257,19 @@ class ModelsController extends Controller
           $imageLink = Storage::url('public/images/' . $imageData->original_image_url);
           $imageUrl = url('/').$imageLink;
         }
-       
+         
+        // // Your URL and storage path
+        // $url = $imageUrl;
+        // $storagePath = 'public/creativehistory'; // Adjust this path as needed
+        // $client = new Client();
+        // $response = $client->get($url);
+        // $extension = pathinfo($url, PATHINFO_EXTENSION); // Get the file extension from the URL
+        // // Generate a unique filename (you can use a custom logic if needed)
+        // $filename = uniqid() . '.' . $extension;
+        // // Store the image in your storage directory
+        // Storage::disk($storagePath)->put($filename, $response->getBody());
+        // dd($filename);
+        
         $payload = [
           "key" => "rfhpc3j1c7kw0t",
           "model_id" => isset($request->super_resultion_model_id) ? $request->super_resultion_model_id: "realesr-general-x4v3", 
@@ -271,14 +298,21 @@ class ModelsController extends Controller
 
         $response = curl_exec($curl);
         $response = json_decode($response,true); 
+        
         try{
             if(!empty($response)){
               $url = $response['output'][0];
-              $storageFolder = 'public/images/creativehistory';
-              // Generate a unique filename for each image
-              $filename = auth()->user()->id.'-'.uniqid();
-              // Save the image to the storage
-              Storage::put("$storageFolder/$filename", file_get_contents($url));
+               // // Your URL and storage path
+              $storagePath = 'public/creativehistory'; // Adjust this path as needed
+              $client = new Client();
+              $response = $client->get($url);
+              $extension = pathinfo($url, PATHINFO_EXTENSION); // Get the file extension from the URL
+              // Generate a unique filename (you can use a custom logic if needed)
+              $filename = auth()->user()->id.'-'.uniqid() . '.' . $extension;
+              // Store the image in your storage directory
+              Storage::disk($storagePath)->put($filename, $response->getBody());
+              // dd($filename);
+
               if(!empty($request->creativeHistoryId)){
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
                 $Id  = DB::table('creativehistory')->insertGetId([

@@ -19,6 +19,7 @@ Route::get('/',function(){
         
 })->name('index');
 
+Route::get('/test', [ModelsController::class, 'test'])->name('test');
 Route::get('/playground', [ModelsController::class, 'index'])->name('home');
 Route::get('/publish-creation', [PublicModelsController::class, 'publishCreation'])->name('publishcreation');
 Route::get('/my-asset', [PublishCreationController::class, 'myAsset'])->name('myasset');
