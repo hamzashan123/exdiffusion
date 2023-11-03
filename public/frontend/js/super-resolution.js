@@ -102,6 +102,7 @@ $(document).ready(function () {
 
         $("#generateSuperResolution").append('<div class="loaderbtn"> </div>');
         $("#generateSuperResolution").find('.loaderbtn').show();
+        console.log('creativehistoryId',creativeHistoryId);
         $.ajax({
             url: "" + baseUrl + "/get-superResolution",
             method: "POST",
