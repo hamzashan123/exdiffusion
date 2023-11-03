@@ -202,12 +202,13 @@ $(document).ready(function () {
                 $("#generateSuperResolution").text('Generate');
                 $("#generateSuperResolution").find('.loaderbtn').hide();
                 Swal.fire({
-                    title: response.data.message,
+                    title: 'Server Error Try Again!',
                     icon: 'error',
                     timer: 4000, // Auto-close the alert after 4 seconds
                     showConfirmButton: false
                 });
             },
+            
         });
     });
 
