@@ -55,6 +55,7 @@ $(document).ready(function () {
 
     $("#generateSuperResolution").on("click", function () {
         localStorage.removeItem("creativeHistoryId");
+        
         const face_enhance = $("#face_enhance").is(":checked");
         const super_resolution = $("#super_resolution").is(":checked");
         const superscale_input = $("#superscale_input").val();
@@ -63,12 +64,8 @@ $(document).ready(function () {
 
         // Check if a file is selected
 
-        //  console.log("length" , superResolutionArray.length);
-        //  if (uploadedImage[0].files.length === 0 && superResolutionArray.length > 0) {
-        //     alert("Please select a file.");
-        //     return;
-        //  }
-
+        
+        console.log();
         $("#generateSuperResolution").text("Generating...");
         $("#generateSuperResolution").addClass("generating");
         $(".superscaleoutputimage center").remove();
@@ -83,12 +80,28 @@ $(document).ready(function () {
         //     creativeHistoryId =  localStorage.getItem("creativeHistoryId");
         // }
         formData.append("creativeHistoryId", creativeHistoryId);
-        formData.append("file", uploadedImage[0].files[0]);
-
-        //check other params of super resolution as well
-        if (superResolutionArray.length > 0) {
+        if(uploadedImage[0].files.length > 0){
+            formData.append("file", uploadedImage[0].files[0]);
+            superResolutionArray = []; //empty in case of file upload
+        }
+        
+        console.log('superResolutionArray1', superResolutionArray);
+        if(superResolutionArray.length > 0){
+            
             formData.append("image_url", superResolutionArray[0]);
         }
+        console.log('superResolutionArray2', superResolutionArray);
+        //check other params of super resolution as well
+        // if (superResolutionArray.length > 0 ) {
+        //     formData.append("image_url", superResolutionArray[0]);
+        // }
+
+        // console.log("length" , superResolutionArray.length);
+        // if (uploadedImage[0].files.length === 0 && superResolutionArray.length > 0) {
+        //    alert("Please select a file.");
+        //    return;
+        // }
+
         if ($("#super_resolution").is(":checked")) {
             formData.append(
                 "super_resultion_model_id",
