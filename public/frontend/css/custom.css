@@ -1494,6 +1494,22 @@ div#publicCreationModelList .bodyInner img {
     height: auto !important;
 }
 
+.is_published_badge:before {
+    content: 'Published';
+    background: #a157dc;
+    padding: 2px 11px;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: 700;
+    position: absolute;
+    right: 0;
+}
+
+.is_published_badge {
+    position: relative;
+}
+
+
 /* end here */
 
 @media only screen and (min-width:1400px) {
