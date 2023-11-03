@@ -298,7 +298,7 @@ class ModelsController extends Controller
               Storage::disk($storagePath)->put($filename, $imgResponse->getBody());
               // dd($filename);
 
-              if(!empty($request->creativeHistoryId) || $request->creativeHistoryId != null){
+              if(!empty($request->creativeHistoryId) || $request->creativeHistoryId != 'undefined'){
                 // dd($request->creativeHistoryId);
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
                   $Id  = DB::table('creativehistory')->insertGetId([
