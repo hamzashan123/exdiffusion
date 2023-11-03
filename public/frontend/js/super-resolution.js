@@ -54,6 +54,7 @@ $(document).ready(function () {
     }
 
     $("#generateSuperResolution").on("click", function () {
+        localStorage.removeItem("creativeHistoryId");
         const face_enhance = $("#face_enhance").is(":checked");
         const super_resolution = $("#super_resolution").is(":checked");
         const superscale_input = $("#superscale_input").val();
@@ -78,9 +79,9 @@ $(document).ready(function () {
         // Append the selected file to the FormData object
 
         formData.append("super_resolution", super_resolution);
-        if(creativeHistoryId == undefined || creativeHistoryId == null){
-            creativeHistoryId =  localStorage.getItem("creativeHistoryId");
-        }
+        // if(creativeHistoryId == undefined || creativeHistoryId == null){
+        //     creativeHistoryId =  localStorage.getItem("creativeHistoryId");
+        // }
         formData.append("creativeHistoryId", creativeHistoryId);
         formData.append("file", uploadedImage[0].files[0]);
 
@@ -151,7 +152,7 @@ $(document).ready(function () {
                         pageHTML += "</center>";
 
                         $(".superscaleoutputimage").append(pageHTML);
-                        localStorage.removeItem("creativeHistoryId");
+                        
                         $(".processing").remove();
                         $("#generateSuperResolution").text("Generate");
                         $("#generateSuperResolution").removeClass("generating");
