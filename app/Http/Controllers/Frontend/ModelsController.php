@@ -233,7 +233,7 @@ class ModelsController extends Controller
     }
 
     public function getSuperResolutionImage(Request $request){
-
+        
         if($request->has('image_url') && $request->creativeHistoryId != null){
           $imageUrl = $request->image_url;
         }else{
@@ -243,7 +243,7 @@ class ModelsController extends Controller
           $imageLink = Storage::url('public/images/creativehistory/' . $imageName);
           $imageUrl = url('/').$imageLink;
         }
-         
+        
         // // Your URL and storage path
         // $url = $imageUrl;
         // $storagePath = 'public/creativehistory'; // Adjust this path as needed
@@ -283,6 +283,7 @@ class ModelsController extends Controller
         ));
 
         $response = curl_exec($curl);
+        curl_close($curl);
         $response = json_decode($response,true); 
         
             if(!empty($response)){
@@ -297,9 +298,9 @@ class ModelsController extends Controller
               // Store the image in your storage directory
               Storage::disk($storagePath)->put($filename, $imgResponse->getBody());
               // dd($filename);
-
-              if(!empty($request->creativeHistoryId) && $request->creativeHistoryId != null){
-                // dd($request->creativeHistoryId);
+              
+              if($request->creativeHistoryId != "undefined"){
+                
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
                   $Id  = DB::table('creativehistory')->insertGetId([
                         'user_id' => auth()->user()->id,
@@ -362,7 +363,7 @@ class ModelsController extends Controller
         
        
 
-        curl_close($curl);
+      
 
       
     } 

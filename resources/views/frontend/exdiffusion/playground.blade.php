@@ -537,6 +537,7 @@
             if(url.searchParams.has(superResolutionParam)){
                 superResolutionArray = [];
                 superResolutionArray.push(creativeData['image_url']);
+                creativeHistoryId = creativeData['id'];
                 console.log("superResolutionArray",superResolutionArray);
 
                 const draggableArea = $(".draggableinputarea");

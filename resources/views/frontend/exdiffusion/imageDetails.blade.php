@@ -200,11 +200,8 @@
                         localStorage.removeItem("globalLoraModelArray");
                         localStorage.setItem("globalLoraModelArray", loraModelArray);
                         //need this id when going for super resolution data getting
-                        localStorage.removeItem("creativeHistoryId");
-                        localStorage.setItem("creativeHistoryId", creativeId);
-                        
-                        
-
+                        // localStorage.removeItem("creativeHistoryId");
+                        // localStorage.setItem("creativeHistoryId", creativeId);
                         window.location.href = baseUrl + '/playground?generated=true&super-resolution=true';
 
                     } else {
