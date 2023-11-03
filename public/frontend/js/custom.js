@@ -524,7 +524,7 @@ $("#make_super_resolution").on("click", function (e) {
     draggableArea.find("label").hide();
     draggableArea.find("input").hide();
     draggableArea.append(imageElement).addClass("draggable");
-
+    $('#uploadBtn').attr('disabled',true);
     $("#superResolution-tab").tab("show");
 
     // $('#superResolution-tab a[href="#superResolution"]').tab('show');

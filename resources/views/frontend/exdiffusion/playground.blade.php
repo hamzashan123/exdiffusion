@@ -535,6 +535,7 @@
                 
             }
             if(url.searchParams.has(superResolutionParam)){
+                $('#uploadBtn').attr('disabled',true);
                 superResolutionArray = [];
                 superResolutionArray.push(creativeData['image_url']);
                 creativeHistoryId = creativeData['id'];
