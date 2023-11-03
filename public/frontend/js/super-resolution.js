@@ -63,9 +63,6 @@ $(document).ready(function () {
         const super_resultion_model_id = $("#super_resultion_model_id").val();
 
         // Check if a file is selected
-
-        
-        console.log();
         $("#generateSuperResolution").text("Generating...");
         $("#generateSuperResolution").addClass("generating");
         $(".superscaleoutputimage center").remove();

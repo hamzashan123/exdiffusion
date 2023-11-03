@@ -233,7 +233,7 @@ class ModelsController extends Controller
     }
 
     public function getSuperResolutionImage(Request $request){
-
+        
         if($request->has('image_url') && $request->creativeHistoryId != null){
           $imageUrl = $request->image_url;
         }else{
@@ -243,7 +243,7 @@ class ModelsController extends Controller
           $imageLink = Storage::url('public/images/creativehistory/' . $imageName);
           $imageUrl = url('/').$imageLink;
         }
-         
+        
         // // Your URL and storage path
         // $url = $imageUrl;
         // $storagePath = 'public/creativehistory'; // Adjust this path as needed
