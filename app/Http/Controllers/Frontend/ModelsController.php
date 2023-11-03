@@ -297,7 +297,7 @@ class ModelsController extends Controller
               // Store the image in your storage directory
               Storage::disk($storagePath)->put($filename, $imgResponse->getBody());
               // dd($filename);
-
+              dd($request->creativeHistoryId);
               if(!empty($request->creativeHistoryId) || $request->creativeHistoryId != 'undefined'){
                 // dd($request->creativeHistoryId);
                 $creativeData = DB::table('creativehistory')->where('id',$request->creativeHistoryId)->first();
