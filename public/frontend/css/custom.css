@@ -1426,11 +1426,40 @@ body.modal-open {
     padding: 20px;
 }
 
+.imgDiv {
+    width: 100%;
+
+}
+
+
 .imgDiv img {
     width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    height: 575px;
+    object-fit: contain;
 }
+
+.imgDiv a {
+    width: 100%;
+}
+
+.deleteImagedetailItem {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.deleteImagedetailItem a span {
+    background: black;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 9px;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+    left: -1px;
+}
+
 
 .loaderbtn {
     left: 10%;
