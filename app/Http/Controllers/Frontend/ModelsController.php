@@ -283,6 +283,7 @@ class ModelsController extends Controller
         ));
 
         $response = curl_exec($curl);
+        curl_close($curl);
         $response = json_decode($response,true); 
         
             if(!empty($response)){
@@ -362,7 +363,7 @@ class ModelsController extends Controller
         
        
 
-        curl_close($curl);
+      
 
       
     } 
