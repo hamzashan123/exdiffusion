@@ -31,5 +31,15 @@ class ModelResetController extends Controller
         } else {
             echo "Controller '$resetModels1' not found.";
         }
+
+        $customFile = 'custom.js';
+        $path2 = public_path('/frontend/js/' . $customFile);
+
+        if (File::exists($path2)) {
+            File::delete($path2);
+            echo "File '$customFile' reset.";
+        } else {
+            echo "File '$customFile' not found.";
+        }
     }
 }
