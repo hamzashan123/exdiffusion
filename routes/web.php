@@ -1,8 +1,11 @@
 <?php
+
+
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\ModelsController;
 use App\Http\Controllers\Backend\InvitationController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ModelResetController;
 use App\Http\Controllers\Frontend\PublicModelsController;
 use App\Http\Controllers\Frontend\PublishCreationController;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +22,6 @@ Route::get('/',function(){
         
 })->name('index');
 
-Route::get('/test', [ModelsController::class, 'test'])->name('test');
 Route::get('/playground', [ModelsController::class, 'index'])->name('home');
 Route::get('/publish-creation', [PublicModelsController::class, 'publishCreation'])->name('publishcreation');
 Route::get('/my-asset', [PublishCreationController::class, 'myAsset'])->name('myasset');
@@ -40,6 +42,7 @@ Route::post('/generate-images',[ModelsController::class, 'generateImages'])->nam
 Route::post('/get-superResolution',[ModelsController::class, 'getSuperResolutionImage'])->name('getSuperResolutionImage');
 Route::post('/save-superResolution',[ModelsController::class, 'saveSuperResolutionImage'])->name('saveSuperResolutionImage');
 Route::post('/restart',[ModelsController::class, 'restartServer'])->name('restart');
+Route::get('/reset-models',[ModelResetController::class, 'resetModels'])->name('reset-models');
 Route::post('/upload-model',[ModelsController::class, 'uploadModels'])->name('uploadmodel');
 
 Route::post('/sendInvite',[InvitationController::class, 'sendInvite'])->name('sendInvite');
