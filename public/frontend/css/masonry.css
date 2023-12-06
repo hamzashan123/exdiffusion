@@ -63,7 +63,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    padding: 30px 30px;
+    padding: 20px 30px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -177,6 +177,6 @@
     cursor: pointer;
 }
 
-.masonry .grid__link {
+/* .masonry .grid__link {
     pointer-events: none;
-}
+} */
