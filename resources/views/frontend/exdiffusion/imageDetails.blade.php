@@ -151,17 +151,17 @@
                         console.log(response);
                         if (response.status == "success") {
                             Swal.fire({
-                                title: response.message,
-                                icon: 'success',
-                                timer: 4000, // Auto-close the alert after 4 seconds
-                                showConfirmButton: true
+                            text: response.message,
+                            icon: "success",
+                            
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Ok"
                             }).then((result) => {
-                            /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
-                                window.location.reload;
+                                window.location.reload();
                             }
                             });
-                            
                             
                         }else if(response.status == "failure"){
                             Swal.fire({
