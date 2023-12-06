@@ -155,7 +155,13 @@
                                 icon: 'success',
                                 timer: 4000, // Auto-close the alert after 4 seconds
                                 showConfirmButton: true
+                            }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                window.location.reload;
+                            }
                             });
+                            
                             
                         }else if(response.status == "failure"){
                             Swal.fire({
