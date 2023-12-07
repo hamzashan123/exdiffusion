@@ -56,6 +56,7 @@
         var publishCreationArray = [];
 
         function getPublishCreations(modelType) {
+            
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
 

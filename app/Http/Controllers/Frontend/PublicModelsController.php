@@ -210,16 +210,29 @@ class PublicModelsController extends Controller
 
   }
 
+ 
+
   public function getPublishCreation(Request $request){
       $user = Auth::user();
-
+        // dd($request);
         $userCreativeHistory = DB::table('creativehistory')->where('is_published','true');
         if($request->modelType == 'Images'){
           $userCreativeHistory =  $userCreativeHistory;
+          $userCreativeHistory = $userCreativeHistory->get();
+          
         }elseif($request->modelType == 'Favourite'){
-          $userCreativeHistory =  $userCreativeHistory->where('is_publishcreation_favorite','true');
+
+          $userCreativeHistory = DB::table('creativehistory')
+          ->join('publishedcreation_favorites', 'creativehistory.id', '=', 'publishedcreation_favorites.creative_id')
+          ->where('publishedcreation_favorites.is_publishedcreation_favorite','=','true')
+          ->where('publishedcreation_favorites.user_id','=', $user->id)
+          ->select('creativehistory.*', 'publishedcreation_favorites.is_publishedcreation_favorite as is_publishedcreation_favorite')
+          ->get();
+          
+        }else{
+          $userCreativeHistory = $userCreativeHistory->get();
         }
-        $userCreativeHistory = $userCreativeHistory->get();
+        
         if($userCreativeHistory != null){
           return response()->json([
             'status' => 'success',
@@ -312,10 +325,15 @@ class PublicModelsController extends Controller
 
         if($request->publishcreation == true){
           foreach($request->creativeArray as $creativeId){
-            DB::table('creativehistory')->where('user_id',$user->id)->where('id',$creativeId)
-            ->update([
-              'is_publishcreation_favorite' => 'true',
-            ]);
+            $recordExists = DB::table('publishedcreation_favorites')->where('user_id', $user->id)->where('creative_id', $creativeId)->where('is_publishedcreation_favorite', 'true')->exists();
+            
+            if($recordExists == false){
+              DB::table('publishedcreation_favorites')->insertGetId([
+                'user_id' => $user->id,
+                'creative_id' => $creativeId,
+                'is_publishedcreation_favorite' => 'true',
+              ]);
+            }
           }
         }else{
           foreach($request->creativeArray as $creativeId){
