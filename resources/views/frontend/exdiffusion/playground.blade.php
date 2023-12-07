@@ -179,6 +179,14 @@
                         });
 
                        
+                    }else if(response.status == 'error'){
+                            Swal.fire({
+                            title: "Couldn't get Base Models",
+                            text: response.message,
+                            icon: 'error',
+                            timer: 4000, // Auto-close the alert after 4 seconds
+                            showConfirmButton: false
+                        });
                     }
                 },
                 error: function () {
@@ -215,6 +223,15 @@
                                 $("#scheduler_list").append(pageHTML);
                             });
                         }
+                    }
+                    else if(response.status == 'error'){
+                            Swal.fire({
+                            title: "Couldn't get Schedulers",
+                            text: response.message,
+                            icon: 'error',
+                            timer: 4000, // Auto-close the alert after 4 seconds
+                            showConfirmButton: false
+                        });
                     }
                 },
                 error: function () {
