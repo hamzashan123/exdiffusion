@@ -554,6 +554,19 @@
                     },5000);
                 }
                 
+
+                        var pageHTML =
+                            "<center> <div class='generated_images'>";
+                        
+                            pageHTML +=
+                                " <a data-fancybox='images' href='" +
+                                creativeData['image_url'] +
+                                "'> <img src='" +
+                                creativeData['image_url'] +
+                                "' alt=''> </a>";
+                        
+                        pageHTML += "</div> </center>";
+                        $(".innerImageDiv").append(pageHTML);
             }
             if(url.searchParams.has(superResolutionParam)){
                 $('#uploadBtn').attr('disabled',true);
