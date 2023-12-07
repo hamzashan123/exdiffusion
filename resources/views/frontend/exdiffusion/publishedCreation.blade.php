@@ -204,9 +204,10 @@
         }
 
         $(document).on('change', '.imageCheckCreativehistory', function() {
+            
             var checkedCheckboxes = $('.imageCheckCreativehistory:checked').length;
             var creativeId = $(this).data("creativeid");
-
+            console.log("creativeId click ",creativeId);
             if (!publishCreationArray.includes(creativeId)) {
                 publishCreationArray.push(creativeId);
             } else {
@@ -283,6 +284,7 @@
                         });
                         //call getUserCreative history function to reload images
                         getPublishCreations();
+                        publishCreationArray = [];
                     },
                     error: function() {
                         $("#apply_filters").find('.loaderbtn').hide();
