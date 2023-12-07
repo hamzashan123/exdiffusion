@@ -479,6 +479,14 @@
                 // calling this function from custom.js to make dynamic div when genereate button click from my-assets page.
                 var creativeLoraModelArray = [];
                 var creativeLoraModelStrengthArray = [];
+
+                //fill scheduler_list and vaemodelslist when load from generate 
+                setTimeout(function(){
+                        console.log('creativeData-scheduler_list', creativeData['scheduler_list']);
+                        $('#scheduler_list').val(creativeData['scheduler_list']);
+                        $('#vaemodelslist').val(creativeData['vaemodelslist']);
+                },5000);
+
                 if(creativeData['loraModelArray'] != null){
                     const creativeDataloraModelArray = creativeData['loraModelArray'].split(',');
                     const creativeDataloraStrengthArray = creativeData['loraModelStrength'].split(',');
@@ -486,10 +494,6 @@
                     // creativeLoraModelStrengthArray.push(...creativeDataloraStrengthArray);
                     
                     setTimeout(function(){
-                        console.log('creativeData-scheduler_list', creativeData['scheduler_list']);
-                        $('#scheduler_list').val(creativeData['scheduler_list']);
-                        $('#vaemodelslist').val(creativeData['vaemodelslist']);
-
                         //fill loraModel List on playground when generate=true 
                         $('.bodyInnerLora').each(function(element){
                             var bodyInnerLoraText = $(this).siblings('span').text().trim();
@@ -510,7 +514,7 @@
                             loraModelStrength[index] = creativeDataloraStrengthArray[index];
                         });
 
-                    },10000);
+                    },5000);
                 }
 
                 //very imporatant for future changes  
