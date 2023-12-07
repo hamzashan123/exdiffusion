@@ -510,7 +510,7 @@
                             loraModelStrength[index] = creativeDataloraStrengthArray[index];
                         });
 
-                    },5000);
+                    },10000);
                 }
 
                 //very imporatant for future changes  
