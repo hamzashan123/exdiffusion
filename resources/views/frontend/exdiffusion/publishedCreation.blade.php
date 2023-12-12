@@ -56,7 +56,7 @@
         var publishCreationArray = [];
 
         function getPublishCreations(modelType) {
-            
+
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
 
@@ -78,16 +78,16 @@
                         response.data.forEach((element) => {
                             console.log("image_url", element.image_url);
                             var pageHTML = "<div class='grid'>";
-                            if(element.is_super_resolution == 'true'){
-                                    pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
-                            }else{
-                                    pageHTML += "<img src='" + element.image_url + "'>";
-                            } 
+                            if (element.is_super_resolution == 'true') {
+                                pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
+                            } else {
+                                pageHTML += "<img src='" + element.image_url + "'>";
+                            }
                             pageHTML += "<div class='grid__body'>";
                             pageHTML += "<div class='relative'>";
                             pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
                             pageHTML += "</div>";
-                            pageHTML += "<a class='grid__link' href="+baseUrl+"/image-detail/"+element.id+"></a>";
+                            pageHTML += "<a class='grid__link' href=" + baseUrl + "/image-detail/" + element.id + "></a>";
                             pageHTML += "<div class='mt-auto masonry-btn-generate'>";
                             pageHTML += "<button class='btn purple-col-bg form-control text-white border-radius-7 generateCreativeHistory' data-creativeId='" + element.id + "'>Generate</button>";
                             pageHTML += "</div>";
@@ -140,7 +140,7 @@
                         if (modelType == 'base_models') {
                             response.models.forEach((element) => {
                                 var pageHTML =
-                                    "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
+                                    "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                 pageHTML += "<div class='bodyInner'>";
                                 pageHTML +=
                                     "<img src='" +
@@ -159,7 +159,7 @@
                             if (response.lora_models[0] !== undefined) {
                                 response.lora_models.forEach((element) => {
                                     var pageHTML =
-                                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
+                                        "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                     pageHTML += "<div class='bodyInner'>";
                                     pageHTML +=
                                         "<img src='" +
@@ -178,7 +178,7 @@
                             if (response.embeddings_models[0] !== undefined) {
                                 response.embeddings_models.forEach((element) => {
                                     var pageHTML =
-                                        "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
+                                        "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                     pageHTML += "<div class='bodyInner'>";
                                     pageHTML +=
                                         "<img src='" +
@@ -205,10 +205,10 @@
         }
 
         $(document).on('change', '.imageCheckCreativehistory', function() {
-            
+
             var checkedCheckboxes = $('.imageCheckCreativehistory:checked').length;
             var creativeId = $(this).data("creativeid");
-            console.log("creativeId click ",creativeId);
+            console.log("creativeId click ", creativeId);
             if (!publishCreationArray.includes(creativeId)) {
                 publishCreationArray.push(creativeId);
             } else {
