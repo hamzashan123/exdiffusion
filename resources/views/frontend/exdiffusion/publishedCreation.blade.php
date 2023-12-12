@@ -152,10 +152,7 @@
 
                                 $("#publicCreationModelList").append(pageHTML);
                             });
-                        }
-
-
-                        if (modelType == 'lora_models') {
+                        } else if (modelType == 'lora_models') {
                             if (response.lora_models[0] !== undefined) {
                                 response.lora_models.forEach((element) => {
                                     var pageHTML =
@@ -172,9 +169,7 @@
                                     $("#publicCreationModelList").append(pageHTML);
                                 });
                             }
-                        }
-
-                        if (modelType == 'embedding_models') {
+                        } else if (modelType == 'embedding_models') {
                             if (response.embeddings_models[0] !== undefined) {
                                 response.embeddings_models.forEach((element) => {
                                     var pageHTML =
@@ -191,6 +186,14 @@
                                     $("#publicCreationModelList").append(pageHTML);
                                 });
                             }
+                        } else {
+                            var pageHTML = "<div class='grid'>";
+                            pageHTML += "<p class='text-white'> No Models found!</p>";
+                            pageHTML += "</div>";
+                            $("#publicCreationModelList").append(pageHTML);
+                            $("#loader").hide();
+
+
                         }
 
                         $("#loader").hide();
