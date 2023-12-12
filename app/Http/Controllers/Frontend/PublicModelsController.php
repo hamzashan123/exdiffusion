@@ -122,7 +122,8 @@ class PublicModelsController extends Controller
             $filename = auth()->user()->id.'-'.uniqid() . '.' . $extension;
             // Store the image in your storage directory
             Storage::disk($storagePath)->put($filename, $response->getBody());
-          
+
+            $localFileLink = url('/').'/storage/images/creativehistory/'.$filename;
             // You can use the $filename variable to store the file path in your database or perform other operations.
             $Id  = DB::table('creativehistory')->insertGetId([
                 'user_id' => auth()->user()->id,
@@ -146,12 +147,21 @@ class PublicModelsController extends Controller
                 'upscale' => $request->upscale,
                 'tomesd' => $request->tomesd,
                 'karras_sigmas' => $request->karras_sigmas,
-                'image_url' => url('/').'/storage/images/creativehistory/'.$filename,
+                'image_url' => $localFileLink,
                 'loraModelArray' => $request->loraModelArray,
                 'loraModelStrength' => $request->loraModelStrength,
-                'embeddingModelArray' => $request->embeddingModelArray
-                
+                'embeddingModelArray' => $request->embeddingModelArray,
+                'is_nsfw_image' => 'false'
             ]);
+
+            //check if content is adult or not
+            $nsfwCheck = $this->nsfwImageCheck($localFileLink);
+            if($nsfwCheck == true){
+              DB::table('creativehistory')->where('id',$Id)->update([
+                'is_nsfw_image' => 'true'
+              ]);
+            }
+
             array_push($dataArray,  $Id);
         }
           return response()->json([
@@ -168,6 +178,43 @@ class PublicModelsController extends Controller
       
   }
 
+  function nsfwImageCheck(string $imageUrl){
+    if($imageUrl != null){
+      $payload = [
+        "key" => "rfhpc3j1c7kw0t",
+        "init_image" => $imageUrl
+        // "init_image" => "https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/temp/0-bdf3536a-cf63-4245-98e2-9c910a74fcc7.png"
+      ];
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://stablediffusionapi.com/api/v1/enterprise/nsfw_image_check',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($payload),
+        CURLOPT_HTTPHEADER => array(
+          'Content-Type: application/json'
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      if($e = curl_error($curl)) {
+        return "false";
+      } else {
+
+          $decodedData = json_decode($response, true);
+          return $decodedData['has_nsfw_concept'][0];
+      }
+    
+    }else{
+        return "false";
+    }
+
+  }
   public function publishCreation(){
     return view('frontend.exdiffusion.publishedCreation');
   }

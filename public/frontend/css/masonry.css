@@ -177,6 +177,14 @@
     cursor: pointer;
 }
 
+span.checkNSFW {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: #a157dc;
+    padding: 5px 10px;
+    border-top-left-radius: 5px;
+}
 /* .masonry .grid__link {
     pointer-events: none;
 } */

@@ -84,6 +84,10 @@
                                 pageHTML += "<img src='" + element.image_url + "'>";
                             }
                             pageHTML += "<div class='grid__body'>";
+                            // if content is adult the show label
+                            if(element.is_nsfw_image == 'true'){
+                                pageHTML += "<span class='checkNSFW'> NSFW </span>";
+                            }
                             pageHTML += "<div class='relative'>";
                             pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
                             pageHTML += "</div>";
