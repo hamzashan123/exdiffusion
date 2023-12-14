@@ -1611,6 +1611,9 @@ div#publicCreationModelList .bodyInner img {
 
 @media only screen and (max-width:768px ) {
     
+    div#signupModal .modal-content {
+        max-width: 90% !important;
+    }
 
     .navigation a:first-child {
         margin-left: 21px !important;
