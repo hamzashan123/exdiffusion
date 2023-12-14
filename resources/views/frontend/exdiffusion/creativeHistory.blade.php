@@ -45,15 +45,15 @@
         </div>
     </div>
     @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <p>{{ Session::get('success') }}</p>
-        </div>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <p>{{ Session::get('success') }}</p>
+    </div>
 
-        <script>
-            setTimeout(function() {
-                $('.alert-success').fadeOut('slow');
-            }, 5000); // 5000 milliseconds = 5 seconds
-        </script>
+    <script>
+        setTimeout(function() {
+            $('.alert-success').fadeOut('slow');
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
     @endif
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -88,26 +88,30 @@
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
-                                console.log("element", element);
-                                var pageHTML = "<div class='grid'>";
-                                if(element.is_super_resolution == 'true'){
-                                    pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
-                                }else{
-                                    pageHTML += "<img src='" + element.image_url + "'>";
-                                }   
-                                pageHTML += "<div class='grid__body'>";
-                                pageHTML += "<div class='relative'>";
-                                pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
-                                pageHTML += "</div>";
-                                pageHTML += "<a class='grid__link' href="+baseUrl+"/image-detail/"+element.id+"></a>";
-                                pageHTML += "<div class='mt-auto masonry-btn-generate'>";
-                                pageHTML += "<button class='btn purple-col-bg form-control text-white border-radius-7 generateCreativeHistory' data-creativeId='" + element.id + "'>Generate</button>";
-                                pageHTML += "</div>";
-                                pageHTML += "</div>";
-                                pageHTML += "</div>";
-                                $(".masonry").append(pageHTML);
-                            
-                           
+                            console.log("element", element);
+                            var pageHTML = "<div class='grid'>";
+                            if (element.is_super_resolution == 'true') {
+                                pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
+                            } else {
+                                pageHTML += "<img src='" + element.image_url + "'>";
+                            }
+                            pageHTML += "<div class='grid__body'>";
+                            console.log('element.is_nsfw_image', element.is_nsfw_image);
+                            if (element.is_nsfw_image == 'true') {
+                                pageHTML += "<span class='checkNSFW'> NSFW </span>";
+                            }
+                            pageHTML += "<div class='relative'>";
+                            pageHTML += "<input type='checkbox' name='' data-creativeId='" + element.id + "' class='imageCheckCreativehistory'>";
+                            pageHTML += "</div>";
+                            pageHTML += "<a class='grid__link' href=" + baseUrl + "/image-detail/" + element.id + "></a>";
+                            pageHTML += "<div class='mt-auto masonry-btn-generate'>";
+                            pageHTML += "<button class='btn purple-col-bg form-control text-white border-radius-7 generateCreativeHistory' data-creativeId='" + element.id + "'>Generate</button>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            $(".masonry").append(pageHTML);
+
+
                         });
 
 
