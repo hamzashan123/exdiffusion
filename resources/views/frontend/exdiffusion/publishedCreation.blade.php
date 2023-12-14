@@ -22,13 +22,13 @@
 
                 <div class="col-lg-8 col-md-9 col-sm-12 col-xs-12">
 
-                    <select name="filterlist" id="public_creation_filterlist" class="form-control dark-grey border-radius-7">
+                    <select name="filterlist" id="public_creation_filterlist" disabled class="form-control dark-grey border-radius-7">
                         <option value="" selected></option>
                         <option value="addToFavoritePublishCreation">Add to Favorite</option>
                     </select>
                 </div>
                 <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                    <button class="btn btn-success form-control text-light-grey-bg border-radius-7" id="public_creation_apply_filters">Apply</button>
+                    <button class="btn btn-success form-control text-light-grey-bg border-radius-7" disabled id="public_creation_apply_filters">Apply</button>
                 </div>
 
             </div>
@@ -236,11 +236,11 @@
             }
             console.log(publishCreationArray);
             if (checkedCheckboxes > 0) {
-                $('#apply_filters').prop('disabled', false);
-                $('#filterlist').prop('disabled', false);
+                $('#public_creation_apply_filters').prop('disabled', false);
+                $('#public_creation_filterlist').prop('disabled', false);
             } else {
-                $('#apply_filters').prop('disabled', true);
-                $('#filterlist').prop('disabled', true);
+                $('#public_creation_apply_filters').prop('disabled', true);
+                $('#public_creation_filterlist').prop('disabled', true);
             }
 
         });
@@ -278,40 +278,55 @@
             var selectedAction = $('#public_creation_filterlist').val();
 
             if (selectedAction == 'addToFavoritePublishCreation') {
-                $("#apply_filters").find('.loaderbtn').show();
-                $("#loader").show();
-                $.ajax({
-                    url: "" + baseUrl + "/addToFavoriteCreativeHistory",
-                    method: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        creativeArray: publishCreationArray,
-                        publishcreation: true
-                    },
-                    success: function(response) {
-                        $("#apply_filters").find('.loaderbtn').hide();
-                        $("#loader").hide();
-                        console.log(response);
-                        Swal.fire({
-                            title: response.message,
-                            icon: 'success',
-                            timer: 4000, // Auto-close the alert after 4 seconds
-                            showConfirmButton: false
-                        });
-                        //call getUserCreative history function to reload images
-                        getPublishCreations();
-                        publishCreationArray = [];
-                    },
-                    error: function() {
-                        $("#apply_filters").find('.loaderbtn').hide();
-                        $("#loader").hide();
-                        $("#result").text(
-                            "Error occurred while fetching data from the API."
-                        );
-                    },
+                Swal.fire({
+	                    title: 'Are you sure you want to add to favorite list?',
+	                    showDenyButton: true,
+	                    confirmButtonText: 'Yes',
+	                    denyButtonText: 'Cancel',
+
+	                    }).then((result) => {
+	                    if (result.isConfirmed) {
+                            $("#apply_filters").find('.loaderbtn').show();
+                            $("#loader").show();
+                            $.ajax({
+                                url: "" + baseUrl + "/addToFavoriteCreativeHistory",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: {
+                                    creativeArray: publishCreationArray,
+                                    publishcreation: true
+                                },
+                                success: function(response) {
+                                    $("#apply_filters").find('.loaderbtn').hide();
+                                    $("#loader").hide();
+                                    console.log(response);
+                                    Swal.fire({
+                                        title: response.message,
+                                        icon: 'success',
+                                        timer: 4000, // Auto-close the alert after 4 seconds
+                                        showConfirmButton: false
+                                    });
+                                    //call getUserCreative history function to reload images
+                                    getPublishCreations();
+                                    publishCreationArray = [];
+                                },
+                                error: function() {
+                                    $("#apply_filters").find('.loaderbtn').hide();
+                                    $("#loader").hide();
+                                    $("#result").text(
+                                        "Error occurred while fetching data from the API."
+                                    );
+                                },
+                            });
+	                    
+	                    } else if (result.isDenied) {
+
+	                        return;
+                        }
                 });
+                
             } else {
                 alert('Select an option to apply!');
             }

@@ -207,7 +207,12 @@ class PublicModelsController extends Controller
       } else {
 
           $decodedData = json_decode($response, true);
-          return $decodedData['has_nsfw_concept'][0];
+          if(isset($decodedData['has_nsfw_concept'])){
+            return $decodedData['has_nsfw_concept'][0];
+          }else{
+             return "false";
+          }
+          
       }
     
     }else{

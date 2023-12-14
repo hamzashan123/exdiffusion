@@ -164,76 +164,110 @@
 
         $(document).on('click', '#apply_filters', function() {
             console.log(creativeArray);
+            
             var selectedAction = $('#filterlist').val();
 
             if (selectedAction == 'deleteCreativeHistory') {
-                $("#apply_filters").find('.loaderbtn').show();
-                $("#loader").show();
-                $.ajax({
-                    url: "" + baseUrl + "/delete-userCreativeHistory",
-                    method: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        creativeArray: creativeArray
-                    },
-                    success: function(response) {
-                        $("#apply_filters").find('.loaderbtn').hide();
-                        $("#loader").hide();
-                        $("#apply_filters").attr('disabled', 'true');
-                        console.log(response);
-                        Swal.fire({
-                            title: response.message,
-                            icon: 'success',
-                            timer: 4000, // Auto-close the alert after 4 seconds
-                            showConfirmButton: false
-                        });
-                        //call getUserCreative history function to reload images
-                        getUserCreativeHistory("creativeHistory");
-                    },
-                    error: function() {
-                        $("#apply_filters").find('.loaderbtn').hide();
-                        $("#loader").hide();
-                        $("#apply_filters").attr('disabled', 'true');
-                        $("#result").text(
-                            "Error occurred while fetching data from the API."
-                        );
-                    },
+                Swal.fire({
+                    title: 'Are you sure you want to delete?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: 'Cancel',
+
+                    }).then((result) => {
+
+                    if (result.isConfirmed) {
+
+                            $("#apply_filters").find('.loaderbtn').show();
+                            $("#loader").show();
+                            $.ajax({
+                                url: "" + baseUrl + "/delete-userCreativeHistory",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: {
+                                    creativeArray: creativeArray
+                                },
+                                success: function(response) {
+                                    $("#apply_filters").find('.loaderbtn').hide();
+                                    $("#loader").hide();
+                                    $("#apply_filters").attr('disabled', 'true');
+                                    console.log(response);
+                                    Swal.fire({
+                                        title: response.message,
+                                        icon: 'success',
+                                        timer: 4000, // Auto-close the alert after 4 seconds
+                                        showConfirmButton: false
+                                    });
+                                    //call getUserCreative history function to reload images
+                                    getUserCreativeHistory("creativeHistory");
+                                },
+                                error: function() {
+                                    $("#apply_filters").find('.loaderbtn').hide();
+                                    $("#loader").hide();
+                                    $("#apply_filters").attr('disabled', 'true');
+                                    $("#result").text(
+                                        "Error occurred while fetching data from the API."
+                                    );
+                                },
+                    });
+                    } else if (result.isDenied) {
+                        return;
+                    }
                 });
+              
+                
             } else if (selectedAction == 'addToFavoriteCreativeHistory') {
-                $("#apply_filters").find('.loaderbtn').show();
-                $("#loader").show();
-                $.ajax({
-                    url: "" + baseUrl + "/addToFavoriteCreativeHistory",
-                    method: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        creativeArray: creativeArray
-                    },
-                    success: function(response) {
-                        $("#apply_filters").find('.loaderbtn').hide();
-                        $("#loader").hide();
-                        console.log(response);
-                        Swal.fire({
-                            title: response.message,
-                            icon: 'success',
-                            timer: 4000, // Auto-close the alert after 4 seconds
-                            showConfirmButton: false
-                        });
-                        //call getUserCreative history function to reload images
-                        getUserCreativeHistory("creativeHistory");
-                    },
-                    error: function() {
-                        $("#apply_filters").find('.loaderbtn').hide();
-                        $("#loader").hide();
-                        $("#result").text(
-                            "Error occurred while fetching data from the API."
-                        );
-                    },
-                });
+                Swal.fire({
+                            title: 'Are you sure you want to add to favorite list?',
+                            showDenyButton: true,
+                            confirmButtonText: 'Yes',
+                            denyButtonText: 'Cancel',
+
+                            }).then((result) => {
+
+                            if (result.isConfirmed) {
+
+                            $("#apply_filters").find('.loaderbtn').show();
+                            $("#loader").show();
+                            $.ajax({
+                                url: "" + baseUrl + "/addToFavoriteCreativeHistory",
+                                method: "POST",
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: {
+                                    creativeArray: creativeArray
+                                },
+                                success: function(response) {
+                                    $("#apply_filters").find('.loaderbtn').hide();
+                                    $("#loader").hide();
+                                    console.log(response);
+                                    Swal.fire({
+                                        title: response.message,
+                                        icon: 'success',
+                                        timer: 4000, // Auto-close the alert after 4 seconds
+                                        showConfirmButton: false
+                                    });
+                                    //call getUserCreative history function to reload images
+                                    getUserCreativeHistory("creativeHistory");
+                                },
+                                error: function() {
+                                    $("#apply_filters").find('.loaderbtn').hide();
+                                    $("#loader").hide();
+                                    $("#result").text(
+                                        "Error occurred while fetching data from the API."
+                                    );
+                                },
+                            });
+
+                            } else if (result.isDenied) {
+
+                                return;
+                            }
+                        });        
+                
             } else {
                 alert('Select an option to apply!');
             }
