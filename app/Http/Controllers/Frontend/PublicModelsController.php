@@ -257,8 +257,6 @@ class PublicModelsController extends Controller
 
   }
 
- 
-
   public function getPublishCreation(Request $request){
       $user = Auth::user();
         // dd($request);
