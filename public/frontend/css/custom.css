@@ -1495,7 +1495,7 @@ div#publicCreationModelList .bodyInner img {
 }
 
 .is_published_badge:before {
-    content: 'Published';
+    content: 'PUBLISHED';
     background: #a157dc;
     padding: 2px 11px;
     border-radius: 7px;
@@ -1517,7 +1517,7 @@ div#publicCreationModelList .bodyInner img {
     font-size: 17px;
     font-weight: 700;
     position: absolute;
-    right: 9%;
+    right: 10%;
 }
 
 
@@ -1621,6 +1621,40 @@ div#publicCreationModelList .bodyInner img {
 
 @media only screen and (max-width:768px ) {
     
+    .is_nsfw_image:before {
+        content: 'NSFW';
+        background: #a157dc;
+        padding: 2px 11px;
+        border-radius: 7px;
+        font-size: 17px;
+        font-weight: 700;
+        position: absolute;
+        right: 9%;
+    }
+    
+    .is_published_badge:before {
+        top: 10px;
+        right: 10px;
+    }
+    
+    
+    
+    .is_nsfw_image:before {
+        top: 10px;
+        left: 10px;
+        right: unset !important;
+    }
+    
+    
+    .dataOfImage div.border-radius-7 {
+        padding-top: 50px !important;
+        position: relative;
+    }
+    
+    .is_published_badge {
+        position: unset !important;
+    }
+
     div#signupModal .modal-content {
         max-width: 90% !important;
     }
