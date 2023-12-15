@@ -1520,6 +1520,46 @@ div#publicCreationModelList .bodyInner img {
     right: 10%;
 }
 
+.swal2-popup.swal2-modal.swal2-show {
+    background: #2b323a;
+    padding: 20px !important;
+    border-radius: 10px;
+    border: 2px solid #4a4a4a !important;
+}
+
+h2#swal2-title {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0;
+}
+
+button.swal2-styled {
+    font-weight: 500;
+    background: #374151 !important;
+    border: 1px solid #4a4a4a !important;
+    padding: 5px 26px !important;
+    font-size: 18px !important;
+}
+
+.swal2-container {
+    background: rgb(0 0 0 / 70%) !important;
+}
+.swal2-success-circular-line-left , .swal2-success-circular-line-right {
+    background: #2b323a !important;
+}
+
+div#swal2-html-container {
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.swal2-success-fix {
+    background: #2b323a !important;
+}
+
 
 /* end here */
 
