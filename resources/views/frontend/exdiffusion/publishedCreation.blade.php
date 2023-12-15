@@ -308,7 +308,7 @@
                                     Swal.fire({
                                         title: response.message,
                                         icon: 'success',
-                                        timer: 4000, // Auto-close the alert after 4 seconds
+                                        timer: 40000, // Auto-close the alert after 4 seconds
                                         showConfirmButton: false
                                     });
                                     //call getUserCreative history function to reload images

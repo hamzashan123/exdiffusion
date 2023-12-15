@@ -450,45 +450,61 @@ function saveUserCreativeHistory(response){
 $(document).on('click','#make_publishimage', function(){
     
     if(generatedImageResponse != null || generatedImageResponse.length > 0 ){
-        $("#make_publishimage").find('.loaderbtn').show();
-        console.log(generatedImageResponse);
-        $.ajax({
-            url: "" + baseUrl + "/publish-images",
-            method: "POST",
-            data: {
-                generatedImageResponse
-            },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                $("#make_publishimage").find('.loaderbtn').hide();
-                console.log(response);
-                if (response.status == "success") {
-                    Swal.fire({
-                        title: response.message,
-                        icon: 'success',
-                        timer: 4000, // Auto-close the alert after 4 seconds
-                        showConfirmButton: true
-                    });
+        Swal.fire({
+            title: 'Are you sure you want to publish?',
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'Cancel',
+
+            }).then((result) => {
+
+            if (result.isConfirmed) {
+                $("#make_publishimage").find('.loaderbtn').show();
+                console.log(generatedImageResponse);
+                $.ajax({
+                    url: "" + baseUrl + "/publish-images",
+                    method: "POST",
+                    data: {
+                        generatedImageResponse
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function (response) {
+                        $("#make_publishimage").find('.loaderbtn').hide();
+                        console.log(response);
+                        if (response.status == "success") {
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'success',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });
+                            
+                        }else if(response.status == "failure"){
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'error',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });   
+                        }
+                    },
+                    error: function () {
+                        $("#make_publishimage").find('.loaderbtn').hide();
                     
-                }else if(response.status == "failure"){
-                    Swal.fire({
-                        title: response.message,
-                        icon: 'error',
-                        timer: 4000, // Auto-close the alert after 4 seconds
-                        showConfirmButton: true
-                    });   
-                }
-            },
-            error: function () {
-                $("#make_publishimage").find('.loaderbtn').hide();
-            
-                $("#result").text(
-                    "Error occurred while fetching data from the API."
-                );
-            },
+                        $("#result").text(
+                            "Error occurred while fetching data from the API."
+                        );
+                    },
+                });
+            } else if (result.isDenied) {
+
+                return;
+            }
+
         });
+        
     }
     
 });
