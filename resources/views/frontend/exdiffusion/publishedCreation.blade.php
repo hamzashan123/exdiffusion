@@ -283,7 +283,10 @@
 	                    showDenyButton: true,
 	                    confirmButtonText: 'Yes',
 	                    denyButtonText: 'Cancel',
-
+                        customClass: {
+                            actions: 'swal-custompopus',
+                            title: 'swal-customModals'
+                        },
 	                    }).then((result) => {
 	                    if (result.isConfirmed) {
                             $("#apply_filters").find('.loaderbtn').show();

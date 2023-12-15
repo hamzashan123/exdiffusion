@@ -93,7 +93,7 @@
         </div>
         @if(Auth::user()->id == $data->user_id)
         <div class="deleteImagedetailItem">
-            <a href="{{route('deleteImageItem',['id' => $data->id])}}" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <span>x </span> Delete the Image </a>
+            <a  id="deleteImageDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <span>x </span> Delete the Image </a>
         </div>
         @endif
     </div>
@@ -144,52 +144,136 @@
 
     $(document).on('click', '#btn_publishImage_imgDetail', function() {
         var creativeId = <?php echo $data->id ?>;
-        $("#btn_publishImage_imgDetail").find('.loaderbtn').show();
-        $.ajax({
-            url: "" + baseUrl + "/publish-image",
-            method: "POST",
-            data: {
-                creativeId: creativeId
-            },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function(response) {
-                $("#btn_publishImage_imgDetail").find('.loaderbtn').hide();
-                console.log(response);
-                if (response.status == "success") {
-                    Swal.fire({
-                        text: response.message,
-                        icon: "success",
 
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Ok"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.reload();
+        Swal.fire({
+            title: 'Are you sure you want to publish the image?',
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'Cancel',
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                $("#btn_publishImage_imgDetail").find('.loaderbtn').show();
+                $.ajax({
+                    url: "" + baseUrl + "/publish-image",
+                    method: "POST",
+                    data: {
+                        creativeId: creativeId
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(response) {
+                        $("#btn_publishImage_imgDetail").find('.loaderbtn').hide();
+                        console.log(response);
+                        if (response.status == "success") {
+                            Swal.fire({
+                                text: response.message,
+                                icon: "success",
+
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Ok"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.reload();
+                                }
+                            });
+
+                        } else if (response.status == "failure") {
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'error',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });
                         }
-                    });
-
-                } else if (response.status == "failure") {
-                    Swal.fire({
-                        title: response.message,
-                        icon: 'error',
-                        timer: 4000, // Auto-close the alert after 4 seconds
-                        showConfirmButton: true
-                    });
-                }
-            },
-            error: function() {
+                    },
+                    error: function() {
 
 
-                $("#result").text(
-                    "Error occurred while fetching data from the API."
-                );
-            },
+                        $("#result").text(
+                            "Error occurred while fetching data from the API."
+                        );
+                    },
+                });
+
+            } else if (result.isDenied) {
+
+                return;
+            }
         });
+
+
     });
 
+    //delete the image
+    $(document).on('click', '#deleteImageDetail', function() {
+        var creativeId = <?php echo $data->id ?>;
+
+        Swal.fire({
+            title: 'Are you sure you want to delete the image?',
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'Cancel',
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "" + baseUrl + "/image-detail-delete",
+                    method: "POST",
+                    data: {
+                        creativeId: creativeId
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(response) {
+                     
+                        console.log(response);
+                        if (response.status == "success") {
+                            Swal.fire({
+                                text: response.message,
+                                icon: "success",
+
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Ok"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = baseUrl + '/my-asset';
+                                }
+                            });
+
+                        } else if (response.status == "failure") {
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'error',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });
+                        }
+                    },
+                    error: function() {
+
+
+                        $("#result").text(
+                            "Error occurred while fetching data from the API."
+                        );
+                    },
+                });
+
+            } else if (result.isDenied) {
+
+                return;
+            }
+        });
+
+
+    });
     // This function will reflect all playground data & super resolution data plus switch to super resolution tab
     $(document).on('click', '#btn_superResolution_imgDetail', function() {
 
