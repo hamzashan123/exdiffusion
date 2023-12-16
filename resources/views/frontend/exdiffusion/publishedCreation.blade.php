@@ -82,7 +82,6 @@
                         pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
                         pageHTML += "</div>";
                         $("#publicCreationImagesList").prepend(pageHTML);
-                        console.log('modelType New', modelType);
                     } else {
                         $('#blurringContainer').remove();
                     }
