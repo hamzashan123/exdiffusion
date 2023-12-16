@@ -91,7 +91,6 @@
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
-                            console.log("image_url", element.image_url);
 
                             var pageHTML = "<div class='grid'>";
                             var classNameForNSFW_Image = 'is_NSFW_Images';
