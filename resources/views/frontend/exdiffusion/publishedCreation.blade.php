@@ -84,6 +84,7 @@
                         $("#publicCreationImagesList").prepend(pageHTML);
                     } else {
                         $('#blurringContainer').remove();
+                        $('.masonry .grid img').removeClass('is_NSFW_Images');
                     }
 
                     if (response.data.length > 0) {
