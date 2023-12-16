@@ -8,6 +8,7 @@
         <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 navigation">
 
             <a href="#" class="active" id="publishcreation_images_filter">Images</a>
+            <a href="#" class="active" id="publishcreation_is_nsfw">NSFW</a>
             @if(Auth::user())
             <a href="#" id="publishcreation_favourite_filter">Favourite</a>
             <a href="#" id="publishcreation_basemodel_filter">Base Model</a>
@@ -57,6 +58,8 @@
 
         function getPublishCreations(modelType) {
 
+            console.log('modelType', modelType);
+
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
 
@@ -85,7 +88,7 @@
                             }
                             pageHTML += "<div class='grid__body'>";
                             // if content is adult the show label
-                            if(element.is_nsfw_image == 'true'){
+                            if (element.is_nsfw_image == 'true') {
                                 pageHTML += "<span class='checkNSFW'> NSFW </span>";
                             }
                             pageHTML += "<div class='relative'>";
@@ -252,6 +255,12 @@
             getPublishCreations("Images");
         });
 
+        $(document).on('click', '#publishcreation_is_nsfw', function() {
+            $("#loader").show();
+            getPublishCreations("NSFW");
+        });
+
+
         $(document).on('click', '#publishcreation_favourite_filter', function() {
             $("#loader").show();
             getPublishCreations("Favourite");
@@ -279,57 +288,57 @@
 
             if (selectedAction == 'addToFavoritePublishCreation') {
                 Swal.fire({
-	                    title: 'Are you sure you want to add to favorite list?',
-	                    showDenyButton: true,
-	                    confirmButtonText: 'Yes',
-	                    denyButtonText: 'Cancel',
-                        customClass: {
-                            actions: 'swal-custompopus',
-                            title: 'swal-customModals'
-                        },
-	                    }).then((result) => {
-	                    if (result.isConfirmed) {
-                            $("#apply_filters").find('.loaderbtn').show();
-                            $("#loader").show();
-                            $.ajax({
-                                url: "" + baseUrl + "/addToFavoriteCreativeHistory",
-                                method: "POST",
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data: {
-                                    creativeArray: publishCreationArray,
-                                    publishcreation: true
-                                },
-                                success: function(response) {
-                                    $("#apply_filters").find('.loaderbtn').hide();
-                                    $("#loader").hide();
-                                    console.log(response);
-                                    Swal.fire({
-                                        title: response.message,
-                                        icon: 'success',
-                                        timer: 4000, // Auto-close the alert after 4 seconds
-                                        showConfirmButton: false
-                                    });
-                                    //call getUserCreative history function to reload images
-                                    getPublishCreations();
-                                    publishCreationArray = [];
-                                },
-                                error: function() {
-                                    $("#apply_filters").find('.loaderbtn').hide();
-                                    $("#loader").hide();
-                                    $("#result").text(
-                                        "Error occurred while fetching data from the API."
-                                    );
-                                },
-                            });
-	                    
-	                    } else if (result.isDenied) {
+                    title: 'Are you sure you want to add to favorite list?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: 'Cancel',
+                    customClass: {
+                        actions: 'swal-custompopus',
+                        title: 'swal-customModals'
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#apply_filters").find('.loaderbtn').show();
+                        $("#loader").show();
+                        $.ajax({
+                            url: "" + baseUrl + "/addToFavoriteCreativeHistory",
+                            method: "POST",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: {
+                                creativeArray: publishCreationArray,
+                                publishcreation: true
+                            },
+                            success: function(response) {
+                                $("#apply_filters").find('.loaderbtn').hide();
+                                $("#loader").hide();
+                                console.log(response);
+                                Swal.fire({
+                                    title: response.message,
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+                                //call getUserCreative history function to reload images
+                                getPublishCreations();
+                                publishCreationArray = [];
+                            },
+                            error: function() {
+                                $("#apply_filters").find('.loaderbtn').hide();
+                                $("#loader").hide();
+                                $("#result").text(
+                                    "Error occurred while fetching data from the API."
+                                );
+                            },
+                        });
 
-	                        return;
-                        }
+                    } else if (result.isDenied) {
+
+                        return;
+                    }
                 });
-                
+
             } else {
                 alert('Select an option to apply!');
             }
