@@ -76,22 +76,7 @@
 
                     $(".masonry").empty();
 
-                    console.log('modelType', modelType);
-                    if (modelType == "NSFW") {
-                        console.log('inside nsfw');
-                        $('#blurringContainer').remove();
-                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
-                        pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
-                        pageHTML += "</div>";
-                        $("#publicCreationImagesList").prepend(pageHTML);
-                    } else {
-                        console.log('inside else');
-                        $('#blurringContainer').remove();
-                        setTimeout(function() {
-                            $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
-                        }, 2000);
 
-                    }
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
@@ -135,6 +120,20 @@
                         $("#loader").hide();
                     }
 
+                    console.log('modelType', modelType);
+                    if (modelType == "NSFW") {
+                        console.log('inside nsfw');
+                        $('#blurringContainer').remove();
+                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
+                        pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
+                        pageHTML += "</div>";
+                        $("#publicCreationImagesList").prepend(pageHTML);
+                    } else {
+                        console.log('inside else');
+                        $('#blurringContainer').remove();
+                        $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
+
+                    }
 
                 },
                 error: function() {
