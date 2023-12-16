@@ -87,7 +87,10 @@
                     } else {
                         console.log('inside else');
                         $('#blurringContainer').remove();
-                        $('.is_NSFW_Images').addClass('noMoreNSFW');
+                        setTimeout(function() {
+                            $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
+                        }, 2000);
+
                     }
 
                     if (response.data.length > 0) {
