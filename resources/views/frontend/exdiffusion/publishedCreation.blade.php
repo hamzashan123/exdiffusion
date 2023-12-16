@@ -405,9 +405,13 @@
             if (isBlurred) {
                 $('.is_NSFW_Image').css('filter', 'unset');
                 $('.updateBlueText').text('OFF');
+                $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-open.png');
+
             } else {
                 $('.is_NSFW_Image').css('filter', 'blur(10px)');
                 $('.updateBlueText').text('ON');
+                $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-cut.png');
+
             }
 
         });
