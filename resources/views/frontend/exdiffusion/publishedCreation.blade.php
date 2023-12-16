@@ -77,11 +77,14 @@
                     $(".masonry").empty();
 
                     if (modelType == "NSFW") {
-                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
+                        $('#blurringContainer').remove();
+                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
                         pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
                         pageHTML += "</div>";
                         $("#publicCreationImagesList").prepend(pageHTML);
                         console.log('modelType New', modelType);
+                    } else {
+                        $('#blurringContainer').remove();
                     }
 
                     if (response.data.length > 0) {
