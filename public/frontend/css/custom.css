@@ -1564,9 +1564,9 @@ div#swal2-html-container {
 }
 
 a.showNSFW img {
-    height: 60px;
+    height: 50px;
     background: #444f5e;
-    padding: 10px;
+    padding: 5px 10px;
     margin-bottom: 20px;
     border-radius: 7px;
     border: 1px solid #a157dc;
@@ -1577,7 +1577,7 @@ a.showNSFW {
 }
 
 span.blurringText {
-    font-size: 17px;
+    font-size: 16px;
     color: white;
     margin-left: 10px;
     position: relative;
