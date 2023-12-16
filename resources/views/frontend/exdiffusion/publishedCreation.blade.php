@@ -8,7 +8,7 @@
         <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 navigation">
 
             <a href="#" class="active" id="publishcreation_images_filter">Images</a>
-            <a href="#" class="active" id="publishcreation_is_nsfw">NSFW</a>
+            <a href="#" class="active" id="publishcreation_is_nsfw">Images(NSFW)</a>
             @if(Auth::user())
             <a href="#" id="publishcreation_favourite_filter">Favourite</a>
             <a href="#" id="publishcreation_basemodel_filter">Base Model</a>
@@ -58,7 +58,6 @@
 
         function getPublishCreations(modelType) {
 
-            console.log('modelType', modelType);
 
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
@@ -77,12 +76,24 @@
 
                     $(".masonry").empty();
 
+                    if (modelType == "NSFW") {
+                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
+                        pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
+                        pageHTML += "</div>";
+                        $("#publicCreationImagesList").prepend(pageHTML);
+                        console.log('modelType New', modelType);
+                    }
+
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
                             console.log("image_url", element.image_url);
+
                             var pageHTML = "<div class='grid'>";
+                            var classNameForNSFW_Image = 'is_NSFW_Image';
                             if (element.is_super_resolution == 'true') {
                                 pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
+                            } else if (element.is_nsfw_image == 'true') {
+                                pageHTML += "<img src='" + element.image_url + "' class='" + classNameForNSFW_Image + "'>";
                             } else {
                                 pageHTML += "<img src='" + element.image_url + "'>";
                             }
@@ -388,5 +399,17 @@
 
         });
 
+        $(document).on('click', '.showNSFW', function() {
+            var isBlurred = $('.is_NSFW_Image').css('filter') === 'blur(10px)';
+
+            if (isBlurred) {
+                $('.is_NSFW_Image').css('filter', 'unset');
+                $('.updateBlueText').text('OFF');
+            } else {
+                $('.is_NSFW_Image').css('filter', 'blur(10px)');
+                $('.updateBlueText').text('ON');
+            }
+
+        });
     });
 </script>
