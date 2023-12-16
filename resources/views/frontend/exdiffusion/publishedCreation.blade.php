@@ -87,7 +87,7 @@
                     } else {
                         console.log('inside else');
                         $('#blurringContainer').remove();
-                        $('.is_NSFW_Images').css('filter', 'unset');
+                        $('.is_NSFW_Images').addClass('noMoreNSFW');
                     }
 
                     if (response.data.length > 0) {
