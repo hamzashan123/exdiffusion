@@ -1559,7 +1559,7 @@ div#swal2-html-container {
 .swal2-success-fix {
     background: #2b323a !important;
 }
-.is_NSFW_Image  {
+.is_NSFW_Images {
     filter: blur(10px);
 }
 

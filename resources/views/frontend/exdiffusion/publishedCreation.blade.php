@@ -89,7 +89,7 @@
                             console.log("image_url", element.image_url);
 
                             var pageHTML = "<div class='grid'>";
-                            var classNameForNSFW_Image = 'is_NSFW_Image';
+                            var classNameForNSFW_Image = 'is_NSFW_Images';
                             if (element.is_super_resolution == 'true') {
                                 pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
                             } else if (element.is_nsfw_image == 'true') {
@@ -400,15 +400,15 @@
         });
 
         $(document).on('click', '.showNSFW', function() {
-            var isBlurred = $('.is_NSFW_Image').css('filter') === 'blur(10px)';
+            var isBlurred = $('.is_NSFW_Images').css('filter') === 'blur(10px)';
 
             if (isBlurred) {
-                $('.is_NSFW_Image').css('filter', 'unset');
+                $('.is_NSFW_Images').css('filter', 'unset');
                 $('.updateBlueText').text('OFF');
                 $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-open.png');
 
             } else {
-                $('.is_NSFW_Image').css('filter', 'blur(10px)');
+                $('.is_NSFW_Images').css('filter', 'blur(10px)');
                 $('.updateBlueText').text('ON');
                 $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-cut.png');
 
