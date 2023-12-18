@@ -72,11 +72,11 @@
                     modelType: modelType
                 },
                 success: function(response) {
-                    console.log(response);
+
 
                     $(".masonry").empty();
 
-
+                    console.log('Response Data', response.data);
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
