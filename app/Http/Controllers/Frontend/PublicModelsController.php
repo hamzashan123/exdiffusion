@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 class PublicModelsController extends Controller
 {
 
+  protected $imagesLimit = 20;
+
   public function getBaseModels(Request $request)
   {
 
@@ -244,7 +246,7 @@ class PublicModelsController extends Controller
       if(isset($request->last_id) && $request->last_id != null){
         $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
       }
-      $userCreativeHistory = $userCreativeHistory->limit(2)->get(); 
+      $userCreativeHistory = $userCreativeHistory->limit($this->imagesLimit)->get(); 
 
       if(count($userCreativeHistory) > 0){
         $lastRecord = $userCreativeHistory->last()->id;
@@ -281,7 +283,7 @@ class PublicModelsController extends Controller
         if(isset($request->last_id) && $request->last_id != null){
             $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
         }
-        $userCreativeHistory = $userCreativeHistory->limit(2)->get();  
+        $userCreativeHistory = $userCreativeHistory->limit($this->imagesLimit)->get();  
 
     } else if ($request->modelType == 'NSFW') {
 
@@ -291,7 +293,7 @@ class PublicModelsController extends Controller
       if(isset($request->last_id) && $request->last_id != null){
           $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
       }
-      $userCreativeHistory = $userCreativeHistory->limit(2)->get();    
+      $userCreativeHistory = $userCreativeHistory->limit($this->imagesLimit)->get();    
 
     } else if ($request->modelType == 'Favourite') {
 
@@ -304,12 +306,12 @@ class PublicModelsController extends Controller
       if(isset($request->last_id) && $request->last_id != null){
           $userCreativeHistory = $userCreativeHistory->where('creativehistory.id', '>', $request->last_id);
       }
-      $userCreativeHistory = $userCreativeHistory->limit(2)->get(); 
+      $userCreativeHistory = $userCreativeHistory->limit($this->imagesLimit)->get(); 
 
     } else {
       $userCreativeHistory = $userCreativeHistory
         ->where('is_nsfw_image', '!=', 'true')
-        ->limit(2)->get();
+        ->limit($this->imagesLimit)->get();
     }
 
     if(count($userCreativeHistory) > 0){
