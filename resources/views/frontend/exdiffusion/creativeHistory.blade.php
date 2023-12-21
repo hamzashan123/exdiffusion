@@ -129,7 +129,7 @@
                         });
 
                         //dynamic load more button with last_id and different modelType loadmore selected 
-                        if (response.data.length > 20) {
+                        if (response.totalRecords > 20) {
                                 var pageHTML = "<div id='load_more'>";
                                 pageHTML += "<button name='load_more_myasset' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_myasset'>Load More</button>";
                                 pageHTML += "</div>";
