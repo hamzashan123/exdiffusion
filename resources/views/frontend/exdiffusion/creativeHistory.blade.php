@@ -80,12 +80,13 @@
                 selectedModelType = "creativeHistory"
             }
             getUserCreativeHistory(selectedModelType);
+            
         });
 
         function getUserCreativeHistory(modelType) {
 
-            console.log("modelType",modelType);
-            console.log("lastId", lastId);
+            // console.log("modelType",modelType);
+            // console.log("lastId", lastId);
             $("#load_more_myasset").remove();
             $.ajax({
                 url: "" + baseUrl + "/user-creative-history",
@@ -104,7 +105,7 @@
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
-                            console.log("element", element);
+                            // console.log("element", element);
                             var pageHTML = "<div class='grid'>";
                             if (element.is_super_resolution == 'true') {
                                 pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
@@ -112,7 +113,7 @@
                                 pageHTML += "<img src='" + element.image_url + "'>";
                             }
                             pageHTML += "<div class='grid__body'>";
-                            console.log('element.is_nsfw_image', element.is_nsfw_image);
+                            // console.log('element.is_nsfw_image', element.is_nsfw_image);
                             if (element.is_nsfw_image == 'true') {
                                 pageHTML += "<span class='checkNSFW'> NSFW </span>";
                             }
