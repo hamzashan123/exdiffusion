@@ -70,8 +70,23 @@
 <script>
     $(document).ready(function() {
 
+        var creativeArray = [];
+        var lastId;
+
+        $(document).on("click","#load_more_myasset", function () {
+            lastId = $(this).data('lastid');
+            var selectedModelType = $(this).data('loadmore-modeltype'); 
+            if(selectedModelType == 'undefined'){
+                selectedModelType = "creativeHistory"
+            }
+            getUserCreativeHistory(selectedModelType);
+        });
+
         function getUserCreativeHistory(modelType) {
 
+            console.log("modelType",modelType);
+            console.log("lastId", lastId);
+            $("#load_more_myasset").remove();
             $.ajax({
                 url: "" + baseUrl + "/user-creative-history",
                 method: "POST",
@@ -79,12 +94,13 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    modelType: modelType
+                    modelType: modelType,
+                    last_id : lastId
                 },
                 success: function(response) {
-                    console.log(response);
+                    console.log("dataResponse" , response.data);
 
-                    $(".masonry").empty();
+                    // $(".masonry").empty();
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
@@ -110,15 +126,22 @@
                             pageHTML += "</div>";
                             pageHTML += "</div>";
                             $(".masonry").append(pageHTML);
-
-
                         });
+
+                        //dynamic load more button with last_id and different modelType loadmore selected 
+                        if (response.data.length > 0) {
+                                var pageHTML = "<div id='load_more'>";
+                                pageHTML += "<button name='load_more_myasset' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_myasset'>Load More</button>";
+                                pageHTML += "</div>";
+                                $(".creativeHistoryMain").append(pageHTML);
+                                
+                        }
 
 
                         $("#loader").hide();
                     } else {
                         var pageHTML = "<div class='grid'>";
-                        pageHTML += "<p class='text-white'> No images found in favorites!</p>";
+                        pageHTML += "<p class='text-white'> No images found!</p>";
                         pageHTML += "</div>";
 
                         $(".masonry").append(pageHTML);
@@ -136,8 +159,6 @@
                 },
             });
         }
-
-        var creativeArray = [];
 
         $(document).on('change', '.imageCheckCreativehistory', function() {
             var checkedCheckboxes = $('.imageCheckCreativehistory:checked').length;
@@ -279,15 +300,23 @@
             var selectedAction = $('#myCreativeModelFilters').val();
             if (selectedAction == 'Images') {
                 $("#loader").show();
+                $(".masonry").empty();
+                lastId = null;
                 getUserCreativeHistory(selectedAction);
             } else if (selectedAction == 'Base_Models') {
                 $("#loader").show();
+                $(".masonry").empty();
+                lastId = null;
                 getUserCreativeHistory(selectedAction);
             } else if (selectedAction == 'Lora_Models') {
                 $("#loader").show();
+                $(".masonry").empty();
+                lastId = null;
                 getUserCreativeHistory(selectedAction);
             } else if (selectedAction == 'Embedding_Models') {
                 $("#loader").show();
+                $(".masonry").empty();
+                lastId = null;
                 getUserCreativeHistory(selectedAction);
             } else {
                 alert('Select an option to apply!');
@@ -297,6 +326,8 @@
 
         $(document).on('click', '#creativeHistoryFilter', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            lastId = null;
             getUserCreativeHistory("creativeHistory");
             jQuery('#myCreativeModelFilters').val('Favorite')
         });

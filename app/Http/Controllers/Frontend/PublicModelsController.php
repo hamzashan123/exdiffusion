@@ -228,7 +228,6 @@ class PublicModelsController extends Controller
     $user = Auth::user();
     if ($user) {
 
-
       $userCreativeHistory = DB::table('creativehistory')->where('user_id', $user->id);
       if ($request->modelType == 'creativeHistory') {
         $userCreativeHistory =  $userCreativeHistory;
@@ -242,53 +241,89 @@ class PublicModelsController extends Controller
         $userCreativeHistory =  $userCreativeHistory->where('embeddingModelArray', '!=', null);
       }
 
-      $userCreativeHistory = $userCreativeHistory->get();
-      return response()->json([
-        'status' => 'success',
-        'data' => $userCreativeHistory,
-        'message' => 'Data found!'
-      ]);
-    } else {
+      if(isset($request->last_id) && $request->last_id != null){
+        $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
+      }
+      $userCreativeHistory = $userCreativeHistory->limit(2)->get(); 
 
-      return response()->json([
-        'status' => 'failure',
-        'message' => 'Something went wrong!'
-      ]);
+      if(count($userCreativeHistory) > 0){
+        $lastRecord = $userCreativeHistory->last()->id;
+      }else{
+        $lastRecord = null;
+      }
+
+      if ($userCreativeHistory != null) {
+        return response()->json([
+          'status' => 'success',
+          'data' => $userCreativeHistory,
+          'last_id' => $lastRecord,
+          'message' => 'Data found!'
+        ]);
+      } else {
+        return response()->json([
+          'status' => 'failure',
+          'message' => 'Something went wrong!'
+        ]);
+      }
     }
   }
 
   public function getPublishCreation(Request $request)
   {
+    
     $user = Auth::user();
     // dd($request);
     $userCreativeHistory = DB::table('creativehistory')->where('is_published', 'true');
     if ($request->modelType == 'Images') {
-      $userCreativeHistory =  $userCreativeHistory;
-      $userCreativeHistory = $userCreativeHistory
-        ->where('is_nsfw_image', '!=', 'true')
-        ->get();
+
+        $userCreativeHistory = $userCreativeHistory->where('is_nsfw_image', '!=', 'true');
+        
+        if(isset($request->last_id) && $request->last_id != null){
+            $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
+        }
+        $userCreativeHistory = $userCreativeHistory->limit(2)->get();  
+
     } else if ($request->modelType == 'NSFW') {
+
       $userCreativeHistory = DB::table('creativehistory')
-        ->where('is_nsfw_image', 'true')
-        ->get();
+        ->where('is_nsfw_image', 'true');
+
+      if(isset($request->last_id) && $request->last_id != null){
+          $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
+      }
+      $userCreativeHistory = $userCreativeHistory->limit(2)->get();    
+
     } else if ($request->modelType == 'Favourite') {
 
       $userCreativeHistory = DB::table('creativehistory')
         ->join('publishedcreation_favorites', 'creativehistory.id', '=', 'publishedcreation_favorites.creative_id')
         ->where('publishedcreation_favorites.is_publishedcreation_favorite', '=', 'true')
         ->where('publishedcreation_favorites.user_id', '=', $user->id)
-        ->select('creativehistory.*', 'publishedcreation_favorites.is_publishedcreation_favorite as is_publishedcreation_favorite')
-        ->get();
+        ->select('creativehistory.*', 'publishedcreation_favorites.is_publishedcreation_favorite as is_publishedcreation_favorite');
+
+      if(isset($request->last_id) && $request->last_id != null){
+          $userCreativeHistory = $userCreativeHistory->where('creativehistory.id', '>', $request->last_id);
+      }
+      $userCreativeHistory = $userCreativeHistory->limit(2)->get(); 
+
     } else {
       $userCreativeHistory = $userCreativeHistory
         ->where('is_nsfw_image', '!=', 'true')
-        ->get();
+        ->limit(2)->get();
     }
 
+    if(count($userCreativeHistory) > 0){
+      $lastRecord = $userCreativeHistory->last()->id;
+    }else{
+      $lastRecord = null;
+    }
+    
+  
     if ($userCreativeHistory != null) {
       return response()->json([
         'status' => 'success',
         'data' => $userCreativeHistory,
+        'last_id' => $lastRecord,
         'message' => 'Data found!'
       ]);
     } else {

@@ -55,13 +55,24 @@
     $(document).ready(function() {
 
         var publishCreationArray = [];
+        var lastId;
+
+        $(document).on("click","#load_more_publishcreation", function () {
+            lastId = $(this).data('lastid');
+            var selectedModelType = $(this).data('loadmore-modeltype'); 
+            if(selectedModelType == 'undefined'){
+                selectedModelType = "Images"
+            }
+            getPublishCreations(selectedModelType);
+        });
 
         function getPublishCreations(modelType) {
 
-
+            console.log("modelType",modelType);
+            console.log("lastId", lastId);
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
-
+            $("#load_more_publishcreation").remove();
             $.ajax({
                 url: "" + baseUrl + "/get-publish-creation",
                 method: "POST",
@@ -69,12 +80,13 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    modelType: modelType
+                    modelType: modelType,
+                    last_id : lastId
                 },
                 success: function(response) {
 
 
-                    $(".masonry").empty();
+                    // $(".masonry").empty();
 
                     console.log('Response Data', response.data);
 
@@ -107,11 +119,18 @@
                             $(".masonry").append(pageHTML);
                         });
 
+                        //dynamic load more button with last_id and different modelType loadmore selected 
+                        if (response.data.length > 0) {
+                                var pageHTML = "<div id='load_more'>";
+                                pageHTML += "<button name='load_more_publishcreation' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_publishcreation'>Load More</button>";
+                                pageHTML += "</div>";
+                                $(".publishCreationMain").append(pageHTML);
+                        }
 
                         $("#loader").hide();
                     } else {
                         var pageHTML = "<div class='grid'>";
-                        pageHTML += "<p class='text-white'> No images found in favorites!</p>";
+                        pageHTML += "<p class='text-white'> No images found!</p>";
                         pageHTML += "</div>";
 
                         $(".masonry").append(pageHTML);
@@ -142,6 +161,8 @@
             });
 
         }
+
+        getPublishCreations();
 
         function getAllModels(modelType) {
             $('#publicCreationImagesList').hide();
@@ -264,36 +285,54 @@
 
         });
 
-        getPublishCreations();
+        
 
         $(document).on('click', '#publishcreation_images_filter', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            //reset last id after success record
+            lastId = null;
             getPublishCreations("Images");
         });
 
         $(document).on('click', '#publishcreation_is_nsfw', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            //reset last id after success record
+            lastId = null;
             getPublishCreations("NSFW");
         });
 
 
         $(document).on('click', '#publishcreation_favourite_filter', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            //reset last id after success record
+            lastId = null;
             getPublishCreations("Favourite");
         });
 
         $(document).on('click', '#publishcreation_basemodel_filter', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            //reset last id after success record
+            lastId = null;
             getAllModels('base_models');
         });
 
         $(document).on('click', '#publishcreation_lora_filter', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            //reset last id after success record
+            lastId = null;
             getAllModels('lora_models');
         });
 
         $(document).on('click', '#publishcreation_embedding_filter', function() {
             $("#loader").show();
+            $(".masonry").empty();
+            //reset last id after success record
+            lastId = null;
             getAllModels('embedding_models');
         });
 
@@ -337,6 +376,7 @@
                                     showConfirmButton: false
                                 });
                                 //call getUserCreative history function to reload images
+                                $(".masonry").empty();
                                 getPublishCreations();
                                 publishCreationArray = [];
                             },
