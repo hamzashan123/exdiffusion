@@ -1795,4 +1795,8 @@ div#load_more button {
 }
 }
 
+div#publicCreationModelList .bodyInner img {
+    height: 250px !important;
+}
+
 
