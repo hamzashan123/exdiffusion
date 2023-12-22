@@ -54,7 +54,7 @@ class PublicModelsController extends Controller
 
       if(count($decodedData['models']) > 0 ){
         
-        $randomBaseModels = DB::table('creativehistory')->inRandomOrder()->take(count($decodedData['models']))->get();
+        $randomBaseModels = DB::table('creativehistory')->whereNotNull('image_url')->inRandomOrder()->take(count($decodedData['models']))->get();
 
         foreach ($decodedData['models'] as $key => $model) {
           if (isset($randomBaseModels[$key])) {
@@ -65,7 +65,7 @@ class PublicModelsController extends Controller
 
       if(count($decodedData['lora_models']) > 0 ){
        
-        $randomBaseModels = DB::table('creativehistory')->whereNotNull('loraModelArray')->inRandomOrder()->take(count($decodedData['lora_models']))->get();
+        $randomBaseModels = DB::table('creativehistory')->whereNotNull('image_url')->whereNotNull('loraModelArray')->inRandomOrder()->take(count($decodedData['lora_models']))->get();
 
         foreach ($decodedData['lora_models'] as $key => $model) {
           if (isset($randomBaseModels[$key])) {
@@ -76,7 +76,7 @@ class PublicModelsController extends Controller
 
       if(count($decodedData['embeddings_models']) > 0 ){
         
-        $randomBaseModels = DB::table('creativehistory')->whereNotNull('embeddingModelArray')->inRandomOrder()->take(count($decodedData['embeddings_models']))->get();
+        $randomBaseModels = DB::table('creativehistory')->whereNotNull('image_url')->whereNotNull('embeddingModelArray')->inRandomOrder()->take(count($decodedData['embeddings_models']))->get();
 
         foreach ($decodedData['embeddings_models'] as $key => $model) {
           if (isset($randomBaseModels[$key])) {
