@@ -90,6 +90,7 @@ function generateImages() {
     var multi_lingual = $("#multi_lingual").is(":checked");
     var panorama = $("#panorama").is(":checked");
     var self_attention = $("#self_attention").is(":checked");
+    var high_resolution_fix = $("#high_resolution_fix").is(":checked");
     var upscale = $("#upscale").is(":checked");
     var tomesd = $("#tomesd").is(":checked");
     var karras_sigmas = $("#karras_sigmas").is(":checked");
@@ -189,6 +190,7 @@ function generateImages() {
                 multi_lingual: multi_lingual,
                 panorama: panorama,
                 self_attention: self_attention,
+                high_resolution_fix: high_resolution_fix,
                 upscale: upscale,
                 tomesd: tomesd,
                 karras_sigmas: karras_sigmas,
