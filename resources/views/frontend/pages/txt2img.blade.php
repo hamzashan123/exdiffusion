@@ -263,8 +263,8 @@
                         <input type="checkbox" id="self_attention">
                         <label for="self_attention">Self Attention</label>
 
-                        <input type="checkbox" id="high_resolution_fix">
-                        <label for="high_resolution_fix">High Resolution Fix </label>
+                        <input type="checkbox" id="highres_fix">
+                        <label for="highres_fix">High Resolution Fix </label>
 
                         <input type="checkbox" id="upscale">
                         <label for="upscale">Upscale</label>

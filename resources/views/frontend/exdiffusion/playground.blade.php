@@ -488,6 +488,7 @@
                 $("#multi_lingual").attr("checked", JSON.parse(creativeData['multi_lingual']));
                 $("#panorama").attr("checked", JSON.parse(creativeData['panorama']));
                 $("#self_attention").attr("checked", JSON.parse(creativeData['self_attention']));
+                $("#highres_fix").attr("checked", JSON.parse(creativeData['highres_fix']));
                 $("#upscale").attr("checked", JSON.parse(creativeData['upscale']));
                 $("#tomesd").attr("checked", JSON.parse(creativeData['tomesd']));
                 $("#karras_sigmas").attr("checked", JSON.parse(creativeData['karras_sigmas']));

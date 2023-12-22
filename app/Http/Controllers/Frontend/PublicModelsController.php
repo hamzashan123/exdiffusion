@@ -147,6 +147,7 @@ class PublicModelsController extends Controller
           'multi_lingual' => $request->multi_lingual,
           'panorama' => $request->panorama,
           'self_attention' => $request->self_attention,
+          'highres_fix' => $request->highres_fix,
           'upscale' => $request->upscale,
           'tomesd' => $request->tomesd,
           'karras_sigmas' => $request->karras_sigmas,

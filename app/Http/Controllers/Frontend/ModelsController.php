@@ -156,7 +156,7 @@ class ModelsController extends Controller
       $multi_lingual = ($request->multi_lingual == "true") ? 'yes' : 'no';
       $panorama = ($request->panorama == "true") ? 'yes' : 'no';
       $self_attention = ($request->self_attention == "true") ? 'yes' : 'no';
-      $high_resolution_fix = ($request->high_resolution_fix == "true") ? 'yes' : 'no';
+      $highres_fix = ($request->highres_fix == "true") ? 'yes' : 'no';
       $upscale = ($request->upscale == "true") ? 'yes' : 'no';
       $tomesd = ($request->tomesd == "true") ? 'yes' : 'no';
       $karras_sigmas = ($request->karras_sigmas == "true") ? 'yes' : 'no';
@@ -170,9 +170,9 @@ class ModelsController extends Controller
       }
 
       if( $request->width == 512  && $request->height == 768){
-        $high_resolution_fix = $high_resolution_fix;
+        $highres_fix = $highres_fix;
       }else{
-        $high_resolution_fix = 'no';
+        $highres_fix = 'no';
       }
 
       $payload = [
@@ -191,7 +191,7 @@ class ModelsController extends Controller
         "multi_lingual" => $multi_lingual, 
         "panorama" => $panorama, 
         "self_attention" => $self_attention, 
-        "highres_fix" => $high_resolution_fix,
+        "highres_fix" => $highres_fix,
         "upscale" => $upscale, 
         "embeddings_model" => $embedding_models, 
         "lora_model" => $lora_models,
@@ -329,6 +329,7 @@ class ModelsController extends Controller
                         'multi_lingual' => $creativeData->multi_lingual,
                         'panorama' => $creativeData->panorama,
                         'self_attention' => $creativeData->self_attention,
+                        'highres_fix' => $creativeData->highres_fix,
                         'upscale' => $creativeData->upscale,
                         'tomesd' => $creativeData->tomesd,
                         'karras_sigmas' => $creativeData->karras_sigmas,

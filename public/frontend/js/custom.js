@@ -90,7 +90,7 @@ function generateImages() {
     var multi_lingual = $("#multi_lingual").is(":checked");
     var panorama = $("#panorama").is(":checked");
     var self_attention = $("#self_attention").is(":checked");
-    var high_resolution_fix = $("#high_resolution_fix").is(":checked");
+    var highres_fix = $("#highres_fix").is(":checked");
     var upscale = $("#upscale").is(":checked");
     var tomesd = $("#tomesd").is(":checked");
     var karras_sigmas = $("#karras_sigmas").is(":checked");
@@ -190,7 +190,7 @@ function generateImages() {
                 multi_lingual: multi_lingual,
                 panorama: panorama,
                 self_attention: self_attention,
-                high_resolution_fix: high_resolution_fix,
+                highres_fix: highres_fix,
                 upscale: upscale,
                 tomesd: tomesd,
                 karras_sigmas: karras_sigmas,
@@ -379,6 +379,7 @@ function saveUserCreativeHistory(response){
         const multi_lingual = $("#multi_lingual").is(":checked");
         const panorama = $("#panorama").is(":checked");
         const self_attention = $("#self_attention").is(":checked");
+        const highres_fix = $("#high_resolution_fix").is(":checked");
         const upscale = $("#upscale").is(":checked");
         const tomesd = $("#tomesd").is(":checked");
         const karras_sigmas = $("#karras_sigmas").is(":checked");
@@ -404,6 +405,7 @@ function saveUserCreativeHistory(response){
         formData.append("multi_lingual", multi_lingual);
         formData.append("panorama", panorama);
         formData.append("self_attention", self_attention);
+        formData.append("highres_fix", highres_fix);
         formData.append("upscale", upscale);
         formData.append("tomesd", tomesd);
         formData.append("karras_sigmas", karras_sigmas);
