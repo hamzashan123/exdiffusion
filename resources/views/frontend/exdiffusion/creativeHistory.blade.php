@@ -83,7 +83,7 @@
             getUserCreativeHistory(selectedModelType);
             setTimeout(function(){
                 $('html, body').animate({scrollTop: $("footer").offset().top},2000);
-            },1000);
+            },3000);
         });
 
         function getUserCreativeHistory(modelType) {
