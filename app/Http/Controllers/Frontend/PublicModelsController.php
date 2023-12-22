@@ -232,19 +232,28 @@ class PublicModelsController extends Controller
     if ($user) {
 
       $userCreativeHistory = DB::table('creativehistory')->where('user_id', $user->id);
-      $totalRecords = $userCreativeHistory->count();
+      
       if ($request->modelType == 'creativeHistory') {
         $userCreativeHistory =  $userCreativeHistory;
+        $totalRecords = $userCreativeHistory->count();
       } elseif ($request->modelType == 'Images') {
         $userCreativeHistory =  $userCreativeHistory->where('is_favorite', 'true');
+        $totalRecords = $userCreativeHistory->count();
       } elseif ($request->modelType == 'Base_Models') {
         $userCreativeHistory =  $userCreativeHistory;
+        $totalRecords = $userCreativeHistory->count();
       } elseif ($request->modelType == 'Lora_Models') {
         $userCreativeHistory =  $userCreativeHistory->where('loraModelArray', '!=', null);
+        $totalRecords = $userCreativeHistory->count();
       } elseif ($request->modelType == 'Embedding_Models') {
         $userCreativeHistory =  $userCreativeHistory->where('embeddingModelArray', '!=', null);
+        $totalRecords = $userCreativeHistory->count();
+      }else{
+        $userCreativeHistory =  $userCreativeHistory;
+        $totalRecords = $userCreativeHistory->count();
       }
 
+      
       if(isset($request->last_id) && $request->last_id != null){
         $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
       }
@@ -256,6 +265,7 @@ class PublicModelsController extends Controller
         $lastRecord = null;
       }
 
+      // dd($totalRecords);
       if ($userCreativeHistory != null) {
         return response()->json([
           'status' => 'success',
@@ -279,11 +289,10 @@ class PublicModelsController extends Controller
     $user = Auth::user();
     $totalRecords = 0;
     $userCreativeHistory = DB::table('creativehistory')->where('is_published', 'true');
-    $totalRecords = $userCreativeHistory->count();
     if ($request->modelType == 'Images') {
 
         $userCreativeHistory = $userCreativeHistory->where('is_nsfw_image', '!=', 'true');
-        
+        $totalRecords = $userCreativeHistory->count();
         if(isset($request->last_id) && $request->last_id != null){
             $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
         }
@@ -291,9 +300,8 @@ class PublicModelsController extends Controller
 
     } else if ($request->modelType == 'NSFW') {
 
-      $userCreativeHistory = DB::table('creativehistory')
-        ->where('is_nsfw_image', 'true');
-
+      $userCreativeHistory = DB::table('creativehistory')->where('is_nsfw_image', 'true');
+      $totalRecords = $userCreativeHistory->count();
       if(isset($request->last_id) && $request->last_id != null){
           $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
       }
@@ -307,12 +315,15 @@ class PublicModelsController extends Controller
         ->where('publishedcreation_favorites.user_id', '=', $user->id)
         ->select('creativehistory.*', 'publishedcreation_favorites.is_publishedcreation_favorite as is_publishedcreation_favorite');
 
+      $totalRecords = $userCreativeHistory->count();
+
       if(isset($request->last_id) && $request->last_id != null){
           $userCreativeHistory = $userCreativeHistory->where('creativehistory.id', '>', $request->last_id);
       }
       $userCreativeHistory = $userCreativeHistory->limit($this->imagesLimit)->get();
 
     } else {
+      $totalRecords = $userCreativeHistory->where('is_nsfw_image', '!=', 'true')->count();
       $userCreativeHistory = $userCreativeHistory
         ->where('is_nsfw_image', '!=', 'true')
         ->limit($this->imagesLimit)->get();

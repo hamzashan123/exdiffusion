@@ -72,6 +72,7 @@
 
         var creativeArray = [];
         var lastId;
+        var recordsCount = 0;
 
         $(document).on("click","#load_more_myasset", function () {
             lastId = $(this).data('lastid');
@@ -80,7 +81,9 @@
                 selectedModelType = "creativeHistory"
             }
             getUserCreativeHistory(selectedModelType);
-            
+            setTimeout(function(){
+                $('html, body').animate({scrollTop: $("footer").offset().top},2000);
+            },1000);
         });
 
         function getUserCreativeHistory(modelType) {
@@ -99,12 +102,13 @@
                     last_id : lastId
                 },
                 success: function(response) {
-                    console.log("dataResponse" , response.data);
+                    console.log("dataResponse" , response);
 
                     // $(".masonry").empty();
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
+                            recordsCount++ ;
                             // console.log("element", element);
                             var pageHTML = "<div class='grid'>";
                             if (element.is_super_resolution == 'true') {
@@ -129,8 +133,10 @@
                             $(".masonry").append(pageHTML);
                         });
 
+                        console.log('response.totalRecords',response.totalRecords);
+                        console.log('recordsCount',recordsCount);
                         //dynamic load more button with last_id and different modelType loadmore selected 
-                        if (response.totalRecords > 20) {
+                        if (recordsCount  < response.totalRecords) {
                                 var pageHTML = "<div id='load_more'>";
                                 pageHTML += "<button name='load_more_myasset' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_myasset'>Load More</button>";
                                 pageHTML += "</div>";
@@ -303,21 +309,25 @@
                 $("#loader").show();
                 $(".masonry").empty();
                 lastId = null;
+                recordsCount = 0;
                 getUserCreativeHistory(selectedAction);
             } else if (selectedAction == 'Base_Models') {
                 $("#loader").show();
                 $(".masonry").empty();
                 lastId = null;
+                recordsCount = 0;
                 getUserCreativeHistory(selectedAction);
             } else if (selectedAction == 'Lora_Models') {
                 $("#loader").show();
                 $(".masonry").empty();
                 lastId = null;
+                recordsCount = 0;
                 getUserCreativeHistory(selectedAction);
             } else if (selectedAction == 'Embedding_Models') {
                 $("#loader").show();
                 $(".masonry").empty();
                 lastId = null;
+                recordsCount = 0;
                 getUserCreativeHistory(selectedAction);
             } else {
                 alert('Select an option to apply!');
@@ -329,6 +339,7 @@
             $("#loader").show();
             $(".masonry").empty();
             lastId = null;
+            recordsCount = 0;
             getUserCreativeHistory("creativeHistory");
             jQuery('#myCreativeModelFilters').val('Favorite')
         });

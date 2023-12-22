@@ -56,6 +56,7 @@
 
         var publishCreationArray = [];
         var lastId;
+        var recordsCount = 0;
 
         $(document).on("click","#load_more_publishcreation", function () {
             lastId = $(this).data('lastid');
@@ -64,12 +65,16 @@
                 selectedModelType = "Images"
             }
             getPublishCreations(selectedModelType);
+            setTimeout(function(){
+                $('html, body').animate({scrollTop: $("footer").offset().top},2000);
+            },1000);
         });
 
         function getPublishCreations(modelType) {
 
             console.log("modelType",modelType);
             console.log("lastId", lastId);
+            
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
             $("#load_more_publishcreation").remove();
@@ -88,10 +93,11 @@
 
                     // $(".masonry").empty();
 
-                    console.log('Response Data', response.data);
+                    console.log('Response Data', response);
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
+                            recordsCount++ ;
 
                             var pageHTML = "<div class='grid'>";
                             var classNameForNSFW_Image = 'is_NSFW_Images';
@@ -120,7 +126,7 @@
                         });
 
                         //dynamic load more button with last_id and different modelType loadmore selected 
-                        if (response.totalRecords > 20) {
+                        if (recordsCount  < response.totalRecords) {
                                 var pageHTML = "<div id='load_more'>";
                                 pageHTML += "<button name='load_more_publishcreation' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_publishcreation'>Load More</button>";
                                 pageHTML += "</div>";
@@ -130,7 +136,7 @@
                         $("#loader").hide();
                     } else {
                         var pageHTML = "<div class='grid'>";
-                        pageHTML += "<p class='text-white'> No images found!</p>";
+                        pageHTML += "<p class='text-white'> No more images found!</p>";
                         pageHTML += "</div>";
 
                         $(".masonry").append(pageHTML);
@@ -292,6 +298,7 @@
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
+            recordsCount = 0;
             getPublishCreations("Images");
         });
 
@@ -300,6 +307,7 @@
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
+            recordsCount = 0;
             getPublishCreations("NSFW");
         });
 
@@ -309,6 +317,7 @@
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
+            recordsCount = 0;
             getPublishCreations("Favourite");
         });
 
@@ -317,6 +326,7 @@
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
+            recordsCount = 0;
             getAllModels('base_models');
         });
 
@@ -325,6 +335,7 @@
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
+            recordsCount = 0;
             getAllModels('lora_models');
         });
 
@@ -333,6 +344,7 @@
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
+            recordsCount = 0;
             getAllModels('embedding_models');
         });
 
