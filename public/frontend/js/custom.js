@@ -907,7 +907,7 @@ $("#read_lastgeneration").on("click", function () {
     $("#neg_prompt").val(localStorage.getItem("neg_prompt_value"));
 });
 
-// Load Model In StableDiffusion Server
+// Load Base Model In StableDiffusion Server
 $("#uploadModelBtn").on("click", function () {
     if ($("#model_url").val() == "" || $("#model_url").val() == null) {
         $("#uploadModelErros").text("");
@@ -989,6 +989,94 @@ $("#uploadModelBtn").on("click", function () {
             $("#uploadModelBtn").removeAttr("disabled");
             $("#uploadModelBtn").text("");
             $("#uploadModelBtn").text("Upload Model");
+            $("#result").text(
+                "Error occurred while fetching data from the API."
+            );
+        },
+    });
+});
+
+// Load Vae Model In StableDiffusion Server
+$("#uploadVaeModelBtn").on("click", function () {
+    if ($("#vae_url").val() == "" || $("#vae_url").val() == null) {
+        $("#uploadvaeErros").text("");
+        $("#uploadvaeErros").text("Url not defined!");
+        return;
+    } else if ($("#vae_id").val() == "" || $("#vae_id").val() == null) {
+        $("#uploadvaeErros").text("");
+        $("#uploadvaeErros").text("Vae Model id not defined");
+        return;
+    }
+
+    $(this).attr("disabled", "disabled");
+    $(this).text("");
+    $(this).text("Uploading...");
+    $("#uploadvaeErros").text("");
+
+    $.ajax({
+        url: "" + baseUrl + "/upload-vae-model",
+        method: "POST",
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        data: {
+            webhook: $("#vae_webhook").val(),
+            vae_id: $("#vae_id").val(),
+            vae_url: $("#vae_url").val(),
+            vae_type: $("#vae_type").val()
+        },
+        success: function (response) {
+            console.log('response', response);
+
+            $("#uploadVaeModelBtn").removeAttr("disabled");
+            $("#uploadVaeModelBtn").text("");
+            $("#uploadVaeModelBtn").text("Upload Vae Model");
+
+            var response = JSON.parse(response);
+            if (
+                response.status == "success" &&
+                response.message == "Vae loaded"
+            ) {
+                $("#uploadvaeErros").text("");
+                $("#uploadvaeErros").text(response.message);
+
+                setTimeout(function () {
+                    $("#uploadVae").modal("hide");
+                    $("#uploadmodels-success").modal("show");
+                    $("#vae_url").val("");
+                    $("#vae_id").val("");
+                    $("#uploadvaeErros").text("");
+                }, 1000);
+            } else if (
+                response.status == "success" &&
+                response.message == "vae load started"
+            ) {
+                $("#uploadvaeErros").text("");
+                $("#uploadvaeErros").text(response.message);
+
+                setTimeout(function () {
+                    $("#uploadVae").modal("hide");
+                    $("#uploadmodels-success").modal("show");
+                    $("#model_url").val("");
+                    $("#model_id").val("");
+                    $("#uploadvaeErros").text("");
+                }, 1000);
+            } else if (
+                response.status == "success" &&
+                response.message == "model already exists"
+            ) {
+                $("#uploadvaeErros").text("");
+                $("#uploadvaeErros").text(response.message);
+            } else if (response.status == "error") {
+                $("#uploadvaeErros").text("");
+                $("#uploadvaeErros").text(response.message);
+            }
+            console.log(response);
+        },
+        error: function () {
+            $("#uploadVaeModelBtn").removeAttr("disabled");
+            $("#uploadVaeModelBtn").text("");
+            $("#uploadVaeModelBtn").text("Upload Vae Model");
             $("#result").text(
                 "Error occurred while fetching data from the API."
             );

@@ -44,6 +44,7 @@ Route::post('/save-superResolution',[ModelsController::class, 'saveSuperResoluti
 Route::post('/restart',[ModelsController::class, 'restartServer'])->name('restart');
 Route::get('/reset-models',[ModelResetController::class, 'resetModels'])->name('reset-models');
 Route::post('/upload-model',[ModelsController::class, 'uploadModels'])->name('uploadmodel');
+Route::post('/upload-vae-model',[ModelsController::class, 'uploadVaeModels'])->name('uploadvaemodel');
 
 Route::post('/sendInvite',[InvitationController::class, 'sendInvite'])->name('sendInvite');
 Route::post('/signUp',[UserController::class, 'signUp'])->name('signUp');

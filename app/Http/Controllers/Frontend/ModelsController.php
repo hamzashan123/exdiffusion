@@ -411,6 +411,38 @@ class ModelsController extends Controller
       echo $response;
     }
 
+    public function uploadVaeModels(Request $request){
+      $payload = [
+        "key" => "rfhpc3j1c7kw0t",
+        "webhook" => "https://stablediffusionapi.com",
+        "vae_url" => $request->vae_url,
+        "vae_id" => $request->vae_id,
+        "vae_type" => $request->vae_type,
+      ];
+
+      $curl = curl_init();
+      
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://stablediffusionapi.com/api/v1/enterprise/load_vae',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($payload),
+        CURLOPT_HTTPHEADER => array(
+          'Content-Type: application/json'
+        ),
+      ));
+      
+      $response = curl_exec($curl);
+      
+      curl_close($curl);
+      echo $response;
+    }
+
     public function restartServer(){
       $payload = [
         "key" => "rfhpc3j1c7kw0t"

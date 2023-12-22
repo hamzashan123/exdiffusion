@@ -1071,21 +1071,21 @@ span.fileUploadText {
 
 
 
-div#uploadModels h5, div#uploadModels  label {
+div#uploadModels h5,div#uploadVae h5, div#uploadModels  label , div#uploadVae  label {
     color: white;
     font-weight: bold;
 }
 
-div#uploadModels  .modal-body .form-group {
+div#uploadModels .modal-body .form-group, div#uploadVae  .modal-body .form-group {
     margin: 10px 0px;
 }
 
-div#uploadModels input, div#uploadModels select, div#uploadModels textarea {
+div#uploadModels input, div#uploadVae input, div#uploadModels select, div#uploadVae select, div#uploadModels textarea, div#uploadVae textarea {
     background: transparent;
     border: 2px solid #374151;
 }
 
-div#uploadModels label {
+div#uploadModels label, div#uploadVae label {
     margin-bottom: 5px;
 }
 
@@ -1094,7 +1094,7 @@ div#uploadModels label {
 }
 
 
-div#uploadModels input#adult_audience {
+div#uploadModels input#adult_audience, div#uploadVae input#adult_audience {
     margin: 0px 10px;
     accent-color: #a157dc;
     transform: scale(1.2);
@@ -1340,7 +1340,7 @@ li.logoutNav form {
 }
 
 
-#uploadModelErros {
+#uploadModelErros , #uploadvaeErros {
     color: red;
 }
 

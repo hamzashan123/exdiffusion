@@ -16,6 +16,7 @@
           @if(Auth::user())
           <li><a href="{{route('myasset')}}" class="nav-link px-3 text-light-grey">My Assets</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" id="openUploadModal" data-bs-toggle="modal" data-bs-target="#uploadModels">Upload Models</a></li>
+          <li><a href="#" class="nav-link px-3 text-light-grey" id="openUploadVaeModal" data-bs-toggle="modal" data-bs-target="#uploadVae">Upload Vae</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" data-bs-toggle="modal" data-bs-target="#invitationUser" >Invitation Request</a></li>
           <li><a href="#" class="nav-link px-3 text-light-grey" id="restart_server">Restart Server</a></li>
           @endif

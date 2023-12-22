@@ -43,6 +43,7 @@
   @include('auth.register-modal')
   @include('frontend.modals.signup-success')
   @include('frontend.modals.upload-models')
+  @include('frontend.modals.upload-vae-modal')
   @include('frontend.modals.upload-modelsuccess')
   @include('frontend.modals.invite-modelsuccess')
   @include('frontend.modals.invitation')
