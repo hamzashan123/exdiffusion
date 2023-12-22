@@ -118,10 +118,7 @@
                             var pageHTML =
                                 "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
                             pageHTML += "<div class='bodyInner'>";
-                            pageHTML +=
-                                "<img src='" +
-                                baseUrl +
-                                "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                            pageHTML +="<img src='" +element.image_url +"' alt='Image 1' class='img-fluid mb-3'>";
                             pageHTML += " </div>";
                             pageHTML += " <span> " + element.model_id + "</span>";
                             pageHTML += "</div>";
@@ -151,8 +148,8 @@
                                 "'>";
                             pageHTML +=
                                 "<img src='" +
-                                baseUrl +
-                                "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                element.image_url +
+                                "' alt='Image 1' class='img-fluid mb-3'>";
                             pageHTML += " </div>";
                             pageHTML += " <span> " + element.model_id + "</span>";
                             pageHTML += "</div>";
@@ -169,8 +166,8 @@
                                 ">";
                             pageHTML +=
                                 "<img src='" +
-                                baseUrl +
-                                "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                element.image_url +
+                                "' alt='Image 1' class='img-fluid mb-3'>";
                             pageHTML += " </div>";
                             pageHTML += " <span> " + element.model_id + "</span>";
                             pageHTML += "</div>";

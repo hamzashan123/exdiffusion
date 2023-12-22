@@ -47,18 +47,60 @@ class PublicModelsController extends Controller
 
       // Decoding JSON data
 
-      $decodedData =
-        json_decode($response, true);
+      $decodedData = json_decode($response, true);
 
+      
+      // These three checks are for those api result which return array of models we are merging one column of image from our database table for showing images. 
+
+      if(count($decodedData['models']) > 0 ){
+        
+        $randomBaseModels = DB::table('creativehistory')->inRandomOrder()->take(count($decodedData['models']))->get();
+
+        foreach ($decodedData['models'] as $key => $model) {
+          if (isset($randomBaseModels[$key])) {
+              $decodedData['models'][$key]['image_url'] = $randomBaseModels[$key]->image_url;
+          }
+        }
+      }
+
+      if(count($decodedData['lora_models']) > 0 ){
+       
+        $randomBaseModels = DB::table('creativehistory')->whereNotNull('loraModelArray')->inRandomOrder()->take(count($decodedData['lora_models']))->get();
+
+        foreach ($decodedData['lora_models'] as $key => $model) {
+          if (isset($randomBaseModels[$key])) {
+              $decodedData['lora_models'][$key]['image_url'] = $randomBaseModels[$key]->image_url;
+          }
+        }
+      }
+
+      if(count($decodedData['embeddings_models']) > 0 ){
+        
+        $randomBaseModels = DB::table('creativehistory')->whereNotNull('embeddingModelArray')->inRandomOrder()->take(count($decodedData['embeddings_models']))->get();
+
+        foreach ($decodedData['embeddings_models'] as $key => $model) {
+          if (isset($randomBaseModels[$key])) {
+              $decodedData['embeddings_models'][$key]['image_url'] = $randomBaseModels[$key]->image_url;
+          }
+        }
+      }
+
+
+
+      // dd(($decodedData['models']));
       // Outputting JSON data in
       // Decoded form
 
       echo json_encode($decodedData);
     }
 
+    
+
     // Closing curl
     curl_close($curl);
   }
+
+
 
   public function getSchedulers(Request $request)
   {

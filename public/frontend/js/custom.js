@@ -241,6 +241,7 @@ function generateImages() {
                         
 
                         $(".innerImageDiv").append(pageHTML);
+                        $("#generateBtn").prop('disabled',false);
                         $(".processing").remove();
                         $("#generateBtn").text("Generate");
                         $("#generateBtn").removeClass("generating");
@@ -312,6 +313,7 @@ function generateImages() {
                         saveUserCreativeHistory(response);
 
                         $(".innerImageDiv").append(pageHTML);
+                        $("#generateBtn").prop('disabled',false);
                         $("#generateBtn").text("Generate");
                         $("#generateBtn").removeClass("generating");
                         $(".hide_progress").css("visibility", "hidden");
@@ -526,6 +528,7 @@ $("#generateBtn").on("click", function () {
     }
 
     $("#generateBtn").find('.loaderbtn').show();
+    $("#generateBtn").prop('disabled',true);
     generateImages();
     
 });

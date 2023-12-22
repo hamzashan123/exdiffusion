@@ -194,8 +194,8 @@
                                 pageHTML += "<div class='bodyInner'>";
                                 pageHTML +=
                                     "<img src='" +
-                                    baseUrl +
-                                    "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                    element.image_url +
+                                    "' alt='Image 1' class='img-fluid mb-3'>";
                                 pageHTML += " <span> " + element.model_id + "</span>";
                                 pageHTML += " </div>";
                                 pageHTML += "</div>";
@@ -211,8 +211,8 @@
                                     pageHTML += "<div class='bodyInner'>";
                                     pageHTML +=
                                         "<img src='" +
-                                        baseUrl +
-                                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                        element.image_url +
+                                        "' alt='Image 1' class='img-fluid mb-3'>";
                                     pageHTML += " <span> " + element.model_id + "</span>";
                                     pageHTML += " </div>";
                                     pageHTML += "</div>";
@@ -237,8 +237,8 @@
                                     pageHTML += "<div class='bodyInner'>";
                                     pageHTML +=
                                         "<img src='" +
-                                        baseUrl +
-                                        "/img/icons/placeholder.png' alt='Image 1' class='img-fluid mb-3'>";
+                                        element.image_url +
+                                        "' alt='Image 1' class='img-fluid mb-3'>";
                                     pageHTML += " <span> " + element.model_id + "</span>";
                                     pageHTML += " </div>";
                                     pageHTML += "</div>";
