@@ -108,6 +108,7 @@ class PublicModelsController extends Controller
 
   public function creativeHistory(Request $request)
   {
+    
     $imagesUrl = explode(",", $request->images);
     $dataArray = [];
 

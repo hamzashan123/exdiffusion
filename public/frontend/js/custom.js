@@ -379,7 +379,7 @@ function saveUserCreativeHistory(response){
         const multi_lingual = $("#multi_lingual").is(":checked");
         const panorama = $("#panorama").is(":checked");
         const self_attention = $("#self_attention").is(":checked");
-        const highres_fix = $("#high_resolution_fix").is(":checked");
+        const highres_fix = $("#highres_fix").is(":checked");
         const upscale = $("#upscale").is(":checked");
         const tomesd = $("#tomesd").is(":checked");
         const karras_sigmas = $("#karras_sigmas").is(":checked");
