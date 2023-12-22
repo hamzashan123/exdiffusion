@@ -347,12 +347,24 @@
             if (value >= 64 && value <= 2048) {
                 updateValue(value);
             }
+            if($('#width_input').val() == $('#height_input').val()){
+                $('#highres_fix').prop('disabled', true);
+                $('#highres_fix').prop('checked', false);
+            }else{
+                $('#highres_fix').prop('disabled', false);
+            }
         });
 
         // Event listener for slider changes
         slider.on('input', function() {
             const value = parseInt(slider.val());
             updateValue(value);
+            if($('#width_input').val() == $('#height_input').val()){
+                $('#highres_fix').prop('disabled', true);
+                $('#highres_fix').prop('checked', false);
+            }else{
+                $('#highres_fix').prop('disabled', false);
+            }
         });
 
         //height button click so width get same value
@@ -361,6 +373,14 @@
 
             $('#height_input').val(inputValue.val());
             $('#height_range').val(inputValue.val());
+
+            if($('#width_input').val() == $('#height_input').val()){
+                $('#highres_fix').prop('disabled', true);
+                $('#highres_fix').prop('checked', false);
+            }else{
+                $('#highres_fix').prop('disabled', false);
+            }
+
         });
 
     });
@@ -384,12 +404,24 @@
             if (value >= 64 && value <= 2048) {
                 updateValue(value);
             }
+            if($('#width_input').val() == $('#height_input').val()){
+                $('#highres_fix').prop('disabled', true);
+                $('#highres_fix').prop('checked', false);
+            }else{
+                $('#highres_fix').prop('disabled', false);
+            }
         });
 
         // Event listener for slider changes
         slider.on('input', function() {
             const value = parseInt(slider.val());
             updateValue(value);
+            if($('#width_input').val() == $('#height_input').val()){
+                $('#highres_fix').prop('disabled', true);
+                $('#highres_fix').prop('checked', false);
+            }else{
+                $('#highres_fix').prop('disabled', false);
+            }
         });
 
         //height button click so width get same value
@@ -397,6 +429,13 @@
         height_button.on('click', function() {
             $('#width_input').val(inputValue.val());
             $('#width_range').val(inputValue.val());
+
+            if($('#width_input').val() == $('#height_input').val()){
+                $('#highres_fix').prop('disabled', true);
+                $('#highres_fix').prop('checked', false);
+            }else{
+                $('#highres_fix').prop('disabled', false);
+            }
         });
     });
 </script>

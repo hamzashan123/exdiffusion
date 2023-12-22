@@ -169,11 +169,7 @@ class ModelsController extends Controller
         $seedValue = $request->seed;
       }
 
-      if( $request->width == 512  && $request->height == 768){
-        $highres_fix = $highres_fix;
-      }else{
-        $highres_fix = 'no';
-      }
+      
 
       $payload = [
         "key" => "rfhpc3j1c7kw0t", 
