@@ -309,7 +309,7 @@ function generateImages() {
                         pageHTML += "</div> </center>";
 
                         // save All data to userHistory
-                        saveUserCreativeHistory();
+                        saveUserCreativeHistory(response);
 
                         $(".innerImageDiv").append(pageHTML);
                         $("#generateBtn").text("Generate");
