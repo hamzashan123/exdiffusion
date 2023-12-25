@@ -662,7 +662,8 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
         // Push the value if it's not already in the array
         embeddingModelArray.push(selectedEmbeddingModel);
         generateEmbeddingDynamicContent(
-            embeddingModelArray,selectedEmbeddingModelImage
+            embeddingModelArray,
+            selectedEmbeddingModelImage
         );
     } else {
         let index = embeddingModelArray.indexOf(selectedEmbeddingModel);
@@ -672,8 +673,6 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
 
         $("div[data-added-model='" + selectedEmbeddingModel + "']").remove();
     }
-
-    
 });
 
 $(document).on("change", ".embedding_dynamic_input", function () {
@@ -696,44 +695,43 @@ $(document).on("change", ".embedding_dynamic_range", function () {
 });
 
 function generateEmbeddingDynamicContent(
-    embeddingModelArray,selectedEmbeddingModelImage
+    selectedEmbeddingModel,
+    selectedEmbeddingModelImage
 ) {
-    $(".embedding_popup_content").remove();
-    embeddingModelArray.forEach((element) => {
-        var pageHTML =
-            "<div class='d-flex embedding_popup_content'  data-added-model=" +
-            element +
-            ">";
-        pageHTML +=
-            "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 embedding_images'>";
-        pageHTML +=
-            "<img src='" +
-            selectedEmbeddingModelImage +
-            "' class='img-fluid'>";
-        pageHTML += "</div>";
-        pageHTML +=
-            "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 embedding_content'>";
-        pageHTML += "<div class='spaceBetween'>";
-        pageHTML += "<label for=''>" + element + "</label>";
-        pageHTML += "<div class='inner'>";
-        pageHTML +=
-            " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_embedding_model_trash' ><img src='" +
-            baseUrl +
-            "/img/icons/trash.png' ></button>";
-        pageHTML +=
-            "<input type='number'   min='-2' max='2' value='0.8' step='0.1' class='form-control dark-grey border-radius-7 embedding_dynamic_input'>";
-        pageHTML += "</div>";
-        pageHTML += "</div>";
+    // $(".embedding_popup_content").remove();
+    // embeddingModelArray.forEach((element) => {
+    var pageHTML =
+        "<div class='d-flex embedding_popup_content'  data-added-model=" +
+        selectedEmbeddingModel +
+        ">";
+    pageHTML +=
+        "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 embedding_images'>";
+    pageHTML +=
+        "<img src='" + selectedEmbeddingModelImage + "' class='img-fluid'>";
+    pageHTML += "</div>";
+    pageHTML +=
+        "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 embedding_content'>";
+    pageHTML += "<div class='spaceBetween'>";
+    pageHTML += "<label for=''>" + selectedEmbeddingModel + "</label>";
+    pageHTML += "<div class='inner'>";
+    pageHTML +=
+        " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_embedding_model_trash' ><img src='" +
+        baseUrl +
+        "/img/icons/trash.png' ></button>";
+    pageHTML +=
+        "<input type='number'   min='-2' max='2' value='0.8' step='0.1' class='form-control dark-grey border-radius-7 embedding_dynamic_input'>";
+    pageHTML += "</div>";
+    pageHTML += "</div>";
 
-        pageHTML += "<div>";
-        pageHTML +=
-            "<input type='range'  min='-2' max='2' value='0.8' step='0.1' class='slider embedding_dynamic_range' >";
-        pageHTML += "</div>";
-        pageHTML += "</div>";
-        pageHTML += "</div>";
+    pageHTML += "<div>";
+    pageHTML +=
+        "<input type='range'  min='-2' max='2' value='0.8' step='0.1' class='slider embedding_dynamic_range' >";
+    pageHTML += "</div>";
+    pageHTML += "</div>";
+    pageHTML += "</div>";
 
-        $(".embedding_appenddiv").append(pageHTML);
-    });
+    $(".embedding_appenddiv").append(pageHTML);
+    // });
     console.log("embeddingModelArray", embeddingModelArray);
 }
 
