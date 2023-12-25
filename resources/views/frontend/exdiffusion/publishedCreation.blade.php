@@ -332,6 +332,7 @@
             //reset last id after success record
             lastId = null;
             recordsCount = 0;
+            $("#load_more_publishcreation").remove();
             getAllModels('base_models');
         });
 
@@ -341,6 +342,7 @@
             //reset last id after success record
             lastId = null;
             recordsCount = 0;
+            $("#load_more_publishcreation").remove();
             getAllModels('lora_models');
         });
 
@@ -350,6 +352,7 @@
             //reset last id after success record
             lastId = null;
             recordsCount = 0;
+            $("#load_more_publishcreation").remove();
             getAllModels('embedding_models');
         });
 
