@@ -656,21 +656,24 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
     }
     var selectedEmbeddingModel = $(this).attr("data-embedding");
     var selectedEmbeddingModelImage = $(this).find("img").attr("src");
+    console.log("selectedEmbeddingModelImage", selectedEmbeddingModelImage);
 
     if (!embeddingModelArray.includes(selectedEmbeddingModel)) {
         // Push the value if it's not already in the array
         embeddingModelArray.push(selectedEmbeddingModel);
+        generateEmbeddingDynamicContent(
+            embeddingModelArray,selectedEmbeddingModelImage
+        );
     } else {
         let index = embeddingModelArray.indexOf(selectedEmbeddingModel);
         if (index !== -1) {
             embeddingModelArray.splice(index, 1);
         }
+
+        $("div[data-added-model='" + selectedEmbeddingModel + "']").remove();
     }
 
-    generateEmbeddingDynamicContent(
-        embeddingModelArray,
-        selectedEmbeddingModelImage
-    );
+    
 });
 
 $(document).on("change", ".embedding_dynamic_input", function () {
@@ -693,8 +696,7 @@ $(document).on("change", ".embedding_dynamic_range", function () {
 });
 
 function generateEmbeddingDynamicContent(
-    embeddingModelArray,
-    selectedEmbeddingModelImage
+    embeddingModelArray,selectedEmbeddingModelImage
 ) {
     $(".embedding_popup_content").remove();
     embeddingModelArray.forEach((element) => {
@@ -706,8 +708,8 @@ function generateEmbeddingDynamicContent(
             "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 embedding_images'>";
         pageHTML +=
             "<img src='" +
-            baseUrl +
-            "/img/icons/placeholder.png' class='img-fluid'>";
+            selectedEmbeddingModelImage +
+            "' class='img-fluid'>";
         pageHTML += "</div>";
         pageHTML +=
             "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 embedding_content'>";
