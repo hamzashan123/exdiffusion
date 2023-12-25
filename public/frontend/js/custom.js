@@ -660,17 +660,16 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
     if (!embeddingModelArray.includes(selectedEmbeddingModel)) {
         // Push the value if it's not already in the array
         embeddingModelArray.push(selectedEmbeddingModel);
+        generateEmbeddingDynamicContent(
+            embeddingModelArray,
+            selectedEmbeddingModelImage
+        );
     } else {
         let index = embeddingModelArray.indexOf(selectedEmbeddingModel);
         if (index !== -1) {
             embeddingModelArray.splice(index, 1);
         }
     }
-
-    generateEmbeddingDynamicContent(
-        embeddingModelArray,
-        selectedEmbeddingModelImage
-    );
 });
 
 $(document).on("change", ".embedding_dynamic_input", function () {
