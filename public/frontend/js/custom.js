@@ -680,7 +680,7 @@ $(document).on("change", ".embedding_dynamic_input", function () {
     console.log("Clicked element index:", index);
     var embedding_dynamic_new_value = $(this).val();
     embeddingModelStrength[index] = embedding_dynamic_new_value;
-    console.log("embeddingModelArray", embeddingModelArray);
+
     console.log("embeddingModelStrength", embeddingModelStrength);
 });
 
@@ -690,7 +690,6 @@ $(document).on("change", ".embedding_dynamic_range", function () {
     var embedding_dynamic_new_value = $(this).val();
     embeddingModelStrength[index] = embedding_dynamic_new_value;
 
-    console.log("embeddingModelArray", embeddingModelArray);
     console.log("embeddingModelStrength", embeddingModelStrength);
 });
 
@@ -698,8 +697,6 @@ function generateEmbeddingDynamicContent(
     selectedEmbeddingModel,
     selectedEmbeddingModelImage
 ) {
-    // $(".embedding_popup_content").remove();
-    // embeddingModelArray.forEach((element) => {
     var pageHTML =
         "<div class='d-flex embedding_popup_content'  data-added-model=" +
         selectedEmbeddingModel +
@@ -731,8 +728,6 @@ function generateEmbeddingDynamicContent(
     pageHTML += "</div>";
 
     $(".embedding_appenddiv").append(pageHTML);
-    // });
-    console.log("embeddingModelArray", embeddingModelArray);
 }
 
 $(document).on("input", ".embedding_dynamic_input", function () {
