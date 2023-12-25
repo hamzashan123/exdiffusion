@@ -662,7 +662,7 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
         // Push the value if it's not already in the array
         embeddingModelArray.push(selectedEmbeddingModel);
         generateEmbeddingDynamicContent(
-            embeddingModelArray,
+            selectedEmbeddingModel,
             selectedEmbeddingModelImage
         );
     } else {
