@@ -108,6 +108,7 @@
                             } else {
                                 pageHTML += "<img src='" + element.image_url + "'>";
                             }
+
                             pageHTML += "<div class='grid__body'>";
                             // if content is adult the show label
                             if (element.is_nsfw_image == 'true') {
@@ -192,10 +193,12 @@
                                 var pageHTML =
                                     "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                 pageHTML += "<div class='bodyInner'>";
-                                pageHTML +=
-                                    "<img src='" +
-                                    element.image_url +
-                                    "' alt='Image 1' class='img-fluid mb-3'>";
+                                if(element.image_url != undefined || element.image_url != null){
+                                    pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
+                                }else{
+                                    pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                }
+                               
                                 pageHTML += " <span> " + element.model_id + "</span>";
                                 pageHTML += " </div>";
                                 pageHTML += "</div>";

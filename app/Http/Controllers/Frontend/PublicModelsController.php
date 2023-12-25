@@ -54,14 +54,25 @@ class PublicModelsController extends Controller
 
       if(count($decodedData['models']) > 0 ){
         
-        $randomBaseModels = DB::table('creativehistory')->whereNotNull('image_url')->inRandomOrder()->take(count($decodedData['models']))->get();
+        
+        foreach($decodedData['models'] as $key => $value){
 
-        foreach ($decodedData['models'] as $key => $model) {
-          if (isset($randomBaseModels[$key])) {
-              $decodedData['models'][$key]['image_url'] = $randomBaseModels[$key]->image_url;
+          $modelData = DB::table('creativehistory')->where('selectedBaseModelText', $value['model_id'])->inRandomOrder()->take(1)->get();
+
+          if(count($modelData) > 0){
+            if($modelData[0]->selectedBaseModelText == $value['model_id']){
+              // dd($value['model_id']);
+              $decodedData['models'][$key]['image_url'] = $modelData[0]->image_url;
+              
+            }
+          }else{
+            $decodedData['models'][$key]['image_url'] = null;
           }
         }
+
       }
+      // dd( $decodedData['models']);
+      
 
       if(count($decodedData['lora_models']) > 0 ){
        
