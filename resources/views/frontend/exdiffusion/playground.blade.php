@@ -151,10 +151,11 @@
                                 "<div class='bodyInnerLora' data-lora='" +
                                 element.model_id +
                                 "'>";
-                            pageHTML +=
-                                "<img src='" +
-                                element.image_url +
-                                "' alt='Image 1' class='img-fluid mb-3'>";
+                            if(element.image_url != undefined || element.image_url != null){
+                                pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
+                            }else{
+                                pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                            }
                             pageHTML += " </div>";
                             pageHTML += " <span> " + element.model_id + "</span>";
                             pageHTML += "</div>";
@@ -169,10 +170,11 @@
                                 "<div class='bodyInnerEmbedding' data-embedding=" +
                                 element.model_id +
                                 ">";
-                            pageHTML +=
-                                "<img src='" +
-                                element.image_url +
-                                "' alt='Image 1' class='img-fluid mb-3'>";
+                            if(element.image_url != undefined || element.image_url != null){
+                                pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
+                            }else{
+                                pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                            }
                             pageHTML += " </div>";
                             pageHTML += " <span> " + element.model_id + "</span>";
                             pageHTML += "</div>";

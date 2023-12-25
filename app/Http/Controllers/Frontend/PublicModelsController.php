@@ -63,7 +63,7 @@ class PublicModelsController extends Controller
             if($modelData[0]->selectedBaseModelText == $value['model_id']){
               // dd($value['model_id']);
               $decodedData['models'][$key]['image_url'] = $modelData[0]->image_url;
-              
+
             }
           }else{
             $decodedData['models'][$key]['image_url'] = null;
@@ -76,31 +76,39 @@ class PublicModelsController extends Controller
 
       if(count($decodedData['lora_models']) > 0 ){
        
-        $randomBaseModels = DB::table('creativehistory')->whereNotNull('image_url')->whereNotNull('loraModelArray')->inRandomOrder()->take(count($decodedData['lora_models']))->get();
+        foreach($decodedData['lora_models'] as $key => $value){
 
-        foreach ($decodedData['lora_models'] as $key => $model) {
-          if (isset($randomBaseModels[$key])) {
-              $decodedData['lora_models'][$key]['image_url'] = $randomBaseModels[$key]->image_url;
+          $modelData = DB::table('creativehistory')->where('loraModelArray', $value['model_id'])->inRandomOrder()->take(1)->get();
+          //dd($modelData);
+          if(count($modelData) > 0){
+            if($modelData[0]->loraModelArray == $value['model_id']){
+              // dd($value['model_id']);
+              $decodedData['lora_models'][$key]['image_url'] = $modelData[0]->image_url;
+            }
+          }else{
+            $decodedData['lora_models'][$key]['image_url'] = null;
           }
         }
       }
 
+      
       if(count($decodedData['embeddings_models']) > 0 ){
-        
-        $randomBaseModels = DB::table('creativehistory')->whereNotNull('image_url')->whereNotNull('embeddingModelArray')->inRandomOrder()->take(count($decodedData['embeddings_models']))->get();
+       
+        foreach($decodedData['embeddings_models'] as $key => $value){
 
-        foreach ($decodedData['embeddings_models'] as $key => $model) {
-          if (isset($randomBaseModels[$key])) {
-              $decodedData['embeddings_models'][$key]['image_url'] = $randomBaseModels[$key]->image_url;
+          $modelData = DB::table('creativehistory')->where('embeddingModelArray', $value['model_id'])->inRandomOrder()->take(1)->get();
+          //dd($modelData);
+          if(count($modelData) > 0){
+            if($modelData[0]->embeddingModelArray == $value['model_id']){
+              // dd($value['model_id']);
+              $decodedData['embeddings_models'][$key]['image_url'] = $modelData[0]->image_url;
+            }
+          }else{
+            $decodedData['embeddings_models'][$key]['image_url'] = null;
           }
         }
       }
 
-
-
-      // dd(($decodedData['models']));
-      // Outputting JSON data in
-      // Decoded form
 
       echo json_encode($decodedData);
     }
