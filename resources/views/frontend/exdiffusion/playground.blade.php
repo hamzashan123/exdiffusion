@@ -586,7 +586,7 @@
                     const creativeDataEmbeddingModelArray = creativeData['embeddingModelArray'].split(',');
                     creativeEmbeddingModelArray.push(...creativeDataEmbeddingModelArray);
 
-                    generateEmbeddingDynamicContent(creativeEmbeddingModelArray);
+                    // generateEmbeddingDynamicContent(creativeEmbeddingModelArray);
                     setTimeout(function(){
                         $('.bodyInnerEmbedding').each(function(element){
                             var bodyInnerEmbeddingText = $(this).siblings('span').text().trim();
