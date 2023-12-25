@@ -1,9 +1,9 @@
-var baseUrl = '';
+var baseUrl = "";
 
-if (window.location.hostname === 'localhost') {
-  baseUrl = ''; // Set the base URL for localhost
+if (window.location.hostname === "localhost") {
+    baseUrl = ""; // Set the base URL for localhost
 } else {
-  baseUrl = 'https://exdiffusion.com/newproject/public'; // Set the base URL for other domains
+    baseUrl = "https://exdiffusion.com/newproject/public"; // Set the base URL for other domains
 }
 
 var superResolutionArray = [];
@@ -17,8 +17,6 @@ var creativeHistoryId;
 $(document).ready(function () {
     $("#loader").show();
 
-    
-
     $("[data-fancybox]").fancybox({
         // Customize options here
     });
@@ -29,11 +27,7 @@ $(document).ready(function () {
         $(".mainSection").show();
         $(".footer").show();
     }, 2000);
-    
-
 });
-
-
 
 // restart stablediffusion server
 $("#restart_server").on("click", function () {
@@ -130,12 +124,12 @@ function generateImages() {
         negative_prompt == undefined
     ) {
         $("#error_popup").modal("show");
-        $("#generateBtn").prop('disabled', false);
-        $("#generateBtn").find('.loaderbtn').hide();
+        $("#generateBtn").prop("disabled", false);
+        $("#generateBtn").find(".loaderbtn").hide();
     } else {
         $("#generateBtn").text("Generating...");
         $("#generateBtn").append('<div class="loaderbtn"> </div>');
-        $("#generateBtn").find('.loaderbtn').show();
+        $("#generateBtn").find(".loaderbtn").show();
         $("#generateBtn").addClass("generating");
         $(".innerImageDiv").find("img").remove();
         $(".server_restart").remove();
@@ -158,8 +152,6 @@ function generateImages() {
             );
         }
 
-        
-
         $.ajax({
             url: "" + baseUrl + "/generate-images",
             method: "POST",
@@ -171,7 +163,7 @@ function generateImages() {
                 prompt: prompt,
                 negative_prompt: negative_prompt,
                 lora_model: loraModelArray,
-                lora_strength : loraModelStrength,
+                lora_strength: loraModelStrength,
                 embeddings_model: embeddingModelArray,
                 scheduler: scheduler_list,
                 vae: vae_model,
@@ -220,7 +212,6 @@ function generateImages() {
                     // Function to append images
                     const etaInSeconds = response.generationTime;
                     function appendSuccessImages() {
-                        
                         superResolutionArray = [];
                         generatedImageArray = [];
                         var pageHTML =
@@ -238,10 +229,9 @@ function generateImages() {
                         pageHTML += "</div> </center>";
                         // save All data to userHistory
                         saveUserCreativeHistory(response);
-                        
 
                         $(".innerImageDiv").append(pageHTML);
-                        $("#generateBtn").prop('disabled',false);
+                        $("#generateBtn").prop("disabled", false);
                         $(".processing").remove();
                         $("#generateBtn").text("Generate");
                         $("#generateBtn").removeClass("generating");
@@ -257,9 +247,9 @@ function generateImages() {
                         if (superResolutionArray.length > 0) {
                             $("#make_publishimage").removeAttr("disabled");
                         }
-                       
-                        $("#generateBtn").prop('disabled', false);
-                        $("#generateBtn").find('.loaderbtn').hide();
+
+                        $("#generateBtn").prop("disabled", false);
+                        $("#generateBtn").find(".loaderbtn").hide();
                         console.log(
                             "superResolutionArray",
                             superResolutionArray
@@ -272,7 +262,6 @@ function generateImages() {
                     // Set timeout to append images after ETA time
                     setTimeout(function () {
                         appendSuccessImages();
-                       
                     }, etaInMilliseconds);
                 } else if (response.status == "processing") {
                     $(".hide_progress").css("visibility", "visible");
@@ -295,7 +284,7 @@ function generateImages() {
                     const etaInSeconds = response.eta;
                     function appendProcessingImages() {
                         superResolutionArray = [];
-                        
+
                         var pageHTML =
                             "<center> <div class='generated_images'>";
                         response.image_links.forEach((element) => {
@@ -313,7 +302,7 @@ function generateImages() {
                         saveUserCreativeHistory(response);
 
                         $(".innerImageDiv").append(pageHTML);
-                        $("#generateBtn").prop('disabled',false);
+                        $("#generateBtn").prop("disabled", false);
                         $("#generateBtn").text("Generate");
                         $("#generateBtn").removeClass("generating");
                         $(".hide_progress").css("visibility", "hidden");
@@ -321,8 +310,8 @@ function generateImages() {
                         if (superResolutionArray.length > 0) {
                             $("#make_super_resolution").removeAttr("disabled");
                         }
-                        $("#generateBtn").prop('disabled', false);
-                        $("#generateBtn").find('.loaderbtn').hide();
+                        $("#generateBtn").prop("disabled", false);
+                        $("#generateBtn").find(".loaderbtn").hide();
                     }
 
                     // Calculate milliseconds for ETA time
@@ -335,24 +324,24 @@ function generateImages() {
                 } else {
                     Swal.fire({
                         title: response.message,
-                        icon: 'error',
+                        icon: "error",
                         timer: 4000, // Auto-close the alert after 4 seconds
-                        showConfirmButton: false
+                        showConfirmButton: false,
                     });
 
                     $("#generateBtn").text("Generate");
                     $("#generateBtn").removeClass("generating");
                     $(".hide_progress").css("visibility", "hidden");
                     $(".hide_progress").addClass("progressheightmanage");
-                    $("#generateBtn").prop('disabled', false);
-                    $("#generateBtn").find('.loaderbtn').hide();
+                    $("#generateBtn").prop("disabled", false);
+                    $("#generateBtn").find(".loaderbtn").hide();
                 }
                 // Clear progress bar and label
                 // updateProgressBar(0);
             },
             error: function () {
-                $("#generateBtn").prop('disabled', false);
-                $("#generateBtn").find('.loaderbtn').hide();
+                $("#generateBtn").prop("disabled", false);
+                $("#generateBtn").find(".loaderbtn").hide();
                 $(".hide_progress").css("visibility", "hidden");
                 $(".hide_progress").addClass("progressheightmanage");
                 $("#result").text(
@@ -363,156 +352,142 @@ function generateImages() {
     }
 }
 
-function saveUserCreativeHistory(response){
-        const selectedBaseModelText = $('#selectedBaseModelText').val();
-        const vaemodelslist = $('#vaemodelslist').val();
-        const prompt = $('#prompt').val();
-        const neg_prompt = $('#neg_prompt').val();
-        const scheduler_list = $('#scheduler_list').val();
-        const seed = $('#seed').val();
-        const interference_input = $('#interference_input').val();
-        const clickskip_input = $('#clickskip_input').val();
-        const width_input = $('#width_input').val();
-        const samples_input = $('#samples_input').val();
-        const height_input = $('#height_input').val();
-        const guidance_input = $('#guidance_input').val();
-        const safety_checker = $("#safety_checker").is(":checked");
-        const enhance_prompt = $("#enhance_prompt").is(":checked");
-        const multi_lingual = $("#multi_lingual").is(":checked");
-        const panorama = $("#panorama").is(":checked");
-        const self_attention = $("#self_attention").is(":checked");
-        const highres_fix = $("#highres_fix").is(":checked");
-        const upscale = $("#upscale").is(":checked");
-        const tomesd = $("#tomesd").is(":checked");
-        const karras_sigmas = $("#karras_sigmas").is(":checked");
+function saveUserCreativeHistory(response) {
+    const selectedBaseModelText = $("#selectedBaseModelText").val();
+    const vaemodelslist = $("#vaemodelslist").val();
+    const prompt = $("#prompt").val();
+    const neg_prompt = $("#neg_prompt").val();
+    const scheduler_list = $("#scheduler_list").val();
+    const seed = $("#seed").val();
+    const interference_input = $("#interference_input").val();
+    const clickskip_input = $("#clickskip_input").val();
+    const width_input = $("#width_input").val();
+    const samples_input = $("#samples_input").val();
+    const height_input = $("#height_input").val();
+    const guidance_input = $("#guidance_input").val();
+    const safety_checker = $("#safety_checker").is(":checked");
+    const enhance_prompt = $("#enhance_prompt").is(":checked");
+    const multi_lingual = $("#multi_lingual").is(":checked");
+    const panorama = $("#panorama").is(":checked");
+    const self_attention = $("#self_attention").is(":checked");
+    const highres_fix = $("#highres_fix").is(":checked");
+    const upscale = $("#upscale").is(":checked");
+    const tomesd = $("#tomesd").is(":checked");
+    const karras_sigmas = $("#karras_sigmas").is(":checked");
 
-        // Create a FormData object
-        const formData = new FormData();
+    // Create a FormData object
+    const formData = new FormData();
 
-        // Append the selected file to the FormData object
-        formData.append("selectedBaseModelText", selectedBaseModelText);
-        formData.append("vaemodelslist", vaemodelslist);
-        formData.append("prompt", prompt);
-        formData.append("neg_prompt", neg_prompt);
-        formData.append("scheduler_list", scheduler_list);
-        formData.append("seed", response.meta.seed);
-        formData.append("interference_input", interference_input);
-        formData.append("clickskip_input", clickskip_input);
-        formData.append("width_input", width_input);
-        formData.append("samples_input", samples_input);
-        formData.append("height_input", height_input);
-        formData.append("guidance_input", guidance_input);
-        formData.append("safety_checker", safety_checker);
-        formData.append("enhance_prompt", enhance_prompt);
-        formData.append("multi_lingual", multi_lingual);
-        formData.append("panorama", panorama);
-        formData.append("self_attention", self_attention);
-        formData.append("highres_fix", highres_fix);
-        formData.append("upscale", upscale);
-        formData.append("tomesd", tomesd);
-        formData.append("karras_sigmas", karras_sigmas);
-        // Array data
-        formData.append("loraModelArray", loraModelArray);
-        formData.append("loraModelStrength", loraModelStrength);
-        formData.append("embeddingModelArray", embeddingModelArray);
-        formData.append("images", generatedImageArray);
+    // Append the selected file to the FormData object
+    formData.append("selectedBaseModelText", selectedBaseModelText);
+    formData.append("vaemodelslist", vaemodelslist);
+    formData.append("prompt", prompt);
+    formData.append("neg_prompt", neg_prompt);
+    formData.append("scheduler_list", scheduler_list);
+    formData.append("seed", response.meta.seed);
+    formData.append("interference_input", interference_input);
+    formData.append("clickskip_input", clickskip_input);
+    formData.append("width_input", width_input);
+    formData.append("samples_input", samples_input);
+    formData.append("height_input", height_input);
+    formData.append("guidance_input", guidance_input);
+    formData.append("safety_checker", safety_checker);
+    formData.append("enhance_prompt", enhance_prompt);
+    formData.append("multi_lingual", multi_lingual);
+    formData.append("panorama", panorama);
+    formData.append("self_attention", self_attention);
+    formData.append("highres_fix", highres_fix);
+    formData.append("upscale", upscale);
+    formData.append("tomesd", tomesd);
+    formData.append("karras_sigmas", karras_sigmas);
+    // Array data
+    formData.append("loraModelArray", loraModelArray);
+    formData.append("loraModelStrength", loraModelStrength);
+    formData.append("embeddingModelArray", embeddingModelArray);
+    formData.append("images", generatedImageArray);
 
+    $.ajax({
+        url: "" + baseUrl + "/creative-history",
+        method: "POST",
+        data: formData,
+        processData: false, // Don't process data (needed for FormData)
+        contentType: false, // Don't set content type (needed for FormData)
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            console.log(response);
 
-        
-        
-
-        $.ajax({
-            url: "" + baseUrl + "/creative-history",
-            method: "POST",
-            data: formData,
-            processData: false, // Don't process data (needed for FormData)
-            contentType: false, // Don't set content type (needed for FormData)
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                
-                
-                console.log(response);
-
-                if (response.status == "success") {
-                    generatedImageResponse = response;
-                    creativeHistoryId =  response.data[0];
-                }else if(response.status == "failure"){
-                    alert(response.message);    
-                }
-            },
-            error: function () {
-                
-            
-                $("#result").text(
-                    "Error occurred while fetching data from the API."
-                );
-            },
-        });
+            if (response.status == "success") {
+                generatedImageResponse = response;
+                creativeHistoryId = response.data[0];
+            } else if (response.status == "failure") {
+                alert(response.message);
+            }
+        },
+        error: function () {
+            $("#result").text(
+                "Error occurred while fetching data from the API."
+            );
+        },
+    });
 }
 
 //publish the images to publish creation scree
-$(document).on('click','#make_publishimage', function(){
-    
-    if(generatedImageResponse != null || generatedImageResponse.length > 0 ){
+$(document).on("click", "#make_publishimage", function () {
+    if (generatedImageResponse != null || generatedImageResponse.length > 0) {
         Swal.fire({
-            title: 'Are you sure you want to publish?',
+            title: "Are you sure you want to publish?",
             showDenyButton: true,
-            confirmButtonText: 'Yes',
-            denyButtonText: 'Cancel',
-
-            }).then((result) => {
-
+            confirmButtonText: "Yes",
+            denyButtonText: "Cancel",
+        }).then((result) => {
             if (result.isConfirmed) {
-                $("#make_publishimage").find('.loaderbtn').show();
+                $("#make_publishimage").find(".loaderbtn").show();
                 console.log(generatedImageResponse);
                 $.ajax({
                     url: "" + baseUrl + "/publish-images",
                     method: "POST",
                     data: {
-                        generatedImageResponse
+                        generatedImageResponse,
                     },
                     headers: {
-                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
                     },
                     success: function (response) {
-                        $("#make_publishimage").find('.loaderbtn').hide();
+                        $("#make_publishimage").find(".loaderbtn").hide();
                         console.log(response);
                         if (response.status == "success") {
                             Swal.fire({
                                 title: response.message,
-                                icon: 'success',
+                                icon: "success",
                                 timer: 4000, // Auto-close the alert after 4 seconds
-                                showConfirmButton: true
+                                showConfirmButton: true,
                             });
-                            
-                        }else if(response.status == "failure"){
+                        } else if (response.status == "failure") {
                             Swal.fire({
                                 title: response.message,
-                                icon: 'error',
+                                icon: "error",
                                 timer: 4000, // Auto-close the alert after 4 seconds
-                                showConfirmButton: true
-                            });   
+                                showConfirmButton: true,
+                            });
                         }
                     },
                     error: function () {
-                        $("#make_publishimage").find('.loaderbtn').hide();
-                    
+                        $("#make_publishimage").find(".loaderbtn").hide();
+
                         $("#result").text(
                             "Error occurred while fetching data from the API."
                         );
                     },
                 });
             } else if (result.isDenied) {
-
                 return;
             }
-
         });
-        
     }
-    
 });
 
 //click generate images
@@ -527,14 +502,13 @@ $("#generateBtn").on("click", function () {
         return;
     }
 
-    $("#generateBtn").find('.loaderbtn').show();
-    $("#generateBtn").prop('disabled',true);
+    $("#generateBtn").find(".loaderbtn").show();
+    $("#generateBtn").prop("disabled", true);
     generateImages();
-    
 });
 
-$('#make_creativehistory').on('click',function(){
-    window.location.href =  baseUrl+'/my-asset';
+$("#make_creativehistory").on("click", function () {
+    window.location.href = baseUrl + "/my-asset";
 });
 
 // make super resoltuion
@@ -547,7 +521,7 @@ $("#make_super_resolution").on("click", function (e) {
     draggableArea.find("label").hide();
     draggableArea.find("input").hide();
     draggableArea.append(imageElement).addClass("draggable");
-    $('#uploadBtn').attr('disabled',true);
+    $("#uploadBtn").attr("disabled", true);
     $("#superResolution-tab").tab("show");
 
     // $('#superResolution-tab a[href="#superResolution"]').tab('show');
@@ -555,32 +529,33 @@ $("#make_super_resolution").on("click", function (e) {
 
 // click and select in lora popup
 // $(document).on("click", ".bodyInnerLora", function () {
-    
+
 // });
 
 // click and select in embedding popup
 // $(document).on("click", ".bodyInnerEmbedding", function () {
-    
+
 // });
 
-
 $(document).on("click", ".bodyInnerLora", function () {
-
     if ($(this).hasClass("selectedLoraModel")) {
         $(this).removeClass("selectedLoraModel");
-
     } else {
         $(this).addClass("selectedLoraModel");
     }
 
     var selectedLoraModel = $(this).attr("data-lora");
+    var selectedLoraModelImage = $(this).find("img").attr("src");
+
+    console.log("selectedLoraModelImage", selectedLoraModelImage);
+
     var selectedLoraStrength = 0.8;
-   
+
     if (!loraModelArray.includes(selectedLoraModel)) {
         // Push the value if it's not already in the array
         loraModelArray.push(selectedLoraModel);
         loraModelStrength.push(selectedLoraStrength);
-        generateLoraDynamicContent(selectedLoraModel);
+        generateLoraDynamicContent(selectedLoraModel, selectedLoraModelImage);
         //  console.log('loraModelStrength', loraModelStrength);
     } else {
         let index = loraModelArray.indexOf(selectedLoraModel);
@@ -588,81 +563,73 @@ $(document).on("click", ".bodyInnerLora", function () {
             loraModelArray.splice(index, 1);
             loraModelStrength.splice(index, 1);
         }
-        
+
         console.log("selectedLoraModel", selectedLoraModel);
-        $("div[data-added-model='"+selectedLoraModel+"']").remove();
+        $("div[data-added-model='" + selectedLoraModel + "']").remove();
     }
 
-    
     // console.log("selectedLoraModel", loraModelArray);
     // console.log("selectedLoraModelStrength", loraModelStrength);
 });
 
-$(document).on('change','.lora_dynamic_input',  function() {
-    
-    var index = $('.lora_dynamic_input').index(this);
+$(document).on("change", ".lora_dynamic_input", function () {
+    var index = $(".lora_dynamic_input").index(this);
     // var RangeIindex = $('.lora_dynamic_range').index(this);
     // console.log('Clicked element inputIndex:', inputIndex);
-    console.log('Clicked element index:', index);
+    console.log("Clicked element index:", index);
     var lora_dynamic_new_value = $(this).val();
     loraModelStrength[index] = lora_dynamic_new_value;
-   
-    console.log("loraModelArray", loraModelArray);
-    console.log("loraModelStrength", loraModelStrength);
-  });
 
-$(document).on('change','.lora_dynamic_range',  function() {
-    
-    var index = $('.lora_dynamic_range').index(this);
-    // var RangeIindex = $('.lora_dynamic_range').index(this);
-    // console.log('Clicked element inputIndex:', inputIndex);
-    console.log('Clicked element index:', index);
-    var lora_dynamic_new_value = $(this).val();
-    loraModelStrength[index] = lora_dynamic_new_value;
-   
     console.log("loraModelArray", loraModelArray);
     console.log("loraModelStrength", loraModelStrength);
 });
 
-function generateLoraDynamicContent(selectedLoraModel){
+$(document).on("change", ".lora_dynamic_range", function () {
+    var index = $(".lora_dynamic_range").index(this);
+    // var RangeIindex = $('.lora_dynamic_range').index(this);
+    // console.log('Clicked element inputIndex:', inputIndex);
+    console.log("Clicked element index:", index);
+    var lora_dynamic_new_value = $(this).val();
+    loraModelStrength[index] = lora_dynamic_new_value;
 
+    console.log("loraModelArray", loraModelArray);
+    console.log("loraModelStrength", loraModelStrength);
+});
+
+function generateLoraDynamicContent(selectedLoraModel, selectedLoraModelImage) {
     // $(".lora_popup_content").remove();
     // loraModelArray.forEach((element) => {
-        var pageHTML =
-            "<div class='d-flex lora_popup_content'  data-added-model=" +
-            selectedLoraModel +
-            ">";
-        pageHTML +=
-            "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 lora_images'>";
-        pageHTML +=
-            "<img src='" +
-            baseUrl +
-            "/img/icons/placeholder.png' class='img-fluid'>";
-        pageHTML += "</div>";
-        pageHTML +=
-            "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 lora_content'>";
-        pageHTML += "<div class='spaceBetween'>";
-        pageHTML += "<label for=''>" + selectedLoraModel + "</label>";
-        pageHTML += "<div class='inner'>";
-        pageHTML +=
-            " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_lora_model_trash' ><img src='" +
-            baseUrl +
-            "/img/icons/trash.png' ></button>";
-        pageHTML +=
-            "<input type='number'  min='-2' max='2' value='0.8' step='0.1' class='form-control dark-grey border-radius-7 lora_dynamic_input'>";
-        pageHTML += "</div>";
-        pageHTML += "</div>";
+    var pageHTML =
+        "<div class='d-flex lora_popup_content'  data-added-model=" +
+        selectedLoraModel +
+        ">";
+    pageHTML += "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 lora_images'>";
+    pageHTML += "<img src='" + selectedLoraModelImage + "' class='img-fluid'>";
+    pageHTML += "</div>";
+    pageHTML +=
+        "<div class='col-lg-10 col-md-10 col-sm-10 col-xs-10 lora_content'>";
+    pageHTML += "<div class='spaceBetween'>";
+    pageHTML += "<label for=''>" + selectedLoraModel + "</label>";
+    pageHTML += "<div class='inner'>";
+    pageHTML +=
+        " <button class='btn btn-success text-light-grey-bg border-radius-7  btn_lora_model_trash' ><img src='" +
+        baseUrl +
+        "/img/icons/trash.png' ></button>";
+    pageHTML +=
+        "<input type='number'  min='-2' max='2' value='0.8' step='0.1' class='form-control dark-grey border-radius-7 lora_dynamic_input'>";
+    pageHTML += "</div>";
+    pageHTML += "</div>";
 
-        pageHTML += "<div>";
-        pageHTML +=
-            "<input type='range'  min='-2' max='2' value='0.8' step='0.1' class='slider lora_dynamic_range' >";
-        pageHTML += "</div>";
-        pageHTML += "</div>";
-        pageHTML += "</div>";
+    pageHTML += "<div>";
+    pageHTML +=
+        "<input type='range'  min='-2' max='2' value='0.8' step='0.1' class='slider lora_dynamic_range' >";
+    pageHTML += "</div>";
+    pageHTML += "</div>";
+    pageHTML += "</div>";
 
-        $(".lora_appenddiv").append(pageHTML);
+    $(".lora_appenddiv").append(pageHTML);
     // });
-} 
+}
 
 $(document).on("input", ".lora_dynamic_input", function () {
     $(this)
@@ -682,7 +649,6 @@ $(document).on("input", ".lora_dynamic_range", function () {
 // EMBEDDING WORK STARTS HERE
 
 $(document).on("click", ".bodyInnerEmbedding", function () {
-
     if ($(this).hasClass("selectedEmbeddingModel")) {
         $(this).removeClass("selectedEmbeddingModel");
     } else {
@@ -703,28 +669,26 @@ $(document).on("click", ".bodyInnerEmbedding", function () {
     generateEmbeddingDynamicContent(embeddingModelArray);
 });
 
-$(document).on('change','.embedding_dynamic_input',  function() {
-    
-    var index = $('.embedding_dynamic_input').index(this);
-    console.log('Clicked element index:', index);
+$(document).on("change", ".embedding_dynamic_input", function () {
+    var index = $(".embedding_dynamic_input").index(this);
+    console.log("Clicked element index:", index);
     var embedding_dynamic_new_value = $(this).val();
     embeddingModelStrength[index] = embedding_dynamic_new_value;
-    console.log("embeddingModelArray", embeddingModelArray);
-    console.log("embeddingModelStrength", embeddingModelStrength);
-  });
-
-$(document).on('change','.embedding_dynamic_range',  function() {
-    
-    var index = $('.embedding_dynamic_range').index(this);
-    console.log('Clicked element index:', index);
-    var embedding_dynamic_new_value = $(this).val();
-    embeddingModelStrength[index] = embedding_dynamic_new_value;
-   
     console.log("embeddingModelArray", embeddingModelArray);
     console.log("embeddingModelStrength", embeddingModelStrength);
 });
 
-function generateEmbeddingDynamicContent(embeddingModelArray){
+$(document).on("change", ".embedding_dynamic_range", function () {
+    var index = $(".embedding_dynamic_range").index(this);
+    console.log("Clicked element index:", index);
+    var embedding_dynamic_new_value = $(this).val();
+    embeddingModelStrength[index] = embedding_dynamic_new_value;
+
+    console.log("embeddingModelArray", embeddingModelArray);
+    console.log("embeddingModelStrength", embeddingModelStrength);
+});
+
+function generateEmbeddingDynamicContent(embeddingModelArray) {
     $(".embedding_popup_content").remove();
     embeddingModelArray.forEach((element) => {
         var pageHTML =
@@ -765,7 +729,7 @@ function generateEmbeddingDynamicContent(embeddingModelArray){
 }
 
 $(document).on("input", ".embedding_dynamic_input", function () {
-        $(this)
+    $(this)
         .closest(".embedding_content")
         .find(".embedding_dynamic_range")
         .val($(this).val());
@@ -786,7 +750,7 @@ var refLoraStrengthIndex;
 $(document).on("click", ".btn_lora_model_trash", function () {
     $("#delete_popup_lora").modal("show");
     reflora = $(this).closest(".lora_popup_content");
-    refLoraStrengthIndex = $('.btn_lora_model_trash').index(this);
+    refLoraStrengthIndex = $(".btn_lora_model_trash").index(this);
 });
 
 $(document).on("click", ".yeslora", function () {
@@ -808,7 +772,7 @@ var refEmbeddingStrengthIndex;
 $(document).on("click", ".btn_embedding_model_trash", function () {
     $("#delete_popup_embedding").modal("show");
     refEmbedding = $(this).closest(".embedding_popup_content");
-    refEmbeddingStrengthIndex = $('.btn_embedding_model_trash').index(this);
+    refEmbeddingStrengthIndex = $(".btn_embedding_model_trash").index(this);
 });
 
 $(document).on("click", ".yesembedding", function () {
@@ -1026,10 +990,10 @@ $("#uploadVaeModelBtn").on("click", function () {
             webhook: $("#vae_webhook").val(),
             vae_id: $("#vae_id").val(),
             vae_url: $("#vae_url").val(),
-            vae_type: $("#vae_type").val()
+            vae_type: $("#vae_type").val(),
         },
         success: function (response) {
-            console.log('response', response);
+            console.log("response", response);
 
             $("#uploadVaeModelBtn").removeAttr("disabled");
             $("#uploadVaeModelBtn").text("");
