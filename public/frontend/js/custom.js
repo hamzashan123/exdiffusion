@@ -568,7 +568,7 @@ $(document).on("click", ".bodyInnerLora", function () {
         $("div[data-added-model='" + selectedLoraModel + "']").remove();
     }
 
-    // console.log("selectedLoraModel", loraModelArray);
+    
     // console.log("selectedLoraModelStrength", loraModelStrength);
 });
 
@@ -580,7 +580,7 @@ $(document).on("change", ".lora_dynamic_input", function () {
     var lora_dynamic_new_value = $(this).val();
     loraModelStrength[index] = lora_dynamic_new_value;
 
-    console.log("loraModelArray", loraModelArray);
+    
     console.log("loraModelStrength", loraModelStrength);
 });
 
@@ -592,13 +592,13 @@ $(document).on("change", ".lora_dynamic_range", function () {
     var lora_dynamic_new_value = $(this).val();
     loraModelStrength[index] = lora_dynamic_new_value;
 
-    console.log("loraModelArray", loraModelArray);
+    
     console.log("loraModelStrength", loraModelStrength);
 });
 
 function generateLoraDynamicContent(selectedLoraModel, selectedLoraModelImage) {
     // $(".lora_popup_content").remove();
-    // loraModelArray.forEach((element) => {
+    
     var pageHTML =
         "<div class='d-flex lora_popup_content'  data-added-model=" +
         selectedLoraModel +
