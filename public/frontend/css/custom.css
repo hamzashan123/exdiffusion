@@ -837,12 +837,14 @@ border-radius:10px;
 
 .lora_content {
     margin-top: 10px;
-    padding-left: 15px;
+    padding-left: 15px;   
+    flex-grow: 2;
 }
 
 .embedding_content {
     margin-top: 10px;
     padding-left: 15px;
+    flex-grow: 2;
 }
 
 
