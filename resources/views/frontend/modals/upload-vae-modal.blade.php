@@ -33,6 +33,7 @@
                         <label for="model_type">Vae Type<span class="required">*</span></label>
                         <select name="model_type" id="model_type" class="form-control" >
                                 <option value="diffusers">diffusers</option>
+                                <option value="safetensors">safetensors</option>
                         </select>
                     </div>
                 
