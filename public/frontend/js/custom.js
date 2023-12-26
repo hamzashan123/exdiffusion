@@ -976,6 +976,11 @@ $("#uploadVaeModelBtn").on("click", function () {
         $("#uploadvaeErros").text("Vae Model id not defined");
         return;
     }
+    else if ($("#vae_model_type").val() == "" || $("#vae_model_type").val() == null) {
+        $("#uploadvaeErros").text("");
+        $("#uploadvaeErros").text("Vae Model Type not defined");
+        return;
+    }
 
     $(this).attr("disabled", "disabled");
     $(this).text("");
