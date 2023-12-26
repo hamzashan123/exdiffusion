@@ -1036,8 +1036,8 @@ $("#uploadVaeModelBtn").on("click", function () {
                     $("#uploadvaeErros").text("");
                 }, 1000);
             } else if (
-                response.status == "success" &&
-                response.message == "model already exists"
+                response.status == "error" &&
+                response.message == "vae already loaded"
             ) {
                 $("#uploadvaeErros").text("");
                 $("#uploadvaeErros").text(response.message);
