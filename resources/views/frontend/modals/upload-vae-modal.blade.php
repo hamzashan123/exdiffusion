@@ -32,7 +32,7 @@
                      <div class="form-group">
                         <label for="model_type">Vae Type<span class="required">*</span></label>
                         <select name="model_type" id="model_type" class="form-control" required>
-                                <option value="" disabled>select type</option>
+                                <option value="" disabled selected>select type</option>
                                 <option value="diffusers">diffusers</option>
                                 <option value="safetensors">safetensors</option>
                         </select>
