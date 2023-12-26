@@ -997,7 +997,7 @@ $("#uploadVaeModelBtn").on("click", function () {
             webhook: $("#vae_webhook").val(),
             vae_id: $("#vae_id").val(),
             vae_url: $("#vae_url").val(),
-            vae_type: $("#vae_type").val(),
+            vae_type: $("#vae_model_type").val(),
         },
         success: function (response) {
             console.log("response", response);
