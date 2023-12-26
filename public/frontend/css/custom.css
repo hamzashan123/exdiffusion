@@ -1640,6 +1640,14 @@ div#load_more button {
 
 @media only screen and (max-width:991px )  {
 
+    .models_section .input-group input {
+        width: 100%;
+        margin: 10px 0px;
+    }
+    div#generateImageDiv {
+        margin-top: 20px;
+    }
+
     .indexSection {
         padding: 50px;
     }
