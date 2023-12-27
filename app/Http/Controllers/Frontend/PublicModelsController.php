@@ -110,9 +110,9 @@ class PublicModelsController extends Controller
           
           // bad ma delete krdenge 
           if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
-            $modelData->where('is_nsfw_image','!=','true');
+            $modelData->where('is_nsfw_image','!=','false');
           }
-          
+
           if(count($modelData) > 0){
             if($modelData[0]->embeddingModelArray == $value['model_id']){
               // dd($value['model_id']);
