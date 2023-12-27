@@ -58,23 +58,30 @@
         var lastId;
         var recordsCount = 0;
 
-        $(document).on("click","#load_more_publishcreation", function () {
+        $(document).on("click", "#load_more_publishcreation", function() {
             lastId = $(this).data('lastid');
-            var selectedModelType = $(this).data('loadmore-modeltype'); 
-            if(selectedModelType == 'undefined'){
+            var selectedModelType = $(this).data('loadmore-modeltype');
+            if (selectedModelType == 'undefined') {
                 selectedModelType = "Images"
             }
             getPublishCreations(selectedModelType);
-            setTimeout(function(){
-                $('html, body').animate({scrollTop: $("footer").offset().top},2000);
-            },3000);
+            setTimeout(function() {
+                $('html, body').animate({
+                    scrollTop: $("footer").offset().top
+                }, 2000);
+            }, 3000);
+
+            if ($('#publicCreationImagesList .grid:nth-child(1) img').hasClass('is_NSFW_Images')) {
+                console.log('run');
+                $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
+            }
         });
 
         function getPublishCreations(modelType) {
 
-            console.log("modelType",modelType);
+            console.log("modelType", modelType);
             console.log("lastId", lastId);
-            
+
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
             $("#load_more_publishcreation").remove();
@@ -86,7 +93,7 @@
                 },
                 data: {
                     modelType: modelType,
-                    last_id : lastId
+                    last_id: lastId
                 },
                 success: function(response) {
 
@@ -97,7 +104,7 @@
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
-                            recordsCount++ ;
+                            recordsCount++;
 
                             var pageHTML = "<div class='grid'>";
                             var classNameForNSFW_Image = 'is_NSFW_Images';
@@ -127,11 +134,11 @@
                         });
 
                         //dynamic load more button with last_id and different modelType loadmore selected 
-                        if (recordsCount  < response.totalRecords) {
-                                var pageHTML = "<div id='load_more'>";
-                                pageHTML += "<button name='load_more_publishcreation' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_publishcreation'>Load More</button>";
-                                pageHTML += "</div>";
-                                $(".publishCreationMain").append(pageHTML);
+                        if (recordsCount < response.totalRecords) {
+                            var pageHTML = "<div id='load_more'>";
+                            pageHTML += "<button name='load_more_publishcreation' data-loadmore-modeltype='" + modelType + "' data-lastid='" + response.last_id + "' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_publishcreation'>Load More</button>";
+                            pageHTML += "</div>";
+                            $(".publishCreationMain").append(pageHTML);
                         }
 
                         $("#loader").hide();
@@ -193,12 +200,12 @@
                                 var pageHTML =
                                     "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                 pageHTML += "<div class='bodyInner'>";
-                                if(element.image_url != undefined || element.image_url != null){
-                                    pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
-                                }else{
-                                    pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                if (element.image_url != undefined || element.image_url != null) {
+                                    pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                                } else {
+                                    pageHTML += "<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
                                 }
-                               
+
                                 pageHTML += " <span> " + element.model_id + "</span>";
                                 pageHTML += " </div>";
                                 pageHTML += "</div>";
@@ -212,10 +219,10 @@
                                     var pageHTML =
                                         "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                     pageHTML += "<div class='bodyInner'>";
-                                    if(element.image_url != undefined || element.image_url != null){
-                                        pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
-                                    }else{
-                                        pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                    if (element.image_url != undefined || element.image_url != null) {
+                                        pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                                    } else {
+                                        pageHTML += "<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
                                     }
                                     pageHTML += " <span> " + element.model_id + "</span>";
                                     pageHTML += " </div>";
@@ -239,10 +246,10 @@
                                     var pageHTML =
                                         "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                     pageHTML += "<div class='bodyInner'>";
-                                    if(element.image_url != undefined || element.image_url != null){
-                                        pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
-                                    }else{
-                                        pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                    if (element.image_url != undefined || element.image_url != null) {
+                                        pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                                    } else {
+                                        pageHTML += "<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
                                     }
                                     pageHTML += " <span> " + element.model_id + "</span>";
                                     pageHTML += " </div>";
@@ -296,7 +303,7 @@
 
         });
 
-        
+
 
         $(document).on('click', '#publishcreation_images_filter', function() {
             $("#loader").show();
