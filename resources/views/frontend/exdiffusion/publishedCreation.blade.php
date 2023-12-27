@@ -58,23 +58,29 @@
         var lastId;
         var recordsCount = 0;
 
-        $(document).on("click","#load_more_publishcreation", function () {
+        $(document).on("click", "#load_more_publishcreation", function() {
             lastId = $(this).data('lastid');
-            var selectedModelType = $(this).data('loadmore-modeltype'); 
-            if(selectedModelType == 'undefined'){
+            var selectedModelType = $(this).data('loadmore-modeltype');
+            if (selectedModelType == 'undefined') {
                 selectedModelType = "Images"
             }
             getPublishCreations(selectedModelType);
-            setTimeout(function(){
-                $('html, body').animate({scrollTop: $("footer").offset().top},2000);
-            },3000);
+            setTimeout(function() {
+                $('html, body').animate({
+                    scrollTop: $("footer").offset().top
+                }, 2000);
+            }, 3000);
+
+
+
+
         });
 
         function getPublishCreations(modelType) {
 
-            console.log("modelType",modelType);
+            console.log("modelType", modelType);
             console.log("lastId", lastId);
-            
+
             $('#publicCreationModelList').hide();
             $('#publicCreationImagesList').show();
             $("#load_more_publishcreation").remove();
@@ -86,7 +92,7 @@
                 },
                 data: {
                     modelType: modelType,
-                    last_id : lastId
+                    last_id: lastId
                 },
                 success: function(response) {
 
@@ -97,14 +103,19 @@
 
                     if (response.data.length > 0) {
                         response.data.forEach((element) => {
-                            recordsCount++ ;
+                            recordsCount++;
 
                             var pageHTML = "<div class='grid'>";
                             var classNameForNSFW_Image = 'is_NSFW_Images';
                             if (element.is_super_resolution == 'true') {
                                 pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
                             } else if (element.is_nsfw_image == 'true') {
-                                pageHTML += "<img src='" + element.image_url + "' class='" + classNameForNSFW_Image + "'>";
+                                if ($('.blurBtn').hasClass('blurOFF')) {
+                                    pageHTML += "<img src='" + element.image_url + "'>";
+                                } else {
+                                    pageHTML += "<img src='" + element.image_url + "' class='" + classNameForNSFW_Image + "'>";
+                                }
+
                             } else {
                                 pageHTML += "<img src='" + element.image_url + "'>";
                             }
@@ -127,11 +138,11 @@
                         });
 
                         //dynamic load more button with last_id and different modelType loadmore selected 
-                        if (recordsCount  < response.totalRecords) {
-                                var pageHTML = "<div id='load_more'>";
-                                pageHTML += "<button name='load_more_publishcreation' data-loadmore-modeltype='"+modelType+"' data-lastid='"+response.last_id+"' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_publishcreation'>Load More</button>";
-                                pageHTML += "</div>";
-                                $(".publishCreationMain").append(pageHTML);
+                        if (recordsCount < response.totalRecords) {
+                            var pageHTML = "<div id='load_more'>";
+                            pageHTML += "<button name='load_more_publishcreation' data-loadmore-modeltype='" + modelType + "' data-lastid='" + response.last_id + "' class='btn purple-col-bg text-white border-radius-7 '  id='load_more_publishcreation'>Load More</button>";
+                            pageHTML += "</div>";
+                            $(".publishCreationMain").append(pageHTML);
                         }
 
                         $("#loader").hide();
@@ -146,18 +157,7 @@
                         $("#loader").hide();
                     }
 
-                    // work for blurring...
-                    if (modelType == "NSFW" || modelType == "Favourite") {
-                        $('#blurringContainer').remove();
-                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
-                        pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
-                        pageHTML += "</div>";
-                        $("#publicCreationImagesList").prepend(pageHTML);
-                    } else {
-                        $('#blurringContainer').remove();
-                        $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
 
-                    }
 
                 },
                 error: function() {
@@ -193,12 +193,12 @@
                                 var pageHTML =
                                     "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                 pageHTML += "<div class='bodyInner'>";
-                                if(element.image_url != undefined || element.image_url != null){
-                                    pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
-                                }else{
-                                    pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                if (element.image_url != undefined || element.image_url != null) {
+                                    pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                                } else {
+                                    pageHTML += "<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
                                 }
-                               
+
                                 pageHTML += " <span> " + element.model_id + "</span>";
                                 pageHTML += " </div>";
                                 pageHTML += "</div>";
@@ -212,10 +212,10 @@
                                     var pageHTML =
                                         "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                     pageHTML += "<div class='bodyInner'>";
-                                    if(element.image_url != undefined || element.image_url != null){
-                                        pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
-                                    }else{
-                                        pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                    if (element.image_url != undefined || element.image_url != null) {
+                                        pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                                    } else {
+                                        pageHTML += "<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
                                     }
                                     pageHTML += " <span> " + element.model_id + "</span>";
                                     pageHTML += " </div>";
@@ -239,10 +239,10 @@
                                     var pageHTML =
                                         "<div class='col-lg-2 col-md-4 col-sm-6 col-xs-12'>";
                                     pageHTML += "<div class='bodyInner'>";
-                                    if(element.image_url != undefined || element.image_url != null){
-                                        pageHTML +="<img src='" +element.image_url +"' alt='No image' class='img-fluid mb-3'>";
-                                    }else{
-                                        pageHTML +="<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
+                                    if (element.image_url != undefined || element.image_url != null) {
+                                        pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                                    } else {
+                                        pageHTML += "<img src='https://exdiffusion.com/newproject/public/img/icons/placeholder.png' alt='No image' class='img-fluid mb-3'>";
                                     }
                                     pageHTML += " <span> " + element.model_id + "</span>";
                                     pageHTML += " </div>";
@@ -296,10 +296,13 @@
 
         });
 
-        
+
 
         $(document).on('click', '#publishcreation_images_filter', function() {
+
+
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -328,6 +331,7 @@
 
         $(document).on('click', '#publishcreation_basemodel_filter', function() {
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -338,6 +342,7 @@
 
         $(document).on('click', '#publishcreation_lora_filter', function() {
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -348,6 +353,7 @@
 
         $(document).on('click', '#publishcreation_embedding_filter', function() {
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -464,21 +470,37 @@
 
         });
 
-        $(document).on('click', '.showNSFW', function() {
-            var isBlurred = $('.is_NSFW_Images').css('filter') === 'blur(10px)';
 
-            if (isBlurred) {
-                $('.is_NSFW_Images').css('filter', 'unset');
-                $('.updateBlueText').text('OFF');
-                $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-open.png');
+        $(document).on('click', '#publishcreation_is_nsfw', function() {
+
+            // work for blurring...
+            $('#blurringContainer').remove();
+
+            var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
+            pageHTML += "<a class='blurBtn'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
+            pageHTML += "</div>";
+            $("#publicCreationImagesList").prepend(pageHTML);
+
+        })
+
+        $(document).on('click', '.blurBtn', function() {
+
+            if ($(this).hasClass('blurOFF')) {
+                $(this).removeClass('blurOFF');
+                $('.updateBlueText').text('ON');
+                $('.blurBtn img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-cut.png');
+                $('.masonry .grid img').addClass('is_NSFW_Images');
 
             } else {
-                $('.is_NSFW_Images').css('filter', 'blur(10px)');
-                $('.updateBlueText').text('ON');
-                $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-cut.png');
-
+                $(this).addClass('blurOFF');
+                $('.updateBlueText').text('OFF');
+                $('.blurBtn img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-open.png');
+                $('.masonry .grid img').removeClass('is_NSFW_Images');
             }
 
         });
+
+
+
     });
 </script>
