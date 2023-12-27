@@ -1619,6 +1619,33 @@ div#load_more button {
     padding: 9px 30px;
 }
 
+.myowndropdown ul.dropdown-menu {
+    background: #1f2937;
+    padding-top: 0;
+    border-radius: 7px !important;
+    border: 2px solid #374151;
+    padding-bottom: 0px;
+}
+
+.myowndropdown ul.dropdown-menu form button {
+    background-color: #a157dc;
+    width: 100%;
+    border: 2px solid #374151 !important;
+    font-size: 14px;
+    padding: 9px 11px !important;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 7px;
+}
+
+.myowndropdown ul.dropdown-menu form {
+    margin-bottom: 0px;
+}
+
+.myowndropdown a.nav-link:focus, .myowndropdown a.nav-link {
+    color: white !important;
+}
 
 /* end here */
 
