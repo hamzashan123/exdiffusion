@@ -61,7 +61,7 @@ class PublicModelsController extends Controller
 
           // bad ma delete krdenge 
           if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
-              $modelData->where('is_nsfw_image','!=','true');
+              $modelData->where('is_nsfw_image','=','false');
           }
 
           if(count($modelData) > 0){
@@ -87,7 +87,7 @@ class PublicModelsController extends Controller
           
           // bad ma delete krdenge 
           if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
-            $modelData->where('is_nsfw_image','!=','true');
+            $modelData->where('is_nsfw_image','=','false');
           }
 
           if(count($modelData) > 0){
@@ -110,7 +110,7 @@ class PublicModelsController extends Controller
           
           // bad ma delete krdenge 
           if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
-            $modelData->where('is_nsfw_image','!=','false');
+            $modelData->where('is_nsfw_image','=','false');
           }
 
           if(count($modelData) > 0){
