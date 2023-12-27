@@ -72,6 +72,12 @@
             }, 3000);
 
 
+            if ($('.updateBlueText').text('OFF')) {
+                setTimeout(function() {
+                    jQuery('.is_NSFW_Images').css('filter', 'unset');
+                }, 3000);
+            }
+
         });
 
         function getPublishCreations(modelType) {
