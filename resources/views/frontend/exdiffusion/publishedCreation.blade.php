@@ -72,11 +72,7 @@
             }, 3000);
 
 
-            if ($('.updateBlueText').text('OFF')) {
-                setTimeout(function() {
-                    jQuery('.is_NSFW_Images').css('filter', 'unset');
-                }, 3000);
-            }
+
 
         });
 
@@ -114,7 +110,12 @@
                             if (element.is_super_resolution == 'true') {
                                 pageHTML += "<img src='" + element.image_url_super_resolution + "'>";
                             } else if (element.is_nsfw_image == 'true') {
-                                pageHTML += "<img src='" + element.image_url + "' class='" + classNameForNSFW_Image + "'>";
+                                if ($('.blurBtn').hasClass('blurOFF')) {
+                                    pageHTML += "<img src='" + element.image_url + "'>";
+                                } else {
+                                    pageHTML += "<img src='" + element.image_url + "' class='" + classNameForNSFW_Image + "'>";
+                                }
+
                             } else {
                                 pageHTML += "<img src='" + element.image_url + "'>";
                             }
@@ -156,18 +157,7 @@
                         $("#loader").hide();
                     }
 
-                    // work for blurring...
-                    if (modelType == "NSFW" || modelType == "Favourite") {
-                        $('#blurringContainer').remove();
-                        var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
-                        pageHTML += "<a class='showNSFW'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
-                        pageHTML += "</div>";
-                        $("#publicCreationImagesList").prepend(pageHTML);
-                    } else {
-                        $('#blurringContainer').remove();
-                        $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
 
-                    }
 
                 },
                 error: function() {
@@ -309,7 +299,10 @@
 
 
         $(document).on('click', '#publishcreation_images_filter', function() {
+
+
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -338,6 +331,7 @@
 
         $(document).on('click', '#publishcreation_basemodel_filter', function() {
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -348,6 +342,7 @@
 
         $(document).on('click', '#publishcreation_lora_filter', function() {
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -358,6 +353,7 @@
 
         $(document).on('click', '#publishcreation_embedding_filter', function() {
             $("#loader").show();
+            $('#blurringContainer').remove();
             $(".masonry").empty();
             //reset last id after success record
             lastId = null;
@@ -474,21 +470,37 @@
 
         });
 
-        $(document).on('click', '.showNSFW', function() {
-            var isBlurred = $('.is_NSFW_Images').css('filter') === 'blur(10px)';
 
-            if (isBlurred) {
-                $('.is_NSFW_Images').css('filter', 'unset');
-                $('.updateBlueText').text('OFF');
-                $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-open.png');
+        $(document).on('click', '#publishcreation_is_nsfw', function() {
+
+            // work for blurring...
+            $('#blurringContainer').remove();
+
+            var pageHTML = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' id='blurringContainer'>";
+            pageHTML += "<a class='blurBtn'> <img src='https://exdiffusion.com/newproject/public/img/icons/eye-cut.png'/> </a> <span class='blurringText'>  blurring is <span class='updateBlueText'> on </span> </span>";
+            pageHTML += "</div>";
+            $("#publicCreationImagesList").prepend(pageHTML);
+
+        })
+
+        $(document).on('click', '.blurBtn', function() {
+
+            if ($(this).hasClass('blurOFF')) {
+                $(this).removeClass('blurOFF');
+                $('.updateBlueText').text('ON');
+                $('.blurBtn img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-cut.png');
+                $('.masonry .grid img').addClass('is_NSFW_Images');
 
             } else {
-                $('.is_NSFW_Images').css('filter', 'blur(10px)');
-                $('.updateBlueText').text('ON');
-                $('.showNSFW img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-cut.png');
-
+                $(this).addClass('blurOFF');
+                $('.updateBlueText').text('OFF');
+                $('.blurBtn img').attr('src', 'https://exdiffusion.com/newproject/public/img/icons/eye-open.png');
+                $('.masonry .grid img').removeClass('is_NSFW_Images');
             }
 
         });
+
+
+
     });
 </script>

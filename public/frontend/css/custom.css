@@ -1578,7 +1578,7 @@ div#swal2-html-container {
     filter: blur(10px);
 }
 
-a.showNSFW img {
+a.blurBtn img {
     height: 50px;
     background: #444f5e;
     padding: 5px 10px;
@@ -1586,7 +1586,7 @@ a.showNSFW img {
     border-radius: 7px;
     border: 1px solid #a157dc;
 }
-a.showNSFW {
+a.blurBtn {
     cursor: pointer;
     text-decoration: none;
 }
