@@ -71,12 +71,12 @@
                 }, 2000);
             }, 3000);
 
-            // if ($('#publicCreationImagesList .grid:nth-child(1) img').hasClass('is_NSFW_Images')) {
-            //     console.log('inside');
-            //     setTimeout(function() {
-            //         $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
-            //     }, 1000);
-            // }
+            if ($('#publicCreationImagesList .grid img').hasClass('is_NSFW_Images')) {
+                console.log('inside');
+                setTimeout(function() {
+                    $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
+                }, 1000);
+            }
         });
 
         function getPublishCreations(modelType) {
