@@ -72,8 +72,11 @@
             }, 3000);
 
             if ($('#publicCreationImagesList .grid:nth-child(1) img').hasClass('is_NSFW_Images')) {
-                console.log('run');
-                $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
+
+                setTimeout(function() {
+                    console.log('run');
+                    $('#publicCreationImagesList .grid img').removeClass('is_NSFW_Images');
+                }, 1000);
             }
         });
 
