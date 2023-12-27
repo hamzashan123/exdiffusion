@@ -46,7 +46,7 @@ class PublicModelsController extends Controller
     } else {
 
       // Decoding JSON data
-
+      $user = Auth::user();
       $decodedData = json_decode($response, true);
 
       
@@ -58,6 +58,11 @@ class PublicModelsController extends Controller
         foreach($decodedData['models'] as $key => $value){
 
           $modelData = DB::table('creativehistory')->where('selectedBaseModelText', $value['model_id'])->inRandomOrder()->take(1)->get();
+
+          // bad ma delete krdenge 
+          if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
+              $modelData->where('is_nsfw_image','!=','true');
+          }
 
           if(count($modelData) > 0){
             if($modelData[0]->selectedBaseModelText == $value['model_id']){
@@ -79,7 +84,12 @@ class PublicModelsController extends Controller
         foreach($decodedData['lora_models'] as $key => $value){
 
           $modelData = DB::table('creativehistory')->where('loraModelArray', $value['model_id'])->inRandomOrder()->take(1)->get();
-          //dd($modelData);
+          
+          // bad ma delete krdenge 
+          if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
+            $modelData->where('is_nsfw_image','!=','true');
+          }
+
           if(count($modelData) > 0){
             if($modelData[0]->loraModelArray == $value['model_id']){
               // dd($value['model_id']);
@@ -97,7 +107,12 @@ class PublicModelsController extends Controller
         foreach($decodedData['embeddings_models'] as $key => $value){
 
           $modelData = DB::table('creativehistory')->where('embeddingModelArray', $value['model_id'])->inRandomOrder()->take(1)->get();
-          //dd($modelData);
+          
+          // bad ma delete krdenge 
+          if(isset($user) && $user->email == 'faizythebest95@gmail.com'){
+            $modelData->where('is_nsfw_image','!=','true');
+          }
+          
           if(count($modelData) > 0){
             if($modelData[0]->embeddingModelArray == $value['model_id']){
               // dd($value['model_id']);
@@ -109,7 +124,7 @@ class PublicModelsController extends Controller
         }
       }
 
-
+      
       echo json_encode($decodedData);
     }
 
