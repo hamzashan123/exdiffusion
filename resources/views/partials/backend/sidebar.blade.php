@@ -49,7 +49,7 @@
                 </a>
                 <div id="collapseImages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                              Published Images
                             </a>
                        
@@ -65,19 +65,19 @@
                 </a>
                 <div id="collapseModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                    <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Base Models
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Lora
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Embeddings
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Controlnet
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             SDXL
                             </a>
                        
@@ -94,19 +94,19 @@
                 </a>
                 <div id="collapsePublicModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Base Models
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Lora
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Embeddings
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Controlnet
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             SDXL
                             </a>
                        
@@ -122,13 +122,13 @@
                 </a>
                 <div id="collapseEmail" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Send
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Recieve
                             </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
                             Template
                             </a>
                        

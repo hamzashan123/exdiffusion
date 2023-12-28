@@ -25,6 +25,8 @@ Route::group(['middleware' => ['roles']], function () {
     Route::resource('users', UserController::class);
     Route::post('/save-user', [UserController::class, 'saveUser'])->name('users.saveUser');
     
+    Route::get('/published-images', [BackendController::class, 'showPublishedImages'])->name('images.published');
+    
     Route::resource('settings', SettingController::class)->only('index', 'update');
     Route::resource('links', LinkController::class)->except('show');
 
