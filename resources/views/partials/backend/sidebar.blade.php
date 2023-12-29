@@ -47,13 +47,13 @@
         </a>
         <div id="collapseImages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.unreviewed') }}">
                     Published Images ( Unreviewed )
                 </a>
 
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Published Images ( Reviewed )
                 </a>
 
@@ -68,19 +68,19 @@
         </a>
         <div id="collapseModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Base Models
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Lora
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Embeddings
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Controlnet
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     SDXL
                 </a>
 
@@ -96,19 +96,19 @@
         </a>
         <div id="collapsePublicModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Base Models
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Lora
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Embeddings
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Controlnet
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     SDXL
                 </a>
 
@@ -123,13 +123,13 @@
         </a>
         <div id="collapseEmail" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                 <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Send
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Recieve
                 </a>
-                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
                     Template
                 </a>
 
