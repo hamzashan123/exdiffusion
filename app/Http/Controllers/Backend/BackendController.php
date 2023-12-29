@@ -12,7 +12,11 @@ class BackendController extends Controller
         return view('backend.index');
     }
 
-    public function showPublishedImages(){
-        return view('Backend.publishedcreation.index');
+    public function showPublishedReviewedImages(){
+        return view('Backend.publishedcreation.reviewed');
+    }
+
+    public function showPublishedUnReviewedImages(){
+        return view('Backend.publishedcreation.unreviewed');
     }
 }
