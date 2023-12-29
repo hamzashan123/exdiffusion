@@ -94,7 +94,29 @@ div#invitationTable_wrapper div#invitationTable_filter label {
     white-space: normal !important;
 }
 
+
+@media only screen and (max-width:767px) {
+    .adminPublishMain {
+        flex-direction: row;
+    }
+    
+    .adminPublishMain .col-8, .adminPublishMain .col-4 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+    
+    .adminPublishMain .col-4 {
+        margin-top: 10px;
+    }
+    
+    .adminPublishMain .col-8 h5 {
+        text-align: center;
+    }
+    
+}
 @media only screen and (max-width:768px) {
+
+
 
     .card-header.py-3.d-flex.space-between {
         display: block !important;
@@ -116,5 +138,16 @@ div#invitationTable_wrapper div#invitationTable_filter label {
 
     .card-header.py-3.d-flex.space-between h6 {
         margin-bottom: 20px !important;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .sidebar {
+        position: fixed;
+    }
+    
+    .mainRightContainer {
+        margin-left: 14rem !important;
+        min-height: 100vh;
     }
 }
