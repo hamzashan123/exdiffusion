@@ -88,6 +88,12 @@ div#invitationTable_wrapper div#invitationTable_filter label {
    top:2px;
 }
 
+
+
+.sidebar .nav-item  a.collapse-item {
+    white-space: normal !important;
+}
+
 @media only screen and (max-width:768px) {
 
     .card-header.py-3.d-flex.space-between {

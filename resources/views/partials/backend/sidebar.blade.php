@@ -2,7 +2,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon rotate-n-15"></div>
-        <div class="sidebar-brand-text mx-3"> <img src="{{asset('img/logo.png')}}" class="adminLogo">  </div>
+        <div class="sidebar-brand-text mx-3"> <img src="{{asset('img/logo.png')}}" class="adminLogo"> </div>
     </a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -19,141 +19,141 @@
         Interface
     </div>
     <!-- Nav Item - Pages Collapse Menu -->
-    
-       
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
-                   aria-expanded="true" aria-controls="collapseUser">
-                    <i class="fas fa-users"></i>
-                    <span> Users</span>
-                </a>
-                <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                       
-                            <a class="collapse-item" href="{{ route('admin.invitation.index') }}">
-                                Invitation Request
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.users.index') }}">
-                             Registered Users
-                            </a>
-                       
-                    </div>
-                </div>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImages"
-                   aria-expanded="true" aria-controls="collapseImages">
-                    <i class="fas fa-image"></i>
-                    <span> Images</span>
-                </a>
-                <div id="collapseImages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                             Published Images
-                            </a>
-                       
-                    </div>
-                </div>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModel"
-                   aria-expanded="true" aria-controls="collapseModel">
-                    <i class="fas fa-image"></i>
-                    <span> Models</span>
-                </a>
-                <div id="collapseModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Base Models
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Lora
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Embeddings
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Controlnet
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            SDXL
-                            </a>
-                       
-                    </div>
-                </div>
-            </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+            <i class="fas fa-users"></i>
+            <span> Users</span>
+        </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
 
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePublicModel"
-                   aria-expanded="true" aria-controls="collapsePublicModel">
-                    <i class="fas fa-image"></i>
-                    <span> Public Models</span>
+                <a class="collapse-item" href="{{ route('admin.invitation.index') }}">
+                    Invitation Request
                 </a>
-                <div id="collapsePublicModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Base Models
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Lora
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Embeddings
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Controlnet
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            SDXL
-                            </a>
-                       
-                    </div>
-                </div>
-            </li>
+                <a class="collapse-item" href="{{ route('admin.users.index') }}">
+                    Registered Users
+                </a>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmail"
-                   aria-expanded="true" aria-controls="collapseEmail">
-                    <i class="fas fa-envelope"></i>
-                    <span> Email Form</span>
-                </a>
-                <div id="collapseEmail" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Send
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Recieve
-                            </a>
-                            <a class="collapse-item" href="{{ route('admin.images.published') }}">
-                            Template
-                            </a>
-                       
-                    </div>
-                </div>
-            </li>
+            </div>
+        </div>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile"
-                   aria-expanded="true" aria-controls="collapseProfile">
-                    <i class="fas fa-cog"></i>
-                    <span> Settings</span>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImages" aria-expanded="true" aria-controls="collapseImages">
+            <i class="fas fa-image"></i>
+            <span> Images</span>
+        </a>
+        <div id="collapseImages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Published Images ( Unreviewed )
                 </a>
-                <div id="collapseProfile" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ route('admin.account_setting') }}">
-                            Profile
-                            </a>
-                           
-                       
-                    </div>
-                </div>
-            </li>
-       
-    
+
+            </div>
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Published Images ( Reviewed )
+                </a>
+
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModel" aria-expanded="true" aria-controls="collapseModel">
+            <i class="fas fa-image"></i>
+            <span> Models</span>
+        </a>
+        <div id="collapseModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Base Models
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Lora
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Embeddings
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Controlnet
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    SDXL
+                </a>
+
+            </div>
+        </div>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePublicModel" aria-expanded="true" aria-controls="collapsePublicModel">
+            <i class="fas fa-image"></i>
+            <span> Public Models</span>
+        </a>
+        <div id="collapsePublicModel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Base Models
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Lora
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Embeddings
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Controlnet
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    SDXL
+                </a>
+
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmail" aria-expanded="true" aria-controls="collapseEmail">
+            <i class="fas fa-envelope"></i>
+            <span> Email Form</span>
+        </a>
+        <div id="collapseEmail" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Send
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Recieve
+                </a>
+                <a class="collapse-item" href="{{ route('admin.images.published') }}">
+                    Template
+                </a>
+
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile">
+            <i class="fas fa-cog"></i>
+            <span> Settings</span>
+        </a>
+        <div id="collapseProfile" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('admin.account_setting') }}">
+                    Profile
+                </a>
+
+
+            </div>
+        </div>
+    </li>
+
+
     <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Heading -->
