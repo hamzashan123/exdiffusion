@@ -118,3 +118,13 @@ div#invitationTable_wrapper div#invitationTable_filter label {
         margin-bottom: 20px !important;
     }
 }
+
+@media only screen and (min-width:768px) {
+    .sidebar {
+        position: fixed;
+    }
+    
+    #wrapper #content-wrapper {
+        margin-left: 14rem !important;
+    }
+}
