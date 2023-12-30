@@ -12,11 +12,13 @@ class BackendController extends Controller
         return view('backend.index');
     }
 
-    public function showPublishedReviewedImages(){
-        return view('Backend.publishedcreation.reviewed');
+    public function showPublishedReviewedImages()
+    {
+        return view('Backend.publishedcreation.rev');
     }
 
-    public function showPublishedUnReviewedImages(){
-        return view('Backend.publishedcreation.unreviewed');
+    public function showPublishedUnReviewedImages()
+    {
+        return view('Backend.publishedcreation.unrev');
     }
 }

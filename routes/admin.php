@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Backend\AdminAuthController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\LinkController;
@@ -24,7 +25,7 @@ Route::group(['middleware' => ['roles']], function () {
     Route::resource('supervisors', SupervisorController::class);
     Route::resource('users', UserController::class);
     Route::post('/save-user', [UserController::class, 'saveUser'])->name('users.saveUser');
-    
+
     Route::get('/published-images-reviewed', [BackendController::class, 'showPublishedReviewedImages'])->name('images.published.reviewed');
     Route::get('/published-images-unreviewed', [BackendController::class, 'showPublishedUnReviewedImages'])->name('images.published.unreviewed');
 
@@ -33,6 +34,4 @@ Route::group(['middleware' => ['roles']], function () {
 
     Route::get('/invitations', [InvitationController::class, 'index'])->name('invitation.index');
     Route::get('/inviteStatus/{id}/{status?}', [InvitationController::class, 'changeStatus'])->name('inviteStatus');
-    
 });
-
