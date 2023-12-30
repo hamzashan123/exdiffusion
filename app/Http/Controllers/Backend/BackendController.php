@@ -14,11 +14,11 @@ class BackendController extends Controller
 
     public function showPublishedReviewedImages()
     {
-        return view('Backend.publishedcreation.rev');
+        return view('backend.publishedcreation.rev');
     }
 
     public function showPublishedUnReviewedImages()
     {
-        return view('Backend.publishedcreation.unrev');
+        return view('backend.publishedcreation.unrev');
     }
 }
