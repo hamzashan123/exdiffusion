@@ -108,7 +108,7 @@
     }
 </style>
 
-<div class="adminPublishMain">
+<div class="adminPublishMain" id="adminPublishMainBody">
     <div class="row">
         <div class="col-8">
             <h5 class="m-0 font-weight-bold text-white">

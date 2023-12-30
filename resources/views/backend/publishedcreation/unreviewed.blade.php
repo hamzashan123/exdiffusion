@@ -128,7 +128,7 @@
 
 </div>
 
-<div class="adminPublishMainBody">
+<div class="adminPublishMainBody" id="adminPublishMainBody">
     <div class="row">
 
 
