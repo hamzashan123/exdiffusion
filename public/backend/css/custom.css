@@ -95,6 +95,102 @@ div#invitationTable_wrapper div#invitationTable_filter label {
 }
 
 
+/* swal css */
+.swal2-popup.swal2-modal.swal2-show {
+    background: #2b323a;
+    padding: 20px !important;
+    border-radius: 10px;
+    border: 2px solid #4a4a4a !important;
+}
+
+h2#swal2-title {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0;
+}
+
+button.swal2-styled {
+    font-weight: 500;
+    background: #374151 !important;
+    border: 1px solid #4a4a4a !important;
+    padding: 5px 26px !important;
+    font-size: 18px !important;
+}
+
+.swal2-icon.swal2-success.swal2-icon-show {
+    margin-top: 0px !important;
+}
+
+.swal2-container {
+    background: rgb(0 0 0 / 70%) !important;
+}
+.swal2-success-circular-line-left , .swal2-success-circular-line-right {
+    background: #2b323a !important;
+}
+
+div#swal2-html-container {
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.swal2-success-fix {
+    background: #2b323a !important;
+}
+/* swal css */
+
+/* loader css */
+
+.loaderbtn {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #a157dc;
+    animation: spin 2s linear infinite;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #a157dc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.declinedImage {
+    position: relative;
+}
+.declinedImage:before {
+    content: 'DECLINED';
+    color: white !important;
+    background: #de3737;
+    padding: 2px 11px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 500;
+    position: absolute;
+}
+
+/* loader css */
 @media only screen and (max-width:767px) {
     .adminPublishMain {
         flex-direction: row;

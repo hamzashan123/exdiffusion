@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\publishImageRequest;
+use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class PublicModelsController extends Controller
@@ -374,7 +377,7 @@ class PublicModelsController extends Controller
     
     $user = Auth::user();
     $totalRecords = 0;
-    $userCreativeHistory = DB::table('creativehistory')->where('is_published', 'true');
+    $userCreativeHistory = DB::table('creativehistory')->where('is_published', 'true')->where('is_reviewed', 'true');
     if ($request->modelType == 'Images') {
 
         $userCreativeHistory = $userCreativeHistory->where('is_nsfw_image', '!=', 'true');
@@ -386,7 +389,7 @@ class PublicModelsController extends Controller
 
     } else if ($request->modelType == 'NSFW') {
 
-      $userCreativeHistory = DB::table('creativehistory')->where('is_nsfw_image', 'true');
+      $userCreativeHistory = DB::table('creativehistory')->where('is_published', 'true')->where('is_reviewed', 'true')->where('is_nsfw_image', 'true');
       $totalRecords = $userCreativeHistory->count();
       if(isset($request->last_id) && $request->last_id != null){
           $userCreativeHistory = $userCreativeHistory->where('id', '>', $request->last_id);
@@ -445,12 +448,31 @@ class PublicModelsController extends Controller
     if ($user) {
       foreach ($request->generatedImageResponse['data'] as $id) {
         $is_published = DB::table('creativehistory')->where('user_id', $user->id)->where('id', $id)->update([
-          'is_published' => "true"
+          'is_published' => "true",
+          'is_reviewed' => 'false'
         ]);
       }
+
+
+      $adminData = [
+        'admin' => true,
+        'firstname' => $user->first_name,
+        'lastname' => $user->lastname,
+        'email' => $user->email,
+        'subject' => 'Exdiffusion Image Approval',
+        'msg' => "". strtoupper($user->first_name)." has requested to Published the Images. Please login to  <a href='" . route('admin.login') . "'>Admin Panel</a> to review images."
+      ];
+
+
+      try {
+          $adminemail = User::role('admin')->first();
+          Mail::to($adminemail)->send(new publishImageRequest($adminData));
+      } catch (\Exception $e) {
+      }
+
       return response()->json([
         'status' => 'success',
-        'message' => 'Published Successfully'
+        'message' => 'Published request has been sent to administrator'
       ]);
     } else {
 
@@ -467,12 +489,29 @@ class PublicModelsController extends Controller
     if ($user) {
 
       $is_published = DB::table('creativehistory')->where('id', $request->creativeId)->update([
-        'is_published' => "true"
+        'is_published' => "true",
+        'is_reviewed' => 'false'
       ]);
 
+      $adminData = [
+        'admin' => true,
+        'firstname' => $user->first_name,
+        'lastname' => $user->lastname,
+        'email' => $user->email,
+        'subject' => 'Exdiffusion Image Approval',
+        'msg' => "". strtoupper($user->first_name)." has requested to Published the Images. Please login to  <a href='" . route('admin.login') . "'>Admin Panel</a> to review images."
+      ];
+
+
+      try {
+          $adminemail = User::role('admin')->first();
+          Mail::to($adminemail)->send(new publishImageRequest($adminData));
+      } catch (\Exception $e) {
+      }
+      
       return response()->json([
         'status' => 'success',
-        'message' => 'Published Successfully'
+        'message' => 'Published request has been sent to administrator.'
       ]);
     } else {
 

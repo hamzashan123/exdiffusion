@@ -26,8 +26,12 @@ Route::group(['middleware' => ['roles']], function () {
     Route::resource('users', UserController::class);
     Route::post('/save-user', [UserController::class, 'saveUser'])->name('users.saveUser');
 
-    Route::get('/published-images-reviewed', [BackendController::class, 'showPublishedReviewedImages'])->name('images.published.reviewed');
-    Route::get('/published-images-unreviewed', [BackendController::class, 'showPublishedUnReviewedImages'])->name('images.published.unreviewed');
+    Route::post('/published-images-reviewed', [BackendController::class, 'showPublishedReviewedImages'])->name('images.published.reviewed');
+    Route::get('/show-reviewed', [BackendController::class, 'showReviewedImages'])->name('images.show.reviewed');
+    Route::get('/show-unreviewed', [BackendController::class, 'showUnReviewedImages'])->name('images.show.unreviewed');
+    Route::post('/published-images-unreviewed', [BackendController::class, 'showPublishedUnReviewedImages'])->name('images.published.unreviewed');
+    Route::post('/published-images-approve', [BackendController::class, 'approveNsfwImage'])->name('image.approve');
+    Route::post('/published-images-decline', [BackendController::class, 'declineNsfwImage'])->name('image.decline');
 
     Route::resource('settings', SettingController::class)->only('index', 'update');
     Route::resource('links', LinkController::class)->except('show');

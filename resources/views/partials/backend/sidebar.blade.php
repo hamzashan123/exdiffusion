@@ -47,13 +47,13 @@
         </a>
         <div id="collapseImages" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published.unreviewed') }}">
+                <a class="collapse-item" href="{{ route('admin.images.show.unreviewed') }}">
                     Published Images ( Unreviewed )
                 </a>
 
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.images.published.reviewed') }}">
+                <a class="collapse-item" href="{{ route('admin.images.show.reviewed') }}">
                     Published Images ( Reviewed )
                 </a>
 

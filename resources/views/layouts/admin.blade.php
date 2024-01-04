@@ -29,6 +29,8 @@
 
 <body id="page-top">
 
+    <div class="loader" id="loader"></div>
+    
     <div id="app">
         <div id="wrapper">
             @include('partials.backend.sidebar')
@@ -67,6 +69,8 @@
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
     <!-- summernote -->
     <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('scripts')
 </body>

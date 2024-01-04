@@ -34,7 +34,9 @@
             <div class="dataOfImage p-3">
 
                 <div class="border-radius-7" style="background: #0b0f19;padding: 10px;width: 100%;">
-                    @if($data->is_published == "true")
+                    @if($data->is_published == "true" && $data->is_reviewed == "false")
+                    <div class="is_under_review"></div>
+                    @elseif($data->is_published == "true" && $data->is_reviewed == "true")
                     <div class="is_published_badge"></div>
                     @endif
                     @if($data->is_nsfw_image == "true")
