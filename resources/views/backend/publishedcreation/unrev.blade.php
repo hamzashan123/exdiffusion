@@ -160,11 +160,11 @@
                     $("#loader").hide();
                     console.log(response);
                     $(".unreviewedImages").empty();
-                    if(response.data.length > 0){
-                        response.data.forEach((element) => {
+                    if (response.data.length > 0) {
+                        response.data.slice().reverse().forEach((element) => {
                             var pageHTML = "<div class='col-lg-2 col-md-6 col-sm-6 col-xs-12'>";
                             pageHTML += "<div class='adminPublishMainBodyInner'>";
-                            if(element.is_reviewed == 'declined'){
+                            if (element.is_reviewed == 'declined') {
                                 pageHTML += "<div class='declinedImage'> </div>";
                             }
                             pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
@@ -180,9 +180,9 @@
                             }
                             pageHTML += "</div>";
                             pageHTML += "<button class='btn btn-primary approveNsfwImage' data-approveimageId='" + element.id + "'> Approve </button>";
-                            if(element.is_reviewed == 'declined'){
-                            pageHTML += "<button disabled class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
-                            }else{
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<button disabled class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            } else {
                                 pageHTML += "<button class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
                             }
                             pageHTML += "</div>";
@@ -190,10 +190,9 @@
                             pageHTML += "</div>";
                             $(".unreviewedImages").append(pageHTML);
                         });
-                    }
-                    else{
-                            var pageHTML = "<p>No records found!</p>";
-                            $(".unreviewedImages").append(pageHTML);
+                    } else {
+                        var pageHTML = "<p>No records found!</p>";
+                        $(".unreviewedImages").append(pageHTML);
                     }
 
                 },
@@ -242,7 +241,7 @@
                             },
                             data: {
                                 id: approveimageId,
-                                is_nsfw : isNsfw
+                                is_nsfw: isNsfw
                             },
                             success: function(response) {
                                 $("#loader").hide();
@@ -289,7 +288,7 @@
             // Check if the checkbox is checked
             var isNsfw = isNsfwCheckbox.prop('checked');
 
-            if (declineimageId  != undefined) {
+            if (declineimageId != undefined) {
                 Swal.fire({
                     title: 'Are you sure you want to decline the image?',
                     showDenyButton: true,
@@ -311,7 +310,7 @@
                             },
                             data: {
                                 id: declineimageId,
-                                is_nsfw : isNsfw
+                                is_nsfw: isNsfw
                             },
                             success: function(response) {
                                 $("#loader").hide();
