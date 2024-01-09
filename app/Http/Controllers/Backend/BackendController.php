@@ -69,8 +69,9 @@ class BackendController extends Controller
                 'firstname' => $userData->first_name,
                 'lastname' => $userData->lastname,
                 'email' => $userData->email,
+                'image_url' => $creativeData->image_url,
                 'subject' => 'Exdiffusion Image Approved',
-                'msg' => "". strtoupper($userData->first_name)." your image has been approved by administrator ."
+                'msg' => "Your image has been approved by administrator. Please find the attached images below."
               ];
         
         
@@ -116,7 +117,7 @@ class BackendController extends Controller
                 'email' => $userData->email,
                 'subject' => 'Exdiffusion Image Declined',
                 'image_url' =>  $creativeData->image_url,
-                'msg' => "". strtoupper($userData->first_name)." your image has been declined by administrator ."
+                'msg' => "Your image has been declined by administrator. Please find the attached images below"
               ];
               try {
                   
