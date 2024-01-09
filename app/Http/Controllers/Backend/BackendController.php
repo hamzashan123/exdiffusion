@@ -115,6 +115,7 @@ class BackendController extends Controller
                 'lastname' => $userData->lastname,
                 'email' => $userData->email,
                 'subject' => 'Exdiffusion Image Declined',
+                'image_url' =>  $creativeData->image_url,
                 'msg' => "". strtoupper($userData->first_name)." your image has been declined by administrator ."
               ];
               try {

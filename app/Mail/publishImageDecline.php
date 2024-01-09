@@ -16,6 +16,7 @@ class publishImageDecline extends Mailable
     protected $firstname;
     protected $lastname;
     protected $email;
+    protected $image_url;
     protected $msg;
 
     /**
@@ -26,6 +27,7 @@ class publishImageDecline extends Mailable
         $this->firstname = $data['firstname'];
         $this->lastname = $data['lastname'];
         $this->email = $data['email'];
+        $this->image_url = $data['image_url'];
         $this->msg = $data['msg'];
     }
 
@@ -49,6 +51,6 @@ class publishImageDecline extends Mailable
                         'lastname' => $this->lastname,
                         'email' => $this->email,
                         'msg' => $this->msg
-                    ]);
+                    ])->attach($this->image_url);
     }
 }
