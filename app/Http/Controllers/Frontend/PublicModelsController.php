@@ -445,12 +445,19 @@ class PublicModelsController extends Controller
   {
 
     $user = Auth::user();
+    $image_links = [];
     if ($user) {
       foreach ($request->generatedImageResponse['data'] as $id) {
         $is_published = DB::table('creativehistory')->where('user_id', $user->id)->where('id', $id)->update([
           'is_published' => "true",
           'is_reviewed' => 'false'
         ]);
+
+        if(!empty($id) && !empty($user->id)){
+          $image = DB::table('creativehistory')->where('user_id', $user->id)->where('id', $id)->first();
+          array_push($image_links,$image->image_url);
+        }
+        
       }
 
 
@@ -460,6 +467,7 @@ class PublicModelsController extends Controller
         'lastname' => $user->lastname,
         'email' => $user->email,
         'subject' => 'Exdiffusion Image Approval',
+        'image_links' => $image_links,
         'msg' => "". strtoupper($user->first_name)." has requested to Published the Images. Please login to  <a href='" . route('admin.login') . "'>Admin Panel</a> to review images."
       ];
 

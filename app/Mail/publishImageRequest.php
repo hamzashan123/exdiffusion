@@ -16,6 +16,7 @@ class publishImageRequest extends Mailable
     protected $firstname;
     protected $lastname;
     protected $email;
+    protected $image_links;
     protected $msg;
 
     /**
@@ -26,6 +27,7 @@ class publishImageRequest extends Mailable
         $this->firstname = $data['firstname'];
         $this->lastname = $data['lastname'];
         $this->email = $data['email'];
+        $this->image_links = $data['image_links'];
         $this->msg = $data['msg'];
     }
 
@@ -44,13 +46,21 @@ class publishImageRequest extends Mailable
 
     public function build()
     {
-        return $this->view('emails.publishImageRequest')
-        ->subject("Exdiffusion Image Approval")
-                    ->with([
-                        'firstname' => $this->firstname,
-                        'lastname' => $this->lastname,
-                        'email' => $this->email,
-                        'msg' => $this->msg
-                    ]);
+        $mail =  $this->view('emails.publishImageRequest')
+                ->subject("Exdiffusion Image Approval")
+                ->with([
+                    'firstname' => $this->firstname,
+                    'lastname' => $this->lastname,
+                    'email' => $this->email,
+                    'msg' => $this->msg
+                ]);
+        if(count($this->image_links) > 0){
+            foreach ($this->image_links as $attachment) {
+                $mail->attach($attachment);
+            }
+        }        
+        
+
+        return  $mail;
     }
 }
