@@ -494,6 +494,7 @@ class PublicModelsController extends Controller
   public function publishSingleImage(Request $request)
   {
     $user = Auth::user();
+    $image_links = [];
     if ($user) {
 
       $is_published = DB::table('creativehistory')->where('id', $request->creativeId)->update([
@@ -501,11 +502,17 @@ class PublicModelsController extends Controller
         'is_reviewed' => 'false'
       ]);
 
+      if(!empty($user->id)){
+        $image = DB::table('creativehistory')->where('id', $request->creativeId)->first();
+        array_push($image_links,$image->image_url);
+      }
+
       $adminData = [
         'admin' => true,
         'firstname' => $user->first_name,
         'lastname' => $user->lastname,
         'email' => $user->email,
+        'image_links' => $image_links,
         'subject' => 'Exdiffusion Image Approval',
         'msg' => "". strtoupper($user->first_name)." has requested to Published the Images. Please login to  <a href='" . route('admin.login') . "'>Admin Panel</a> to review images."
       ];
