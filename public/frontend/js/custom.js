@@ -465,6 +465,10 @@ $(document).on("click", "#make_publishimage", function () {
                                 icon: "success",
                                 timer: 4000, // Auto-close the alert after 4 seconds
                                 showConfirmButton: true,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = baseUrl + "/publish-creation";
+                                }
                             });
                         } else if (response.status == "failure") {
                             Swal.fire({
