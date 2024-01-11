@@ -1,19 +1,19 @@
 ﻿<div class="tab-pane fade text-white" id="superResolution" role="tabpanel" aria-labelledby="superResolution-tab">
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="images_result p-3">
                 <div class="innerImageDivSuperResolutionUpload border-radius-7 ImageDraggableArea uploadBtn" id="draggableArea" style="background: #0b0f19;padding: 10px;width: 100%;">
                     <div class="draggableinputarea">
 
-                   
-                    <input type="file" id="super_resolution_uploaded_image" style="opacity:0">
-                    <label for="super_resolution_uploaded_image" id="fileInputLabel">
-                        <img src="{{asset('img/icons/dragdropicon.png')}}" alt="Select an Image">
-                        <br/>
-                        <span class="fileUploadText"> Click to upload or drag and drop <br/> PNG, JPG </span>
-                    </label>
-                 
+
+                        <input type="file" id="super_resolution_uploaded_image" style="opacity:0">
+                        <label for="super_resolution_uploaded_image" id="fileInputLabel">
+                            <img src="{{asset('img/icons/dragdropicon.png')}}" alt="Select an Image">
+                            <br />
+                            <span class="fileUploadText"> Click to upload or drag and drop <br /> PNG, JPG </span>
+                        </label>
+
                     </div>
 
                 </div>
@@ -26,12 +26,12 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="images_result p-3">
 
                 <div class="innerImageDivSuperResolutionOutput border-radius-7 superscaleoutputimage" style="background: #0b0f19;padding: 10px;width: 100%;">
 
-                <div id="progress-label-superResolution" class="text-center hide_progress">Completed 0%</div>
+                    <div id="progress-label-superResolution" class="text-center hide_progress">Completed 0%</div>
                     <div class="progress hide_progress">
                         <div id="progress-bar-superResolution" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -39,10 +39,12 @@
 
                 </div>
 
-               
+
 
                 <div class="images_publishBtns">
-                    <button id="super_resolution_publishImage" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img"><div class="loaderbtn"></div> Publish the Image</button>
+                    <button id="super_resolution_publishImage" disabled class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"><img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img">
+                        <div class="loaderbtn"></div> Publish the Image
+                    </button>
                     <button id="super_resolution_creativeHistory" disabled class="btn btn-secondary text-light-grey-bg border-radius-7" fdprocessedid="s5h6ym"><img src="https://exdiffusion.com/newproject/public/img/icons/creative.png" class="btn_img"> Creative History</button>
                 </div>
 
@@ -54,7 +56,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="enhancement_section mt-2 dark-grey p-3 border-radius-7">
                 <div class="col-md-12">
 
@@ -107,16 +109,18 @@
 
             </div>
         </div>
-        
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 generateSuperRes">
-                        <button class=" purple-col-bg form-control text-white border-radius-7 relativeBtns" id="generateSuperResolution"><div class="loaderbtn"></div> Generate</button>
-                </div>
-        
+
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 generateSuperRes">
+            <button class=" purple-col-bg form-control text-white border-radius-7 relativeBtns" id="generateSuperResolution">
+                <div class="loaderbtn"></div> Generate
+            </button>
+        </div>
+
     </div>
 </div>
 
 <script>
-    $(document).on('click','#super_resolution_creativeHistory' , function(){
-        window.location.href =  baseUrl+'/my-asset';
+    $(document).on('click', '#super_resolution_creativeHistory', function() {
+        window.location.href = baseUrl + '/my-asset';
     });
 </script>
