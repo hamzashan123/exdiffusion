@@ -537,6 +537,29 @@ class PublicModelsController extends Controller
     }
   }
 
+  public function privateSingleImage(Request $request)
+  {
+    $user = Auth::user();
+    if ($user) {
+
+      $is_published = DB::table('creativehistory')->where('id', $request->creativeId)->update([
+        'is_published' => "false",
+        'is_reviewed' => 'false'
+      ]);
+
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Your image has been set to private.'
+      ]);
+    } else {
+
+      return response()->json([
+        'status' => 'failure',
+        'message' => 'Something went wrong!'
+      ]);
+    }
+  }
+
   public function deleteUserCreativeHistory(Request $request)
   {
     $user = Auth::user();

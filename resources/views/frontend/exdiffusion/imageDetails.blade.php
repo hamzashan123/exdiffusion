@@ -76,6 +76,13 @@
                         <div class="loaderbtn"></div> Publish the Image
                     </button>
                     @endif
+
+                    @if($data->is_published == "true" && $data->is_reviewed == "true")
+                    <button id="btn_privateImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="aq6tyu"> <img src="https://exdiffusion.com/newproject/public/img/icons/publish.png" class="btn_img">
+                        <div class="loaderbtn"></div> Make Image Private
+                    </button>
+                    @endif
+
                     @endif
 
                     <button id="btn_generateImage_imgDetail" class="btn btn-secondary text-light-grey-bg border-radius-7 relativeBtns" fdprocessedid="s5h6ym"> <img src="https://exdiffusion.com/newproject/public/img/icons/generate-img.png" class="btn_img">
@@ -169,6 +176,74 @@
                     },
                     success: function(response) {
                         $("#btn_publishImage_imgDetail").find('.loaderbtn').hide();
+                        console.log(response);
+                        if (response.status == "success") {
+                            Swal.fire({
+                                text: response.message,
+                                icon: "success",
+
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Ok"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.reload();
+                                }
+                            });
+
+                        } else if (response.status == "failure") {
+                            Swal.fire({
+                                title: response.message,
+                                icon: 'error',
+                                timer: 4000, // Auto-close the alert after 4 seconds
+                                showConfirmButton: true
+                            });
+                        }
+                    },
+                    error: function() {
+
+
+                        $("#result").text(
+                            "Error occurred while fetching data from the API."
+                        );
+                    },
+                });
+
+            } else if (result.isDenied) {
+
+                return;
+            }
+        });
+
+
+    });
+
+    // make image private
+    $(document).on('click', '#btn_privateImage_imgDetail', function() {
+        var creativeId = <?php echo $data->id ?>;
+
+        Swal.fire({
+            title: 'Are you sure you want to make your image private?',
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'Cancel',
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                $("#btn_privateImage_imgDetail").find('.loaderbtn').show();
+                $.ajax({
+                    url: "" + baseUrl + "/private-image",
+                    method: "POST",
+                    data: {
+                        creativeId: creativeId
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(response) {
+                        $("#btn_privateImage_imgDetail").find('.loaderbtn').hide();
                         console.log(response);
                         if (response.status == "success") {
                             Swal.fire({

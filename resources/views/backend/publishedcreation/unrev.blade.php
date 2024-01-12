@@ -117,8 +117,8 @@
         </div>
         <div class="col-4">
             <div class="form-group input-group">
-                <input type="text" class="form-control" name="keyword" placeholder="Search here" value="{{ old('keyword'), request()->input('keyword') }}">
-                <button class="adminPublishSearch btn btn-primary" id="adminPublishSearch"> Search </button>
+                <input type="text" class="form-control" name="keyword" id="searchUnReviewedInput" placeholder="Search here" value="{{ old('keyword'), request()->input('keyword') }}">
+                <button class="adminPublishSearch btn btn-primary" id="searchUnReviewedBtn"> Search </button>
             </div>
         </div>
 
@@ -347,6 +347,91 @@
 
         });
 
+        $("#searchUnReviewedInput").keypress(function(event) {
+            // Check if the pressed key is Enter (key code 13)
+            if (event.which === 13) {
+            // Trigger the click event on the search button
+            $("#searchUnReviewedBtn").click();
+            }
+        });
+
+        $(document).on('click', '#searchUnReviewedBtn', function() {
+
+            var keyword = $('#searchUnReviewedInput').val();
+            if (keyword == undefined || keyword == null || keyword == '') {
+                Swal.fire({
+                    title: 'Enter the model name to search!',
+                    icon: 'warning',
+                    timer: 4000, // Auto-close the alert after 4 seconds
+                    showConfirmButton: false
+                });
+            }
+            $(".unreviewedImages").empty();
+            $("#loader").show();
+            $.ajax({
+                url: "" + baseUrl + "/published-images-search",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    searchType: 'UnReviewed',
+                    keyword: keyword
+                },
+                success: function(response) {
+                    $("#loader").hide();
+                    console.log(response);
+                    $(".unreviewedImages").empty();
+                    if (response.data.length > 0) {
+                        response.data.slice().reverse().forEach((element) => {
+                            var pageHTML = "<div class='col-lg-2 col-md-6 col-sm-6 col-xs-12'>";
+                            pageHTML += "<div class='adminPublishMainBodyInner'>";
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<div class='declinedImage'> </div>";
+                            }
+                            pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                            pageHTML += "<div class='content_body'>";
+                            pageHTML += "<span class='model_name text-white'> " + element.selectedBaseModelText + "</span>";
+                            pageHTML += "<div class='input-group'>";
+                            if (element.is_nsfw_image == 'true') {
+                                pageHTML += "<input checked type='checkbox' class='adminPublishMain_is_nsfw' name='adminPublishMain_is_nsfw' id='adminPublishMain_is_nsfw' />";
+                                pageHTML += "<span class='text-white'> nsfw </span>";
+                            } else {
+                                pageHTML += "<input type='checkbox' class='adminPublishMain_is_nsfw' name='adminPublishMain_is_nsfw' id='adminPublishMain_is_nsfw' />";
+                                pageHTML += "<span class='text-white'> nsfw </span>";
+                            }
+                            pageHTML += "</div>";
+                            pageHTML += "<button class='btn btn-primary approveNsfwImage' data-approveimageId='" + element.id + "'> Approve </button>";
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<button disabled class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            } else {
+                                pageHTML += "<button class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            }
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            $(".unreviewedImages").append(pageHTML);
+                        });
+                    } else {
+                        var pageHTML = "<p>No records found!</p>";
+                        $(".unreviewedImages").append(pageHTML);
+                    }
+
+
+                },
+                error: function() {
+                    $("#loader").hide();
+                    Swal.fire({
+                        title: 'Error occurred while fetching data from the API',
+                        icon: 'success',
+                        timer: 4000, // Auto-close the alert after 4 seconds
+                        showConfirmButton: false
+                    });
+
+                },
+            });
+
+        });
         getUnReviewedImages();
 
 

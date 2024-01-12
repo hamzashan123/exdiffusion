@@ -47,12 +47,23 @@ class BackendController extends Controller
     //reviewed
     public function showPublishedReviewedImages()
     {
-        $data = DB::table('creativehistory')->where('is_published', 'true')->where('is_reviewed', 'true')->get();
-        dd($data);
-        return view('backend.publishedcreation.rev',['data' => $data]);
+        $data = DB::table('creativehistory')->where('is_published', 'true')->whereIn('is_reviewed', ['true'])->get();
+
+        if ($data) {
+            return response()->json([
+              'status' => 'success',
+              'data' => $data,
+              'message' => 'Images Found!'
+            ]);
+        }else{
+            return response()->json([
+              'status' => 'failure',
+              'message' => 'Something went wrong!'
+            ]);
+        }
     }
 
-    public function approveNsfwImage(Request $request){
+    public function approveImage(Request $request){
 
         $creativeData = DB::table('creativehistory')->where('id', $request->id)->first();
         $data = DB::table('creativehistory')->where('id', $request->id)->update([
@@ -77,7 +88,7 @@ class BackendController extends Controller
         
               try {
                   
-                  Mail::to($userData['email'])->send(new publishImageApprove($userData));
+                //   Mail::to($userData['email'])->send(new publishImageApprove($userData));
               } catch (\Exception $e) {
               }
         }
@@ -98,7 +109,7 @@ class BackendController extends Controller
         }
     }
 
-    public function declineNsfwImage(Request $request){
+    public function declineImage(Request $request){
         
         $creativeData = DB::table('creativehistory')->where('id', $request->id)->first();
 
@@ -121,7 +132,7 @@ class BackendController extends Controller
               ];
               try {
                   
-                  Mail::to($userData['email'])->send(new publishImageDecline($userData));
+                //   Mail::to($userData['email'])->send(new publishImageDecline($userData));
               } catch (\Exception $e) {
               }
         }
@@ -136,6 +147,94 @@ class BackendController extends Controller
             return response()->json([
             'status' => 'failure',
             'message' => 'Something went wrong!'
+            ]);
+        }
+    }
+
+    public function privateImage(Request $request){
+        $creativeData = DB::table('creativehistory')->where('id', $request->id)->first();
+
+        $data = DB::table('creativehistory')->where('id', $request->id)->update([
+            'is_published' => 'false',
+            'is_reviewed' => null,
+        ]);
+
+        $userData = User::where('id',$creativeData->user_id)->first();
+
+        if($userData){
+            $userData = [
+                'admin' => false,
+                'firstname' => $userData->first_name,
+                'lastname' => $userData->lastname,
+                'email' => $userData->email,
+                'subject' => 'Exdiffusion Image Declined',
+                'image_url' =>  $creativeData->image_url,
+                'msg' => "Your image has been private by administrator. Please find the attached images below"
+              ];
+              try {
+                  
+                //   Mail::to($userData['email'])->send(new publishImageDecline($userData));
+              } catch (\Exception $e) {
+              }
+        }
+
+        if ($userData) {
+            return response()->json([
+            'status' => 'success',
+            'data' => $userData,
+            'message' => 'Image Private Successfully!'
+            ]);
+        }else{
+            return response()->json([
+            'status' => 'failure',
+            'message' => 'Something went wrong!'
+            ]);
+        }
+    }
+
+    public function updateImage(Request $request){
+        $creativeData = DB::table('creativehistory')->where('id', $request->id)->first();
+
+        $data = DB::table('creativehistory')->where('id', $request->id)->update([
+            'is_nsfw_image' => $request->is_nsfw,
+        ]);
+
+        $userData = User::where('id',$creativeData->user_id)->first();
+
+       
+
+        if ($userData) {
+            return response()->json([
+            'status' => 'success',
+            'data' => $userData,
+            'message' => 'Image Private Successfully!'
+            ]);
+        }else{
+            return response()->json([
+            'status' => 'failure',
+            'message' => 'Something went wrong!'
+            ]);
+        }
+    }
+
+    public function searchImages(Request $request){
+
+        if($request->searchType == 'Reviewed'){
+            $data = DB::table('creativehistory')->where('is_published', 'true')->where('selectedBaseModelText', 'like', '%' . $request->keyword . '%')->whereIn('is_reviewed', ['true'])->get();
+        }if($request->searchType == 'UnReviewed'){
+            $data = DB::table('creativehistory')->where('is_published', 'true')->where('selectedBaseModelText', 'like', '%' . $request->keyword . '%')->whereIn('is_reviewed', ['false','declined'])->get();
+        }
+        
+        if ($data) {
+            return response()->json([
+              'status' => 'success',
+              'data' => $data,
+              'message' => 'Images Found base on search!'
+            ]);
+        }else{
+            return response()->json([
+              'status' => 'failure',
+              'message' => 'Something went wrong!'
             ]);
         }
     }

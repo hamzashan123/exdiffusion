@@ -108,7 +108,7 @@
     }
 </style>
 
-<div class="adminPublishMain" id="adminPublishMainBody">
+<div class="adminPublishMain">
     <div class="row">
         <div class="col-8">
             <h5 class="m-0 font-weight-bold text-white">
@@ -117,8 +117,8 @@
         </div>
         <div class="col-4">
             <div class="form-group input-group">
-                <input type="text" class="form-control" name="keyword" placeholder="Search here" value="{{ old('keyword'), request()->input('keyword') }}">
-                <button class="adminPublishSearch btn btn-primary" id="adminPublishSearch"> Search </button>
+                <input type="text" class="form-control" name="keyword" id="searchReviewedInput" placeholder="Search here" value="{{ old('keyword'), request()->input('keyword') }}">
+                <button class="adminPublishSearch btn btn-primary" id="searchReviewedBtn"> Search </button>
             </div>
         </div>
 
@@ -128,264 +128,450 @@
 
 </div>
 
-<div class="adminPublishMainBody">
-    <div class="row">
+<div class="adminPublishMainBody" id="adminPublishMainBody">
+    <div class="row reviewedImages">
 
 
 
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/31-6572926570d1c.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-658a76204aad0.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/1-6589b503c069f.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-658b984105756.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-657a9818aa037.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/1-6589a95b50f07.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/31-6572926570d1c.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-658a76204aad0.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/1-6589b503c069f.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-658b984105756.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-657a9818aa037.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/1-6589a95b50f07.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/31-6572926570d1c.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-658a76204aad0.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/1-6589b503c069f.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-658b984105756.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/27-657a9818aa037.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-            <div class="adminPublishMainBodyInner">
-                <img src="https://exdiffusion.com/newproject/public/storage/images/creativehistory/1-6589a95b50f07.png" alt="No image" class="img-fluid mb-3">
-                <div class="content_body">
-                    <span class="model_name text-white"> meinamixv11</span>
-                    <div class="input-group">
-                        <input checked type="checkbox" class="adminPublishMain_is_nsfw" name="adminPublishMain_is_nsfw" id="adminPublishMain_is_nsfw" /> <span class="text-white"> nsfw </span>
-                    </div>
-                    <button class="btn btn-primary"> Update </button>
-                    <button class="btn btn-secondary"> Decline </button>
-                </div>
-
-            </div>
-        </div>
 
 
     </div>
 
 </div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+
+        function getReviewedImages() {
+
+            $("#loader").show();
+
+            $.ajax({
+                url: "" + baseUrl + "/published-images-reviewed",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {},
+                success: function(response) {
+
+                    $("#loader").hide();
+                    console.log(response);
+                    $(".reviewedImages").empty();
+                    if (response.data.length > 0) {
+                        response.data.slice().reverse().forEach((element) => {
+                            var pageHTML = "<div class='col-lg-2 col-md-6 col-sm-6 col-xs-12'>";
+                            pageHTML += "<div class='adminPublishMainBodyInner'>";
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<div class='declinedImage'> </div>";
+                            }
+                            pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                            pageHTML += "<div class='content_body'>";
+                            pageHTML += "<span class='model_name text-white'> " + element.selectedBaseModelText + "</span>";
+                            pageHTML += "<div class='input-group'>";
+                            if (element.is_nsfw_image == 'true') {
+                                pageHTML += "<input checked type='checkbox' class='adminPublishMain_is_nsfw' name='adminPublishMain_is_nsfw' id='adminPublishMain_is_nsfw' />";
+                                pageHTML += "<span class='text-white'> nsfw </span>";
+                            } else {
+                                pageHTML += "<input type='checkbox' class='adminPublishMain_is_nsfw' name='adminPublishMain_is_nsfw' id='adminPublishMain_is_nsfw' />";
+                                pageHTML += "<span class='text-white'> nsfw </span>";
+                            }
 
 
+                            pageHTML += "</div>";
+                            pageHTML += "<button class='btn btn-primary updateNsfwImage' data-updateimageId='" + element.id + "'> Update </button>";
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<button disabled class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            } else {
+                                pageHTML += "<button class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            }
+                            pageHTML += "<button class='btn btn-primary privateNsfwImage' data-privateimageId='" + element.id + "'> Private </button>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            $(".reviewedImages").append(pageHTML);
+                        });
+                    } else {
+                        var pageHTML = "<p>No records found!</p>";
+                        $(".reviewedImages").append(pageHTML);
+                    }
+
+                },
+                error: function() {
+                    $("#loader").hide();
+                    Swal.fire({
+                        title: 'Error occurred while fetching data from the API',
+                        icon: 'success',
+                        timer: 4000, // Auto-close the alert after 4 seconds
+                        showConfirmButton: false
+                    });
+
+                },
+            });
+
+        }
+
+        $(document).on('click', '.approveNsfwImage', function() {
+
+            var approveimageId = $(this).attr('data-approveimageId');
+            var adminPublishMainBodyInner = $(this).closest('.adminPublishMainBodyInner');
+            // Find the checkbox within the 'adminPublishMainBodyInner' element
+            var isNsfwCheckbox = adminPublishMainBodyInner.find('.adminPublishMain_is_nsfw');
+            // Check if the checkbox is checked
+            var isNsfw = isNsfwCheckbox.prop('checked');
+
+            if (approveimageId != undefined) {
+                Swal.fire({
+                    title: 'Are you sure you want to approve the image?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: 'Cancel',
+                    customClass: {
+                        actions: 'swal-custompopus',
+                        title: 'swal-customModals'
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(".reviewedImages").empty();
+                        $("#loader").show();
+                        $.ajax({
+                            url: "" + baseUrl + "/published-images-approve",
+                            method: "POST",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: {
+                                id: approveimageId,
+                                is_nsfw: isNsfw
+                            },
+                            success: function(response) {
+                                $("#loader").hide();
+                                console.log(response);
+                                Swal.fire({
+                                    title: response.message,
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+                                getReviewedImages();
+
+                            },
+                            error: function() {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Error occurred while fetching data from the API',
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+
+                            },
+                        });
+
+                    } else if (result.isDenied) {
+                        return;
+                    }
+                });
+
+            } else {
+                alert('Select an option to apply!');
+            }
+
+        });
+
+        $(document).on('click', '.declineNsfwImage', function() {
+
+            var declineimageId = $(this).attr('data-declineimageId');
+
+            var adminPublishMainBodyInner = $(this).closest('.adminPublishMainBodyInner');
+            // Find the checkbox within the 'adminPublishMainBodyInner' element
+            var isNsfwCheckbox = adminPublishMainBodyInner.find('.adminPublishMain_is_nsfw');
+            // Check if the checkbox is checked
+            var isNsfw = isNsfwCheckbox.prop('checked');
+
+            if (declineimageId != undefined) {
+                Swal.fire({
+                    title: 'Are you sure you want to decline the image?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: 'Cancel',
+                    customClass: {
+                        actions: 'swal-custompopus',
+                        title: 'swal-customModals'
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(".reviewedImages").empty();
+                        $("#loader").show();
+                        $.ajax({
+                            url: "" + baseUrl + "/published-images-decline",
+                            method: "POST",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: {
+                                id: declineimageId,
+                                is_nsfw: isNsfw
+                            },
+                            success: function(response) {
+                                $("#loader").hide();
+                                console.log(response);
+                                Swal.fire({
+                                    title: response.message,
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+                                getReviewedImages();
+
+                            },
+                            error: function() {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Error occurred while fetching data from the API',
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+
+                            },
+                        });
+
+                    } else if (result.isDenied) {
+                        return;
+                    }
+                });
+
+            } else {
+                alert('Select an option to apply!');
+            }
+
+        });
+
+        $(document).on('click', '.privateNsfwImage', function() {
+
+            var privateimageId = $(this).attr('data-privateimageId');
 
 
+            if (privateimageId != undefined) {
+                Swal.fire({
+                    title: 'Are you sure you want to make this image private?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: 'Cancel',
+                    customClass: {
+                        actions: 'swal-custompopus',
+                        title: 'swal-customModals'
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(".reviewedImages").empty();
+                        $("#loader").show();
+                        $.ajax({
+                            url: "" + baseUrl + "/published-images-private",
+                            method: "POST",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: {
+                                id: privateimageId,
+                            },
+                            success: function(response) {
+                                $("#loader").hide();
+                                console.log(response);
+                                Swal.fire({
+                                    title: response.message,
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+                                getReviewedImages();
+
+                            },
+                            error: function() {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Error occurred while fetching data from the API',
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+
+                            },
+                        });
+
+                    } else if (result.isDenied) {
+                        return;
+                    }
+                });
+
+            } else {
+                alert('Select an option to apply!');
+            }
+
+        });
+
+        $(document).on('click', '.updateNsfwImage', function() {
+
+            var updateimageId = $(this).attr('data-updateimageId');
+            var adminPublishMainBodyInner = $(this).closest('.adminPublishMainBodyInner');
+            // Find the checkbox within the 'adminPublishMainBodyInner' element
+            var isNsfwCheckbox = adminPublishMainBodyInner.find('.adminPublishMain_is_nsfw');
+            // Check if the checkbox is checked
+            var isNsfw = isNsfwCheckbox.prop('checked');
+
+            if (updateimageId != undefined) {
+                Swal.fire({
+                    title: 'Are you sure you want to update the image?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: 'Cancel',
+                    customClass: {
+                        actions: 'swal-custompopus',
+                        title: 'swal-customModals'
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(".reviewedImages").empty();
+                        $("#loader").show();
+                        $.ajax({
+                            url: "" + baseUrl + "/published-images-update",
+                            method: "POST",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: {
+                                id: updateimageId,
+                                is_nsfw: isNsfw
+                            },
+                            success: function(response) {
+                                $("#loader").hide();
+                                console.log(response);
+                                Swal.fire({
+                                    title: response.message,
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+                                getReviewedImages();
+
+                            },
+                            error: function() {
+                                $("#loader").hide();
+                                Swal.fire({
+                                    title: 'Error occurred while fetching data from the API',
+                                    icon: 'success',
+                                    timer: 4000, // Auto-close the alert after 4 seconds
+                                    showConfirmButton: false
+                                });
+
+                            },
+                        });
+
+                    } else if (result.isDenied) {
+                        return;
+                    }
+                });
+
+            } else {
+                alert('Select an option to apply!');
+            }
+
+        });
+
+        $("#searchReviewedInput").keypress(function(event) {
+            // Check if the pressed key is Enter (key code 13)
+            if (event.which === 13) {
+            // Trigger the click event on the search button
+            $("#searchReviewedBtn").click();
+            }
+        });
+
+        $(document).on('click', '#searchReviewedBtn', function() {
+
+            var keyword = $('#searchReviewedInput').val();
+            if (keyword == undefined || keyword == null || keyword == '') {
+                Swal.fire({
+                    title: 'Enter the model name to search!',
+                    icon: 'warning',
+                    timer: 4000, // Auto-close the alert after 4 seconds
+                    showConfirmButton: false
+                });
+            }
+            $(".reviewedImages").empty();
+            $("#loader").show();
+            $.ajax({
+                url: "" + baseUrl + "/published-images-search",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    searchType: 'Reviewed',
+                    keyword: keyword
+                },
+                success: function(response) {
+                    $("#loader").hide();
+                    console.log(response);
+                    $(".reviewedImages").empty();
+                    if (response.data.length > 0) {
+                        response.data.slice().reverse().forEach((element) => {
+                            var pageHTML = "<div class='col-lg-2 col-md-6 col-sm-6 col-xs-12'>";
+                            pageHTML += "<div class='adminPublishMainBodyInner'>";
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<div class='declinedImage'> </div>";
+                            }
+                            pageHTML += "<img src='" + element.image_url + "' alt='No image' class='img-fluid mb-3'>";
+                            pageHTML += "<div class='content_body'>";
+                            pageHTML += "<span class='model_name text-white'> " + element.selectedBaseModelText + "</span>";
+                            pageHTML += "<div class='input-group'>";
+                            if (element.is_nsfw_image == 'true') {
+                                pageHTML += "<input checked type='checkbox' class='adminPublishMain_is_nsfw' name='adminPublishMain_is_nsfw' id='adminPublishMain_is_nsfw' />";
+                                pageHTML += "<span class='text-white'> nsfw </span>";
+                            } else {
+                                pageHTML += "<input type='checkbox' class='adminPublishMain_is_nsfw' name='adminPublishMain_is_nsfw' id='adminPublishMain_is_nsfw' />";
+                                pageHTML += "<span class='text-white'> nsfw </span>";
+                            }
 
 
+                            pageHTML += "</div>";
+                            pageHTML += "<button class='btn btn-primary updateNsfwImage' data-updateimageId='" + element.id + "'> Update </button>";
+                            if (element.is_reviewed == 'declined') {
+                                pageHTML += "<button disabled class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            } else {
+                                pageHTML += "<button class='btn btn-secondary declineNsfwImage' data-declineimageId='" + element.id + "'> Decline </button>";
+                            }
+                            pageHTML += "<button class='btn btn-primary privateNsfwImage' data-privateimageId='" + element.id + "'> Private </button>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            pageHTML += "</div>";
+                            $(".reviewedImages").append(pageHTML);
+                        });
+                    } else {
+                        var pageHTML = "<p>No records found!</p>";
+                        $(".reviewedImages").append(pageHTML);
+                    }
+
+
+                },
+                error: function() {
+                    $("#loader").hide();
+                    Swal.fire({
+                        title: 'Error occurred while fetching data from the API',
+                        icon: 'success',
+                        timer: 4000, // Auto-close the alert after 4 seconds
+                        showConfirmButton: false
+                    });
+
+                },
+            });
+
+        });
+        getReviewedImages();
+
+
+    });
+</script>
 @endsection

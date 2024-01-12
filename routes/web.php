@@ -35,6 +35,7 @@ Route::post('/getGeneratedImageHistory', [PublicModelsController::class, 'getGen
 Route::post('/get-publish-creation', [PublicModelsController::class, 'getPublishCreation'])->name('getPublishCreation');
 Route::post('/publish-images', [PublicModelsController::class, 'publishImages'])->name('publishImages');
 Route::post('/publish-image', [PublicModelsController::class, 'publishSingleImage'])->name('publishSingleImage');
+Route::post('/private-image', [PublicModelsController::class, 'privateSingleImage'])->name('privateSingleImage');
 
 Route::get('/get-base-models',[PublicModelsController::class, 'getBaseModels'])->name('getbasemodels');
 Route::get('/get-schedulers',[PublicModelsController::class, 'getSchedulers'])->name('getschedulers');
