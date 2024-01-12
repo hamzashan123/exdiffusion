@@ -1681,6 +1681,14 @@ div#load_more button {
 
 @media only screen and (max-width:991px )  {
 
+    button#generateSuperResolution {
+        margin-top: 10px;
+    }
+    
+    #superResolution .images_result {
+        margin-top: 10px;
+    }
+
     .models_section .input-group input {
         width: 100%;
         margin: 10px 0px;
