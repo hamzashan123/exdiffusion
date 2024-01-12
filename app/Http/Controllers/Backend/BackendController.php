@@ -88,7 +88,7 @@ class BackendController extends Controller
         
               try {
                   
-                //   Mail::to($userData['email'])->send(new publishImageApprove($userData));
+                  Mail::to($userData['email'])->send(new publishImageApprove($userData));
               } catch (\Exception $e) {
               }
         }
@@ -132,7 +132,7 @@ class BackendController extends Controller
               ];
               try {
                   
-                //   Mail::to($userData['email'])->send(new publishImageDecline($userData));
+                  Mail::to($userData['email'])->send(new publishImageDecline($userData));
               } catch (\Exception $e) {
               }
         }
