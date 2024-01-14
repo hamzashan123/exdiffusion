@@ -53,8 +53,8 @@
 
             </div>
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                <!-- <a class="collapse-item" href="{{ route('admin.images.show.reviewed') }}"> -->
+                <!-- <a class="collapse-item" href="#"> -->
+                <a class="collapse-item" href="{{ route('admin.images.show.reviewed') }}">
                     Published Images ( Reviewed )
                 </a>
 
